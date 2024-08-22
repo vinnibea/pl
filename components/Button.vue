@@ -1,0 +1,48 @@
+<script setup>
+import { useMobileStore } from '~/stores/MobileMenu';
+const props = defineProps({
+    color: {
+        type: String,
+        default: 'bg-yellow',
+    },
+    text: {
+        type: String,
+        default: 'text-dark-grey'
+    },
+    border: {
+        type: String,
+        default: 'r'
+    },
+    hover: {
+        type: String,
+        default: 'bg-hover-yellow',
+    },
+    hoverText: {
+        type: String,
+        default: 'hover:text-black'
+    },
+
+    radius: {
+        type: String,
+        default: 'rounded-md'
+    },
+
+    fromFooter: {
+        type: Boolean,
+        default: false,
+    }
+})
+
+</script>
+<template>
+    <button
+        class="uppercase px-6 text-sm py-4 font-semibold text-slate-900 max-[1024px]:text-xs transition-all"
+        :class="[color, text, `hover:${hover}`, hoverText, radius, {
+            'max-[820px]:hidden': false,
+            'max-[820px]:w-1/2': fromFooter,
+            'max-[820px]:w-full': !fromFooter
+        }]"
+      >
+       <slot>Регистрация</slot>
+      </button>
+</template>
