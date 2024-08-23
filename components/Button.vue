@@ -36,7 +36,7 @@ const props = defineProps({
 </script>
 <template>
     <button
-        class="uppercase px-6 text-sm py-4 font-semibold text-slate-900 max-[1024px]:text-xs transition-all"
+        class="uppercase px-6 text-sm py-4 font-semibold text-slate-900 max-[1024px]:text-xs transition-all border-b-1"
         :class="[color, text, `hover:${hover}`, hoverText, radius, {
             'max-[820px]:hidden': false,
             'max-[820px]:w-1/2': fromFooter,

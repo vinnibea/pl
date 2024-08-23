@@ -43,7 +43,7 @@ import { format } from 'date-fns';
          </div>
         </div>
 
-        <button class="uppercase px-6 text-sm py-4 font-semibold text-dark-grey text-md max-[1024px]:text-xs max-[1024px]:py-4 bg-yellow rounded-md w-2/3 mx-auto hover:bg-hover-yellow  transition-all">Получить деньги</button>
+        <button class="uppercase px-6 text-sm py-4 font-semibold text-dark-grey text-md max-[1024px]:text-xs max-[1024px]:py-4 bg-yellow rounded-md w-2/3 max-[468px]:w-full mx-auto hover:bg-hover-yellow  transition-all">Получить деньги</button>
 
         <div class="form-row flex justify-between items-center px-4">
          <div class="flex flex-col items-center">

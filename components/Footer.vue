@@ -14,34 +14,34 @@ const footerLinks = [
 <template>
   <footer class="pt-8 px-0 mt-12 bg-slate-950 max-[822px]:px-0 max-[822px]:pt-2 shadow-md">
     <div class="flex justify-between max-[822px]:flex-col-reverse px-8 max-[822px]:px-2">
-      <div>
+      <div class="max-[822px]:text-xs">
         <div
-          class="flex gap-48 max-[822px]:gap-8 max-[822px]:justify-between w-full max-[822px]:py-8"
+          class="flex gap-48 max-[822px]:gap-8 max-[822px]:justify-between w-full max-[822px]:py-4 "
         >
-          <ul class="flex flex-col gap-8">
+          <ul class="flex flex-col gap-8 max-[468px]:gap-4">
             <li v-for="item in footerLinks.slice(0, 4)" :key="item">
               <NuxtLink
                 to="#"
-                class="text-footer-link text-base max-[822px]:text-sm"
+                class="text-footer-link text-base max-[822px]:text-sm max-[468px]:text-xs"
                 >{{ item }}</NuxtLink
               >
             </li>
           </ul>
-          <ul class="flex flex-col gap-8">
+          <ul class="flex flex-col gap-8 max-[468px]:gap-4">
             <li v-for="item in footerLinks.slice(4)" :key="item">
               <NuxtLink
                 to="#"
-                class="text-footer-link text-base max-[822px]:text-sm"
+                class="text-footer-link text-base max-[822px]:text-sm max-[468px]:text-xs"
                 >{{ item }}</NuxtLink
               >
             </li>
           </ul>
         </div>
 
-        <form class="flex py-12">
+        <form class="flex py-12 gap-1">
           <input
             type="email"
-            class="px-2 py-2 w-full bg-input"
+            class="px-2 py-2 w-full bg-slate-950 border-b border-yellow"
             placeholder="Введите ваш email"
           />
           <Button :radius="'rounded-r-md'" :fromFooter="true"
