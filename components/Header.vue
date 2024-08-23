@@ -16,10 +16,10 @@ const localMenuCloser= () => {
 </script>
 <template>
   <header
-    class="bg-yellow w-full flex justify-between items-center py-2 px-4 shadow-lg max-[860px]:fixed max-[860px]:z-30"
+    class=" w-full flex justify-between items-center py-2 px-4 shadow-lg max-[860px]:fixed max-[860px]:z-30 bg-white"
   >
     <h2
-      class="text-2xl max-[1024px]:text-xl font-extrabold text-white uppercase"
+      class="text-2xl max-[1024px]:text-xl font-extrabold uppercase text-logo-yellow"
     >
       Moneydeal.<span class="text-xs">kz</span>
     </h2>
@@ -53,7 +53,7 @@ const localMenuCloser= () => {
         Войти
       </button>
       <button
-        class="uppercase px-6 text-sm py-2 max-[820px]:hidden font-semibold text-dark-grey max-[1024px]:text-xs bg-white rounded-r-md hover:bg-hover-yellow transition-all"
+        class="uppercase px-6 text-sm py-2 max-[820px]:hidden font-semibold text-dark-grey max-[1024px]:text-xs bg-yellow rounded-r-md hover:bg-hover-yellow transition-all"
       >
         Регистрация
       </button>

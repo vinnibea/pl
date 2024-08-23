@@ -68,14 +68,14 @@ useResizeObserver(windowWidthRef, (entries) => {
     <mobile-menu v-if="store.state" @onMenuClose="closeMobileMenu"></mobile-menu>
     <Header @onMenuOpen="openMobileMenu"></Header>
     <div class="hero bg-no-repeat bg-top bg-fixed max-[820px]:bg-center bg-cover py-4 px-0 min-w-full flex flex-col justify-end  max-[1024px]:px-2 border-b-2 border-slate-700">
-      <div class="hero-center w-full px-4 py-16 flex justify-between items-center max-[820px]:flex-col max-[820px]:py-12 max-[820px]:px-0 gap-12 max-[820px]:text-white">
+      <div class="hero-center w-full px-4 py-16 flex justify-between items-center max-[820px]:flex-col max-[820px]:py-0 max-[820px]:pt-12 max-[820px]:px-0 gap-12 max-[820px]:text-white">
         <div class="w-full max-[820px]:text-white  max-[820px]:flex  max-[820px]:flex-col  max-[820px]:px-4  max-[820px]:items-center max-[820px]:mx-auto">
           <h1> Получите  от 5 000  <br class="min-[820px]:hidden">до 500 000 тенге</h1>
           <p>
             С любой кредитной историей,
-            <br>
+            <br class="min-[820px]:hidden">
             возраст до 75 лет,
-            <br>круглосуточно
+            <br class="min-[820px]:hidden">круглосуточно
             и без выходных.
           </p>
         </div>
@@ -162,7 +162,6 @@ useResizeObserver(windowWidthRef, (entries) => {
 }
 @media screen and (max-width: 820px) {
   .hero-center h1 {
-    font-size: 1.5rem;
     font-weight: 700;
     color:#ffe11d;
     text-align: center;
@@ -170,12 +169,11 @@ useResizeObserver(windowWidthRef, (entries) => {
   }
 
   .hero-center p {
-    min-width: 100%;
-    font-size: 0.9rem;
+
     font-weight: 700;
-    padding: 12px 12px 24px;
+    padding: 0 12px;
     color: #ffffff;
-    text-align: right;
+    text-align: justify;
   }
 
  

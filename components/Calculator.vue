@@ -31,7 +31,7 @@ import { format } from 'date-fns';
         <div class="flex flex-col gap-4"> 
          <div class="form-row flex justify-between items-center">
            <h2 class="font-bold text-md max-[1024px]:text-lg text-black">Срок кредита:</h2>
-           <span class="rounded-xl text-xs font-bold text-navbar-passive border border-yellow px-4 py-0">{{ month < 3 ? 3 : month}} месяца</span>
+           <span class="rounded-xl text-xs font-bold text-navbar-passive border border-yellow px-4 py-0">{{ month < 3 ? 3 : month}} мес.</span>
            
          </div>
          
