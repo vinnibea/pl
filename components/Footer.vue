@@ -96,6 +96,7 @@ const footerLinks = [
     <div class="w-full bg-white flex items-center px-4 py-2 max-[822px]:flex-col-reverse max-[822px]:px-2">
       <div class="flex items-center gap-4">
         <svg
+          class="exception"
           width="54px"
           height="54px"
           viewBox="0 0 64 64"
@@ -150,6 +151,7 @@ const footerLinks = [
         </svg>
 
         <svg
+          class="exception"
           width="36px"
           height="36px"
           viewBox="0 0 50 50"
@@ -258,7 +260,7 @@ const footerLinks = [
   </footer>
 </template>
 
-<style>
+<style scoped>
 .st0 {
   fill: #b4e6dd;
 }
@@ -303,5 +305,12 @@ const footerLinks = [
 }
 .st14 {
   fill: #ce6b61;
+}
+
+@media screen and (max-width: 822px) {
+    svg:not(.exception) {
+        width: 48px;
+        height: 48px;
+    }
 }
 </style>

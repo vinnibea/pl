@@ -68,7 +68,7 @@ useResizeObserver(windowWidthRef, (entries) => {
     <mobile-menu v-if="store.state" @onMenuClose="closeMobileMenu"></mobile-menu>
     <Header @onMenuOpen="openMobileMenu"></Header>
     <div class="hero bg-no-repeat bg-top bg-fixed max-[820px]:bg-center bg-cover py-4 px-0 min-w-full flex flex-col justify-end  max-[1024px]:px-2 border-b-2 border-slate-700">
-      <div class="hero-center w-full px-4 py-16 flex justify-between items-center max-[820px]:flex-col max-[820px]:py-0 max-[820px]:pt-12 max-[820px]:px-0 gap-12 max-[820px]:text-white">
+      <div class="hero-center w-full px-4 gap-12 py-16 flex justify-between items-center max-[820px]:flex-col max-[820px]:py-0 max-[820px]:gap-4 max-[820px]:pt-12 max-[820px]:px-0  max-[820px]:text-white">
         <div class="w-full max-[820px]:text-white  max-[820px]:flex  max-[820px]:flex-col  max-[820px]:px-4  max-[820px]:items-center max-[820px]:mx-auto">
           <h1> Получите  <br class="min-[470px]:hidden"> от 5 000  до 500 000 тенге</h1>
           <p>
@@ -162,17 +162,18 @@ useResizeObserver(windowWidthRef, (entries) => {
 }
 @media screen and (max-width: 820px) {
   .hero-center h1 {
+    font-size: 1.7rem;
     font-weight: 700;
     color:#ffe11d;
     text-align: center;
-    padding: 12px;
+    padding: 4px;
   }
 
   .hero-center p {
     font-size: 1.2rem;
     font-weight: 700;
     padding: 0 12px;
-    color: #000000;
+    color: #ffffff;
     text-align: center;
   }
 
