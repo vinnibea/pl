@@ -1,9 +1,9 @@
 <template>
     <div
-    class="flex flex-row justify-between w-full gap-8 py-8 px-6 max-[820px]:flex-col max-[820px]:items-center max-[820px]:py-12 max-[820px]:px-0 max-[820px]:gap-4"
+    class="flex flex-row justify-between w-full gap-8 py-8 px-6 max-[820px]:items-center max-[820px]:py-12 max-[820px]:px-0 max-[820px]:gap-2"
   >
     <div
-      class="flex flex-col w-1/3 max-[820px]:w-full py-4 bg-white items-center text-4xl font-semibold rounded-md shadow-md duration-500 text-white transition-all min-[822px]:hover:scale-110"
+      class="flex flex-col w-1/3 max-[820px]:w-full py-4 bg-white items-center text-4xl font-semibold rounded-md shadow-md duration-500 text-white transition-all max-[822px]:w-full min-[822px]:hover:scale-110"
     >
       <svg
         version="1.1"
@@ -101,7 +101,7 @@
     </div>
 
     <div
-      class="flex flex-col w-1/3 max-[820px]:w-full py-4 bg-white items-center text-4xl font-semibold rounded-md shadow-md text-white  transition-all duration-500 min-[822px]:hover:scale-110"
+      class="flex flex-col w-1/3 max-[820px]:w-full py-4 bg-white items-center text-4xl font-semibold rounded-md shadow-md text-white  transition-all duration-500 min-[822px]:hover:scale-110 max-[822px]:py-4"
     >
       <svg
         width="120px"
@@ -221,3 +221,12 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+@media screen and (max-width: 820px) {
+    svg {
+        width: 48px;
+        height: 48px;
+    }
+}
+</style>
