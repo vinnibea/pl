@@ -62,7 +62,43 @@ const cardColContent = [
       </div>
       <top-cards></top-cards>
     </div>
-   
+    <main class="px-4 max-[1024px]:px-0">
+      <main-cards-layout>
+        <template #title>
+          Требования к заказчику
+        </template>
+        <template #content>
+           <requirements></requirements>
+        </template>
+        <template #button-title>
+           Оформить заявку
+        </template>
+      </main-cards-layout>
+      
+      <main-cards-layout>
+        <template #title>
+          Получение кредита
+        </template>
+        <template #content>
+         <credit-take :content="cardContent"></credit-take>
+        </template>
+        <template #button-title>
+           Получить деньги
+        </template>
+      </main-cards-layout>
+  
+      <main-cards-layout>
+        <template #title>
+          Как работает сервис
+        </template>
+        <template #content>
+         <credit-take :content="cardColContent" :flex="'flex-row'"></credit-take>
+        </template>
+        <template #button-title>
+           Регистрация
+        </template>
+      </main-cards-layout>
+    </main>
   </div>
 </template>
 

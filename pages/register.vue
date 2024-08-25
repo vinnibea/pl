@@ -1,8 +1,10 @@
 <script setup>
-import { format } from "date-fns";
 import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
 import { useVuelidate } from '@vuelidate/core';
+import { useMobileStore } from '~/stores/MobileMenu.js';
 import Registerinput from "~/components/Registerinput.vue";
+
+const store = useMobileStore();
 const steps = [
   "Информация о клиенте",
   "Обработка данных",
@@ -38,6 +40,7 @@ const formData = reactive({
  const onFormConfirm = () => {
     confirm.value = true;
  }
+
 const rules = computed(() => {
   return {
     email: {
@@ -102,6 +105,10 @@ const formTouched = (field) => {
     $v.value[`${field}`].$touch()
     console.log($v.value.name.$errors.value)
 }
+
+const changePolitics = (i) => {
+    store.onPolitics(i);
+}
 </script>
 
 <template>
@@ -121,7 +128,7 @@ const formTouched = (field) => {
           'max-[822px]:hidden': i !== 0,
         }"
       >
-        <div class="flex items-center gap-4 max-[822px]:gap-1">
+        <div class="flex items-center gap-4 max-[822px]:gap-0">
           <span
             class="cursor-pointer rounded-full max-[822px]:group-hover:scale-100 border-4 transition-transform duration-500 min-w-8 min-h-8 max-[1024px]:max-h-14 max-[1024px]:min-w-8 max-[822px]:border-2 max-[822px]:min-h-6 max-[822px]:min-w-6  max-[822px]:hidden bg-slate-900 flex items-center justify-center"
             :class="{
@@ -141,7 +148,7 @@ const formTouched = (field) => {
             >
           </span>
           <h5
-            class="-yellow text-xs max-[822px]:text-base"
+            class="-yellow text-xs max-[822px]:text-xs"
             :class="{
               'text-yellow': i === 0,
               'text-slate-400': i !== 0,
@@ -165,7 +172,7 @@ const formTouched = (field) => {
       max-[822px]:rounded-xs max-[822px]:w-full shadow-sm"
       
     >   
-      <form class="flex bg-white flex-col w-full gap-10 max-[822px]:gap-8 pt-4 max-[822px]:pt-2" v-if="!confirm">
+      <form class="flex bg-white flex-col w-full gap-10 max-[822px]:gap-8 pt-4 max-[822px]:pt-2 relative" v-if="!confirm">
         <register-input-wrapper>
           
            <Registerinput :placeholder="'Имя'" :id="'name'" :value="formData.name" :icon="icons.profile" @onValue="onInputFieldChange" @onFormTouched="formTouched" :errors="$v?.name?.$errors[0]" ></Registerinput>
@@ -196,14 +203,16 @@ const formTouched = (field) => {
             <div class="flex justify-start items-start gap-4 w-2/3 max-[822px]:w-full">
                 <div class="flex justify-start  gap-4 items-start max-[822px]:w-full">
                     <input type="checkbox" class="px-2 py-2 rounded-full"  v-model="formData.age"/>
-                    <p class="text-xs">Я даю согласие на обработку моих персональных данных, получение рекламной информации, а также соглашаюсь на хранение своих данных в системе сервиса, согласно <NuxtLink to="/politics" class="text-blue-700">политике конфиденциальности</NuxtLink> моих персональных данных сервиса. <NuxtLink to="/politics" class="text-blue-700">Правила пользования</NuxtLink> сервисом мною прочитаны. </p>
+                    <p class="text-xs">Я даю согласие на обработку моих персональных данных, получение рекламной информации, а также соглашаюсь на хранение своих данных в системе сервиса, согласно <span @click="changePolitics(0)" class="text-blue-700 cursor-pointer">политике конфиденциальности</span> моих персональных данных сервиса. <NuxtLink class="text-blue-700">Правила пользования</NuxtLink> сервисом мною прочитаны. </p>
                 </div>
             </div>
          </div>
         <Button class="mx-auto" @click.prevent="onFormConfirm" :disabled="$v.$invalid">Отправить анкету</Button>
+        
       </form>
+
       <h3 v-else class="text-center text-3xl font-bold ">ПЕРЕМОГА</h3>
     </div>
-    
+    <Politics v-if="store.politicsOpen !== false" :index='store.politicsOpen' class="absolute top-0 right-0 left-0"></Politics>
   </div>
 </template>
