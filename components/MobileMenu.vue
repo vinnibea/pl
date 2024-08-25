@@ -1,5 +1,5 @@
 <template>
-    <div class="sticky left-0 right-0 top-0 bottom-0 bg-white min-[824px]:hidden flex flex-col items-center min-h-dvh max-h-dvh">
+    <div class="sticky left-0 right-0 top-0 bottom-0 bg-white min-[822px]:hidden flex flex-col items-center min-h-dvh max-h-dvh">
     
         <Header></Header>
            <Nav :isMobile="true"></Nav>

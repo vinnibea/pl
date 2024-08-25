@@ -36,6 +36,9 @@ module.exports = {
           'footer-link': '#f8f8f8',
           'input': '#e8ebf0'
         },
+        scrollBehavior: {
+          'smooth': 'smooth',
+        }
       },
     },
     plugins: [],

@@ -30,18 +30,24 @@ const props = defineProps({
     fromFooter: {
         type: Boolean,
         default: false,
+    },
+    disabled: {
+        type: Boolean,
+        default: false,
     }
 })
 
 </script>
 <template>
     <button
-        class="uppercase px-6 text-sm py-4 font-semibold text-slate-900 max-[1024px]:text-xs transition-all border-b-1"
+        class="uppercase px-6 text-sm py-4 font-semibold text-slate-900 max-[1024px]:text-xs transition-all border-b-1 disabled:pointer-events-auto disabled:opacity-50 disabled:cursor-not-allowed"
         :class="[color, text, `hover:${hover}`, hoverText, radius, {
             'max-[820px]:hidden': false,
             'max-[820px]:w-1/2': fromFooter,
             'max-[820px]:w-full': !fromFooter
         }]"
+
+        :disabled="disabled"
       >
        <slot>Регистрация</slot>
       </button>

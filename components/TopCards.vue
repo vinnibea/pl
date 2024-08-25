@@ -13,7 +13,7 @@
            <span class="text-sm  text-black">подобрано для наших клиентов</span>
         </div>
         <div class="flex flex-col w-1/3  max-[820px]:w-full py-4 bg-yellow items-center text-4xl font-semibold rounded-md shadow-md text-white">
-          <h3>2000+</h3>
+          <h3>2000+ </h3>
           <span class="text-sm">заявок</span>
           <span class="text-sm  text-black">рассматривается нами ежедневно</span>
         </div>

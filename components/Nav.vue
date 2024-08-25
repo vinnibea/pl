@@ -27,7 +27,7 @@ defineProps({
            
         }]">
           <li class="hover:text-black">
-          <NuxtLink to="/" class="py-4 px-4 hover:border-b-2  max-[1024px]:px-2  border-black"> 
+          <NuxtLink to="#req" class="py-4 px-4 hover:border-b-2  max-[1024px]:px-2  border-black"> 
             Требования к заказчику
           </NuxtLink>
         </li>
