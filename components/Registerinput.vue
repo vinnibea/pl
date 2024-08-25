@@ -57,7 +57,7 @@ const onInputChange = (val, field) => {
         :value="value"
         @input="(e) => onInputChange(e.target.value, id)"
         @blur="emit('onFormTouched', id)"
-        class="peer px-12 py-2 w-full bg-slate-250 border-b-2 rounded-t-md border-yellow focus:outline-0 focus:bg-slate-50 text-slate-700 font-medium placeholder:opacity-0 max-[822px]:text-sm"
+        class="peer px-12 py-2 w-full bg-slate-250 border-b-2 rounded-t-md border-yellow focus:outline-0 focus:bg-slate-50 text-slate-700 font-medium placeholder:opacity-0 max-[822px]:text-sm  max-[822px]:px-12"
         :placeholder="placeholder"
       />
      
@@ -73,18 +73,19 @@ const onInputChange = (val, field) => {
           {
             '-translate-y-[42px]': value,
             
-            'left-2': value,
+            'left-0': value,
             'left-12': !value,
-            'peer-focus:left-2': !value,
+            'peer-focus:left-0': !value,
             'text-slate-300': !value,
-            'peer-focus:text-slate-700': !value,
-            'text-black': value && !errors.$message
+            'peer-focus:text-blue-900': !value,
+             'text-red-500': value && errors.$message,
+            'text-blue-950': value && !errors.$message
           },
         ]"
         >{{ placeholder }}</label
       >
     </div>
-    <span class="text-red-600 text-xs min-h-4 px-2">
+    <span class="text-red-500 text-xs min-h-4 px-2">
       <span v-if="errors?.$message">*{{ errors?.$message }}</span>
     </span>
   </div>
