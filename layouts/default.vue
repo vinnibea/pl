@@ -55,6 +55,8 @@ useResizeObserver(windowWidthRef, (entries) => {
     return;
   }
 })
+
+
  </script>
 <template>
   <div

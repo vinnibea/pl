@@ -78,6 +78,11 @@ const rules = computed(() => {
         required: helpers.withMessage('Чтобы продолжить, согласитесь с условиями сервиса', required),
         isAccceted: helpers.withMessage('Чтобы продолжить, согласитесь с условиями сервиса', (val) => val)
     },
+
+    age: {
+        required: helpers.withMessage('Чтобы продолжить, согласитесь с условиями сервиса', required),
+        isAge: helpers.withMessage('Чтобы продолжить, согласитесь с условиями сервиса', (val) => val)
+    },
     password_confirm: {
       required: helpers.withMessage('Это поле не может быть пустым', required),
       sameAs: helpers.withMessage('Пароли должны  совпадать', sameAs(formData.password)),
@@ -101,7 +106,7 @@ const formTouched = (field) => {
 
 <template>
   <div
-    class="min-h-dvh bg-white flex flex-col gap-4 py-4 px-48 max-[822px]:px-2 max-[822px]:pt-4"
+    class="min-h-dvh bg-slate-900 flex flex-col gap-4 py-4 px-48 max-[822px]:px-2 max-[822px]:pt-4"
   >
     <div
       class="min-w-full py-2 flex justify-center gap-8 uppercase text-sm font-medium max-[822px]:pt-12 max-[822px]:gap-0"
@@ -118,7 +123,7 @@ const formTouched = (field) => {
       >
         <div class="flex items-center gap-4 max-[822px]:gap-1">
           <span
-            class="cursor-pointer rounded-full max-[822px]:group-hover:scale-100 border-4 transition-transform duration-500 min-w-8 min-h-8 max-[1024px]:max-h-14 max-[1024px]:min-w-8 max-[822px]:border-2 max-[822px]:min-h-6 max-[822px]:min-w-6 bg-slate-900 flex items-center justify-center"
+            class="cursor-pointer rounded-full max-[822px]:group-hover:scale-100 border-4 transition-transform duration-500 min-w-8 min-h-8 max-[1024px]:max-h-14 max-[1024px]:min-w-8 max-[822px]:border-2 max-[822px]:min-h-6 max-[822px]:min-w-6  max-[822px]:hidden bg-slate-900 flex items-center justify-center"
             :class="{
               'border-yellow': i === 0,
               'border-slate-400': i !== 0,
@@ -136,7 +141,7 @@ const formTouched = (field) => {
             >
           </span>
           <h5
-            class="-yellow text-xs"
+            class="-yellow text-xs max-[822px]:text-base"
             :class="{
               'text-yellow': i === 0,
               'text-slate-400': i !== 0,
@@ -150,16 +155,17 @@ const formTouched = (field) => {
     </div>
 
     <div
-      class="flex-col  items-center justify-center min-w-full bg-white  mx-auto px-2 py-2 rounded-lg gap-2 
+      class="flex-col  items-center justify-center min-w-full bg-white  mx-auto px-8 py-4 rounded-lg gap-2 
       max-[822px]:flex-col
       max-[822px]:gap-0
-      max-[822px]:py-0
+      max-[822px]:py-8
+      max-[822px]:px-8
       max-[822px]:rounded-xs max-[822px]:w-full shadow-sm"
       
     >   
-      <form class="flex bg-white flex-col w-full gap-10 max-[822px]:gap-8 py-4 max-[822px]:py-2" v-if="!confirm">
+      <form class="flex bg-white flex-col w-full gap-10 max-[822px]:gap-8 pt-4 max-[822px]:py-2" v-if="!confirm">
         <register-input-wrapper>
-            <!-- {{ $v.$errors }} -->
+          
            <Registerinput :placeholder="'Имя'" :id="'name'" :value="formData.name" :icon="icons.profile" @onValue="onInputFieldChange" @onFormTouched="formTouched" :errors="$v?.name?.$errors[0]" ></Registerinput>
            <Registerinput :placeholder="'Фамилия'" :value="formData.surname" @onValue="onInputFieldChange" :id="'surname'" @onFormTouched="formTouched" :errors="$v?.surname?.$errors[0]" :icon="icons.profile_empty"></Registerinput>
         </register-input-wrapper>
@@ -178,12 +184,20 @@ const formTouched = (field) => {
         </register-input-wrapper>
        
        
-        <div class="flex justify-center items-start gap-4 w-full">
-            <div class="flex justify-center w-1/2 gap-4 items-start max-[822px]:w-full">
-                <input type="checkbox" class="px-2 py-2 rounded-full"  v-model="formData.accept"/>
-                <p class="text-xs">Я даю согласие на обработку моих персональных данных и получение рекламной информации, а также соглашаюсь на хранение политики конфиденциальности моих персональных данных. </p>
+         <div class="flex flex-col items-start max-[822px]:items-start gap-2 w-full">
+            <div class="flex justify-start items-start gap-4 w-2/3 max-[822px]:w-full">
+                <div class="flex justify-start w-1/2 gap-4 items-start max-[822px]:w-full">
+                    <input type="checkbox" class="px-2 py-2 rounded-full"  v-model="formData.accept"/>
+                    <p class="text-xs">Мне исполнилось 18 лет </p>
+                </div>
             </div>
-        </div>
+            <div class="flex justify-start items-start gap-4 w-2/3 max-[822px]:w-full">
+                <div class="flex justify-start  gap-4 items-start max-[822px]:w-full">
+                    <input type="checkbox" class="px-2 py-2 rounded-full"  v-model="formData.age"/>
+                    <p class="text-xs">Я даю согласие на обработку моих персональных данных и получение рекламной информации, а также соглашаюсь на хранение политики конфиденциальности моих персональных данных. </p>
+                </div>
+            </div>
+         </div>
         <Button class="mx-auto" @click.prevent="onFormConfirm" :disabled="$v.$invalid">Отправить анкету</Button>
       </form>
       <h3 v-else class="text-center text-3xl font-bold ">ПЕРЕМОГА</h3>
