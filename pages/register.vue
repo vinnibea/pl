@@ -160,10 +160,12 @@ const formTouched = (field) => {
       max-[822px]:gap-0
       max-[822px]:py-8
       max-[822px]:px-8
+      max-[568px]:px-2
+      max-[568px]:py-6
       max-[822px]:rounded-xs max-[822px]:w-full shadow-sm"
       
     >   
-      <form class="flex bg-white flex-col w-full gap-10 max-[822px]:gap-8 pt-4 max-[822px]:py-2" v-if="!confirm">
+      <form class="flex bg-white flex-col w-full gap-10 max-[822px]:gap-8 pt-4 max-[822px]:pt-2" v-if="!confirm">
         <register-input-wrapper>
           
            <Registerinput :placeholder="'Имя'" :id="'name'" :value="formData.name" :icon="icons.profile" @onValue="onInputFieldChange" @onFormTouched="formTouched" :errors="$v?.name?.$errors[0]" ></Registerinput>
@@ -194,7 +196,7 @@ const formTouched = (field) => {
             <div class="flex justify-start items-start gap-4 w-2/3 max-[822px]:w-full">
                 <div class="flex justify-start  gap-4 items-start max-[822px]:w-full">
                     <input type="checkbox" class="px-2 py-2 rounded-full"  v-model="formData.age"/>
-                    <p class="text-xs">Я даю согласие на обработку моих персональных данных и получение рекламной информации, а также соглашаюсь на хранение политики конфиденциальности моих персональных данных. </p>
+                    <p class="text-xs">Я даю согласие на обработку моих персональных данных, получение рекламной информации, а также соглашаюсь на хранение своих данных в системе сервиса, согласно <NuxtLink to="/politics" class="text-blue-700">политике конфиденциальности</NuxtLink> моих персональных данных сервиса. <NuxtLink to="/politics" class="text-blue-700">Правила пользования</NuxtLink> сервисом мною прочитаны. </p>
                 </div>
             </div>
          </div>
