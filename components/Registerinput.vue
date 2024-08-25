@@ -41,13 +41,13 @@ const onInputChange = (val, field) => {
     <div class="relative w-full max-[822px]:w-full px-0 py-0 group">
       <Icon
         v-if="!tel"
-        class="absolute left-2 top-1/2 -translate-y-1/2 text-md text-slate-500 bg-slate-200 min-h-6 min-w-6"
+        class="absolute left-2 top-1/2 -translate-y-1/2 text-md text-slate-200 bg-slate-300 min-h-6 min-w-6"
        
         :name="icon"
       ></Icon>
       <span
         v-else
-        class="absolute left-2 top-1/2 -translate-y-1/2 text-md font-bold text-slate-500"
+        class="absolute left-2 top-1/2 -translate-y-1/2 text-md font-bold text-slate-300"
         >+7</span
       >
 
@@ -57,7 +57,7 @@ const onInputChange = (val, field) => {
         :value="value"
         @input="(e) => onInputChange(e.target.value, id)"
         @blur="emit('onFormTouched', id)"
-        class="peer px-12 py-2 w-full bg-slate-250 border-b-2 rounded-t-md border-yellow focus:outline-0 focus:bg-slate-50 text-slate-700 font-medium placeholder:opacity-0 max-[822px]:text-sm  max-[822px]:px-12"
+        class="peer px-12 py-2 w-full bg-slate-250  rounded-md border-yellow focus:outline-0 bg-slate-50 focus:bg-slate-100 text-slate-700 font-medium placeholder:opacity-0 max-[822px]:text-sm  max-[822px]:px-12"
         :placeholder="placeholder"
       />
      
@@ -85,7 +85,7 @@ const onInputChange = (val, field) => {
         >{{ placeholder }}</label
       >
     </div>
-    <span class="text-red-500 text-xs min-h-4 px-2">
+    <span class="text-rose-500 text-xs min-h-4 px-2">
       <span v-if="errors?.$message">*{{ errors?.$message }}</span>
     </span>
   </div>
