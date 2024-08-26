@@ -38,13 +38,13 @@ const footerLinks = [
           </ul>
         </div>
 
-        <form class="flex py-12 gap-1">
+        <form class="flex py-12 gap-0">
           <input
             type="email"
-            class="px-2 py-2 w-full bg-slate-950 border-b border-yellow"
+            class="px-2 py-2 w-full bg-slate-95 bg-slate-900 placeholder:text-white transition-all duration-300 placeholder:text-sm focus:outline-none focus:bg-slate-800 text-white focus:placeholder:text-slate-600"
             placeholder="Введите ваш email"
           />
-          <Button :radius="'rounded-r-md'" :fromFooter="true"
+          <Button :radius="'rounded-r-md'"
             >Подписаться</Button
           >
         </form>
@@ -54,7 +54,7 @@ const footerLinks = [
         class="flex flex-col items-center max-[822px]:flex  max-[822px]:flex-row max-[822px]:items-center max-[822px]:justify-between"
       >
         <h2
-          class="text-2xl max-[1024px]:text-xl font-extrabold text-logo-yellow uppercase"
+          class="text-2xl max-[1024px]:text-xl font-extrabold text-white uppercase max-[822px]:text-base"
         >
           Moneydeal.<span class="text-xs">kz</span>
         </h2>
@@ -93,10 +93,10 @@ const footerLinks = [
         </div>
       </div>
     </div>
-    <div class="w-full bg-white flex items-center px-4 py-2 max-[822px]:flex-col-reverse max-[822px]:px-2">
+    <div class="w-full bg-white flex items-center px-4 py-0 max-[822px]:flex-col-reverse max-[822px]:px-2  max-[822px]:py-0">
       <div class="flex items-center gap-4">
         <svg
-          class="exception"
+          class=" exception max-[822px]:w-8"
           width="54px"
           height="54px"
           viewBox="0 0 64 64"
@@ -151,9 +151,10 @@ const footerLinks = [
         </svg>
 
         <svg
-          class="exception"
+
           width="36px"
           height="36px"
+          class=" exception max-[822px]:w-6"
           viewBox="0 0 50 50"
           enable-background="new 0 0 50 50"
           id="Layer_1"
@@ -252,9 +253,9 @@ const footerLinks = [
         </svg>
       </div>
 
-      <div class="flex items-center gap-2 w-full justify-end max-[822px]:flex-col max-[822px]:justify-center">
-        <p class="font-semibold text-slate-600 w-1/6 max-[822px]:w-full max-[822px]:text-xs">Тел.: +48 221 530 522</p>
-        <p class="font-semibold text-slate-600 w-1/3 max-[822px]:w-full max-[822px]:text-xs">SIA "LeadProm Media", зарегистрированная по адресу улица Матиса, 61 - 31, Рига, LV-1009, Латвия</p>
+      <div class="flex items-center gap-2 w-full justify-end max-[822px]:flex-col-reverse max-[822px]:justify-center">
+        <p class="font-semibold text-slate-600 text-[12px] w-1/6 max-[822px]:w-full max-[822px]:text-[10px]">Тел.: +48 221 530 522</p>
+        <p class="font-semibold text-slate-600 text-[12px] w-1/3 max-[822px]:w-full max-[822px]:text-[10px]">SIA "LeadProm Media", зарегистрированная по адресу улица Матиса, 61 - 31, Рига, LV-1009, Латвия</p>
       </div>
     </div>
   </footer>
