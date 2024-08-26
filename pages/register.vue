@@ -1,122 +1,28 @@
 <script setup>
-import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
-import { useVuelidate } from '@vuelidate/core';
+import RegisterStepOne from '~/components/RegisterStepOne.vue';
+import RegisterStepTwo from '~/components/RegisterStepTwo.vue';
 import { useMobileStore } from '~/stores/MobileMenu.js';
-import Registerinput from "~/components/Registerinput.vue";
+import { useRegisterStore } from '~/stores/RegisterStore.js';
+
 
 const store = useMobileStore();
+const registerStore = useRegisterStore();
 const steps = [
-  "Информация о клиенте",
-  "Обработка данных",
+  "Информация o клиенте",
   "Прикрепление платежной карты",
   "Завершение регистрации",
 ];
 
+const components = [RegisterStepOne, RegisterStepTwo];
 
-const icons = {
-    profile: 'mdi:account-circle',
-    profile_empty: 'mdi:account-circle-outline',
-    email: 'mdi:email-open-multiple-outline',
-    city: 'mdi:home-silo-outline',
-    index: 'mdi:format-list-numbered',
-    password: 'mdi:form-textbox-password',
-    password_confirm: 'mdi:repeat'
-}
-
-const formData = reactive({
-    name: '',
-    surname: '',
-    city: '',
-    index: '',
-    email: '',
-    password: '',
-    password_confirm: '',
-    phone: '',
-    accept: false,
-    
-})
- const confirm = ref(false);
-
- const onFormConfirm = () => {
-    confirm.value = true;
- }
-
-const rules = computed(() => {
-  return {
-    email: {
-      required: helpers.withMessage('Это поле не может быть пустым', required),
-      email: helpers.withMessage('Неверный формат электронной почты', email),
-    },
-    password: {
-      required: helpers.withMessage('Это поле не может быть пустым', required),
-      minLength: helpers.withMessage('Пароль не может быть короче 6 символов',minLength(6)),
-    },
-    city: {
-      required: helpers.withMessage('Это поле не может быть пустым', required),
-      minLength: helpers.withMessage(`Это поле не может быть короче трех символов`, minLength(3)
-      ),
-    },
-    index: {
-      number: helpers.withMessage('Допустимы только числовые значения', (val) => val.match(/^[0-9]+$/)),
-      required: helpers.withMessage('Это поле не может быть пустым', required),
-      minLength: helpers.withMessage(`Это поле не может быть короче шести символов`, minLength(6)),
-     
-    },
-    phone: {
-      number: helpers.withMessage('Допустимы только числовые значения', (val) => val.match(/^[0-9]+$/)),
-      required: helpers.withMessage('Это поле не может быть пустым', required),
-      minLength: helpers.withMessage(`Это поле не может быть короче 10 символов`, minLength(10)),
-      
-    },
-    name: {
-      required: helpers.withMessage('Это поле не может быть пустым', required),
-      minLength: helpers.withMessage(`Это поле не может быть короче двух символов`, minLength(2)
-)
-    },
-   surname: {
-      required: helpers.withMessage('Это поле не может быть пустым', required),
-      minLength: helpers.withMessage(`Это поле не может быть короче двух символов`, minLength(2))
-    },
-    accept: {
-        required: helpers.withMessage('Чтобы продолжить, согласитесь с условиями сервиса', required),
-        isAccceted: helpers.withMessage('Чтобы продолжить, согласитесь с условиями сервиса', (val) => val)
-    },
-
-    age: {
-        required: helpers.withMessage('Чтобы продолжить, согласитесь с условиями сервиса', required),
-        isAge: helpers.withMessage('Чтобы продолжить, согласитесь с условиями сервиса', (val) => val)
-    },
-    password_confirm: {
-      required: helpers.withMessage('Это поле не может быть пустым', required),
-      sameAs: helpers.withMessage('Пароли должны  совпадать', sameAs(formData.password)),
-    },
-  };
-});
-
-
-const $v = useVuelidate(rules, formData);
-
-const onInputFieldChange = (val, field) => {
-    formData[`${field}`] = val;
-    
-}
-
-const formTouched = (field) => {
-    $v.value[`${field}`].$touch()
-    console.log($v.value.name.$errors.value)
-}
-
-const changePolitics = (i) => {
-    store.onPolitics(i);
-}
 </script>
 
 <template>
   <div
-    class="min-h-dvh bg-slate-900 flex flex-col gap-4 py-4 px-48 max-[822px]:px-2 max-[822px]:pt-4"
+    class="min-h-dvh bg-slate-800 flex flex-col gap-4 py-4 px-48 mx-8 max-[822px]:px-0 max-[822px]:pt-4 shadow-lg rounded-md my-8 max-[822px]:my-0 max-[822px]:mx-1  max-[822px]:bg-slate-900"
   >
     <div
-      class="min-w-full py-2 flex justify-center gap-8 uppercase text-sm font-medium max-[822px]:pt-12 max-[822px]:gap-0"
+      class="min-w-full py-0 flex justify-center gap-8 uppercase text-sm font-medium max-[822px]:pt-12 max-[822px]:gap-0"
     >
       <div
         v-for="(step, i) in steps"
@@ -130,7 +36,7 @@ const changePolitics = (i) => {
       >
         <div class="flex items-center gap-4 max-[822px]:gap-0">
           <span
-            class="cursor-pointer rounded-full max-[822px]:group-hover:scale-100 border-4 transition-transform duration-500 min-w-8 min-h-8 max-[1024px]:max-h-14 max-[1024px]:min-w-8 max-[822px]:border-2 max-[822px]:min-h-6 max-[822px]:min-w-6  max-[822px]:hidden bg-slate-900 flex items-center justify-center"
+            class="cursor-pointer rounded-full max-[822px]:group-hover:scale-100 border-4 transition-transform duration-500 min-w-8 min-h-8 max-[1024px]:max-h-14 max-[1024px]:min-w-8 max-[822px]:border-2 max-[822px]:min-h-2 max-[822px]:min-w-6  max-[822px]:hidden bg-slate-900 flex items-center justify-center"
             :class="{
               'border-yellow': i === 0,
               'border-slate-400': i !== 0,
@@ -155,63 +61,29 @@ const changePolitics = (i) => {
               'opacity-50': i !== 0,
             }"
           >
-            {{ step }}
+            {{ steps[registerStore.activeTab] }}
           </h5>
         </div>
       </div>
     </div>
 
     <div
-      class="flex-col  items-center justify-center min-w-full bg-white  mx-auto px-8 py-4 rounded-lg gap-2 
+      class="flex-col items-center justify-center min-w-full py-8 px-2 bg-white  mx-auto  rounded-lg gap-2 
       max-[822px]:flex-col
       max-[822px]:gap-0
       max-[822px]:py-8
-      max-[822px]:px-8
-      max-[568px]:px-2
-      max-[568px]:py-6
+      max-[822px]:px-2
+      max-[568px]:px-0
+      max-[568px]:py-4
       max-[822px]:rounded-xs max-[822px]:w-full shadow-sm"
+      :class="[{
+        'max-[822px]:hidden': store.politicsOpen !== false,
+        'bg-white': false,
+      }]"
       
     >   
-      <form class="flex bg-white flex-col w-full gap-10 max-[822px]:gap-8 pt-4 max-[822px]:pt-2 relative" v-if="!confirm">
-        <register-input-wrapper>
-          
-           <Registerinput :placeholder="'Имя'" :id="'name'" :value="formData.name" :icon="icons.profile" @onValue="onInputFieldChange" @onFormTouched="formTouched" :errors="$v?.name?.$errors[0]" ></Registerinput>
-           <Registerinput :placeholder="'Фамилия'" :value="formData.surname" @onValue="onInputFieldChange" :id="'surname'" @onFormTouched="formTouched" :errors="$v?.surname?.$errors[0]" :icon="icons.profile_empty"></Registerinput>
-        </register-input-wrapper>
-        <register-input-wrapper>
-            <Registerinput :placeholder="'Мобильный номер'" :value="formData.phone" @onValue="onInputFieldChange" :id="'phone'" @onFormTouched="formTouched" :errors="$v?.phone?.$errors[0]" :tel="true"></Registerinput>
-            <Registerinput :placeholder="'Email'" type="email" :id="'email'" :value="formData.email" @onValue="onInputFieldChange" @onFormTouched="formTouched" :errors="$v?.email?.$errors[0]" :icon="icons.email"></Registerinput>
-        </register-input-wrapper>
+ <component class="py-4 px-2  rounded-lg" :is="components[registerStore.activeTab]"></component>
 
-        <register-input-wrapper>
-            <Registerinput :placeholder="'Город'" :icon="icons.city" :value="formData.city" @onValue="onInputFieldChange" :id="'city'" @onFormTouched="formTouched" :errors="$v?.city?.$errors[0]"></Registerinput>
-            <Registerinput :placeholder="'Почтовый индекс'" type="text" :id="'index'" :value="formData.index" @onValue="onInputFieldChange" :icon="icons.index" @onFormTouched="formTouched" :errors="$v?.index?.$errors[0]"></Registerinput>
-        </register-input-wrapper>
-        <register-input-wrapper>
-            <Registerinput :placeholder="'Пароль'" :type="'password'" :value="formData.password" @onValue="onInputFieldChange" :id="'password'" :icon="icons.password"  @onFormTouched="formTouched" :errors="$v?.password?.$errors[0]"></Registerinput>
-            <Registerinput :placeholder="'Повторите пароль'" :type="'password'" :value="formData.password_confirm" @onValue="onInputFieldChange" :id="'password_confirm'" :icon="icons.password_confirm" @onFormTouched="formTouched" :errors="$v?.password_confirm?.$errors[0]"></Registerinput>
-        </register-input-wrapper>
-       
-       
-         <div class="flex flex-col items-start max-[822px]:items-start gap-2 w-full">
-            <div class="flex justify-start items-start gap-4 w-2/3 max-[822px]:w-full">
-                <div class="flex justify-start w-1/2 gap-4 items-start max-[822px]:w-full">
-                    <input type="checkbox" class="px-2 py-2 rounded-full"  v-model="formData.accept"/>
-                    <p class="text-xs">Мне исполнилось 18 лет </p>
-                </div>
-            </div>
-            <div class="flex justify-start items-start gap-4 w-2/3 max-[822px]:w-full">
-                <div class="flex justify-start  gap-4 items-start max-[822px]:w-full">
-                    <input type="checkbox" class="px-2 py-2 rounded-full"  v-model="formData.age"/>
-                    <p class="text-xs">Я даю согласие на обработку моих персональных данных, получение рекламной информации, а также соглашаюсь на хранение своих данных в системе сервиса, согласно <span @click="changePolitics(0)" class="text-blue-700 cursor-pointer">политике конфиденциальности</span> моих персональных данных сервиса. <NuxtLink class="text-blue-700">Правила пользования</NuxtLink> сервисом мною прочитаны. </p>
-                </div>
-            </div>
-         </div>
-        <Button class="mx-auto" @click.prevent="onFormConfirm" :disabled="$v.$invalid">Отправить анкету</Button>
-        
-      </form>
-
-      <h3 v-else class="text-center text-3xl font-bold ">ПЕРЕМОГА</h3>
     </div>
     <Politics v-if="store.politicsOpen !== false" :index='store.politicsOpen' class="absolute top-0 right-0 left-0"></Politics>
   </div>

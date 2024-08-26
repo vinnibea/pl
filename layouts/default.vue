@@ -71,9 +71,11 @@ useResizeObserver(windowWidthRef, (entries) => {
     <slot></slot>
 
    
-    <Footer></Footer>
+    <Footer :class="[{
+        'max-[822px]:hidden': store.politicsOpen !== false,
+      }]"></Footer>
     <div class="absolute bg-slate-800 opacity-90 top-0 left-0 bottom-0 right-0 z-30 px-4 py-4 max-[822px]:bg-white max-[822px]:px-2 max-[822px]:py-0 max-[822px]:opacity-100"  @click="store.onPolitics(false)" v-if="store.politicsOpen !== false">
-        <div class="flex justify-end relative text-xl font-bold text-white w-full cursor-pointer z-50 max-[822px]:text-slate-700"><Icon name="mdi:close" class="w-6 h-6 max-[822px]:hidden"> </Icon>
+        <div class="flex justify-end  relative text-xl font-bold text-white w-full cursor-pointer z-50 max-[822px]:text-slate-700"><Icon name="mdi:close" class="w-6 h-6 max-[822px]:hidden"> </Icon>
         </div>
     </div>
   </div>
