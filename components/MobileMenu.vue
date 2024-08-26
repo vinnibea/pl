@@ -21,7 +21,7 @@ const { direction, isSwiping, lengthX, lengthY } = useSwipe(
     },
     onSwipeEnd(e, direction) {
         console.log(containerHeight.value / lengthY.value)
-      if ( containerHeight.value && (Math.abs(containerHeight.value / lengthY.value) <= 2)) {
+      if ( containerHeight.value && (Math.abs(containerHeight.value / lengthY.value) <= 5)) {
         store.onMenuClose()
       }
     },
@@ -30,7 +30,7 @@ const { direction, isSwiping, lengthX, lengthY } = useSwipe(
 </script>
 <template>
     <div ref="menu" class="fixed left-0 right-0 z-50 bottom-0 top-0 bg-slate-800 transform transition-all duration-500 min-[822px]:hidden flex flex-col items-center" :class="[
-            { '-translate-y-full': !store.state, 'translate-y-0': store.state, '-translate-y-[120px]': isSwiping}
+            { '-translate-y-full': !store.state, 'translate-y-0': store.state, '-translate-y-[220px]': isSwiping}
            ]">
     
         <Header></Header> 
