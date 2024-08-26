@@ -15,6 +15,7 @@ export const useMobileStore = defineStore('mobile_menu', () => {
    }
    const onMenuClose= () => {
     state.value = false;
+    document.body.style.overflow = "auto";
    }
   return { state, onMenuOpen, onMenuClose, politicsOpen, onPolitics}
 })
