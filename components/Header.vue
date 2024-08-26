@@ -13,7 +13,12 @@ const localMenuCloser = () => {
 </script>
 <template>
   <header
-    class="w-full flex justify-between items-center py-2 px-4 shadow-lg max-[860px]:fixed max-[860px]:z-30 bg-white max-[860px]:px-2"
+    class="w-full flex justify-between items-center py-2 px-4 shadow-lg max-[860px]:fixed max-[860px]:z-30 bg-white max-[860px]:px-2" :class="[
+        {
+            'rounded-b-xl': store.state,
+            'shadow-none': store.state
+        }
+    ]"
   >
     <h2
       class="text-2xl max-[1024px]:text-xl font-extrabold uppercase text-logo-yellow"

@@ -9,6 +9,7 @@ export const useMobileStore = defineStore('mobile_menu', () => {
     state.value = true;
    }
    const onPolitics = (i) => {
+
     window.scrollTo(0, 0);
     politicsOpen.value = i;
    }

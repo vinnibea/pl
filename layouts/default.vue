@@ -48,7 +48,6 @@ const windowWidthRef = ref(null);
 useResizeObserver(windowWidthRef, (entries) => {
   const entry = entries[0]
   const { width, height } = entry.contentRect
-  console.log(width)
   if(store.state && width > 822) {
     store.onMenuClose();
     document.body.style.overflow = 'auto';
@@ -64,10 +63,8 @@ useResizeObserver(windowWidthRef, (entries) => {
     ref="windowWidthRef"
   >
     <mobile-menu
-      v-if="store.state"
-      @onMenuClose="closeMobileMenu"
     ></mobile-menu>
-    <Header @onMenuOpen="openMobileMenu"></Header>
+    <Header></Header>
     <slot></slot>
 
    

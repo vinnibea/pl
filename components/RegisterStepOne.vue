@@ -3,10 +3,15 @@ import { required, email, sameAs, minLength, helpers } from '@vuelidate/validato
 import { useVuelidate } from '@vuelidate/core';
 import { useMobileStore } from '~/stores/MobileMenu.js';
 import { useRegisterStore } from '~/stores/RegisterStore.js';
+import { useLocalUserStore } from '~/stores/localStore.js';
 import Registerinput from "~/components/Registerinput.vue";
 
+
 const store = useMobileStore();
+const localStore = useLocalUserStore();
 const registerStore = useRegisterStore();
+console.log(localStore.localUser)
+
 const icons = {
     profile: 'mdi:account-circle',
     profile_empty: 'mdi:account-circle-outline',
@@ -27,15 +32,10 @@ const formData = reactive({
     password_confirm: '',
     phone: '',
     accept: false,
-    
+    age: false,
 })
- const confirm = ref(false);
 
- const onFormConfirm = () => {
-    confirm.value = true;
- }
-
-const rules = computed(() => {
+ const rules = computed(() => {
   return {
     email: {
       required: helpers.withMessage('Это поле не может быть пустым', required),
@@ -102,11 +102,14 @@ const formTouched = (field) => {
 const changePolitics = (i) => {
     store.onPolitics(i);
 }
+
+
  </script>
 <template>
     <form class="flex bg-white flex-col w-full gap-10 max-[822px]:gap-8 pt-4 max-[822px]:pt-2 relative">
+        
         <register-input-wrapper>
-          
+            {{localStore?.localUser?.value?.email}}
            <Registerinput :placeholder="'Имя'" :id="'name'" :value="formData.name" :icon="icons.profile" @onValue="onInputFieldChange" @onFormTouched="formTouched" :errors="$v?.name?.$errors[0]" ></Registerinput>
            <Registerinput :placeholder="'Фамилия'" :value="formData.surname" @onValue="onInputFieldChange" :id="'surname'" @onFormTouched="formTouched" :errors="$v?.surname?.$errors[0]" :icon="icons.profile_empty"></Registerinput>
         </register-input-wrapper>
@@ -139,7 +142,10 @@ const changePolitics = (i) => {
                 </div>
             </div>
          </div>
-        <Button class="mx-auto min-w-1/2 relative"  :disabled="false" @click.prevent="registerStore.setActiveTab(1)">
+        <Button class="mx-auto min-w-1/2 relative"  :disabled="false" @click.prevent="() => {
+            registerStore.setActiveTab(1);
+            localStore.setLocalUser(formData)
+        }">
             <span class="flex items-center justify-center w-full gap-2 mx-auto">{{ registerStore.loading ? 'Идёт обработка данных' : 'Отправить анкету'}} 
                 <span name="loader" v-if="registerStore.loading" class="loader bg-yellow border-2 w-4 h-4 bt-2 border-t-white border-slate-300 rounded-full">
 
