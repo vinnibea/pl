@@ -88,7 +88,7 @@ const onInputChange = (val, field) => {
             'border-red-300': value && errors.$message,
             'border-red-300': errors.$message,
             'border-neutral-300': !value && !errors.$message,
-            'border-green-300': value && !errors.$message
+            'border-green-500': value && !errors.$message
         }]"
         :placeholder="placeholder"
       />
