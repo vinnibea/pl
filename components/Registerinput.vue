@@ -27,12 +27,38 @@ const props = defineProps({
     required: false,
   },
   errors: {
-    type: Array,
+    type: Object,
     default: [],
   },
+  maxLength: {
+    type: Number,
+    default: 100,
+  }
 });
 const emit = defineEmits(["onValue", "onFormTouched"]);
 const onInputChange = (val, field) => {
+    console.log(val.slice(-1).match(/^[0-9]+$/))
+    if(field === 'valid_until' && val.length === 2) {
+        console.log(field, val)
+        emit("onValue", val + '/', field);
+        return;
+    }
+    if(field === 'valid_until' && val.length === 3) {
+        console.log(field, val)
+        emit("onValue", val.replace('/', ''), field);
+        return;
+    }
+ 
+    if(val.length  === 4 && field === 'card' || val.length  === 9 && field === 'card' || val.length === 14 && field === 'card') {
+       
+        emit("onValue", val + ' ', field);
+        return;
+    }
+
+    if(val.length  === 5 && field === 'card' && val.slice(-1).match(/^[0-9]+$/) || val.length  === 10 && field === 'card' && val.slice(-1).match(/^[0-9]+$/) || val.length  === 15 && field === 'card' && val.slice(-1).match(/^[0-9]+$/)) {
+        emit("onValue", val.slice(0, -1) +' '+ val.slice(-1), field);
+        return;
+    }
   emit("onValue", val, field);
 };
 </script>
@@ -57,6 +83,7 @@ const onInputChange = (val, field) => {
         :value="value"
         @input="(e) => onInputChange(e.target.value, id)"
         @blur="emit('onFormTouched', id)"
+        :maxlength="maxLength"
         class="peer px-12 py-2 w-full bg-slate-250 border rounded-md focus:outline-0 bg-slate-50 focus:bg-slate-100 text-slate-700 font-medium placeholder:opacity-0 max-[822px]:text-sm  max-[822px]:px-12" :class="[{
             'border-red-300': value && errors.$message,
             'border-red-300': errors.$message,

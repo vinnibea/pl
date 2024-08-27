@@ -46,7 +46,7 @@ const props = defineProps({
             'max-[820px]:w-1/2': fromFooter,
             'max-[820px]:w-full': !fromFooter
         }]"
-
+         type="button"
         :disabled="disabled"
       >
        <slot>Регистрация</slot>

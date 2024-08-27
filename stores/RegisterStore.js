@@ -9,6 +9,7 @@ export const useRegisterStore = defineStore('register_store', () => {
     loading.value = true,
     setTimeout(() => {
         loading.value = false;
+        window.scrollTo(0, 0);
         activeTab.value = (i);
     }, 1500)
    } 

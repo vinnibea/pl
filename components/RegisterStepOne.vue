@@ -109,7 +109,6 @@ const changePolitics = (i) => {
     <form class="flex bg-white flex-col w-full gap-10 max-[822px]:gap-8 pt-4 max-[822px]:pt-2 relative">
         
         <register-input-wrapper>
-            {{localStore?.localUser?.value?.email}}
            <Registerinput :placeholder="'Имя'" :id="'name'" :value="formData.name" :icon="icons.profile" @onValue="onInputFieldChange" @onFormTouched="formTouched" :errors="$v?.name?.$errors[0]" ></Registerinput>
            <Registerinput :placeholder="'Фамилия'" :value="formData.surname" @onValue="onInputFieldChange" :id="'surname'" @onFormTouched="formTouched" :errors="$v?.surname?.$errors[0]" :icon="icons.profile_empty"></Registerinput>
         </register-input-wrapper>

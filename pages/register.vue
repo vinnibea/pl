@@ -26,7 +26,7 @@ onMounted(async () => {
     class="min-h-dvh bg-slate-800 flex flex-col gap-4 py-4 px-48 mx-8 max-[822px]:px-0 max-[822px]:pt-4 shadow-lg rounded-md my-8 max-[822px]:my-0 max-[822px]:mx-1 max-[822px]:bg-slate-900"
   >
     <div
-      class="min-w-full py-0 flex justify-between max-[822px]:justify-center px-2 gap-8 uppercase text-sm font-medium max-[822px]:pt-12 max-[822px]:gap-0"
+      class="min-w-full py-0 flex justify-between max-[822px]:justify-center px-4 gap-8 uppercase text-sm font-medium max-[822px]:pt-12 max-[822px]:gap-0"
     >
       <div
         v-for="(step, i) in steps"
@@ -44,7 +44,7 @@ onMounted(async () => {
             :class="{
               'border-yellow': i === registerStore.activeTab,
               'border-green-500': i < registerStore.activeTab,
-              'border-slate-400': i !== registerStore.activeTab,
+              'border-slate-400': i > registerStore.activeTab,
               'opacity-50': i > registerStore.activeTab,
               'bg-slate-900': i > 0,
               'bg-white': i === registerStore.activeTab,
