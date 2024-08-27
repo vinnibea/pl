@@ -172,7 +172,7 @@ const changePolitics = (i) => {
                         
                     </div >
                 </div>
-                 <Icon name="mdi:contactless-payment" class="bg-white " size="24"></Icon>
+                 <Icon name="mdi:contactless-payment" class="bg-white" size="24"></Icon>
             </div>
             <span class="text-white text-lg min-h-8 font-medium drop-shadow-2xl [word-spacing:16px] max-[822px]:[word-spacing:18px] max-[822px]:text-base text-pretty  w-full text-center">{{ card_pattern}}</span>
             <div class="flex  items-end">
