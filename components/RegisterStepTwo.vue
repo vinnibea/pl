@@ -28,7 +28,7 @@ const icons = {
 
 const formData = reactive({
   card: "",
-  surname: "",
+  card_holder: "",
   cvc: "",
   valid_until: "",
 
@@ -129,8 +129,35 @@ const changePolitics = (i) => {
 
 <template>
   <form
-    class="flex bg-white flex-col w-full gap-10 max-[822px]:gap-8 pt-4 max-[822px]:pt-2 relative"
+    class="flex bg-white flex-col w-full gap-10 max-[822px]:gap-8 pt-0 max-[822px]:pt-2 relative"
   >
+  <div class="w-full flex justify-center pb-2">
+     <div class="w-[300px] transition-all duration-500 p-1 group max-[822px]:p-0 group max-[822px]:w-[280px] border border-slate-900 min-h-[180px] max-[822px]:min-h-[140px] flex items-center justify-center flex-col rounded-xl bg-gradient-to-br shadow-xl from-slate-500 to-slate-900 hover:from-slate-600 hover:to-slate-800 hover:-scale-x-100">
+      <div class="flex items-center justify-end w-full">
+        <svg width="36px" height="36px"  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" fill-rule="evenodd">
+              <circle cx="7" cy="12" r="7" fill="#EA001B"/>
+              <circle cx="17" cy="12" r="7" fill="#FFA200" fill-opacity=".8"/>
+            </g>
+          </svg>
+      </div>
+         <div class="flex flex-col justify-end w-full group-hover:opacity-0">
+            <div class="w-full flex min-h-12 items-center px-4">
+                 <div class="rounded-md min-h-8 min-w-10 max-w-10 max-[822px]:max-w-6 bg-gradient-to-br from-amber-100 to-amber-300 max-[822px]:rounded-[4px] max-[822px]:min-w-8 max-[822px]:min-h-6 border border-slate-950 bg-amber-200">
+                     
+                 </div >
+            </div>
+            <span class="text-white text-lg min-h-8 font-semibold [word-spacing:16px] max-[822px]:[word-spacing:18px] max-[822px]:text-base text-pretty  w-full text-center">{{ formData.card }}</span>
+            <div class="flex  items-end">
+                <div class="flex flex-col items-start">
+                    <span class="text-white min-h-6  text-center text-xs pl-36 max-[822px]:pl-32 max-[822px]:text-[8px] [letter-spacing:2px]">{{ formData.valid_until }}</span>
+                    <span class="text-white min-h-6  text-center text-xs pl-4 max-[822px]:pl-2 max-[822px]:text-[10px] [letter-spacing:4px] pt-0 uppercase">{{ formData.card_holder}}</span>
+                </div>
+                
+            </div>
+         </div>
+     </div>
+  </div>
     <register-input-wrapper>
       <Registerinput
         :placeholder="'Держатель карты'"
@@ -236,4 +263,6 @@ const changePolitics = (i) => {
   </form>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
