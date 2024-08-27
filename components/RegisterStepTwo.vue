@@ -34,6 +34,10 @@ const formData = reactive({
 
   accept: false,
 });
+
+const card_pattern = ref('**** **** **** ****');
+const name_pattern = ref('CARDHOLDER NAME');
+const valid_pattern = ref('MM/YY');
 watch(
   () => formData.valid_until,
   (newVal, oldVal) => {
@@ -42,6 +46,25 @@ watch(
         formData.valid_until.slice(0, 2) + "/" + formData.valid_until.slice(2);
     }
   }
+);
+
+watch(
+  () => formData.card,
+  (newVal, oldVal) => {
+  let temp = card_pattern.value.split('')
+    for(let i = 0; i < card_pattern.value.length; i++) {
+        if(oldVal[i] && !newVal[i] && temp[i] !== ' ') {
+            temp[i] = '*';
+        }
+        if(newVal[i] && newVal[i] !== temp[i] && temp[i] !== ' ') {
+            temp[i] = newVal[i];
+        } if(!newVal[i] && temp[i] !== ' ') {
+            temp[i] = '*';
+        } 
+    }
+    card_pattern.value = temp.join('');
+  }
+ 
 );
 const rules = computed(() => {
   return {
@@ -132,7 +155,7 @@ const changePolitics = (i) => {
     class="flex bg-white flex-col w-full gap-10 max-[822px]:gap-8 pt-0 max-[822px]:pt-2 relative"
   >
   <div class="w-full flex justify-center pb-2">
-     <div class="w-[300px] transition-all duration-500 p-1 group max-[822px]:p-0 group max-[822px]:w-[280px] border border-slate-900 min-h-[180px] max-[822px]:min-h-[140px] flex items-center justify-center flex-col rounded-xl bg-gradient-to-br shadow-xl from-slate-500 to-slate-900 hover:from-slate-600 hover:to-slate-800 hover:-scale-x-100">
+     <div class="w-[300px] transition-all duration-[0.7s] p-1 group max-[822px]:p-1 group max-[822px]:w-[280px] border border-slate-900 min-h-[180px] max-[822px]:min-h-[140px] flex items-center justify-center flex-col rounded-xl bg-gradient-to-br shadow-xl from-slate-500 to-slate-900 hover:from-slate-600 hover:to-slate-800 hover:-scale-x-100">
       <div class="flex items-center justify-end w-full">
         <svg width="36px" height="36px"  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <g fill="none" fill-rule="evenodd">
@@ -142,16 +165,20 @@ const changePolitics = (i) => {
           </svg>
       </div>
          <div class="flex flex-col justify-end w-full group-hover:opacity-0">
-            <div class="w-full flex min-h-12 items-center px-4">
-                 <div class="rounded-md min-h-8 min-w-10 max-w-10 max-[822px]:max-w-6 bg-gradient-to-br from-amber-100 to-amber-300 max-[822px]:rounded-[4px] max-[822px]:min-w-8 max-[822px]:min-h-6 border border-slate-950 bg-amber-200">
-                     
-                 </div >
+            <div class="w-full flex min-h-12 items-center justify-between px-0 max-[822px]:px-0">
+                <div class="flex items-center">
+                    <Icon name="ic:twotone-arrow-left" class="bg-white scale-120" size="24"></Icon>
+                    <div class="rounded-md min-h-8 min-w-10 max-w-10 max-[822px]:max-w-6 bg-gradient-to-br from-amber-100 to-amber-300 max-[822px]:rounded-[4px] max-[822px]:min-w-8 max-[822px]:min-h-6 border border-slate-950 bg-amber-200">
+                        
+                    </div >
+                </div>
+                 <Icon name="mdi:contactless-payment" class="bg-white " size="24"></Icon>
             </div>
-            <span class="text-white text-lg min-h-8 font-semibold [word-spacing:16px] max-[822px]:[word-spacing:18px] max-[822px]:text-base text-pretty  w-full text-center">{{ formData.card }}</span>
+            <span class="text-white text-lg min-h-8 font-medium drop-shadow-2xl [word-spacing:16px] max-[822px]:[word-spacing:18px] max-[822px]:text-base text-pretty  w-full text-center">{{ card_pattern}}</span>
             <div class="flex  items-end">
                 <div class="flex flex-col items-start">
-                    <span class="text-white min-h-6  text-center text-xs pl-36 max-[822px]:pl-32 max-[822px]:text-[8px] [letter-spacing:2px]">{{ formData.valid_until }}</span>
-                    <span class="text-white min-h-6  text-center text-xs pl-4 max-[822px]:pl-2 max-[822px]:text-[10px] [letter-spacing:4px] pt-0 uppercase">{{ formData.card_holder}}</span>
+                    <span class="text-white min-h-6  text-center text-xs pl-36 max-[822px]:pl-32 max-[822px]:text-[8px] [letter-spacing:2px]">{{ valid_pattern }}</span>
+                    <span class="text-white min-h-6  text-center text-xs pl-4 max-[822px]:pl-2 max-[822px]:text-[10px] [letter-spacing:4px] pt-0 uppercase">{{name_pattern}}</span>
                 </div>
                 
             </div>
