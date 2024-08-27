@@ -13,6 +13,14 @@ import { useMobileStore } from "~/stores/MobileMenu.js";
 import { useRegisterStore } from "~/stores/RegisterStore.js";
 import { useLocalUserStore } from "~/stores/localStore.js";
 import Registerinput from "~/components/Registerinput.vue";
+import { useActiveElement } from "@vueuse/core";
+const focusOnCard = ref(null);
+const activeElement = useActiveElement();
+const key = computed(() => activeElement.value?.dataset?.id || "null");
+watch(activeElement, (el) => {
+  console.log("focus changed to",el.id, key.value);
+  focusOnCard.value = el.id;
+});
 
 const store = useMobileStore();
 const localStore = useLocalUserStore();
@@ -35,9 +43,9 @@ const formData = reactive({
   accept: false,
 });
 
-const card_pattern = ref('**** **** **** ****');
-const name_pattern = ref('CARDHOLDER NAME');
-const valid_pattern = ref('MM/YY');
+const card_pattern = ref("**** **** **** ****");
+const name_pattern = ref("CARDHOLDER NAME");
+const valid_pattern = ref("MM/YY");
 watch(
   () => formData.valid_until,
   (newVal, oldVal) => {
@@ -51,21 +59,12 @@ watch(
 watch(
   () => formData.card,
   (newVal, oldVal) => {
-  let temp = card_pattern.value.split('')
-    for(let i = 0; i < card_pattern.value.length; i++) {
-        if(oldVal[i] && !newVal[i] && temp[i] !== ' ') {
-            temp[i] = '*';
-        }
-        if(newVal[i] && newVal[i] !== temp[i] && temp[i] !== ' ') {
-            temp[i] = newVal[i];
-        } if(!newVal[i] && temp[i] !== ' ') {
-            temp[i] = '*';
-        } 
+    if (oldVal.length > newVal.length) {
+      formData.card = formData.card.trim();
     }
-    card_pattern.value = temp.join('');
   }
- 
 );
+
 const rules = computed(() => {
   return {
     valid_until: {
@@ -77,8 +76,11 @@ const rules = computed(() => {
         "Значение месяца не может быть больше двенадцати (12)",
         (val) => +val.split("/")[0] <= 12
       ),
-    
-      minLength: helpers.withMessage('Укажите месяц и год истечения срока действия карты', minLength(5))
+
+      minLength: helpers.withMessage(
+        "Укажите месяц и год истечения срока действия карты",
+        minLength(5)
+      ),
     },
     cvc: {
       required: helpers.withMessage("Это поле не может быть пустым", required),
@@ -98,7 +100,7 @@ const rules = computed(() => {
       required: helpers.withMessage("Это поле не может быть пустым", required),
       minLength: helpers.withMessage(
         `Это поле не может быть короче 16 символов`,
-        minLength(19)
+        minLength(16)
       ),
     },
     accept: {
@@ -133,14 +135,42 @@ const rules = computed(() => {
 });
 
 const $v = useVuelidate(rules, formData);
-
+let some = ref(null);
 const onInputFieldChange = (val, field) => {
   if (formData[`${field}`].length === 2 && field === "valid_until") {
     formData[`${field}`] = val + "/";
   }
-  formData[`${field}`] = val;
-};
 
+  const localData = val;
+
+  if (val.length === 0) {
+    formData[`${field}`] = "";
+  }
+  const local = [[], [], [], []];
+  let count = 0;
+  let r = 0;
+
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < 4; j++) {
+      local[i][j] = val[r + j];
+    }
+
+    r += 4;
+  }
+
+  const joinedArray = local.map((el) => {
+    return el.map((el) => (!el ? "" : el)).join("");
+  });
+  const patternArray = local.map((el, i) => {
+    return el.map((el) => (!el ? "*" : el)).join("");
+  });
+  const forData = local.map((el) => {
+    return el.filter((el) => (!el ? "_" : el)).join("");
+  });
+
+  card_pattern.value = patternArray.join(" ");
+  formData.card = joinedArray.filter((el) => el !== "").join("");
+};
 const formTouched = (field) => {
   $v.value[`${field}`].$touch();
 };
@@ -154,37 +184,102 @@ const changePolitics = (i) => {
   <form
     class="flex bg-white flex-col w-full gap-10 max-[822px]:gap-8 pt-0 max-[822px]:pt-2 relative"
   >
-  <div class="w-full flex justify-center pb-2">
-     <div class="w-[300px] transition-all duration-[0.7s] p-1 group max-[822px]:p-1 group max-[822px]:w-[280px] border border-slate-900 min-h-[180px] max-[822px]:min-h-[140px] flex items-center justify-center flex-col rounded-xl bg-gradient-to-br shadow-xl from-slate-500 to-slate-900 hover:from-slate-600 hover:to-slate-800 hover:-scale-x-100">
-      <div class="flex items-center justify-end w-full">
-        <svg width="36px" height="36px"  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <g fill="none" fill-rule="evenodd">
-              <circle cx="7" cy="12" r="7" fill="#EA001B"/>
-              <circle cx="17" cy="12" r="7" fill="#FFA200" fill-opacity=".8"/>
-            </g>
-          </svg>
+    {{ card_pattern[i] }}
+    <div class="w-full flex justify-center pb-2">
+      
+        <div
+          class="w-[300px] transition-colors duration-[0.7s] p-1 group max-[822px]:p-1  max-[822px]:w-[280px] min-h-[180px] max-[822px]:min-h-[140px] flex items-center justify-center flex-col rounded-xl bg-gradient-to-br from-slate-500 to-slate-900 hover:from-slate-600 hover:to-slate-800"
+          :class="[{
+            '-scale-x-100': focusOnCard === 'cvc',
+          }]"
+        >
+          <div class="flex items-center justify-end w-full">
+            <svg
+              width="36px"
+              height="36px"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g fill="none" fill-rule="evenodd">
+                <circle cx="7" cy="12" r="7" fill="#EA001B" />
+                <circle
+                  cx="17"
+                  cy="12"
+                  r="7"
+                  fill="#FFA200"
+                  fill-opacity=".8"
+                />
+              </g>
+            </svg>
+          </div>
+          <div class="flex flex-col justify-end w-full" :class="[{
+            'opacity-0': focusOnCard === 'cvc',
+          }]">
+            <div
+              class="w-full flex min-h-12 items-center justify-between px-0 max-[822px]:px-0"
+            >
+              <div class="flex items-center">
+                <Icon
+                  name="ic:twotone-arrow-left"
+                  class="bg-white scale-120"
+                  size="24"
+                ></Icon>
+                <div
+                  class="rounded-md min-h-8 min-w-10 max-w-10 max-[822px]:max-w-6 bg-gradient-to-br from-amber-100 to-amber-300 max-[822px]:rounded-[4px] max-[822px]:min-w-8 max-[822px]:min-h-6 border border-slate-950 bg-amber-200"
+                ></div>
+              </div>
+              <Icon
+                name="mdi:contactless-payment"
+                class="bg-white"
+                size="24"
+              ></Icon>
+            </div>
+            <span
+              class="text-white text-md min-h-8 font-medium drop-shadow-2xl 
+              [word-spacing:16px] max-[822px]:[word-spacing:18px] 
+              max-[822px]:text-sm text-pretty w-full text-center flex items-center justify-center  rounded-md duration-500 
+                  border-transparent"
+
+              :class="[
+                {
+                  'border-white': focusOnCard === 'card',
+                  'bg-slate-600': focusOnCard === 'card',
+                },
+              ]"
+              >{{ card_pattern }}</span
+            >
+            <div class="flex items-end">
+              <div class="flex flex-col items-start">
+                <span
+                  class="text-white min-h-6  text-[10px] ml-36 p-2 max-[822px]:ml-32 max-[822px]:text-[8px] [letter-spacing:2px] transition-all text-center flex items-center justify-center  rounded-md duration-500 
+                  border-transparent"
+                  :class="[
+                {
+                  'border-white': focusOnCard === 'valid_until',
+                  'bg-slate-600': focusOnCard === 'valid_until',
+                },
+              ]"
+                  >{{ valid_pattern }}</span
+                >
+                <span
+                  class="text-white border py-2 flex items-center justify-center 
+                  transition-all rounded-md duration-500 
+                  border-transparent min-h-6 text-[10px] text-center text-xs px-4 max-[822px]:px-2  max-[822px]:py-0 max-[822px]:text-[10px] [letter-spacing:4px] uppercase"
+                  :class="[
+                    {
+                      border: focusOnCard === 'card_holder',
+                      'bg-slate-600': focusOnCard === 'card_holder',
+                    },
+                  ]"
+                  ><span>{{ name_pattern }}</span></span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-         <div class="flex flex-col justify-end w-full group-hover:opacity-0">
-            <div class="w-full flex min-h-12 items-center justify-between px-0 max-[822px]:px-0">
-                <div class="flex items-center">
-                    <Icon name="ic:twotone-arrow-left" class="bg-white scale-120" size="24"></Icon>
-                    <div class="rounded-md min-h-8 min-w-10 max-w-10 max-[822px]:max-w-6 bg-gradient-to-br from-amber-100 to-amber-300 max-[822px]:rounded-[4px] max-[822px]:min-w-8 max-[822px]:min-h-6 border border-slate-950 bg-amber-200">
-                        
-                    </div >
-                </div>
-                 <Icon name="mdi:contactless-payment" class="bg-white" size="24"></Icon>
-            </div>
-            <span class="text-white text-lg min-h-8 font-medium drop-shadow-2xl [word-spacing:16px] max-[822px]:[word-spacing:18px] max-[822px]:text-base text-pretty  w-full text-center">{{ card_pattern}}</span>
-            <div class="flex  items-end">
-                <div class="flex flex-col items-start">
-                    <span class="text-white min-h-6  text-center text-xs pl-36 max-[822px]:pl-32 max-[822px]:text-[8px] [letter-spacing:2px]">{{ valid_pattern }}</span>
-                    <span class="text-white min-h-6  text-center text-xs pl-4 max-[822px]:pl-2 max-[822px]:text-[10px] [letter-spacing:4px] pt-0 uppercase">{{name_pattern}}</span>
-                </div>
-                
-            </div>
-         </div>
-     </div>
-  </div>
+ 
+    {{ some }}
     <register-input-wrapper>
       <Registerinput
         :placeholder="'Держатель карты'"
@@ -194,6 +289,7 @@ const changePolitics = (i) => {
         @onFormTouched="formTouched"
         :errors="$v?.card_holder?.$errors[0]"
         :icon="icons.profile"
+        :data-id="'card_holder'"
       ></Registerinput>
       <Registerinput
         :placeholder="'Номер карты (16 цифр)'"
@@ -203,7 +299,8 @@ const changePolitics = (i) => {
         @onFormTouched="formTouched"
         :errors="$v?.card?.$errors[0]"
         :icon="icons.card"
-        :maxLength="19"
+        :maxLength="16"
+        :data-id="'card'"
       ></Registerinput>
     </register-input-wrapper>
 
@@ -214,6 +311,7 @@ const changePolitics = (i) => {
         :value="formData.valid_until"
         @onValue="onInputFieldChange"
         :id="'valid_until'"
+        :data-id="'valid_until'"
         @onFormTouched="formTouched"
         :errors="$v?.valid_until?.$errors[0]"
         :maxLength="5"
@@ -222,6 +320,7 @@ const changePolitics = (i) => {
         :placeholder="'CVV/CVC'"
         type="password"
         :id="'cvc'"
+         :data-id="'cvc'"
         :value="formData.cvc"
         @onValue="onInputFieldChange"
         :icon="icons.cvc"
@@ -290,6 +389,4 @@ const changePolitics = (i) => {
   </form>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
