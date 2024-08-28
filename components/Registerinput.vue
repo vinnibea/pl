@@ -53,7 +53,7 @@ const onInputChange = (val, field) => {
     }
 
     
-//   emit("onValue", val, field);
+  emit("onValue", val, field);
 };
 </script>
 <template>
@@ -82,9 +82,9 @@ const onInputChange = (val, field) => {
         @blur="emit('onFormTouched', id)"
         :maxlength="maxLength"
         class="peer px-12 py-2 w-full bg-slate-250 border rounded-md focus:outline-0 bg-slate-50 focus:bg-slate-100 text-slate-700 font-medium placeholder:opacity-0 max-[822px]:text-sm  max-[822px]:px-12" :class="[{
-            'border-red-300': value && errors.$message,
-            'border-red-300': errors.$message,
-            'border-neutral-300': !value && !errors.$message,
+            'border-red-200': value && errors.$message,
+            'border-red-200': errors.$message,
+            'border-neutral-200': !value && !errors.$message,
             'border-green-500': value && !errors.$message
         }]"
         :placeholder="placeholder"
@@ -97,23 +97,24 @@ const onInputChange = (val, field) => {
     ></Icon>
       <label
         :for="id"
-        class="absolute top-1/2 font-medium -translate-y-1/2 transition-all duration-500 peer-focus:-translate-y-[42px] max-[822px]:text-xs max-[822px]:font-bold max-[822px]:uppercase max-[822px]:peer-focus:-translate-y-[38px] "
+        class="absolute top-1/2 font-medium -translate-y-1/2 transition-all duration-500 peer-focus:-translate-y-[42px] max-[822px]:text-[10px] max-[822px]:font-bold max-[822px]:uppercase max-[822px]:peer-focus:-translate-y-[32px] "
         :class="[
           {
             '-translate-y-[42px]': value,
-             'max-[822px]:-translate-y-[38px]': value,
+             'max-[822px]:-translate-y-[32px]': value,
             'left-0': value,
             'left-12': !value,
             'peer-focus:left-0': !value,
             'text-slate-300': !value,
-            'peer-focus:text-slate-900': !value,
-            'text-slate-950': value && !errors.$message
+            'peer-focus:text-slate-600': !value,
+            'text-slate-600': value && !errors.$message,
+            'max-[822px]:-text-[12px]': true, 
           },
         ]"
         >{{ placeholder }}</label
       >
     </div>
-    <span class="text-rose-500 text-xs min-h-4 px-2">
+    <span class="text-rose-500 text-xs min-h-4 px-2 max-[822px]:text-[10px]">
       <span v-if="errors?.$message">*{{ errors?.$message }}</span>
     </span>
   </div>

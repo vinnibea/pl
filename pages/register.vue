@@ -23,7 +23,7 @@ onMounted(async () => {
 
 <template>
   <div
-    class="min-h-dvh bg-slate-800 flex flex-col gap-4 py-4 px-48 mx-8 max-[822px]:px-0 max-[822px]:pt-4 shadow-lg rounded-md my-8 max-[822px]:my-0 max-[822px]:mx-1 max-[822px]:bg-slate-900"
+    class="min-h-dvh bg-slate-800 flex flex-col gap-4 py-4 px-24 max-[1024px]:px-2 mx-8 max-[822px]:px-0 max-[822px]:pt-4 shadow-lg rounded-md my-8 max-[822px]:my-0 max-[822px]:mx-1 max-[822px]:bg-slate-900"
   >
     <div
       class="min-w-full py-0 flex justify-between max-[822px]:justify-center px-4 gap-8 uppercase text-sm font-medium max-[822px]:pt-12 max-[822px]:gap-0"
@@ -89,7 +89,7 @@ onMounted(async () => {
     </div>
 
     <div
-      class="flex-col items-center justify-center min-w-full py-8 px-2 bg-white mx-auto rounded-lg gap-2 max-[822px]:flex-col max-[822px]:gap-0 max-[822px]:py-8 max-[822px]:px-2 max-[568px]:px-0 max-[568px]:py-4 max-[822px]:rounded-xs max-[822px]:w-full shadow-sm"
+      class="flex-col items-center justify-center min-w-full py-8 px-8 bg-white mx-auto rounded-lg gap-2 max-[822px]:flex-col max-[822px]:gap-0 max-[822px]:py-8 max-[822px]:px-2 max-[568px]:px-0 max-[568px]:py-4 max-[822px]:rounded-xs max-[822px]:w-full shadow-sm"
       :class="[
         {
           'max-[822px]:hidden': store.politicsOpen !== false,
