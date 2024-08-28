@@ -33,27 +33,24 @@ const props = defineProps({
   maxLength: {
     type: Number,
     default: 100,
-  }
+  },
 });
 const emit = defineEmits(["onValue", "onFormTouched"]);
 const onInputChange = (val, field) => {
-    if(field === 'valid_until' && val.length === 2) {
-        emit("onValue", val + '/', field);
-        return;
-    }
-    if(field === 'valid_until' && val.length === 3) {
-        console.log(field, val)
-        emit("onValue", val.replace('/', ''), field);
-        return;
-    }
- 
-    if(field === 'card') {
-        emit("onValue", val, field);
-        return;
-    }
-
-    
   emit("onValue", val, field);
+};
+
+const onlyNumber = ($event, field) => {
+  let keyCode = $event.keyCode ? $event.keyCode : $event.which;
+
+  if ($event.code === "Backspace" || keyCode === 8) {
+    return onInputChange($event.target.value, field);
+  }
+  if (keyCode < 48 || keyCode > 57) {
+    $event.preventDefault();
+    return;
+  }
+  return onInputChange($event.target.value, field);
 };
 </script>
 <template>
@@ -62,7 +59,6 @@ const onInputChange = (val, field) => {
       <Icon
         v-if="!tel"
         class="absolute left-2 top-1/2 -translate-y-1/2 text-md text-slate-200 bg-slate-300 min-h-6 min-w-6"
-       
         :name="icon"
       ></Icon>
       <span
@@ -75,40 +71,82 @@ const onInputChange = (val, field) => {
         :id="id"
         :type="type"
         :value="value"
-        @input="(e) => {
-            
-            onInputChange(e.target.value, id)
+        @input="($event) => {
+          if (
+              id !== 'cvc' ||
+              id !== 'index' ||
+              id !== 'valid_until' ||
+              id !== 'card' ||
+              id !== 'phone'
+            ) {
+              onInputChange($event.target.value, id)
+            }
+    
+        
         }"
+        @keyup="
+          (e) => {
+            if (
+              id === 'cvc' ||
+              id === 'index' ||
+              id === 'valid_until' ||
+              id === 'card' ||
+              id === 'phone'
+            ) {
+              return onlyNumber(e, id);
+            } 
+          }
+        "
+        @keypress="
+          ($event) => {
+            if (
+              id === 'cvc' ||
+              id === 'index' ||
+              id === 'valid_until' ||
+              id === 'card' ||
+              id === 'phone'
+            ) {
+              let keyCode = $event.keyCode ? $event.keyCode : $event.which;
+              if (keyCode < 48 || keyCode > 57) {
+                $event.preventDefault();
+                return;
+              }
+            } 
+          }
+        "
         @blur="emit('onFormTouched', id)"
         :maxlength="maxLength"
-        class="peer px-12 py-2 w-full bg-slate-250 border rounded-md focus:outline-0 bg-slate-50 focus:bg-slate-100 text-slate-700 font-medium placeholder:opacity-0 max-[822px]:text-sm  max-[822px]:px-12" :class="[{
+        class="peer px-12 py-2 w-full bg-slate-250 border rounded-md focus:outline-0 bg-slate-50 focus:bg-slate-100 text-slate-700 font-medium placeholder:opacity-0 max-[822px]:text-sm max-[822px]:px-12"
+        :class="[
+          {
             'border-red-200': value && errors.$message,
             'border-red-200': errors.$message,
             'border-neutral-200': !value && !errors.$message,
-            'border-green-500': value && !errors.$message
-        }]"
+            'border-green-500': value && !errors.$message,
+          },
+        ]"
         :placeholder="placeholder"
       />
-     
+
       <Icon
-      v-if="value && !errors.$message"
-      class="absolute right-2 top-1/2 -translate-y-1/2 text-md text-green-500 min-h-6 min-w-6"
-      name="mdi:checkbox-marked-circle-outline"
-    ></Icon>
+        v-if="value && !errors.$message"
+        class="absolute right-2 top-1/2 -translate-y-1/2 text-md text-green-500 min-h-6 min-w-6"
+        name="mdi:checkbox-marked-circle-outline"
+      ></Icon>
       <label
         :for="id"
-        class="absolute top-1/2 font-medium -translate-y-1/2 transition-all duration-500 peer-focus:-translate-y-[42px] max-[822px]:text-[10px] max-[822px]:font-bold max-[822px]:uppercase max-[822px]:peer-focus:-translate-y-[32px] "
+        class="absolute top-1/2 font-medium -translate-y-1/2 transition-all duration-500 peer-focus:-translate-y-[42px] max-[822px]:text-[10px] max-[822px]:font-bold max-[822px]:uppercase max-[822px]:peer-focus:-translate-y-[32px]"
         :class="[
           {
             '-translate-y-[42px]': value,
-             'max-[822px]:-translate-y-[32px]': value,
+            'max-[822px]:-translate-y-[32px]': value,
             'left-0': value,
             'left-12': !value,
             'peer-focus:left-0': !value,
             'text-slate-300': !value,
             'peer-focus:text-slate-600': !value,
             'text-slate-600': value && !errors.$message,
-            'max-[822px]:-text-[12px]': true, 
+            'max-[822px]:-text-[12px]': true,
           },
         ]"
         >{{ placeholder }}</label
