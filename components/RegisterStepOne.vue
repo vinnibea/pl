@@ -141,7 +141,7 @@ const changePolitics = (i) => {
 </script>
 <template>
   <form
-    class="flex bg-white flex-col w-full gap-10 max-[822px]:gap-8 pt-4 max-[822px]:pt-2 relative"
+    class="flex bg-white flex-col w-full gap-10 max-[822px]:gap-4 pt-4 max-[822px]:pt-2 relative"
   >
     <register-input-wrapper>
       <Registerinput
