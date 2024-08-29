@@ -18,27 +18,33 @@ const onCardSelected = (index) => {
 
 <template>
   <div
-    class="flex bg-slate-900 justify-between w-full gap-0 py-8 px-4  max-[820px]:flex-col max-[820px]:items-center max-[820px]:py-12 max-[820px]:px-0 max-[820px]:gap-4 cursor-pointer" :class="[
+    class="flex bg-slate-900 justify-between w-full gap-0 py-8 px-4  max-[820px]:flex-col max-[820px]:items-center max-[820px]:py-4 max-[820px]:px-0 max-[820px]:gap-4 cursor-pointer" :class="[
         flex
     ]"
   >
     <div
       v-for="(item, index) in content"
       :key="item.title"
-      class="flex group flex-col hover:bg-slate-800 w-full  py-4 px-4  items-start text-4xl font-semibold rounded-md text-white transition-all cursor-pointer max-[1024px]:px-2 max-[820px]:w-full max-[820px]:py-1 max-[820px]:px-1"
+      class="flex group flex-col hover:bg-slate-800  w-full py-4 px-4 items-start text-4xl font-semibold rounded-md text-white transition-all cursor-pointer max-[1024px]:px-2 max-[820px]:w-full max-[820px]:py-0 max-[820px]:px-0 max-[822px]:bg-slate-700  max-[822px]:hover:bg-slate-700"
       @click="onCardSelected(index + 1)"
     >
-      <div class="flex items-center w-full gap-4 max-[822px]:justify-between max-[822px]:gap-0">
+      <div class="flex items-center w-full gap-4 max-[822px]:justify-between max-[822px]:gap-0  max-[822px]:bg-slate-800  max-[822px]:py-1 max-[822px]:px-1" :class="[{
+        'rounded-t-md': selectedCard === index + 1,
+        'rounded-md': selectedCard !== index + 1,
+      }]">
         <span
-          class="rounded-full group-hover:scale-110 max-[822px]:group-hover:scale-100 transition-transform duration-500 min-w-20 h-20 max-[1024px]:max-h-14  max-[1024px]:min-w-14 max-[822px]:h-6 max-[822px]:border-2 max-[822px]:min-w-6 bg-slate-900 border-4 border-yellow flex items-center justify-center"
+          class="rounded-full group-hover:scale-110 max-[822px]:group-hover:scale-100 transition-transform duration-500 min-w-20 h-20 max-[1024px]:max-h-14  max-[1024px]:min-w-14 max-[822px]:h-6 max-[822px]:border-2 max-[822px]:min-w-6 bg-slate-900 border-4 border-yellow flex items-center justify-center" 
         >
           <span
-            class="rounded-full group-hover:bg-white transition-all duration-500 max-[1024px]:text-sm group-hover:text-slate-900 h-16 w-16  max-[1024px]:h-10 max-[1024px]:w-10 max-[822px]:h-4 max-[822px]:w-4 max-[822px]:text-xs text-white flex items-center justify-center"
+            class="rounded-full group-hover:bg-white transition-all duration-500 max-[1024px]:text-sm group-hover:text-slate-900 h-16 w-16  max-[1024px]:h-10 max-[1024px]:w-10 max-[822px]:h-4  max-[822px]:w-4 max-[822px]:text-xs text-white flex items-center justify-center" :class="[{
+              'max-[822px]:bg-white': selectedCard === index + 1,
+              'max-[822px]:text-slate-900': selectedCard === index + 1,
+            }]"
             >{{ index + 1 }}</span
           >
         </span>
 
-        <h3 class="font-semibold text-base max-[1024px]:text-sm max-[476px]:text-xs text-yellow" :class="[{
+        <h3 class="font-semibold text-base max-[1024px]:text-sm max-[476px]:text-xs  text-yellow" :class="[{
             'max-[822px]:text-yellow': selectedCard === index + 1,
             'max-[822px]:text-white': selectedCard !== index + 1,
         }]">
@@ -53,7 +59,7 @@ const onCardSelected = (index) => {
 
       
       <p
-        class="text-sm px-2 text-justify transition-all duration-300 group-hover:text-orange-300 py-4 max-[822px]:text-xs max-[822px]:px-6"
+        class="text-sm px-2 text-justify transition-all duration-300 group-hover:text-orange-300 max-[822px]:group-hover:text-white  py-4 max-[822px]:text-xs max-[822px]:px-6 "
         :class="[
             
           { 
