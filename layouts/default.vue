@@ -46,13 +46,13 @@ useResizeObserver(windowWidthRef, (entries) => {
     
     
     <div
-      class="sticky w-full min-h-14 bottom-0 flex items-center gap-24 justify-center shadow-lg min-[822px]:hidden bg-opacity-90 bg-slate-700 backdrop-blur-xl"
+      class="sticky w-full bottom-0 flex items-center gap-24 justify-center shadow-lg min-[822px]:hidden bg-opacity-90  bg-slate-700 backdrop-blur-xl"
     >
-    <NuxtLink to="/" class="flex items-center justify-center"
+    <NuxtLink to="/" class="flex items-center justify-center px-2 py-2"
     ><Icon
       class="transition-all duration-30 hover:bg-amber-300 cursor-pointer"
       name="ic:outline-other-houses"
-      size="32"
+      size="36"
       :class="[
         {
           'bg-amber-300': route.fullPath == '/',
@@ -63,12 +63,12 @@ useResizeObserver(windowWidthRef, (entries) => {
     </Icon>
   </NuxtLink>
 
-  
+
     <NuxtLink to='/' class="flex items-center justify-center">
       <Icon
-      class="transition-all duration-300 hover:bg-amber-300 cursor-pointer  bg-slate-200"
+      class="transition-all duration-300 hover:bg-amber-300 cursor-pointer px-2 py-2 bg-slate-500"
       name="material-symbols:circle-notifications-outline-rounded"
-      size="32"
+      size="36"
       
     >
       ></Icon
@@ -77,15 +77,15 @@ useResizeObserver(windowWidthRef, (entries) => {
 
      
       
-      <NuxtLink to="/register" class="flex items-center justify-center">
+      <NuxtLink to="/register" class="flex items-center justify-center px-2 py-2">
         <Icon
-          class="transition-all duration-300 hover:bg-amber-300 bg-slate-500 cursor-pointer"
+          class="transition-all duration-300 hover:bg-amber-300  cursor-pointer"
           name="ic:baseline-person"
-          size="32"
+          size="36"
           :class="[
             {
               'bg-amber-300': route.fullPath == '/register',
-              ' bg-slate-200': route.fullPath != '/registe',
+              ' bg-slate-500': route.fullPath !== '/register',
             },
           ]"
         ></Icon>
