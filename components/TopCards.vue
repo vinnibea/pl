@@ -44,7 +44,6 @@ const translateX = computed(() => {
       
      }
 });
-
 const { direction, isSwiping, lengthX, lengthY } = useSwipe(target, {
   passive: false,
   onSwipe(e, direction) {
@@ -58,7 +57,6 @@ const { direction, isSwiping, lengthX, lengthY } = useSwipe(target, {
     }
   },
   onSwipeEnd(e, direction) {
-   
     if (Math.abs(lengthX.value) > containerWidth.value / 2.5) {
       if (lengthX.value > 0 && currentCard.value < 2) {
         currentCard.value +=1;
