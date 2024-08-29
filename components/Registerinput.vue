@@ -71,8 +71,9 @@ const onlyNumber = ($event, field) => {
         :id="id"
         :type="type"
         :value="value"
+        inputmode="numeric" pattern="[0-9]*"
         @input="($event) => {
-          
+              if(!$event.target.value.match(/^[0-9]+$/)) return false;
               onInputChange($event.target.value, id)
        
         
