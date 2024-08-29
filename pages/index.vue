@@ -60,7 +60,7 @@ const cardColContent = [
         </div>
        <Calculator></Calculator>
       </div>
-      <!-- <top-cards></top-cards> -->
+      <top-cards></top-cards>
     </div>
     <main class="px-4 max-[1024px]:px-0">
       <main-cards-layout>

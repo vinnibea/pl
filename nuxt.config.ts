@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@pinia/nuxt",
     '@vueuse/nuxt',
-    "@nuxt/icon"
+    "@nuxt/icon",
+    'nuxt-swiper'
   ],
   tailwindcss: {
     exposeConfig: true,
