@@ -93,8 +93,8 @@ const footerLinks = [
         </div>
       </div>
     </div>
-    <div class="w-full bg-white flex items-center px-4 py-0 max-[822px]:flex-col-reverse max-[822px]:px-2  max-[822px]:py-0">
-      <div class="flex items-center gap-4">
+    <div class="w-full bg-slate-200 flex items-center px-4 py-0 max-[822px]:flex-col-reverse max-[822px]:px-2  max-[822px]:py-0">
+      <!-- <div class="flex items-center gap-4">
         <svg
           class=" exception max-[822px]:w-8"
           width="54px"
@@ -251,7 +251,7 @@ const footerLinks = [
             </g>
           </g>
         </svg>
-      </div>
+      </div> -->
 
       <div class="flex items-center gap-2 w-full justify-end max-[822px]:flex-col-reverse max-[822px]:justify-center">
         <p class="font-semibold text-slate-600 text-[12px] w-1/6 max-[822px]:w-full max-[822px]:text-[10px]">Тел.: +48 221 530 522</p>

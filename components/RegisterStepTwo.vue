@@ -16,9 +16,15 @@ import Registerinput from "~/components/Registerinput.vue";
 import { useActiveElement } from "@vueuse/core";
 const focusOnCard = ref(null);
 const activeElement = useActiveElement();
+const showReverse = ref(false)
 const key = computed(() => activeElement.value?.dataset?.id || "null");
 watch(activeElement, (el) => {
-  console.log("focus changed to", el.id, key.value);
+   if(el.id === "cvc") {
+    showReverse.value = true;
+    focusOnCard.value = el.id;
+    return;
+   }
+   showReverse.value = false;
   focusOnCard.value = el.id;
 });
 
@@ -193,7 +199,7 @@ const formTouched = (field) => {
 const changePolitics = (i) => {
   store.onPolitics(i);
 };
-const showReverse = ref(false)
+
 </script>
 
 <template>
