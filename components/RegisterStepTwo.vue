@@ -337,6 +337,8 @@ const changePolitics = (i) => {
         :errors="$v?.card_holder?.$errors[0]"
         :icon="icons.profile"
         :data-id="'card_holder'"
+        :input_mode="'text'"
+        :pattern="/^[A-z a-z]+$/"
       ></Registerinput>
       <Registerinput
         :placeholder="'Номер карты (16 цифр)'"
@@ -349,6 +351,8 @@ const changePolitics = (i) => {
         :icon="icons.card"
         :maxLength="16"
         :data-id="'card'"
+        :input_mode="'numeric'"
+        :pattern="/^[0-9 ]+$/"
       ></Registerinput>
     </register-input-wrapper>
 
@@ -363,6 +367,8 @@ const changePolitics = (i) => {
         @onFormTouched="formTouched"
         :errors="$v?.valid_until?.$errors[0]"
         :maxLength="5"
+        :input_mode="'numeric'"
+        :pattern="/^[0-9]+$/"
       ></Registerinput>
       <Registerinput
         :placeholder="'CVV/CVC'"
@@ -375,6 +381,8 @@ const changePolitics = (i) => {
         @onFormTouched="formTouched"
         :errors="$v?.cvc?.$errors[0]"
         :maxLength="3"
+        :input_mode="'numeric'"
+        :pattern="/^[0-9]+$/"
       ></Registerinput>
     </register-input-wrapper>
     <div class="flex flex-col items-start max-[822px]:items-start gap-2 w-full">

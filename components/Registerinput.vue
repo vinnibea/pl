@@ -34,6 +34,14 @@ const props = defineProps({
     type: Number,
     default: 100,
   },
+  input_mode: {
+    type: String,
+    default: 'text',
+  },
+  pattern: {
+    type: String,
+    default: /^[A-Z a-z А-Я а-я]+$/
+  }
 });
 const emit = defineEmits(["onValue", "onFormTouched"]);
 const onInputChange = (val, field) => {
@@ -71,7 +79,7 @@ const onlyNumber = ($event, field) => {
         :id="id"
         :type="type"
         :value="value"
-        inputmode="numeric" pattern="[0-9]*"
+        :inputmode="input_mode" :pattern="pattern"
         @input="($event) => {
               if(!$event.target.value.match(/^[0-9]+$/)) return false;
               onInputChange($event.target.value, id)
