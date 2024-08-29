@@ -72,16 +72,9 @@ const onlyNumber = ($event, field) => {
         :type="type"
         :value="value"
         @input="($event) => {
-          if (
-              id !== 'cvc' ||
-              id !== 'index' ||
-              id !== 'valid_until' ||
-              id !== 'card' ||
-              id !== 'phone'
-            ) {
+          
               onInputChange($event.target.value, id)
-            }
-    
+       
         
         }"
         @keyup="

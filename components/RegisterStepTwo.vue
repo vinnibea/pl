@@ -345,6 +345,7 @@ const changePolitics = (i) => {
         :id="'card'"
         @onFormTouched="formTouched"
         :errors="$v?.card?.$errors[0]"
+        :type="tel"
         :icon="icons.card"
         :maxLength="16"
         :data-id="'card'"
