@@ -171,7 +171,8 @@ const changePolitics = (i) => {
         :id="'phone'"
         @onFormTouched="formTouched"
         :errors="$v?.phone?.$errors[0]"
-        :tel="true"
+        :input_mode="'numeric'"
+        :pattern="/^[0-9]+$/"
         :maxLength="10"
       ></Registerinput>
       <Registerinput
@@ -200,6 +201,8 @@ const changePolitics = (i) => {
         :placeholder="'Почтовый индекс'"
         type="text"
         :id="'index'"
+        :input_mode="'numeric'"
+        :pattern="/^[0-9]+$/"
         :value="formData.index"
         @onValue="onInputFieldChange"
         :icon="icons.index"
