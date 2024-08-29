@@ -1,5 +1,4 @@
 <script setup>
-import { Pagination } from 'swiper/modules';
 const cardContent = [
   {
     title: "250 00000+",
@@ -20,7 +19,7 @@ const cardContent = [
 </script>
 
 <template>
-  <div class="min-[822px]:hidden  py-16 relative z-10">
+  <div class="min-[822px]:hidden  py-16 relative z-0">
     <Swiper
       class="z-0"
       :modules="[SwiperAutoplay, SwiperEffectCreative]"
