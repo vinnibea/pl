@@ -1,5 +1,4 @@
 <script setup>
-import { useSwipe } from "@vueuse/core";
 import { Pagination } from 'swiper/modules';
 const cardContent = [
   {
@@ -21,7 +20,7 @@ const cardContent = [
 </script>
 
 <template>
-  <div class="min-[822px]:hidden  py-16 relative z-0">
+  <div class="min-[822px]:hidden  py-16 relative z-10">
     <Swiper
       class="z-0"
       :modules="[SwiperAutoplay, SwiperEffectCreative]"
