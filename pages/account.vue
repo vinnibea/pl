@@ -40,7 +40,7 @@ const setActiveItem = (i) => {
              'max-[822px]:w-fit ': activeItem !== null,
         }
         ]" >
-            <ul class="flex flex-col  max-[822px]:items-center gap-8 text-white pl-8 w-full  max-[822px]:px-2 max-[822px]:gap-12 text-base" :class="[
+            <ul class="flex flex-col  max-[822px]:items-center gap-8 text-white pl-8 w-full max-[822px]:pl-2 max-[822px]:px-2 max-[822px]:gap-12 text-base" :class="[
                 {'bg-slate-800': activeItem !== null,
                  'max-[822px]:w-full ': activeItem === null,
                  'max-[822px]:items-center ': activeItem === null,
