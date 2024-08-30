@@ -58,11 +58,11 @@ const setActiveItem = (i) => {
                 ]"
                  @click="setActiveItem(i)">
                     <Icon :name="item.icon" class="min-h-8 min-w-8 max-[822px]:min-w-6"> </Icon> 
-                    <span class="w-2/3 flex justify-start pl-1" v-if="activeItem === null">{{ item.title }}</span>
+                    <!-- <span class="w-2/3 flex justify-start pl-1" v-if="activeItem === null">{{ item.title }}</span> -->
                     <Icon name="mdi:arrow-right-thick" class="min-[882px]:hidden" v-if="activeItem === null"></Icon>
                 </li>    
             </ul>
-            <div class="flex justify-center w-full px-2"  >
+            <div class="flex justify-center w-fit px-2"  >
                 <Button  v-if="activeItem === null" :color="'bg-yellow'" :text="'text-neutral-600'" class="text-sm normal-nums">Выход</Button>
                 <Icon v-else name="material-symbols:exit-to-app-rounded" size="24" class="bg-neutral-600 mx-auto"></Icon>
             </div>
