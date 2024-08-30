@@ -31,7 +31,7 @@ const setActiveItem = (i) => {
 </script>
 
 <template>
-    <div class="min-h-dvh w-full flex ">
+    <div class="min-h-svh w-full flex ">
         <aside class="w-1/3  flex flex-col justify-between py-16 items-center max-[822px]:px-0 max-[822px]:w-full" :class="[
             {'bg-slate-800': activeItem !== null,
              'max-[822px]:w-full ': activeItem === null,
