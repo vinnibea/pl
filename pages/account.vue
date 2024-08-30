@@ -32,7 +32,7 @@ const setActiveItem = (i) => {
 
 <template>
     <div class="min-h-svh w-full flex ">
-        <aside class="w-1/3  flex flex-col justify-between py-16 items-center max-[822px]:px-0 border border-white-900 max-[822px]:w-full" :class="[
+        <aside class="w-1/3  flex flex-col justify-between py-16 items-center max-[822px]:px-0 border border-white-900" :class="[
             {'bg-slate-800': activeItem !== null,
              'max-[822px]:w-full ': activeItem === null,
              'max-[822px]:items-center ': activeItem === null,
