@@ -32,7 +32,7 @@ const setActiveItem = (i) => {
 
 <template>
     <div class="min-h-svh w-full flex ">
-        <aside class="w-1/3  flex flex-col justify-between py-16 items-center max-[822px]:px-0 max-[822px]:w-full" :class="[
+        <aside class="w-1/3  flex flex-col justify-between py-16 items-center max-[822px]:px-0 border border-white-900 max-[822px]:w-full" :class="[
             {'bg-slate-800': activeItem !== null,
              'max-[822px]:w-full ': activeItem === null,
              'max-[822px]:items-center ': activeItem === null,
@@ -40,7 +40,7 @@ const setActiveItem = (i) => {
              'max-[822px]:w-fit ': activeItem !== null,
         }
         ]" >
-            <ul class="flex flex-col  max-[822px]:items-center gap-8 text-white pl-8 w-full max-[822px]:pl-2 max-[822px]:px-2 max-[822px]:gap-12 text-base" :class="[
+            <ul class="flex flex-col  max-[822px]:items-center gap-8 text-white pl-8  border border-green-900 w-full max-[822px]:pl-2 max-[822px]:px-2 max-[822px]:gap-12 text-base" :class="[
                 {'bg-slate-800': activeItem !== null,
                  'max-[822px]:w-full ': activeItem === null,
                  'max-[822px]:items-center ': activeItem === null,
@@ -48,10 +48,10 @@ const setActiveItem = (i) => {
                  'max-[822px]:w-fit ': activeItem !== null,
             }
             ]">
-                <li class="w-full flex items-center gap-2 max-[822px]:justify-between border-transparent max-[822px]:text-lg cursor-pointer transition-all duration-300" v-for="(item, i) in menuItems" :key="item.icon" :class="[
+                <li class="w-full flex items-center gap-2 max-[822px]:justify-between border-transparent  border border-red-900 max-[822px]:text-lg cursor-pointer transition-all duration-300" v-for="(item, i) in menuItems" :key="item.icon" :class="[
                     {'border-r-2': i === activeItem,
                      'border-amber-300': i === activeItem,
-                     'max-[822px]:border-none': true,
+                  
                      'text-amber-300': i === activeItem,
                      'w-fit': i === activeItem,
                  }
@@ -62,7 +62,7 @@ const setActiveItem = (i) => {
                     <Icon name="mdi:arrow-right-thick" class="min-[882px]:hidden" v-if="activeItem === null"></Icon>
                 </li>    
             </ul>
-            <div class="flex justify-center w-fit px-2"  >
+            <div class="flex justify-center w-full px-2"  >
                 <Button  v-if="activeItem === null" :color="'bg-yellow'" :text="'text-neutral-600'" class="text-sm normal-nums">Выход</Button>
                 <Icon v-else name="material-symbols:exit-to-app-rounded" size="24" class="bg-neutral-600 mx-auto"></Icon>
             </div>
