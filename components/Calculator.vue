@@ -24,7 +24,7 @@ const calculatedDate = computed(() =>
 </script>
 <template>
   <form
-    class="form min-h-10 px-6 py-8 w-2/4 bg-white rounded-xl shadow-xl flex flex-col gap-10 max-[1024px]:w-2/3 max-[720px]:w-full"
+    class="form min-h-10 px-6 py-8 min-w-[620px] bg-white rounded-xl shadow-xl flex flex-col gap-10 max-[1024px]:min-w-1/2 max-[822px]:min-w-full"
   >
     <div class="flex flex-col gap-2">
       <div class="form-row flex justify-between items-center py-2">

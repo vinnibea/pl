@@ -255,7 +255,17 @@ const changePolitics = (i) => {
             />
           </svg>
         </div>
-        <div class="bg-black w-full h-8 absolute top-5" v-if="showReverse"></div>
+        
+     <div v-if="showReverse">
+      <div class="bg-black w-full h-8 absolute top-5 left-0 right-0 bg-gradient-to-r from-slate-500 to-slate-900" ></div>
+      <span class="text-white -scale-x-[100%] absolute top-16 flex gap-2 items-center justify-center">
+         <span class="text-[8px] uppercase flex items-center">Security <br> code (CVV) 
+          <span>-></span>
+        </span>
+         <span class="skew-x-6 text-[10px]">{{formData.cvc || '***'}}</span>
+      </span>
+     </div>
+
         <div
           class="flex flex-col justify-end w-full"
           :class="[
@@ -296,14 +306,20 @@ const changePolitics = (i) => {
           <div class="flex items-end">
             <div class="flex flex-col items-start">
               <span
-                class="text-white min-h-6 border min-w-12 text-[10px] ml-36 p-1 max-[822px]:ml-32 max-[822px]:text-[8px] [letter-spacing:2px] transition-all text-center flex items-center justify-center rounded-md duration-500 border-transparent bg-opacity-30 border-opacity-20"
+                class="text-white min-h-6 border min-w-12 text-[10px] gap-2  ml-36 p-1 max-[822px]:ml-24 max-[822px]:text-[8px] [letter-spacing:2px] transition-all text-center flex items-center justify-center rounded-md duration-500 border-transparent bg-opacity-30 border-opacity-20"
                 :class="[
                   {
                     'border-neutral-200': focusOnCard === 'valid_until',
                     'bg-slate-100': focusOnCard === 'valid_until',
                   },
                 ]"
-                >{{ valid_pattern }}</span
+                >
+                <span class="text-[5px] min-[822px]:text-[6px]">
+                   VALID <br>
+                   THRU
+                </span>
+                <span class="text-[12px] min-[822px]:text-[14px]">{{ valid_pattern }}</span>
+                </span
               >
               <span
                 class="text-white border min-w-64 max-w-64 items-center justify-start overflow-hidden py-2 flex transition-all rounded-md duration-500 border-transparent min-h-6 text-center text-xs px-4 max-[822px]:px-2 max-[822px]:py-0 [letter-spacing:4px] uppercase bg-opacity-30 border-opacity-20"

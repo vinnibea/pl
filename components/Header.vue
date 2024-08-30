@@ -21,7 +21,7 @@ const localMenuCloser = () => {
     ]"
   >
     <h2
-      class="text-2xl max-[1024px]:text-xl font-extrabold uppercase text-logo-yellow"
+      class="text-2xl max-[1224px]:text-lg font-extrabold uppercase text-logo-yellow"
     >
       <NuxtLink to="/"> Moneydeal.<span class="text-xs">kz</span></NuxtLink>
     </h2>
@@ -63,12 +63,12 @@ const localMenuCloser = () => {
       </button>
 
       <button
-        class="uppercase bg-button-grey max-[820px]:hidden text-white font-semibold px-6 max-[1024px]:text-xs text-sm py-2 rounded-l-md hover:bg-dark-grey transition-all"
+        class="uppercase bg-button-grey max-[820px]:hidden text-white font-semibold px-6 max-[1224px]:text-xs text-sm py-2 rounded-l-md hover:bg-dark-grey transition-all"
       >
         Войти
       </button>
       <button
-        class="uppercase px-6 text-sm py-2 max-[820px]:hidden font-semibold text-dark-grey max-[1024px]:text-xs bg-yellow rounded-r-md hover:bg-hover-yellow transition-all"
+        class="uppercase px-6 text-sm py-2 max-[820px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-r-md hover:bg-hover-yellow transition-all"
       >
         Регистрация
       </button>

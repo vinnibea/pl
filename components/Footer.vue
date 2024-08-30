@@ -12,7 +12,7 @@ const footerLinks = [
 </script>
 
 <template>
-  <footer class="pt-8 px-0 mt-12 bg-slate-950 max-[822px]:px-0 max-[822px]:pt-2 shadow-md max-[822px]:mt-0">
+  <footer class="pt-8 px-0 mt-0 bg-slate-950 max-[822px]:px-0 max-[822px]:pt-2 shadow-md max-[822px]:mt-0">
     <div class="flex justify-between max-[822px]:flex-col-reverse px-8 max-[822px]:px-2">
       <div class="max-[822px]:text-xs">
         <div

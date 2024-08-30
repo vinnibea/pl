@@ -1,6 +1,6 @@
 <template>
     <div 
-    class="flex flex-row justify-between w-full gap-8 py-8 px-6 max-[820px]:items-center max-[820px]:py-12 max-[820px]:px-0 max-[820px]:gap-2"
+    class="flex flex-row justify-between w-full gap-8 py-8 px-6 max-[820px]:items-center max-[820px]:py-4 max-[820px]:px-0 max-[820px]:gap-2"
   >
     <div
       class="flex flex-col w-1/3 max-[820px]:w-full py-4 bg-white items-center text-4xl font-semibold rounded-md shadow-md duration-500 text-white transition-all max-[822px]:w-full min-[822px]:hover:scale-110"

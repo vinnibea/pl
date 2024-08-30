@@ -47,8 +47,8 @@ const cardColContent = [
 <template>
   <div>
     <div class="hero bg-no-repeat bg-top bg-fixed max-[820px]:bg-center bg-cover py-4 px-0 min-w-full flex flex-col justify-end  max-[1024px]:px-2 border-b-2 border-slate-700">
-      <div class="hero-center w-full px-4 gap-12 py-16 flex justify-between items-center max-[820px]:flex-col max-[820px]:py-0 max-[820px]:gap-4 max-[820px]:pt-12 max-[820px]:px-0  max-[820px]:text-white">
-        <div class="w-full max-[820px]:text-white  max-[820px]:flex  max-[820px]:flex-col  max-[820px]:px-4  max-[820px]:items-center max-[820px]:mx-auto">
+      <div class="hero-center min-w-full px-4 gap-12 py-16 flex justify-between items-center max-[1224px]:flex-col max-[820px]:py-0 max-[820px]:gap-4 max-[820px]:pt-12 max-[820px]:px-0  max-[820px]:text-white">
+        <div class="w-1/2 max-[820px]:text-white max-[1224px]:min-w-full max-[1224px]:flex  max-[1224px]:flex-col  max-[1224px]:px-4  max-[1224px]:items-center max-[1224px]:mx-auto">
           <h1> Получите  <br class="min-[470px]:hidden"> от 5 000  до 500 000 тенге</h1>
           <p>
             С любой кредитной историей,
@@ -122,7 +122,20 @@ const cardColContent = [
   padding: 24px 8px;
   color: #2f2f2f;
 }
+@media screen and (max-width: 1280px) {
+  .hero-center h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+  }
 
+  .hero-center p {
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 18px 4px;
+    color: #2f2f2f;
+  }
+}
 @media screen and (max-width: 1024px) {
   .hero-center h1 {
     font-size: 2.5rem;

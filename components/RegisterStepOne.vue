@@ -169,6 +169,7 @@ const changePolitics = (i) => {
         :value="formData.phone"
         @onValue="onInputFieldChange"
         :id="'phone'"
+        :tel="true"
         @onFormTouched="formTouched"
         :errors="$v?.phone?.$errors[0]"
         :input_mode="'numeric'"
