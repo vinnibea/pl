@@ -1,75 +1,28 @@
 <script setup>
 import { useAuthStore } from '~/stores/authStore';
+import { useAccountStore } from '~/stores/accountStore';
+import { useWindowSize } from '@vueuse/core'
+
+const { width, height } = useWindowSize()
 const userStore = useAuthStore();
-const menuItems = [{
-    title: 'Информация об аккаунтe',
-    icon: 'material-symbols:account-balance',
-},
-{
-    title: 'Мои подписки',
-    icon: 'material-symbols:subtitles',
-},
-{
-    title: 'Мои карты',
-    icon: 'material-symbols:credit-card',
-},
-{
-    title: 'Настройки',
-    icon: 'material-symbols:settings',
-},
-]
+const asideStore = useAccountStore();
 
-const activeItem = ref(null);
-
-const setActiveItem = (i) => {
-    if(i === activeItem.value) {
-        activeItem.value = null;
-        return;
-    }
-    activeItem.value = i;
-}
+watch(width, (newVal) => {
+   if(newVal <= 822 && !asideStore.isMobile) {
+    asideStore.setSelectedSection(null); 
+    asideStore.setMobile(true);
+   } else if(newVal > 822 && asideStore.isMobile){
+    asideStore.setSelectedSection(0); 
+    asideStore.setMobile(false);
+   }
+})
 </script>
 
 <template>
    <NuxtLayout name="account">
     <div class=" h-[calc(100svh-54px)] w-full flex">
-        <aside class="w-1/3  flex flex-col justify-between py-16 items-center max-[822px]:px-0 gap-4" :class="[
-            {'bg-slate-900': activeItem !== null,
-             'max-[822px]:w-full ': activeItem === null,
-             'max-[822px]:items-center ': activeItem === null,
-             'max-[822px]:items-center ': activeItem !== null,
-             'max-[822px]:w-fit ': activeItem !== null,
-        }
-        ]" >
-            <ul class="flex flex-col  max-[822px]:items-center gap-8 text-white px-4 w-full max-[822px]:px-0  max-[822px]:gap-12 text-base" :class="[
-                {'bg-slate-900': activeItem !== null,
-                 'max-[822px]:w-full ': activeItem === null,
-                 'max-[822px]:items-center ': activeItem === null,
-                 'max-[822px]:items-start ': activeItem !== null,
-                 'max-[822px]:w-fit ': activeItem !== null,
-            }
-            ]">
-                <li class="w-full flex items-center gap-2 max-[822px]:justify-between p-4 border-transparent max-[822px]:border-none max-[822px]:text-sm cursor-pointer transition-all duration-300" v-for="(item, i) in menuItems" :key="item.icon" :class="[
-                    {'border-r-2': i === activeItem,
-                     'border-amber-300': i === activeItem,
-                     'text-amber-300': i === activeItem,
-                     'w-fit': i === activeItem,
-                     'bg-slate-600': i === activeItem,
-                     'rounded-md': i === activeItem,
-                 }
-                ]"
-                 @click="setActiveItem(i)">
-                    <Icon :name="item.icon" class="min-h-8 min-w-8 max-[822px]:min-w-6"> </Icon> 
-                    <span class="w-2/3 flex justify-start pl-1" v-if="activeItem === null">{{ item.title }}</span>
-                    <Icon name="mdi:arrow-right-thick" class="min-[882px]:hidden" v-if="activeItem === null"></Icon>
-                </li>    
-            </ul>
-            <div class="flex justify-center w-full p-4 border border-red-500"  >
-                <Button  v-if="activeItem === null" :color="'bg-yellow'" :text="'text-neutral-600'" class="text-sm normal-nums">Выход</Button>
-                <Icon v-else name="material-symbols:exit-to-app-rounded" size="24" class="mx-auto bg-red-900"></Icon>
-            </div>
-        </aside>
-        <div v-if="activeItem !== null" class="w-full py-16 px-4  bg-white">Content{{activeItem}}</div>
+      <account-aside></account-aside>
+        <div class="w-full py-16 px-4 bg-white" v-if="asideStore.selectedSection !== null || !asideStore.isMobile">Content{{asideStore.selectedSection}}</div>
     </div>
    </NuxtLayout>
 </template>
