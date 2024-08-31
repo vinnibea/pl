@@ -18,7 +18,7 @@ useResizeObserver(windowWidthRef, (entries) => {
 </script>
 <template>
   <div
-    class="container bg-slate-900 w-full mx-auto min-w-full relative"
+    class="container bg-slate-900 w-full mx-auto min-w-full relative max-[822px]:pb-[52px]"
     ref="windowWidthRef"
   >
     <mobile-menu></mobile-menu>

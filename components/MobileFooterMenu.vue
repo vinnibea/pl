@@ -5,7 +5,7 @@
 
 <template>
     <div
-    class="sticky w-full bottom-0 flex items-center gap-24 justify-center shadow-lg min-[822px]:hidden border-t bg-white border-slate-200"
+    class="fixed w-full flex items-center bottom-0 gap-24 justify-center shadow-lg min-[822px]:hidden border-t bg-white border-slate-200"
   >
   <NuxtLink to="/" class="flex items-center justify-center px-2 py-2"
   ><Icon

@@ -6,13 +6,14 @@ const menuItems = [{
     title: 'Информация об аккаунтe',
     icon: 'material-symbols:account-balance',
 },
+
 {
-    title: 'Мои подписки',
-    icon: 'material-symbols:subtitles',
+    title: 'Мои кредиторы',
+    icon: 'material-symbols:credit-card',
 },
 {
-    title: 'Мои карты',
-    icon: 'material-symbols:credit-card',
+    title: 'Управление подписками',
+    icon: 'material-symbols:subtitles',
 },
 {
     title: 'Настройки',
@@ -24,7 +25,7 @@ const menuItems = [{
 </script>
 
 <template>
-    <aside class="w-1/3  flex flex-col justify-between py-16 items-center max-[822px]:px-0 gap-4" :class="[
+    <aside class="w-1/3  flex flex-col min-h-[calc(100svh-52px)] fixed py-16 justify-between bg-slate-900 items-center max-[822px]:px-0 gap-4 " :class="[
         {'bg-slate-900': asideStore.selectedSection !== null,
          'max-[822px]:w-full ': asideStore.selectedSection === null,
          'max-[822px]:items-center ': asideStore.selectedSection === null,
@@ -32,7 +33,7 @@ const menuItems = [{
          'max-[822px]:w-fit ': asideStore.selectedSection !== null,
     }
     ]" >
-        <ul class="flex flex-col  max-[822px]:items-center gap-8 text-white px-4 w-full max-[822px]:px-1  max-[822px]:gap-12 text-base" :class="[
+        <ul class="flex flex-col w-full z-0 bg-slate-900 max-[822px]:items-center gap-8 text-white px-4 max-[822px]:px-1  max-[822px]:gap-12 text-base" :class="[
             {'bg-slate-900': asideStore.selectedSection !== null,
          
              'max-[822px]:items-center ': asideStore.selectedSection === null,
@@ -56,11 +57,12 @@ const menuItems = [{
                 <span class="w-2/3 flex justify-start pl-1 min-[822px]:hidden" v-if="asideStore.isMobile && asideStore.selectedSection == null">{{ item.title }} </span>
                 <Icon name="mdi:arrow-right-thick" class="min-[882px]:hidden" v-if="asideStore.selectedSection == null && asideStore.isMobile "></Icon>
             </li>    
+            <div class="flex justify-center w-full px-4 pt-4 max-[822px]:px-1 " >
+                <Button v-if="!asideStore.isMobile || (asideStore.isMobile && asideStore.selectedSection === null)" :color="'bg-yellow'" :text="'text-neutral-600'" class="text-sm normal-nums">Выход</Button>
+                <Icon v-else name="material-symbols:exit-to-app-rounded" size="24" class="mx-auto bg-red-900"></Icon>
+            </div>
         </ul>
-        <div class="flex justify-center w-full px-4 pt-4 max-[822px]:px-1" >
-            <Button v-if="!asideStore.isMobile || (asideStore.isMobile && asideStore.selectedSection === null)" :color="'bg-yellow'" :text="'text-neutral-600'" class="text-sm normal-nums">Выход</Button>
-            <Icon v-else name="material-symbols:exit-to-app-rounded" size="24" class="mx-auto bg-red-900"></Icon>
-        </div>
+        
        
     </aside>
 </template>
