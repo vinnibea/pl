@@ -33,7 +33,7 @@ const setActiveItem = (i) => {
 <template>
    <NuxtLayout name="account">
     <div class=" h-[calc(100svh-54px)] w-full flex">
-        <aside class="w-1/3  flex flex-col justify-between py-16 items-center max-[822px]:px-1 gap-4" :class="[
+        <aside class="w-1/3  flex flex-col justify-between py-16 items-center max-[822px]:px-0 gap-4" :class="[
             {'bg-slate-900': activeItem !== null,
              'max-[822px]:w-full ': activeItem === null,
              'max-[822px]:items-center ': activeItem === null,
@@ -49,7 +49,7 @@ const setActiveItem = (i) => {
                  'max-[822px]:w-fit ': activeItem !== null,
             }
             ]">
-                <li class="w-full flex items-center gap-2 max-[822px]:justify-between p-4 border-transparent max-[822px]:border-none max-[822px]:text-lg cursor-pointer transition-all duration-300" v-for="(item, i) in menuItems" :key="item.icon" :class="[
+                <li class="w-full flex items-center gap-2 max-[822px]:justify-between p-4 border-transparent max-[822px]:border-none max-[822px]:text-sm cursor-pointer transition-all duration-300" v-for="(item, i) in menuItems" :key="item.icon" :class="[
                     {'border-r-2': i === activeItem,
                      'border-amber-300': i === activeItem,
                      'text-amber-300': i === activeItem,
