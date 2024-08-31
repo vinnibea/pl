@@ -20,7 +20,6 @@ watch(width, (newVal) => {
    }
 })
 </script>
-
 <template>
    <NuxtLayout name="account">
     <div class="w-full flex">
