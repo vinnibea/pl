@@ -24,7 +24,7 @@ watch(width, (newVal) => {
    <NuxtLayout name="account">
     <div class="w-full flex">
       <account-aside></account-aside>
-        <div class="w-full py-16 px-4 pl-20 bg-white min-h-[calc(100svh)]" v-if="asideStore.selectedSection !== null || !asideStore.isMobile">
+        <div class="w-full py-16 pl-[388px] max-[822px]:pl-[72px] pr-2 bg-slate-800 min-h-[calc(100svh)]" v-if="asideStore.selectedSection !== null || !asideStore.isMobile">
             <component v-if="asideStore.selectedSection !== null" :is="components[asideStore.selectedSection]"></component>
         </div>
     </div>
