@@ -31,7 +31,8 @@ const setActiveItem = (i) => {
 </script>
 
 <template>
-    <div class="min-h-svh w-full flex ">
+   <NuxtLayout name="account">
+    <div class=" h-[calc(100svh-54px)] w-full flex">
         <aside class="w-1/3  flex flex-col justify-between py-16 items-center max-[822px]:px-0" :class="[
             {'bg-slate-800': activeItem !== null,
              'max-[822px]:w-full ': activeItem === null,
@@ -40,7 +41,7 @@ const setActiveItem = (i) => {
              'max-[822px]:w-fit ': activeItem !== null,
         }
         ]" >
-            <ul class="flex flex-col  max-[822px]:items-center gap-8 text-white pl-8 w-full max-[822px]:pl-2 max-[822px]:px-2 max-[822px]:gap-12 text-base" :class="[
+            <ul class="flex flex-col  max-[822px]:items-center gap-8 text-white pl-8 pt-8 w-full max-[822px]:pl-2 max-[822px]:px-2 max-[822px]:gap-12 text-base" :class="[
                 {'bg-slate-800': activeItem !== null,
                  'max-[822px]:w-full ': activeItem === null,
                  'max-[822px]:items-center ': activeItem === null,
@@ -68,4 +69,5 @@ const setActiveItem = (i) => {
         </aside>
         <div v-if="activeItem !== null" class="w-full py-16 px-4">Content{{activeItem}}</div>
     </div>
+   </NuxtLayout>
 </template>

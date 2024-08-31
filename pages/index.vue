@@ -45,7 +45,7 @@ const cardColContent = [
 
 
 <template>
-  <div>
+  <NuxtLayout>
     <div class="hero bg-no-repeat bg-top bg-fixed max-[820px]:bg-center bg-cover py-4 px-0 min-w-full flex flex-col justify-end  max-[1024px]:px-2 border-b-2 border-slate-700">
       <div class="hero-center min-w-full px-4 gap-12 py-16 flex justify-between items-center max-[1224px]:flex-col max-[820px]:py-0 max-[820px]:gap-4 max-[820px]:pt-12 max-[820px]:px-0  max-[820px]:text-white">
         <div class="w-1/2 max-[820px]:text-white max-[1224px]:min-w-full max-[1224px]:flex  max-[1224px]:flex-col  max-[1224px]:px-4  max-[1224px]:items-center max-[1224px]:mx-auto">
@@ -99,7 +99,7 @@ const cardColContent = [
         </template>
       </main-cards-layout>
     </main>
-  </div>
+  </NuxtLayout>
 </template>
 
 <style>

@@ -22,7 +22,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div
+  <NuxtLayout>
+    <div
     class="min-h-dvh bg-slate-800 flex flex-col gap-4 py-4 px-24 max-[1024px]:px-2 mx-8 max-[822px]:px-0 max-[822px]:pt-4 shadow-lg rounded-md my-8 max-[822px]:my-0 max-[822px]:mx-1 max-[822px]:bg-slate-900"
   >
     <div
@@ -108,4 +109,5 @@ onMounted(async () => {
       class="absolute top-0 right-0 left-0"
     ></Politics>
   </div>
+  </NuxtLayout>
 </template>

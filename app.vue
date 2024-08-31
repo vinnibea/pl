@@ -14,8 +14,8 @@ const authStore = useAuthStore();
 
 <template>
   <div>
-    <NuxtLayout>
+   
       <NuxtPage/>
-    </NuxtLayout>
+
   </div>
 </template>
