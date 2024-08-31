@@ -25,7 +25,7 @@ const menuItems = [{
 </script>
 
 <template>
-    <aside class="w-1/3  flex flex-col min-h-[calc(100svh-52px)] fixed py-16 justify-between bg-slate-900 items-center max-[822px]:px-0 gap-4 " :class="[
+    <aside class="w-1/3  flex flex-col min-h-[calc(100svh)] fixed py-16 justify-between bg-slate-900 items-center max-[822px]:px-0 gap-4 " :class="[
         {'bg-slate-900': asideStore.selectedSection !== null,
          'max-[822px]:w-full ': asideStore.selectedSection === null,
          'max-[822px]:items-center ': asideStore.selectedSection === null,
@@ -33,7 +33,7 @@ const menuItems = [{
          'max-[822px]:w-fit ': asideStore.selectedSection !== null,
     }
     ]" >
-        <ul class="flex flex-col w-full z-0 bg-slate-900 max-[822px]:items-center gap-8 text-white px-4 max-[822px]:px-1  max-[822px]:gap-12 text-base" :class="[
+        <ul class="flex flex-col w-full z-0 bg-slate-900 max-[822px]:items-center gap-8 text-white px-4 max-[822px]:px-1  max-[822px]:gap-8 text-base" :class="[
             {'bg-slate-900': asideStore.selectedSection !== null,
          
              'max-[822px]:items-center ': asideStore.selectedSection === null,
