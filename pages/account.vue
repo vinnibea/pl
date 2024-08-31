@@ -33,27 +33,29 @@ const setActiveItem = (i) => {
 <template>
    <NuxtLayout name="account">
     <div class=" h-[calc(100svh-54px)] w-full flex">
-        <aside class="w-1/3  flex flex-col justify-between py-16 items-center max-[822px]:px-0" :class="[
-            {'bg-slate-800': activeItem !== null,
+        <aside class="w-1/3  flex flex-col justify-between py-16 items-center max-[822px]:px-1 gap-4" :class="[
+            {'bg-slate-900': activeItem !== null,
              'max-[822px]:w-full ': activeItem === null,
              'max-[822px]:items-center ': activeItem === null,
              'max-[822px]:items-center ': activeItem !== null,
              'max-[822px]:w-fit ': activeItem !== null,
         }
         ]" >
-            <ul class="flex flex-col  max-[822px]:items-center gap-8 text-white pl-8 pt-8 w-full max-[822px]:pl-2 max-[822px]:px-2 max-[822px]:gap-12 text-base" :class="[
-                {'bg-slate-800': activeItem !== null,
+            <ul class="flex flex-col  max-[822px]:items-center gap-8 text-white px-4 w-full max-[822px]:px-0  max-[822px]:gap-12 text-base" :class="[
+                {'bg-slate-900': activeItem !== null,
                  'max-[822px]:w-full ': activeItem === null,
                  'max-[822px]:items-center ': activeItem === null,
                  'max-[822px]:items-start ': activeItem !== null,
                  'max-[822px]:w-fit ': activeItem !== null,
             }
             ]">
-                <li class="w-full flex items-center gap-2 max-[822px]:justify-between border-transparent max-[822px]:border-none max-[822px]:text-lg cursor-pointer transition-all duration-300" v-for="(item, i) in menuItems" :key="item.icon" :class="[
+                <li class="w-full flex items-center gap-2 max-[822px]:justify-between p-4 border-transparent max-[822px]:border-none max-[822px]:text-lg cursor-pointer transition-all duration-300" v-for="(item, i) in menuItems" :key="item.icon" :class="[
                     {'border-r-2': i === activeItem,
                      'border-amber-300': i === activeItem,
                      'text-amber-300': i === activeItem,
                      'w-fit': i === activeItem,
+                     'bg-slate-600': i === activeItem,
+                     'rounded-md': i === activeItem,
                  }
                 ]"
                  @click="setActiveItem(i)">
@@ -62,12 +64,12 @@ const setActiveItem = (i) => {
                     <Icon name="mdi:arrow-right-thick" class="min-[882px]:hidden" v-if="activeItem === null"></Icon>
                 </li>    
             </ul>
-            <div class="flex justify-center w-full px-2"  >
+            <div class="flex justify-center w-full p-4"  >
                 <Button  v-if="activeItem === null" :color="'bg-yellow'" :text="'text-neutral-600'" class="text-sm normal-nums">Выход</Button>
-                <Icon v-else name="material-symbols:exit-to-app-rounded" size="24" class="bg-neutral-600 mx-auto"></Icon>
+                <Icon v-else name="material-symbols:exit-to-app-rounded" size="24" class="bg-neutral-600 mx-auto bg-red-900"></Icon>
             </div>
         </aside>
-        <div v-if="activeItem !== null" class="w-full py-16 px-4">Content{{activeItem}}</div>
+        <div v-if="activeItem !== null" class="w-full py-16 px-4  bg-white">Content{{activeItem}}</div>
     </div>
    </NuxtLayout>
 </template>
