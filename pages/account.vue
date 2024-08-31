@@ -64,9 +64,9 @@ const setActiveItem = (i) => {
                     <Icon name="mdi:arrow-right-thick" class="min-[882px]:hidden" v-if="activeItem === null"></Icon>
                 </li>    
             </ul>
-            <div class="flex justify-center w-full p-4"  >
+            <div class="flex justify-center w-full p-4 border border-red-500"  >
                 <Button  v-if="activeItem === null" :color="'bg-yellow'" :text="'text-neutral-600'" class="text-sm normal-nums">Выход</Button>
-                <Icon v-else name="material-symbols:exit-to-app-rounded" size="24" class="bg-neutral-600 mx-auto bg-red-900"></Icon>
+                <Icon v-else name="material-symbols:exit-to-app-rounded" size="24" class="mx-auto bg-red-900"></Icon>
             </div>
         </aside>
         <div v-if="activeItem !== null" class="w-full py-16 px-4  bg-white">Content{{activeItem}}</div>
