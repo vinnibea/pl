@@ -21,7 +21,7 @@ const registerDate = computed(() =>
     v-motion-fade-visible-once
   >
     <div class="flex justify-end flex-col items-center gap-4">
-      <h2 class="text-xl font-semibold text-left w-full">Профиль</h2>
+      <h2 class="text-xl font-semibold text-right uppercase w-full">Профиль</h2>
       <div
         class="flex justify-start items-start max-[822px]:flex-col max-[822px]:items-start gap-2 w-full h-fit pb-2 "
       >
