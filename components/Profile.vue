@@ -10,9 +10,12 @@ const computedAvatar = computed(
     profile?.localUser?.value?.surname.slice(0, 1)
 );
 
-const registerDate = computed(() =>
-  format(profile?.localUser?.value?.timeStamp, "dd.MM.yyyy")
-);
+const registerDate = computed(() => {
+  if (!profile?.localUser?.value?.timeStamp) {
+    return;
+  }
+  format(profile?.localUser?.value?.timeStamp, "dd.MM.yyyy");
+});
 </script>
 
 <template>
@@ -63,7 +66,7 @@ const registerDate = computed(() =>
         <p class="w-full flex justify-between items-center">
           <span class="font-medium text-xs uppercase">Телефон: </span>
           <span class="font-medium text-xs uppercase">{{
-            "+7 " + profile.localUser.value.phone
+            "+7 " + profile?.localUser?.value.phone
           }}</span>
         </p>
         <p class="w-full flex justify-between items-center">
