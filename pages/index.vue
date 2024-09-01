@@ -1,4 +1,3 @@
-
 <script setup>
 const cardContent = [
   {
@@ -40,75 +39,67 @@ const cardColContent = [
       "Став пользователем сервиса, вы можете отправить свой профиль сразу в несколько компаний, получить информацию о своей кредитоспособности, текущих курсах валют, кредитный калькулятор..",
   },
 ];
-
 </script>
-
 
 <template>
   <NuxtLayout>
-    <div class="hero bg-no-repeat bg-top bg-fixed max-[820px]:bg-center bg-cover py-4 px-0 min-w-full flex flex-col justify-end  max-[1024px]:px-2 border-b-2 border-slate-700">
-      <div class="hero-center min-w-full px-4 gap-12 py-16 flex justify-between items-center max-[1224px]:flex-col max-[820px]:py-0 max-[820px]:gap-4 max-[820px]:pt-12 max-[820px]:px-0  max-[820px]:text-white">
-        <div class="w-1/2 max-[820px]:text-white max-[1224px]:min-w-full max-[1224px]:flex  max-[1224px]:flex-col  max-[1224px]:px-4  max-[1224px]:items-center max-[1224px]:mx-auto">
-          <h1> Получите  <br class="min-[470px]:hidden"> от 5 000  до 500 000 тенге</h1>
+    <div
+      class="hero bg-no-repeat bg-top bg-fixed max-[820px]:bg-center bg-cover py-4 px-0 min-w-full flex flex-col justify-end max-[1024px]:px-2 border-b-2 border-slate-700"
+    >
+      <div
+        class="hero-center min-w-full px-4 gap-12 py-16 flex justify-between items-center max-[1224px]:flex-col max-[820px]:py-0 max-[820px]:gap-4 max-[820px]:pt-12 max-[820px]:px-0 max-[820px]:text-white"
+      >
+        <div
+          class="w-1/2 max-[820px]:text-white max-[1224px]:min-w-full max-[1224px]:flex max-[1224px]:flex-col max-[1224px]:px-4 max-[1224px]:items-center max-[1224px]:mx-auto"
+        >
+          <h1>
+            Получите <br class="min-[470px]:hidden" />
+            от 5 000 до 500 000 тенге
+          </h1>
           <p>
             С любой кредитной историей,
-            <br class="min-[820px]:hidden">
+            <br class="min-[820px]:hidden" />
             возраст до 75 лет,
-            <br class="min-[820px]:hidden">круглосуточно
-            и без выходных.
+            <br class="min-[820px]:hidden" />круглосуточно и без выходных.
           </p>
         </div>
-       <Calculator></Calculator>
+        <Calculator></Calculator>
       </div>
       <top-cards></top-cards>
     </div>
     <main class="px-4 max-[1024px]:px-0">
       <main-cards-layout>
-        <template #title>
-          Требования к заказчику
-        </template>
+        <template #title> Требования к заказчику </template>
         <template #content>
-           <requirements></requirements>
+          <requirements></requirements>
         </template>
-        <template #button-title>
-           Оформить заявку
+        <template #button-title> Оформить заявку </template>
+      </main-cards-layout>
+
+      <main-cards-layout>
+        <template #title> Получение кредита </template>
+        <template #content>
+          <credit-take :content="cardContent"></credit-take>
         </template>
+        <template #button-title> Получить деньги </template>
+      </main-cards-layout>
+
+      <main-cards-layout>
+        <template #title> Как работает сервис </template>
+        <template #content>
+          <credit-take :content="cardColContent" :flex="'flex-row'"></credit-take>
+        </template>
+        <template #button-title> Регистрация </template>
       </main-cards-layout>
       
-      <main-cards-layout>
-        <template #title>
-          Получение кредита
-        </template>
-        <template #content>
-         <credit-take :content="cardContent"></credit-take>
-        </template>
-        <template #button-title>
-           Получить деньги
-        </template>
-      </main-cards-layout>
-  
-      <main-cards-layout>
-        <template #title>
-          Как работает сервис
-        </template>
-        <template #content>
-         <credit-take :content="cardColContent" :flex="'flex-row'"></credit-take>
-        </template>
-        <template #button-title>
-           Регистрация
-        </template>
-      </main-cards-layout>
-      <!-- <login></login> -->
     </main>
   </NuxtLayout>
 </template>
 
 <style>
-
 .hero {
   min-height: calc(100dvh - 52px);
-  background-image: url('../assets/main.jpeg');
-  
+  background-image: url("../assets/main.jpeg");
 }
 
 .hero-center h1 {
@@ -155,7 +146,7 @@ const cardColContent = [
   .hero-center h1 {
     font-size: 1.7rem;
     font-weight: 700;
-    color:#ffe11d;
+    color: #ffe11d;
     text-align: center;
     padding: 4px;
   }
@@ -168,11 +159,8 @@ const cardColContent = [
     text-align: center;
   }
 
- 
-
   .hero {
     background-position: 47%;
   }
 }
-
 </style>

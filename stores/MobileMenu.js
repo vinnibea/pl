@@ -3,10 +3,14 @@ import { defineStore } from '#imports';
 export const useMobileStore = defineStore('mobile_menu', () => {
    const politicsOpen = ref(false);
    const state = ref(false);
-
+   const openModal = ref(false);
 
    const onMenuOpen = () => {
     state.value = true;
+   }
+
+   const onModal = () => {
+    openModal.value = !openModal.value;
    }
    const onPolitics = (i) => {
 
@@ -17,5 +21,5 @@ export const useMobileStore = defineStore('mobile_menu', () => {
     state.value = false;
     document.body.style.overflow = "auto";
    }
-  return { state, onMenuOpen, onMenuClose, politicsOpen, onPolitics}
+  return { state, onMenuOpen, onMenuClose, politicsOpen, onPolitics, onModal, openModal}
 })
