@@ -22,7 +22,9 @@ const route = useRoute();
             'rounded-b-xl': store.state,
             'shadow-none': store.state,
             'fixed': fixedHeader,
-            'shadow-md': !fixedHeader
+            'shadow-md': !fixedHeader,
+            'border-slate-200': fixedHeader,
+            'border-b': fixedHeader,
         }
     ]"
   >

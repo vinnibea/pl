@@ -1,32 +1,46 @@
 <script setup>
-import { useAuthStore } from '~/stores/authStore';
-import { useAccountStore } from '~/stores/accountStore';
-import { useWindowSize } from '@vueuse/core';
-import Profile from '../components/Profile.vue';
-import Creditors from '../components/Creditors.vue';
-import Subscription from '../components/Subscription.vue';
+import { useAuthStore } from "~/stores/authStore";
+import { useAccountStore } from "~/stores/accountStore";
+import { useWindowSize } from "@vueuse/core";
+import Profile from "../components/Profile.vue";
+import Creditors from "../components/Creditors.vue";
+import Subscription from "../components/Subscription.vue";
 
-const { width, height } = useWindowSize()
+const { width, height } = useWindowSize();
 const userStore = useAuthStore();
 const asideStore = useAccountStore();
-const components = [Profile,Creditors, Subscription]
+const components = [Profile, Creditors, Subscription];
 
 watch(width, (newVal) => {
-   if(newVal <= 822 && !asideStore.isMobile) {
-    
+  if (newVal <= 822 && !asideStore.isMobile) {
+    asideStore.setSelectedSection(null);
     asideStore.setMobile(true);
-   } else if(newVal > 822 && asideStore.isMobile){
-    asideStore.setMobile(false);
-   }
-})
+    return;
+  } else if (newVal > 822 && asideStore.isMobile) {
+    if (asideStore.selectedSection === null) {
+      asideStore.setSelectedSection(0);
+      asideStore.setMobile(false);
+      return;
+    } else {
+      asideStore.setMobile(false);
+      return;
+    }
+  }
+});
 </script>
 <template>
-   <NuxtLayout name="account">
+  <NuxtLayout name="account">
     <div class="w-full flex">
       <account-aside></account-aside>
-        <div class="w-full py-16 pl-[388px] max-[822px]:pl-[72px] pr-2 bg-slate-800 min-h-[calc(100svh)]" v-if="asideStore.selectedSection !== null || !asideStore.isMobile">
-            <component v-if="asideStore.selectedSection !== null" :is="components[asideStore.selectedSection]"></component>
-        </div>
+      <div
+        class="w-full py-16 pl-[388px] max-[822px]:pl-[72px] pr-2 bg-white min-h-[calc(100svh)]"
+        v-if="asideStore.selectedSection !== null || !asideStore.isMobile"
+      >
+        <component
+          v-if="asideStore.selectedSection !== null"
+          :is="components[asideStore.selectedSection]"
+        ></component>
+      </div>
     </div>
-   </NuxtLayout>
+  </NuxtLayout>
 </template>

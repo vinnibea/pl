@@ -4,7 +4,7 @@ export const useLocalUserStore = defineStore('local_user', () => {
    const localUser = ref(null);
 
    const setLocalUser = (payload) => {
-    localUser.value = useStorage('user', payload )
+    localUser.value = useStorage('user', payload)
    }
   return { localUser, setLocalUser};
 })

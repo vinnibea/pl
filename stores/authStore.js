@@ -1,14 +1,14 @@
 
 import { useStorage } from '@vueuse/core'
 import { defineStore } from '#imports';
+import { useLocalUserStore } from '#imports';
 export const useAuthStore = defineStore('auth_store', () => {
    const isAuth = ref(false);
    const authUser = ref(null);
 
    const setAuthUser = (payload) => {
     if(payload) {
-        console.log(payload)
-        authUser.value = useStorage('user', payload);
+        useLocalUserStore().setLocalUser(payload)
         isAuth.value = true;
     }
     
