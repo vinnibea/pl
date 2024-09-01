@@ -99,12 +99,13 @@ onMounted(async () => {
         ]"
       >
         <component
-          v-motion-slide-top
+          v-motion-fade
           class="py-4 px-2 rounded-lg"
           :is="components[registerStore.activeTab]"
         ></component>
       </div>
       <Politics
+        v-motion-fade
         v-if="store.politicsOpen !== false"
         :index="store.politicsOpen"
         class="absolute top-0 right-0 left-0"
