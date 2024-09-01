@@ -6,7 +6,7 @@ import {
   minLength,
   helpers,
 } from "@vuelidate/validators";
-import { format } from "date-fns";
+
 import { useVuelidate } from "@vuelidate/core";
 import { useMobileStore } from "~/stores/MobileMenu.js";
 import { useRegisterStore } from "~/stores/RegisterStore.js";

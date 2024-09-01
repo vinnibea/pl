@@ -2,6 +2,7 @@
   <div
     class="flex flex-wrap max-[822px]:flex-col gap-8 items-center justify-center  after:self-center after:w-[calc(50%+32px)]"
   >
+  <h2 class="text-md font-semibold text-right uppercase w-full">Премиальные кредиторы</h2>
     <div
       v-for="i in 10"
       :key="i"

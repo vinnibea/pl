@@ -39,7 +39,7 @@ const props = defineProps({
     default: 'text',
   },
   pattern: {
-    type: String,
+    type: RegExp,
     default: /^[A-Z a-z А-Я а-я]+$/
   }
 });

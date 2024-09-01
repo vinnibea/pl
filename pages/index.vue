@@ -98,6 +98,7 @@ const cardColContent = [
            Регистрация
         </template>
       </main-cards-layout>
+      <!-- <login></login> -->
     </main>
   </NuxtLayout>
 </template>

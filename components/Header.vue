@@ -1,7 +1,9 @@
 <script setup>
 import { useMobileStore } from "~/stores/MobileMenu.js";
+import { useLocalUserStore } from "~/stores/localStore.js";
 
 const store = useMobileStore();
+const auth = useLocalUserStore();
 const localMenuOpener = () => {
   store.onMenuOpen();
   document.body.style.overflow = "hidden";
@@ -11,21 +13,22 @@ const localMenuCloser = () => {
   document.body.style.overflow = "auto";
 };
 
-const fixedHeader = computed(() => route.fullPath.includes('account'));
+const fixedHeader = computed(() => route.fullPath.includes("account"));
 
 const route = useRoute();
 </script>
 <template>
   <header
-    class="w-full flex  z-20 justify-between items-center py-2 px-4 max-[822px]:fixed max-[822px]:z-40 bg-white max-[822px]:px-2" :class="[
-        {
-            'rounded-b-xl': store.state,
-            'shadow-none': store.state,
-            'fixed': fixedHeader,
-            'shadow-md': !fixedHeader,
-            'border-slate-200': fixedHeader,
-            'border-b': fixedHeader,
-        }
+    class="w-full flex z-20 justify-between items-center py-2 px-4 max-[822px]:fixed max-[822px]:z-40 bg-white max-[822px]:px-2"
+    :class="[
+      {
+        'rounded-b-xl': store.state,
+        'shadow-none': store.state,
+        fixed: fixedHeader,
+        'shadow-md': !fixedHeader,
+        'border-slate-200': fixedHeader,
+        'border-b': fixedHeader,
+      },
     ]"
   >
     <h2
@@ -70,16 +73,27 @@ const route = useRoute();
         </svg>
       </button>
 
-      <button
-        class="uppercase bg-button-grey max-[820px]:hidden text-white font-semibold px-6 max-[1224px]:text-xs text-sm py-2 rounded-l-md hover:bg-dark-grey transition-all"
-      >
-        Войти
-      </button>
-      <button
-        class="uppercase px-6 text-sm py-2 max-[820px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-r-md hover:bg-hover-yellow transition-all"
-      >
-        Регистрация
-      </button>
+      <div v-if="!auth.localUser?.value?.name" class="flex items-center">
+        <button
+          class="uppercase bg-button-grey max-[820px]:hidden text-white font-semibold px-6 max-[1224px]:text-xs text-sm py-2 rounded-l-md hover:bg-dark-grey transition-all"
+        >
+          Войти
+        </button>
+        <button
+          class="uppercase px-6 text-sm py-2 max-[820px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-r-md hover:bg-hover-yellow transition-all"
+        >
+          Регистрация
+        </button>
+      </div>
+      <div v-else class="flex items-center">
+        <NuxtLink to="/account">
+          <button
+            class="uppercase px-6 text-sm py-2 max-[820px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-md hover:bg-hover-yellow transition-all"
+          >
+            Личный кабинет
+          </button>
+        </NuxtLink>
+      </div>
     </div>
   </header>
 </template>
