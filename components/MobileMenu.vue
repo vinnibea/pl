@@ -43,11 +43,11 @@ const { direction, isSwiping, lengthX, lengthY } = useSwipe(menu, {
         v-if="!auth.localUser?.value?.name"
         class="flex flex-col items-stretch w-full gap-4 px-4 py-4 absolute bottom-6 left-0 right-0"
       >
-        <NuxtLink to="register" @click="store.onMenuClose">
+        <NuxtLink to="register" @click.stop="store.onMenuClose">
           <Button :color="'bg-yellow'">Регистрация</Button>
         </NuxtLink>
         <Button
-          @click="
+          @click.stop="
             () => {
               if (store.state) {
                 store.onMenuClose();
