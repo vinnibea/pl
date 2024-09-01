@@ -46,12 +46,7 @@ const { direction, isSwiping, lengthX, lengthY } = useSwipe(menu, {
           <Button :color="'bg-yellow'">Регистрация</Button>
         </NuxtLink>
         <Button
-          @click.stop="
-            () => {
-              store.onMenuClose();
-              store.onModal();
-            }
-          "
+          @click.stop="store.onMenuClose()"
           :color="'bg-button-grey'"
           text="text-white"
           :hover="'bg-dark-grey'"
