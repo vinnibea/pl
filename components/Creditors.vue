@@ -5,7 +5,7 @@
     <div
       v-for="i in 10"
       :key="i"
-      class="w-[25%] max-[1024px]:w-full flex flex-col justify-between gap-4 bg-slate-300 p-2 rounded-md"  v-motion-fade-visible-once
+      class="w-[25%] max-[1024px]:w-full flex flex-col justify-between gap-4  p-2 rounded-md"  v-motion-fade-visible-once
     >
       <div class="flex items-start w-full">
         <div class="min-w-24 h-24 bg-gray-500 rounded-md"></div>
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="flex flex-col gap-2">
-        <Button :color="'bg-green-600'" :text="'text-white'" :hover="'bg-green-900'" :hoverText="'text-white'">Отправить анкету</Button>
+        <Button :color="'bg-slate-600'" :text="'text-white'" :hover="'hover:bg-blue-900'" :hoverText="'text-white'">Отправить анкету</Button>
         <Button>Перейти на сайт</Button>
       </div>
     </div>

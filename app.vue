@@ -6,8 +6,7 @@ const localStore = useLocalUserStore();
 const authStore = useAuthStore();
 
   onMounted(async () => {
-    localStore.setLocalUser(JSON.parse(localStorage.getItem('user')))
-   await authStore.setAuthUser(JSON.parse(localStorage.getItem('user')));
+   localStore.setLocalUser(JSON.parse(localStorage.getItem('user')))
 })
 
 </script>

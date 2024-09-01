@@ -6,6 +6,7 @@ import {
   minLength,
   helpers,
 } from "@vuelidate/validators";
+import { format } from "date-fns";
 import { useVuelidate } from "@vuelidate/core";
 import { useMobileStore } from "~/stores/MobileMenu.js";
 import { useRegisterStore } from "~/stores/RegisterStore.js";
@@ -15,7 +16,7 @@ import Registerinput from "~/components/Registerinput.vue";
 const store = useMobileStore();
 const localStore = useLocalUserStore();
 const registerStore = useRegisterStore();
-console.log(localStore.localUser);
+
 
 const icons = {
   profile: "mdi:account-circle",
