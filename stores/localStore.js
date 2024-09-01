@@ -5,7 +5,7 @@ export const useLocalUserStore = defineStore('local_user', () => {
 
    const setLocalUser = (payload) => {
     localStorage.removeItem('user');
-
+    if(!payload) return; 
     const DTO = {
       name: payload.name,
       surname: payload.surname,

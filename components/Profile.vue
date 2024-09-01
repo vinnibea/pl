@@ -6,12 +6,12 @@ const profile = useLocalUserStore();
 const computedAvatar = computed(
   () =>
     "" +
-    profile.localUser.value.name.slice(0, 1) +
-    profile.localUser.value.surname.slice(0, 1)
+    profile?.localUser?.value?.name.slice(0, 1) +
+    profile?.localUser?.value?.surname.slice(0, 1)
 );
 
 const registerDate = computed(() =>
-  format(profile.localUser.value.timeStamp, "dd.MM.yyyy")
+  format(profile?.localUser?.value?.timeStamp, "dd.MM.yyyy")
 );
 </script>
 
@@ -31,34 +31,26 @@ const registerDate = computed(() =>
           <span
             class="absolute top-2 -right-0 bg-white rounded-full w-6 h-6 flex border-2 border-amber-300 items-center justify-center"
           >
-            <Icon
-              name="material-symbols-light:award-star"
-              class="bg-amber-300"
-            ></Icon>
+            <Icon name="material-symbols-light:award-star" class="bg-amber-300"></Icon>
           </span>
         </span>
         <p class="flex flex-col items-start gap-2 p-2 text-xl">
           <span class="flex gap-2">
             <span class="uppercase font-semibold">{{
-              profile.localUser.value.name
+              profile.localUser?.value?.name
             }}</span>
             <span class="uppercase font-semibold">{{
-              profile.localUser.value.surname
+              profile?.localUser?.value?.surname
             }}</span>
           </span>
-          <span
-            class="max-[822px]:text-[10px] text-[12px] font-semibold p-0 text-yellow"
-          >
+          <span class="max-[822px]:text-[10px] text-[12px] font-semibold p-0 text-yellow">
             Премиальный пользователь</span
           >
         </p>
       </div>
 
-      <div
-        class="flex items-center justify-end w-full pb-2 border-b border-slate-200"
-      >
-        <span
-          class="max-[822px]:text-[10px] text-[12px] text-slate-300 font-semibold"
+      <div class="flex items-center justify-end w-full pb-2 border-b border-slate-200">
+        <span class="max-[822px]:text-[10px] text-[12px] text-slate-300 font-semibold"
           >Дата регистрации: {{ registerDate }}</span
         >
       </div>
@@ -66,9 +58,7 @@ const registerDate = computed(() =>
       <div class="w-full flex flex-col gap-4 py-2">
         <p class="w-full flex justify-between items-center">
           <span class="font-medium text-xs uppercase">Email:</span
-          ><span class="font-medium text-xs">{{
-            profile.localUser.value.email
-          }}</span>
+          ><span class="font-medium text-xs">{{ profile?.localUser?.value?.email }}</span>
         </p>
         <p class="w-full flex justify-between items-center">
           <span class="font-medium text-xs uppercase">Телефон: </span>
