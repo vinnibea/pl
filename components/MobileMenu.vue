@@ -22,6 +22,14 @@ const { direction, isSwiping, lengthX, lengthY } = useSwipe(menu, {
     }
   },
 });
+
+const onModalOpen = () => {
+  document.body.style.overflow = "hidden";
+  store.onMenuClose();
+  setTimeout(() => {
+    store.onModal();
+  }, 300);
+};
 </script>
 <template>
   <div
@@ -41,17 +49,13 @@ const { direction, isSwiping, lengthX, lengthY } = useSwipe(menu, {
       <div
         class="flex flex-col items-stretch w-full gap-4 px-4 py-4 z-50 absolute bottom-6 left-0 right-0"
       >
-        <Button :color="'bg-yellow'" @click.stop="store.onMenuClose()"
-          >Регистрация</Button
-        >
-
+        <NuxtLink to="/register">
+          <Button :color="'bg-yellow'" @click.stop="store.onMenuClose()"
+            >Регистрация</Button
+          >
+        </NuxtLink>
         <Button
-          @click.stop="
-            () => {
-              store.onMenuClose();
-              store.onModal();
-            }
-          "
+          @click.stop="onModalOpen"
           :color="'bg-button-grey'"
           text="text-white"
           :hover="'bg-dark-grey'"

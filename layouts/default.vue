@@ -14,6 +14,11 @@ useResizeObserver(windowWidthRef, (entries) => {
     return;
   }
 });
+
+const localModalCloser = () => {
+  document.body.style.overflow = "auto";
+  store.onModal();
+};
 </script>
 <template>
   <div
@@ -36,7 +41,9 @@ useResizeObserver(windowWidthRef, (entries) => {
       @click="
         () => {
           store.onPolitics(false);
-          store.onModal();
+          if (store.openModal) {
+            localModalCloser();
+          }
         }
       "
       v-if="store.politicsOpen !== false || store.state || store.openModal"

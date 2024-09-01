@@ -13,6 +13,15 @@ const localMenuCloser = () => {
   document.body.style.overflow = "auto";
 };
 
+const localModalOpener = () => {
+  store.onModal();
+  document.body.style.overflow = "hidden";
+};
+
+const localModalCloser = () => {
+  store.onModal();
+  document.body.style.overflow = "auto";
+};
 const fixedHeader = computed(() => route.fullPath.includes("account"));
 
 const route = useRoute();
@@ -70,7 +79,7 @@ const route = useRoute();
                 return;
               }
               if (store.openModal) {
-                store.onModal();
+                localModalCloser();
               }
             }
           "
@@ -83,7 +92,7 @@ const route = useRoute();
 
       <div v-if="!auth.localUser?.value?.name" class="flex items-center">
         <button
-          @click="store.onModal()"
+          @click="localModalOpener()"
           class="uppercase bg-button-grey max-[820px]:hidden text-white font-semibold px-6 max-[1224px]:text-xs text-sm py-2 rounded-l-md hover:bg-dark-grey transition-all"
         >
           Войти

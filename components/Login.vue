@@ -40,7 +40,7 @@ const formTouched = (field) => {
 
 <template>
   <div
-    class="w-1/2 max-[822px]:w-full max-[822px]:top-8 max-[822px]:bottom-0 z-30 max-[822px]:translate-y-0 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 py-12 max-[822px]:pt-12 bg-white rounded-md"
+    class="w-1/2 max-[822px]:w-full max-[822px]:top-8 max-[822px]:bottom-0 max-[822px]:left-0 max-[822px]:translate-x-0 max-[822px]:translate-y-0 z-30 fixed top-1/2 -translate-y-1/2 -translate-x-1/2 left-1/2 py-12 max-[822px]:pt-12 bg-white rounded-md"
   >
     <form class="flex flex-col gap-10 max-[822px]:gap-4 pt-4 max-[822px]:pt-2 p-4">
       <register-input-wrapper>

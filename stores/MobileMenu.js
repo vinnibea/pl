@@ -10,6 +10,7 @@ export const useMobileStore = defineStore('mobile_menu', () => {
    }
 
    const onModal = () => {
+    
     openModal.value = !openModal.value;
    }
    const onPolitics = (i) => {
@@ -19,7 +20,6 @@ export const useMobileStore = defineStore('mobile_menu', () => {
    }
    const onMenuClose= () => {
     state.value = false;
-    document.body.style.overflow = "auto";
    }
   return { state, onMenuOpen, onMenuClose, politicsOpen, onPolitics, onModal, openModal}
 })
