@@ -49,12 +49,7 @@ const { direction, isSwiping, lengthX, lengthY } = useSwipe(menu, {
         <Button
           @click.stop="
             () => {
-              if (store.state) {
-                store.onMenuClose();
-                store.onModal();
-                return;
-              }
-
+              store.onMenuClose();
               store.onModal();
             }
           "
