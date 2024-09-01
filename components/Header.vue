@@ -10,13 +10,19 @@ const localMenuCloser = () => {
   store.onMenuClose();
   document.body.style.overflow = "auto";
 };
+
+const fixedHeader = computed(() => route.fullPath.includes('account'));
+
+const route = useRoute();
 </script>
 <template>
   <header
-    class="w-full flex  absolute z-20 justify-between items-center py-2 px-4 max-[822px]:fixed max-[822px]:z-40 bg-white max-[822px]:px-2" :class="[
+    class="w-full flex  z-20 justify-between items-center py-2 px-4 max-[822px]:fixed max-[822px]:z-40 bg-white max-[822px]:px-2" :class="[
         {
             'rounded-b-xl': store.state,
-            'shadow-none': store.state
+            'shadow-none': store.state,
+            'fixed': fixedHeader,
+            'shadow-md': !fixedHeader
         }
     ]"
   >

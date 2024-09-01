@@ -5,7 +5,7 @@ const route = useRoute();
 
 <template>
   <div
-    class="max-[822px]:pt-8 py-8 px-0 flex flex-col items-center max-[822px]:items-stretch max-[822px]:px-2 border-b-2 border-slate-700 border-dotted last:border-b-0"
+    class="max-[822px]:pt-8 py-8 px-0 flex flex-col items-center max-[822px]:items-stretch max-[822px]:px-2 border-b-2 border-slate-700 border-dotted last:border-b-0" v-motion-fade-visible-once
   >
     <h2 class="mx-auto font-bold text-white text-3xl max-[822px]:text-2xl" id="req">
       <slot name="title" >Требования к заказчику</slot>

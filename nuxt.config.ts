@@ -8,7 +8,8 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     '@vueuse/nuxt',
     "@nuxt/icon",
-    'nuxt-swiper'
+    'nuxt-swiper',
+    '@vueuse/motion/nuxt'
   ],
   tailwindcss: {
     exposeConfig: true,
