@@ -32,7 +32,7 @@ useResizeObserver(windowWidthRef, (entries) => {
       ]"
     ></Footer>
     <div
-      class="absolute bg-slate-800 opacity-90 top-0 left-0 bottom-0 right-0 z-30 backdrop::blur-md px-4 py-4 max-[822px]:bg-slate-700 max-[822px]:px-2 max-[822px]:py-0 max-[822px]:opacity-90"
+      class="absolute bg-slate-800 opacity-90 top-0 left-0 bottom-0 right-0 z-20 backdrop::blur-md px-4 py-4 max-[822px]:bg-slate-700 max-[822px]:px-2 max-[822px]:py-0 max-[822px]:opacity-90"
       @click="
         () => {
           store.onPolitics(false);
@@ -42,7 +42,7 @@ useResizeObserver(windowWidthRef, (entries) => {
       v-if="store.politicsOpen !== false || store.state || store.openModal"
     >
       <div
-        class="flex justify-end relative text-xl font-bold text-white w-full cursor-pointer z-50 max-[822px]:text-slate-700"
+        class="flex justify-end relative text-xl font-bold text-white w-full cursor-pointer z-20 max-[822px]:text-slate-700"
       >
         <Icon name="mdi:close" class="w-6 h-6 max-[822px]:hidden"> </Icon>
       </div>
