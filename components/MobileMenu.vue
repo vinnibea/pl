@@ -59,14 +59,13 @@ const { direction, isSwiping, lengthX, lengthY } = useSwipe(menu, {
         >
       </div>
 
-      <div
-        v-else
+      <!-- <div
         class="flex flex-col items-stretch w-full gap-4 px-4 py-4 absolute bottom-6 left-0 right-0"
       >
         <NuxtLink to="/account" @click="store.onMenuClose()">
           <Button :color="'bg-yellow'">Перейти в профиль</Button>
         </NuxtLink>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
