@@ -25,6 +25,7 @@ const { direction, isSwiping, lengthX, lengthY } = useSwipe(menu, {
 </script>
 <template>
   <div
+    ref="menu"
     class="fixed bg-opacity-20 backdrop-blur-md left-0 right-0 z-50 bottom-0 top-0 bg-slate-800 transform transition-all duration-500 min-[822px]:hidden flex flex-col items-center"
     :class="[
       {
