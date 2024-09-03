@@ -38,7 +38,11 @@ watch(width, (newVal) => {
 onBeforeMount(() => {
   $fetch("/api/")
     .then((res) => res)
-    .catch((e) => navigateTo("/"));
+    .catch((e) => {
+        if(e) {
+            return navigateTo('/')
+        }
+});
 });
 </script>
 <template>
