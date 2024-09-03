@@ -23,7 +23,10 @@ export default defineEventHandler(async (event) => {
 
            return user_dto;
         } catch(e) {
-            return ({})
+            throw createError({
+                statusMessage: 'Watch here!'
+                statusCode: 407,
+            })
         } 
     } else {
         return ({
