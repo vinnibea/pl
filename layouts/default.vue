@@ -26,7 +26,7 @@ const localModalCloser = () => {
     ref="windowWidthRef"
   >
     <mobile-menu></mobile-menu>
-    <Header></Header>
+    <!-- <Header></Header> -->
     <slot></slot>
 
     <Footer
@@ -55,7 +55,7 @@ const localModalCloser = () => {
       </div>
     </div>
 
-    <mobile-footer-menu></mobile-footer-menu>
+    <!-- <mobile-footer-menu></mobile-footer-menu> -->
     <login v-if="store.openModal"></login>
   </div>
 </template>

@@ -22,7 +22,7 @@ useResizeObserver(windowWidthRef, (entries) => {
     ref="windowWidthRef"
   >
     <mobile-menu></mobile-menu>
-    <Header></Header>
+    <!-- <Header></Header> -->
     <slot></slot>
 
     <div

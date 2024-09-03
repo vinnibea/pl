@@ -7,7 +7,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     if (from.fullPath === to.fullPath || !isAuth && to.fullPath === '/account') {
         $fetch("/api/")
             .then((res) => {
-                if (res.statusCode === 401) {
+                if (res.statusCode > 200) {
                     localStore.setLocalUser()
                     return navigateTo('/')
                 }
@@ -16,7 +16,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
                 }
                 return res;
             }).catch((e) => {
-                console.warn(e, 'error from middleware')
+                console.warn(e.statusCode, 'error from middleware')
                 localStore.setLocalUser()
                 return navigateTo('/')
             })
