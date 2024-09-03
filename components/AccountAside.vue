@@ -1,6 +1,8 @@
 <script setup>
 import { useAccountStore } from "~/stores/accountStore";
+import { useLocalUserStore } from "~/stores/localStore";
 const asideStore = useAccountStore();
+const localUser = useLocalUserStore();
 const menuItems = [
   {
     title: "Информация об аккаунтe",
@@ -20,6 +22,17 @@ const menuItems = [
     icon: "material-symbols:settings",
   },
 ];
+
+const logout = () => {
+    $fetch('/api/logout').then(res => {
+        if(res.statusCode === 301) {
+           localUser.setLocalUser();
+           return navigateTo('/')
+        }
+    }).catch(error => {
+        console.warn(error)
+    })
+}
 </script>
 
 <template>
@@ -93,6 +106,7 @@ const menuItems = [
           !asideStore.isMobile ||
           (asideStore.isMobile && asideStore.selectedSection === null)
         "
+        @click="logout"
         :color="'bg-yellow'"
         :text="'text-neutral-600'"
         class="text-sm normal-nums"
@@ -100,9 +114,10 @@ const menuItems = [
       >
       <Icon
         v-else
-        name="material-symbols:exit-to-app-rounded min-[822px]:hidden"
-        size="24"
-        class="mx-auto bg-red-900"
+        name="material-symbols:exit-to-app"
+        size="32"
+        class="mx-auto bg-red-900 min-[822px]:hidden"
+        @click="logout"
       ></Icon>
     </div>
   </aside>

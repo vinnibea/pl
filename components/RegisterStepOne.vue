@@ -17,7 +17,6 @@ const store = useMobileStore();
 const localStore = useLocalUserStore();
 const registerStore = useRegisterStore();
 
-
 const icons = {
   profile: "mdi:account-circle",
   profile_empty: "mdi:account-circle-outline",
@@ -138,6 +137,22 @@ const formTouched = (field) => {
 
 const changePolitics = (i) => {
   store.onPolitics(i);
+};
+
+const onComplete = async (data) => {
+  const { password } = data;
+  const { email, name, surname, index, phone, city } = data;
+  $fetch('/api/register', {
+    method: "POST", 
+    body: {
+      password,
+    }
+  })
+  await localStorage.setItem(
+    "temp",
+    JSON.stringify({ email, name, surname, index, phone, city })
+  );
+  registerStore.setActiveTab(1);
 };
 </script>
 <template>
@@ -280,12 +295,7 @@ const changePolitics = (i) => {
     <Button
       class="mx-auto min-w-1/2 relative"
       :disabled="false"
-      @click.prevent="
-        () => {
-          registerStore.setActiveTab(1);
-          localStore.setLocalUser(formData);
-        }
-      "
+      @click.prevent="onComplete(formData)"
     >
       <span class="flex items-center justify-center w-full gap-2 mx-auto"
         >{{

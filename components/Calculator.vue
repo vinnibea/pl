@@ -2,7 +2,6 @@
 import { format } from "date-fns";
 const sum = ref(5000);
 const maxSum = 500000;
-const percentageSum = 0;
 const month = ref(3);
 const maxMonth = 24;
 

@@ -1,10 +1,17 @@
+<script setup>
+
+</script>
+
 <template>
-    <div 
+  <div
     class="flex flex-row justify-between w-full gap-8 py-8 px-6 max-[820px]:items-center max-[820px]:py-4 max-[820px]:px-0 max-[820px]:gap-2"
   >
+  
     <div
       class="flex flex-col w-1/3 max-[820px]:w-full py-4 bg-white items-center text-4xl font-semibold rounded-md shadow-md duration-500 text-white transition-all max-[822px]:w-full min-[822px]:hover:scale-110"
     >
+      
+    
       <svg
         version="1.1"
         id="_x32_"
@@ -18,28 +25,21 @@
       >
         <g>
           <path
-       
             d="M261.031,153.484h-5.375v7.484h5.375c1.25,0,2.266-0.344,3-1.031c0.766-0.688,1.156-1.594,1.156-2.719
                  c0-1.109-0.391-2-1.156-2.703C263.297,153.828,262.281,153.484,261.031,153.484z"
           />
           <path
-          
             d="M140.75,169.141c0.141-0.391,0.281-0.891,0.344-1.453c0.094-0.578,0.141-1.266,0.172-2.078
                  c0.031-0.797,0.031-1.766,0.031-2.891c0-1.109,0-2.063-0.031-2.875s-0.078-1.5-0.172-2.078c-0.063-0.578-0.203-1.047-0.344-1.453
                  c-0.156-0.406-0.375-0.75-0.641-1.078c-0.953-1.172-2.359-1.75-4.266-1.75H131.5v18.484h4.344c1.906,0,3.313-0.594,4.266-1.75
                  C140.375,169.891,140.594,169.531,140.75,169.141z"
           />
           <path
-       
             d="M88.219,159.938c0.75-0.688,1.141-1.594,1.141-2.719c0-1.109-0.391-2-1.141-2.703
                  c-0.75-0.688-1.75-1.031-3.016-1.031h-5.375v7.484h5.375C86.469,160.969,87.469,160.625,88.219,159.938z"
           />
-          <polygon
-           
-            points="229.875,167.219 237.141,167.219 233.563,156.906 	"
-          />
+          <polygon points="229.875,167.219 237.141,167.219 233.563,156.906 	" />
           <path
-         
             d="M466.656,88H45.344C20.313,88,0,108.313,0,133.344v245.313C0,403.688,20.313,424,45.344,424h421.313
                  C491.688,424,512,403.688,512,378.656V133.344C512,108.313,491.688,88,466.656,88z M435.656,138.313
                  c12.344,0,22.344,10,22.344,22.344S448,183,435.656,183s-22.344-10-22.344-22.344S423.313,138.313,435.656,138.313z
@@ -101,7 +101,7 @@
     </div>
 
     <div
-      class="flex flex-col w-1/3 max-[820px]:w-full py-4 bg-white items-center text-4xl font-semibold rounded-md shadow-md text-white  transition-all duration-500 min-[822px]:hover:scale-110 max-[822px]:py-4"
+      class="flex flex-col w-1/3 max-[820px]:w-full py-4 bg-white items-center text-4xl font-semibold rounded-md shadow-md text-white transition-all duration-500 min-[822px]:hover:scale-110 max-[822px]:py-4"
     >
       <svg
         width="120px"
@@ -224,9 +224,9 @@
 
 <style scoped>
 @media screen and (max-width: 820px) {
-    svg {
-        width: 48px;
-        height: 48px;
-    }
+  svg {
+    width: 48px;
+    height: 48px;
+  }
 }
 </style>

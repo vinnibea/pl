@@ -6,15 +6,27 @@ const profile = useLocalUserStore();
 const computedAvatar = computed(
   () =>
     "" +
-    profile?.localUser?.value?.name.slice(0, 1) +
-    profile?.localUser?.value?.surname.slice(0, 1)
+    profile?.localUser?.name.slice(0, 1) +
+    profile?.localUser?.surname.slice(0, 1)
 );
 
 const registerDate = computed(() => {
-  if (!profile?.localUser?.value?.timeStamp) {
+  if (!profile?.localUser?.timeStamp) {
     return;
   }
-  format(profile?.localUser?.value?.timeStamp, "dd.MM.yyyy");
+  return format(profile?.localUser?.timeStamp, "dd.MM.yyyy");
+});
+
+const registerPhone = computed(() => {
+  if (!profile?.localUser?.phone) {
+    return;
+  }
+  return (
+    " (" +
+    profile?.localUser?.phone.slice(0, 3) +
+    ") " +
+    profile?.localUser?.phone.slice(3)
+  );
 });
 </script>
 
@@ -40,10 +52,10 @@ const registerDate = computed(() => {
         <p class="flex flex-col items-start gap-2 p-2 text-xl">
           <span class="flex gap-2">
             <span class="uppercase font-semibold">{{
-              profile.localUser?.value?.name
+              profile.localUser?.name
             }}</span>
             <span class="uppercase font-semibold">{{
-              profile?.localUser?.value?.surname
+              profile?.localUser?.surname
             }}</span>
           </span>
           <span class="max-[822px]:text-[10px] text-[12px] font-semibold p-0 text-yellow">
@@ -61,18 +73,16 @@ const registerDate = computed(() => {
       <div class="w-full flex flex-col gap-4 py-2">
         <p class="w-full flex justify-between items-center">
           <span class="font-medium text-xs uppercase">Email:</span
-          ><span class="font-medium text-xs">{{ profile?.localUser?.value?.email }}</span>
+          ><span class="font-medium text-xs">{{ profile?.localUser?.email }}</span>
         </p>
         <p class="w-full flex justify-between items-center">
           <span class="font-medium text-xs uppercase">Телефон: </span>
-          <span class="font-medium text-xs uppercase">{{
-            "+7 " + profile?.localUser?.value.phone
-          }}</span>
+          <span class="font-medium text-xs uppercase">{{ "+7 " + registerPhone }}</span>
         </p>
         <p class="w-full flex justify-between items-center">
           <span class="font-medium text-xs uppercase">Город: </span>
           <span class="font-medium text-xs uppercase">{{
-            profile.localUser.value.city
+            profile?.localUser?.city
           }}</span>
         </p>
       </div>

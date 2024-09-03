@@ -1,9 +1,13 @@
 <script setup>
 import { useMobileStore } from "~/stores/MobileMenu.js";
 import { useLocalUserStore } from "~/stores/localStore.js";
+import { useGlobalStore } from "~/stores/globalStore.js";
 
+
+const globalStore = useGlobalStore();
 const store = useMobileStore();
 const auth = useLocalUserStore();
+const route = useRoute();
 const localMenuOpener = () => {
   store.onMenuOpen();
   document.body.style.overflow = "hidden";
@@ -24,7 +28,7 @@ const localModalCloser = () => {
 };
 const fixedHeader = computed(() => route.fullPath.includes("account"));
 
-const route = useRoute();
+
 </script>
 <template>
   <header
@@ -89,26 +93,35 @@ const route = useRoute();
           ></path>
         </svg>
       </button>
+   
+       
+          <USkeleton v-if="globalStore.loading && route.fullPath !== '/account'" class="h-10 w-[250px] bg-slate-300 max-[822px]:hidden" :config="{
+            base: 'animate-pulse',
+            background: 'bg-gray-100 dark:bg-gray-800',
+            rounded: 'rounded-md',
+            w: 'max-[822px]:hidden',
+          }"  />
 
-      <div v-if="!auth.localUser?.value?.name" class="flex items-center">
+      
+      <div class="flex items-center justify-center w-[250px] max-[820px]:hidden" v-if="!auth.isAuth && !globalStore.loading && route.fullPath !== '/account'">
         <button
           @click="localModalOpener()"
-          class="uppercase bg-button-grey max-[820px]:hidden text-white font-semibold px-6 max-[1224px]:text-xs text-sm py-2 rounded-l-md hover:bg-dark-grey transition-all"
+          class="uppercase bg-button-grey h-10 max-[820px]:hidden text-white font-semibold px-6 max-[1224px]:text-xs text-sm py-2 rounded-l-md hover:bg-dark-grey transition-all"
         >
           Войти
         </button>
         <NuxtLink to="/register">
           <button
-            class="uppercase px-6 text-sm py-2 max-[820px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-r-md hover:bg-hover-yellow transition-all"
+            class="uppercase px-6 text-sm py-2 h-10 max-[820px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-r-md hover:bg-hover-yellow transition-all"
           >
             Регистрация
           </button>
         </NuxtLink>
       </div>
-      <div v-else class="flex items-center">
+      <div v-if="auth.isAuth && !globalStore.loading && route.fullPath !== '/account'" class="flex items-center justify-center w-[250px] max-[820px]:hidden">
         <NuxtLink to="/account">
           <button
-            class="uppercase px-6 text-sm py-2 max-[820px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-md hover:bg-hover-yellow transition-all"
+            class="uppercase h-10 px-6 text-sm py-2 max-[820px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-md hover:bg-hover-yellow transition-all"
           >
             Личный кабинет
           </button>

@@ -7,7 +7,7 @@ const store = useMobileStore();
 const windowWidthRef = ref(null);
 useResizeObserver(windowWidthRef, (entries) => {
   const entry = entries[0];
-  const { width, height } = entry.contentRect;
+  const { width } = entry.contentRect;
   if (store.state && width > 822) {
     store.onMenuClose();
     document.body.style.overflow = "auto";

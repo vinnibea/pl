@@ -1,12 +1,5 @@
 <script setup>
-import {
-  required,
-  email,
-  sameAs,
-  minLength,
-  helpers,
-  maxLength,
-} from "@vuelidate/validators";
+import { required, minLength, helpers } from "@vuelidate/validators";
 import { watch } from "vue";
 import { useVuelidate } from "@vuelidate/core";
 import { useMobileStore } from "~/stores/MobileMenu.js";
@@ -16,22 +9,21 @@ import Registerinput from "~/components/Registerinput.vue";
 import { useActiveElement } from "@vueuse/core";
 const focusOnCard = ref(null);
 const activeElement = useActiveElement();
-const showReverse = ref(false)
+const showReverse = ref(false);
 const key = computed(() => activeElement.value?.dataset?.id || "null");
 watch(activeElement, (el) => {
-   if(el.id === "cvc") {
+  if (el.id === "cvc") {
     showReverse.value = true;
     focusOnCard.value = el.id;
     return;
-   }
-   showReverse.value = false;
+  }
+  showReverse.value = false;
   focusOnCard.value = el.id;
 });
 
 const store = useMobileStore();
 const localStore = useLocalUserStore();
 const registerStore = useRegisterStore();
-console.log("step2");
 
 const icons = {
   profile: "mdi:account-circle",
@@ -103,8 +95,9 @@ const rules = computed(() => {
     },
 
     card_holder: {
-      number: helpers.withMessage("Допустимы латинские буквы и пробелы", (val) =>
-        val.match(/^[A-z a-z]+$/)
+      number: helpers.withMessage(
+        "Допустимы латинские буквы и пробелы",
+        (val) => val.match(/^[A-z a-z]+$/)
       ),
       required: helpers.withMessage("Это поле не может быть пустым", required),
       minLength: helpers.withMessage(
@@ -199,7 +192,30 @@ const formTouched = (field) => {
 const changePolitics = (i) => {
   store.onPolitics(i);
 };
-
+const onComplete = async () => {
+  try {
+    const data = await JSON.parse(localStorage.getItem("temp"));
+    const {index: temp_index, phone: temp_phone} = data;
+    $fetch("/api/register/", {
+      method: "POST",
+      body: {
+        ...data,
+        index: Number(temp_index),
+        phone: Number(temp_phone),
+      },
+    })
+      .then((res) => {
+        localStorage.removeItem('temp');
+        localStore.setLocalUser(res);
+        navigateTo('/account')
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } catch (e) {
+    console.log(e);
+  }
+};
 </script>
 
 <template>
@@ -208,10 +224,12 @@ const changePolitics = (i) => {
   >
     <div class="w-full flex justify-center pb-2">
       <div
-       @click="() => {
-        showReverse = !showReverse
-       }"
-        class="w-[300px] relative cursor-pointer  shadow-md transition-all duration-500 p-1 max-[822px]:p-1 max-[822px]:w-[280px] min-h-[180px] max-[822px]:min-h-[140px] flex items-center justify-center flex-col rounded-xl bg-blue-200"
+        @click="
+          () => {
+            showReverse = !showReverse;
+          }
+        "
+        class="w-[300px] relative cursor-pointer shadow-md transition-all duration-500 p-1 max-[822px]:p-1 max-[822px]:w-[280px] min-h-[180px] max-[822px]:min-h-[140px] flex items-center justify-center flex-col rounded-xl bg-blue-200"
         :class="[
           {
             '-scale-x-100': focusOnCard === 'cvc' || showReverse,
@@ -255,16 +273,24 @@ const changePolitics = (i) => {
             />
           </svg>
         </div>
-        
-     <div v-if="showReverse">
-      <div class="bg-black w-full h-8 absolute top-5 left-0 right-0 bg-gradient-to-r from-slate-500 to-slate-900" ></div>
-      <span class="text-white -scale-x-[100%] absolute top-16 flex gap-2 items-center justify-center">
-         <span class="text-[8px] uppercase flex items-center">Security <br> code (CVV) 
-          <span>-></span>
-        </span>
-         <span class="skew-x-6 text-[10px]">{{formData.cvc || '***'}}</span>
-      </span>
-     </div>
+
+        <div v-if="showReverse">
+          <div
+            class="bg-black w-full h-8 absolute top-5 left-0 right-0 bg-gradient-to-r from-slate-500 to-slate-900"
+          ></div>
+          <span
+            class="text-white -scale-x-[100%] absolute top-16 flex gap-2 items-center justify-center"
+          >
+            <span class="text-[8px] uppercase flex items-center"
+              >Security <br />
+              code (CVV)
+              <span>-></span>
+            </span>
+            <span class="skew-x-6 text-[10px]">{{
+              formData.cvc || "***"
+            }}</span>
+          </span>
+        </div>
 
         <div
           class="flex flex-col justify-end w-full"
@@ -306,21 +332,22 @@ const changePolitics = (i) => {
           <div class="flex items-end">
             <div class="flex flex-col items-start">
               <span
-                class="text-white min-h-6 border min-w-12 text-[10px] gap-2  ml-36 p-1 max-[822px]:ml-24 max-[822px]:text-[8px] [letter-spacing:2px] transition-all text-center flex items-center justify-center rounded-md duration-500 border-transparent bg-opacity-30 border-opacity-20"
+                class="text-white min-h-6 border min-w-12 text-[10px] gap-2 ml-36 p-1 max-[822px]:ml-24 max-[822px]:text-[8px] [letter-spacing:2px] transition-all text-center flex items-center justify-center rounded-md duration-500 border-transparent bg-opacity-30 border-opacity-20"
                 :class="[
                   {
                     'border-neutral-200': focusOnCard === 'valid_until',
                     'bg-slate-100': focusOnCard === 'valid_until',
                   },
                 ]"
-                >
-                <span class="text-[5px] min-[822px]:text-[6px]">
-                   VALID <br>
-                   THRU
-                </span>
-                <span class="text-[12px] min-[822px]:text-[14px]">{{ valid_pattern }}</span>
-                </span
               >
+                <span class="text-[5px] min-[822px]:text-[6px]">
+                  VALID <br />
+                  THRU
+                </span>
+                <span class="text-[12px] min-[822px]:text-[14px]">{{
+                  valid_pattern
+                }}</span>
+              </span>
               <span
                 class="text-white border min-w-64 max-w-64 items-center justify-start overflow-hidden py-2 flex transition-all rounded-md duration-500 border-transparent min-h-6 text-center text-xs px-4 max-[822px]:px-2 max-[822px]:py-0 [letter-spacing:4px] uppercase bg-opacity-30 border-opacity-20"
                 :class="[
@@ -426,12 +453,7 @@ const changePolitics = (i) => {
     <Button
       class="mx-auto min-w-[240px] relative"
       :disabled="false"
-      @click.prevent="
-        () => {
-          registerStore.setActiveTab(1);
-          localStore.setLocalUser(formData);
-        }
-      "
+      @click.prevent="onComplete"
     >
       <span class="flex items-center justify-center w-full gap-2 mx-auto"
         >{{ registerStore.loading ? "Идёт обработка платежа" : "Оплатить" }}

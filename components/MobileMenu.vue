@@ -17,7 +17,10 @@ const { direction, isSwiping, lengthX, lengthY } = useSwipe(menu, {
   },
   onSwipeEnd(e, direction) {
     console.log(containerHeight.value / lengthY.value);
-    if (containerHeight.value && Math.abs(containerHeight.value / lengthY.value) <= 5) {
+    if (
+      containerHeight.value &&
+      Math.abs(containerHeight.value / lengthY.value) <= 5
+    ) {
       store.onMenuClose();
     }
   },
@@ -30,6 +33,11 @@ const onModalOpen = () => {
     store.onModal();
   }, 300);
 };
+
+const onModalClose = () => {
+  document.body.style.overflow = "auto";
+  store.onMenuClose();
+}
 </script>
 <template>
   <div
@@ -48,6 +56,7 @@ const onModalOpen = () => {
       <Nav :isMobile="true"></Nav>
       <div
         class="flex flex-col items-stretch w-full gap-4 px-4 py-4 z-50 absolute bottom-6 left-0 right-0"
+        v-if="!auth.isAuth"
       >
         <NuxtLink to="/register">
           <Button :color="'bg-yellow'" @click.stop="store.onMenuClose()"
@@ -63,13 +72,14 @@ const onModalOpen = () => {
         >
       </div>
 
-      <!-- <div
+      <div
+        v-else
         class="flex flex-col items-stretch w-full gap-4 px-4 py-4 absolute bottom-6 left-0 right-0"
       >
-        <NuxtLink to="/account" @click="store.onMenuClose()">
+        <NuxtLink to="/account" @click="onModalClose">
           <Button :color="'bg-yellow'">Перейти в профиль</Button>
         </NuxtLink>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>

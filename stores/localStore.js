@@ -1,21 +1,36 @@
 import { defineStore } from '#imports';
-import { useStorage } from '@vueuse/core'
-export const useLocalUserStore = defineStore('local_user', () => {
-   const localUser = ref(null);
 
-   const setLocalUser = (payload) => {
-    localStorage.removeItem('user');
-    if(!payload) return; 
+export const useLocalUserStore = defineStore('local_user', () => {
+  const localUser = ref(null);
+  const subscriber_email = ref(false);
+  const isSubscriber = ref(false);
+  const isAuth = ref(false);
+
+
+  const setSubsciber = (payload) => {
+    subscriber_email.value = payload;
+    isSubscriber.value = true;
+  }
+  const setLocalUser = (payload) => {
+    if (!payload?.email) {
+      isAuth.value = false;
+      return;
+    };
+    
     const DTO = {
       name: payload.name,
       surname: payload.surname,
       city: payload.city,
-      phone: payload.phone,
+      phone: String(payload.phone),
       index: payload.index,
       email: payload.email,
       timeStamp: Date.now(),
+      id: payload.id
     };
-    localUser.value = useStorage('user', DTO)
-   }
-  return { localUser, setLocalUser};
+  
+     
+    localUser.value = DTO;
+    isAuth.value = true;
+  }
+  return { localUser, setLocalUser, isSubscriber, setSubsciber, subscriber_email, isAuth };
 })

@@ -1,7 +1,8 @@
 <script setup>
-import { required, email, sameAs, minLength, helpers } from "@vuelidate/validators";
-
+import { required, email, minLength, helpers } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
+import {useLocalUserStore} from '~/stores/localStore';
+import {useMobileStore} from '~/stores/MobileMenu';
 const formData = reactive({
   email: "",
   password: "",
@@ -11,6 +12,9 @@ const icons = {
   password: "mdi:form-textbox-password",
 };
 
+const store = useLocalUserStore();
+const serverErrors = ref('');
+const loader = ref(false);
 const rules = computed(() => {
   return {
     email: {
@@ -26,6 +30,31 @@ const rules = computed(() => {
     },
   };
 });
+
+const loggin_function = async () => {
+    loader.value = true;
+ $fetch('/api/login', {
+        method: "POST",
+        body: {
+            email: formData.email,
+            password: formData.password,
+        }
+    }).then(res => {
+        if(res.statusCode === 301) {
+            store.setLocalUser(res.data);
+            document.body.style.overflow = "auto";
+            useMobileStore().onModal();
+            navigateTo('/account');
+        }
+    }).catch(error => {
+        if(error.statusCode === 404) {
+            serverErrors.value = 'Пользователь с такой почтой не существует и/или неверный пароль'
+            setTimeout(() =>  serverErrors.value = "", 2000)
+        }
+    }).finally(() => {
+        loader.value = false;
+    })
+}
 
 const $v = useVuelidate(rules, formData);
 
@@ -68,18 +97,22 @@ const formTouched = (field) => {
           :errors="$v?.password?.$errors[0]"
         ></Registerinput>
       </register-input-wrapper>
-
-      <Button class="mx-auto w-full relative" :disabled="false" @click.prevent="() => {}">
+      <span v-if="!serverErrors.length" class="text-xs w-full min-h-6"> </span>
+     <span v-if="serverErrors.length" class="text-xs text-red-500 w-full min-h-6 flex justify-center items-center">{{serverErrors}} </span>
+      <Button class="mx-auto w-full relative" @click="loggin_function" :disabled="serverErrors.length || $v.$errors[0] || loader">
         <span class="flex items-center justify-center w-full gap-2 mx-auto"
           >{{ "Войти" }}
-          <!-- <span
+          <span 
+              v-if="loader"
               name="loader"
-    
+     
               class="loader bg-yellow border-2 w-4 h-4 bt-2 border-t-white border-slate-300 rounded-full"
             >
-            </span> -->
+            </span>
         </span>
       </Button>
+
+
     </form>
   </div>
 </template>

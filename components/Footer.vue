@@ -1,4 +1,26 @@
 <script setup>
+import { required, email, minLength, helpers } from "@vuelidate/validators";
+
+import { useVuelidate } from "@vuelidate/core";
+const formData = reactive({
+  email: "",
+});
+
+const rules = computed(() => {
+  return {
+    email: {
+      required: helpers.withMessage("", required),
+      email: helpers.withMessage("Неверный формат электронной почты", email),
+    },
+  };
+});
+
+const $v = useVuelidate(rules, formData);
+
+const formTouched = (field) => {
+  $v.value[`${field}`].$touch();
+};
+
 const footerLinks = [
   "О сервисе",
   "Контакты",
@@ -9,14 +31,54 @@ const footerLinks = [
   "Тариф и политика возврата средств",
   "Хранение персональных данных",
 ];
+
+const serverError = ref("");
+const serverSuccess = ref("");
+const loading = ref(false);
+const localUser = useLocalUserStore();
+
+const onSubscribe = async (email) => {
+  loading.value = true;
+  $fetch("/api/subscribe", {
+    method: "POST",
+    body: {
+      email: email,
+    },
+    headers: { "cache-control": "no-cache" },
+  })
+    .then((res) => {
+      serverError.value = "";
+      if (res.status) {
+        serverSuccess.value = "Спасибо за подписку!";
+        localUser.setSubsciber(res.email);
+        formData.email = "";
+      }
+    })
+    .catch((e) => {
+      if (e.statusCode === 409) {
+        serverError.value = "Вы уже подписаны";
+      }
+    })
+    .finally(() => {
+      loading.value = false;
+      setTimeout(() => {
+        serverError.value = "";
+        serverSuccess.value = "";
+      }, 2000);
+    });
+};
 </script>
 
 <template>
-  <footer class="pt-8 px-0 mt-0 bg-slate-950 max-[822px]:px-0 max-[822px]:pt-2 shadow-md max-[822px]:mt-0">
-    <div class="flex justify-between max-[822px]:flex-col-reverse px-8 max-[822px]:px-2">
+  <footer
+    class="pt-8 px-0 mt-0 bg-slate-950 max-[822px]:px-0 max-[822px]:pt-2 shadow-md max-[822px]:mt-0"
+  >
+    <div
+      class="flex justify-between max-[822px]:flex-col-reverse px-8 max-[822px]:px-2"
+    >
       <div class="max-[822px]:text-xs">
         <div
-          class="flex gap-48 max-[822px]:gap-8 max-[822px]:justify-between w-full max-[822px]:py-4 "
+          class="flex gap-48 max-[822px]:gap-8 max-[822px]:justify-between w-full max-[822px]:py-4"
         >
           <ul class="flex flex-col gap-8 max-[468px]:gap-4">
             <li v-for="item in footerLinks.slice(0, 4)" :key="item">
@@ -38,20 +100,63 @@ const footerLinks = [
           </ul>
         </div>
 
-        <form class="flex py-12 gap-0">
-          <input
-            type="email"
-            class="px-2 py-2 w-full bg-slate-95 bg-slate-900 placeholder:text-white transition-all duration-300 placeholder:text-sm focus:outline-none focus:bg-slate-800 text-white focus:placeholder:text-slate-600"
-            placeholder="Введите ваш email"
-          />
-          <Button :radius="'rounded-r-md'"
-            >Подписаться</Button
-          >
+        <form class="flex flex-col py-12 gap-0">
+          <div class="flex">
+            <input
+              type="email"
+              v-model="formData.email"
+              :disabled="loading || localUser.isSubscriber"
+              @blur="() => formTouched('email')"
+              class="px-2 py-2 w-full bg-slate-95 bg-slate-900 disabled:opacity-50 placeholder:text-white transition-all duration-300 placeholder:text-sm focus:outline-none focus:bg-slate-800 text-white focus:placeholder:text-slate-600 max-[822px]:placeholder:text-xs"
+              :placeholder="localUser.subscriber_email || 'Введите ваш email'"
+            />
+           
+            <Button
+              :radius="'rounded-r-md relaive max-[822px]:placeholder:text-xs'"
+              :disabled="
+                !formData.email.length || loading || localUser.isSubscriber || $v?.email?.$errors[0]
+              "
+              @click="onSubscribe(formData.email)"
+              :color="localUser.isSubscriber ? 'bg-green-500' : 'bg-yellow'"
+              :hover="
+                localUser.isSubscriber
+                  ? 'hover:bg-green-500'
+                  : 'hover:bg-yellow'
+              "
+              :text="localUser.isSubscriber ? 'text-white' : 'text-slate-800'"
+              :hoverText="
+                localUser.isSubscriber
+                  ? 'hover:text-white'
+                  : 'hover:text-slate-800'
+              "
+              :class="[
+                {
+                  'pointer-events-none': localUser.isSubscriber,
+                },
+              ]"
+            >
+              {{
+                localUser.isSubscriber ? "Подписка оформлена" : "Подписаться"
+              }}
+              <span
+                name="loader"
+                v-if="loading"
+                class="loader bg-yellow border-2 absolute w-4 h-4 bt-2 border-t-white border-slate-300 rounded-full"
+              >
+              </span>
+            </Button>
+          </div>
+          <span v-if="serverError.length ||  $v?.email?.$errors[0]?.$message" class="text-red-500">{{
+            serverError || $v?.email?.$errors[0]?.$message
+          }}</span>
+          <span v-if="serverSuccess.length" class="text-green-600">{{
+            serverSuccess
+          }}</span>
         </form>
       </div>
 
       <div
-        class="flex flex-col items-center max-[822px]:flex  max-[822px]:flex-row max-[822px]:items-center max-[822px]:justify-between"
+        class="flex flex-col items-center max-[822px]:flex max-[822px]:flex-row max-[822px]:items-center max-[822px]:justify-between"
       >
         <h2
           class="text-2xl max-[1024px]:text-xl font-extrabold text-white uppercase max-[822px]:text-base"
@@ -93,169 +198,23 @@ const footerLinks = [
         </div>
       </div>
     </div>
-    <div class="w-full bg-slate-200 flex items-center px-4 py-0 max-[822px]:flex-col-reverse max-[822px]:px-2  max-[822px]:py-0">
-      <!-- <div class="flex items-center gap-4">
-        <svg
-          class=" exception max-[822px]:w-8"
-          width="54px"
-          height="54px"
-          viewBox="0 0 64 64"
-          id="Layer_1"
-          version="1.1"
-          xml:space="preserve"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
+    <div
+      class="w-full bg-slate-200 flex items-center px-4 py-0 max-[822px]:flex-col-reverse max-[822px]:px-2 max-[822px]:py-0"
+    >
+      <div
+        class="flex items-center gap-2 w-full justify-end max-[822px]:flex-col-reverse max-[822px]:justify-center"
+      >
+        <p
+          class="font-semibold text-slate-600 text-[12px] w-1/6 max-[822px]:w-full max-[822px]:text-[10px]"
         >
-          <g>
-            <polygon
-              class="st1"
-              points="8,47.53 10,51.96 54,51.96 56,47.53  "
-            />
-
-            <path
-              class="st2"
-              d="M50.01,18.7H13.99c-1.66,0-3,1.34-3,3v25.83h42.03V21.7C53.01,20.04,51.67,18.7,50.01,18.7z"
-            />
-
-            <rect class="st9" height="20.83" width="34.03" x="14.99" y="22.7" />
-
-            <rect
-              class="st10"
-              height="22.82"
-              width="21.04"
-              x="21.48"
-              y="20.71"
-            />
-
-            <g>
-              <g>
-                <path
-                  class="st4"
-                  d="M41.34,15.03l-8.8-2.91c-0.35-0.12-0.73-0.12-1.08,0l-8.8,2.91c-0.71,0.23-1.18,0.89-1.18,1.63v10.96     c0,2.3,1.06,4.46,2.86,5.88l6.24,4.88c0.83,0.65,2,0.65,2.83,0l6.24-4.88c1.81-1.41,2.86-3.58,2.86-5.88V16.67     C42.52,15.93,42.04,15.27,41.34,15.03z"
-                />
-
-                <path
-                  class="st6"
-                  d="M40.28,17.04v10.59c0,1.62-0.73,3.11-2,4.12l-6.24,4.88L32,36.64c-0.02,0-0.03-0.01-0.03-0.02l-6.25-4.88     c-1.28-1-2-2.5-2-4.12V17.04L32,14.3L40.28,17.04z"
-                />
-              </g>
-
-              <g>
-                <polygon
-                  class="st3"
-                  points="29.74,30.52 26.08,26.87 28.03,24.92 29.74,26.63 35.97,20.39 37.92,22.34    "
-                />
-              </g>
-            </g>
-          </g>
-        </svg>
-
-        <svg
-
-          width="36px"
-          height="36px"
-          class=" exception max-[822px]:w-6"
-          viewBox="0 0 50 50"
-          enable-background="new 0 0 50 50"
-          id="Layer_1"
-          version="1.1"
-          xml:space="preserve"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
+          Тел.: +48 221 530 522
+        </p>
+        <p
+          class="font-semibold text-slate-600 text-[12px] w-1/3 max-[822px]:w-full max-[822px]:text-[10px]"
         >
-          <g>
-            <path
-              d="M45.47913,42.49568H4.5208c-1.9445,0-3.52083-1.57633-3.52083-3.52083V6.5606   c0-1.9445,1.57633-3.52083,3.52083-3.52083h40.95833c1.9445,0,3.52083,1.57633,3.52083,3.52083v32.41425   C48.99996,40.91935,47.42363,42.49568,45.47913,42.49568z"
-              fill="#E7E3E6"
-            />
-
-            <g>
-              <path
-                d="M19.02511,16.47119c-0.13232,0.1084-0.19873,0.25293-0.19873,0.43262s0.08105,0.32227,0.24268,0.42871    c0.16211,0.10547,0.53613,0.23047,1.12207,0.375c0.58545,0.14453,1.04053,0.36035,1.36426,0.64941    c0.32373,0.28809,0.48584,0.70898,0.48584,1.2627s-0.20752,1.00293-0.62256,1.34668    c-0.41504,0.34473-0.96143,0.5166-1.63818,0.5166c-0.97754,0-1.85791-0.36133-2.64111-1.08594l0.82129-1.00684    c0.66553,0.58301,1.28076,0.87402,1.84619,0.87402c0.25293,0,0.45166-0.05371,0.59619-0.16309    c0.14404-0.10938,0.21631-0.25586,0.21631-0.44141s-0.07666-0.33301-0.22949-0.44141    c-0.15332-0.10938-0.45654-0.21973-0.90967-0.33203c-0.71875-0.16992-1.24414-0.39258-1.57666-0.66602    c-0.33301-0.27441-0.49902-0.7041-0.49902-1.29004s0.21045-1.03808,0.63135-1.35547    c0.4209-0.31836,0.94629-0.47754,1.57666-0.47754c0.41211,0,0.82422,0.07129,1.23633,0.21289    c0.41211,0.14063,0.77148,0.34082,1.07764,0.60059l-0.69775,1.00683c-0.53564-0.40625-1.08936-0.60938-1.66064-0.60938    C19.33859,16.30811,19.15744,16.36182,19.02511,16.47119z"
-                fill="#85BD57"
-              />
-
-              <path
-                d="M24.65988,16.47119c-0.13232,0.1084-0.19873,0.25293-0.19873,0.43262s0.08105,0.32227,0.24268,0.42871    c0.16211,0.10547,0.53613,0.23047,1.12207,0.375c0.58545,0.14453,1.04053,0.36035,1.36426,0.64941    c0.32373,0.28809,0.48584,0.70898,0.48584,1.2627s-0.20752,1.00293-0.62256,1.34668    c-0.41504,0.34473-0.96143,0.5166-1.63818,0.5166c-0.97754,0-1.85791-0.36133-2.64111-1.08594l0.82129-1.00684    c0.66553,0.58301,1.28076,0.87402,1.84619,0.87402c0.25293,0,0.45166-0.05371,0.59619-0.16309    c0.14404-0.10938,0.21631-0.25586,0.21631-0.44141s-0.07666-0.33301-0.22949-0.44141    c-0.15332-0.10938-0.45654-0.21973-0.90967-0.33203c-0.71875-0.16992-1.24414-0.39258-1.57666-0.66602    c-0.33301-0.27441-0.49902-0.7041-0.49902-1.29004s0.21045-1.03808,0.63135-1.35547    c0.4209-0.31836,0.94629-0.47754,1.57666-0.47754c0.41211,0,0.82422,0.07129,1.23633,0.21289    c0.41211,0.14063,0.77148,0.34082,1.07764,0.60059l-0.69775,1.00683c-0.53564-0.40625-1.08936-0.60938-1.66064-0.60938    C24.97335,16.30811,24.7922,16.36182,24.65988,16.47119z"
-                fill="#85BD57"
-              />
-
-              <path
-                d="M28.8508,21.4126v-6.17383h1.37744v4.94629h2.63232v1.22754H28.8508z"
-                fill="#85BD57"
-              />
-            </g>
-
-            <path
-              d="M48.99997,10.066V6.56059c0-1.94453-1.57633-3.52086-3.52081-3.52086H4.52079   c-1.94448,0-3.52081,1.57633-3.52081,3.52086V10.066H48.99997z"
-              fill="#53B1E2"
-            />
-
-            <path
-              d="M17.06462,10.71367H4.45078v-2.7194c0-0.67552,0.54762-1.22313,1.22313-1.22313h10.16758   c0.67552,0,1.22313,0.54762,1.22313,1.22313V10.71367z"
-              fill="#E7E3E6"
-            />
-
-            <path
-              d="M29.67847,10.066H17.06462V7.99427c0-0.67552,0.54762-1.22313,1.22313-1.22313h10.16758   c0.67552,0,1.22313,0.54762,1.22313,1.22313V10.066z"
-              fill="#D2D2D2"
-            />
-
-            <circle cx="40.42995" cy="6.85486" fill="#E7E3E6" r="1.34955" />
-
-            <circle cx="36.3145" cy="6.85486" fill="#E7E3E6" r="1.34955" />
-
-            <g>
-              <polygon
-                fill="#656766"
-                points="38.25036,36.57332 40.56499,46.96027 35.88287,44.40302 35.88287,36.57332   "
-              />
-
-              <polygon
-                fill="#4E4C4D"
-                points="33.51537,36.57332 31.20074,46.96027 35.88287,44.40302 35.88287,36.57332   "
-              />
-
-              <path
-                d="M41.5854,35.56115l-0.00003,0.00003v0.00006c0,1.84353-1.49448,3.33801-3.33801,3.33801h0l-0.006,0.006    c-1.30357,1.30357-3.41708,1.30357-4.72065,0l-0.006-0.006h-0.00006c-1.84353,0-3.33801-1.49448-3.33801-3.33801v-0.00901    l-0.00006-0.00006c-1.30189-1.30192-1.30187-3.41271,0.00003-4.71461l0.00003-0.00003v-0.01326    c0-1.84118,1.49257-3.33375,3.33375-3.33375h0.01332l0,0c1.30191-1.30191,3.41272-1.30191,4.71464,0v0h0.00896    c1.84356,0,3.33806,1.4945,3.33806,3.33806v0l0,0C42.89226,32.13543,42.89227,34.25428,41.5854,35.56115z"
-                fill="#EC6E62"
-              />
-
-              <circle cx="35.88287" cy="33.19849" fill="#FFC966" r="3.37482" />
-            </g>
-
-            <g>
-              <rect
-                fill="#D2D2D2"
-                height="2.22496"
-                width="18.92076"
-                x="5.64066"
-                y="26.51408"
-              />
-
-              <rect
-                fill="#D2D2D2"
-                height="2.22496"
-                width="18.92076"
-                x="5.64066"
-                y="30.83174"
-              />
-
-              <rect
-                fill="#D2D2D2"
-                height="2.22491"
-                width="11.15332"
-                x="5.64065"
-                y="35.14944"
-              />
-            </g>
-          </g>
-        </svg>
-      </div> -->
-
-      <div class="flex items-center gap-2 w-full justify-end max-[822px]:flex-col-reverse max-[822px]:justify-center">
-        <p class="font-semibold text-slate-600 text-[12px] w-1/6 max-[822px]:w-full max-[822px]:text-[10px]">Тел.: +48 221 530 522</p>
-        <p class="font-semibold text-slate-600 text-[12px] w-1/3 max-[822px]:w-full max-[822px]:text-[10px]">SIA "LeadProm Media", зарегистрированная по адресу улица Матиса, 61 - 31, Рига, LV-1009, Латвия</p>
+          SIA "LeadProm Media", зарегистрированная по адресу улица Матиса, 61 -
+          31, Рига, LV-1009, Латвия
+        </p>
       </div>
     </div>
   </footer>
@@ -309,9 +268,9 @@ const footerLinks = [
 }
 
 @media screen and (max-width: 822px) {
-    svg:not(.exception) {
-        width: 48px;
-        height: 48px;
-    }
+  svg:not(.exception) {
+    width: 48px;
+    height: 48px;
+  }
 }
 </style>

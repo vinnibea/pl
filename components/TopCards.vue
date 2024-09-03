@@ -20,9 +20,9 @@ const cardContent = [
 
 <template>
   <div class="w-full px-8 max-[822px]:px-0">
-    <div class="flex flex-row items-center justify-center max-[822px]:hidden gap-3 w-full">
+    <div class="flex flex-row items-center justify-center max-[950px]:flex-col max-[822px]:hidden gap-3 w-full">
       <div
-        class="flex flex-col w-1/3 max-w-1/3 bg-yellow items-center flex-shrink-0 shadow-md text-whit text-4xl text-white font-semibold rounded-md px-2 py-4"
+        class="flex flex-col w-1/3 max-w-1/3 max-[950px]:w-full bg-yellow items-center flex-shrink-0 shadow-md text-whit text-4xl text-white font-semibold rounded-md px-2 py-4"
         v-for="item in cardContent"
         :key="item.title"
       >

@@ -9,11 +9,12 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     "@nuxt/icon",
     'nuxt-swiper',
-    '@vueuse/motion/nuxt'
+    '@vueuse/motion/nuxt',
+    '@nuxt/ui',
   ],
   tailwindcss: {
     exposeConfig: true,
-    cssPath: '~/assets/main.css',
+    cssPath: ["~/assets/main.css", { injectPosition: 0 }],
     configPath: 'tailwind.config.js',
     config: {},
     injectPosition: 0,
@@ -29,5 +30,16 @@ export default defineNuxtConfig({
       "Montserrat Alternates": true,
     },
     display: 'swap',
+  },
+
+  runtimeConfig: {
+    mongoUrl: process.env.MONGO_DB_URI,
+    secret: process.env.SECRET,
+  },
+
+  icon: {
+    serverBundle: {
+      externalizeIconsJson: true,
+    }
   },
 })
