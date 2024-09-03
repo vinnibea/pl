@@ -4,7 +4,14 @@ import { default as dto } from '../utils/dto';
 const config = useRuntimeConfig();
 
 export default defineEventHandler(async (event) => {
+   try {
     const user = await getCookie(event, "uid");
+   } catch (error) {
+     throw createError({
+        statusCode: 400,
+        statusMessage: 'some'
+     })
+   }
     if(user) {
         try {
            const verified_user = await jwt.verify(user, config.secret);
