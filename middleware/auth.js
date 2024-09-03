@@ -16,6 +16,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
                 }
                 return res;
             }).catch((e) => {
+                console.warn(e, 'error from middleware')
                 localStore.setLocalUser()
                 return navigateTo('/')
             })
