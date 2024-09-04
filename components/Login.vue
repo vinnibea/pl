@@ -166,7 +166,7 @@ const inputType = ref(false);
         <div class="flex items-center py-4">
           <div class="h-[1px] w-1/2 bg-slate-300"></div>
           <span
-            class="w-1/3 text-center uppercase text-[10px] font-semibold text-blue-500"
+            class="w-1/3 text-center uppercase text-[8px] font-semibold text-neutral-500"
             >Нет аккаунта?</span
           >
           <div class="h-[1px] w-1/2 bg-slate-300"></div>
