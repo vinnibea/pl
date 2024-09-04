@@ -86,7 +86,7 @@ const inputType = ref(false);
       Вход в аккаунт
     </h2>
     <form
-      class="flex flex-col gap-2 max-[822px]:gap-2 py-16 max-[822px]:py-12 px-16 max-[822px]:px-6"
+      class="flex flex-col gap-2 max-[822px]:gap-4 py-16 max-[822px]:py-12 px-16 max-[822px]:px-2 max-[822px]:justify-between"
     >
       <register-input-wrapper>
         <Registerinput
