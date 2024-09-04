@@ -7,7 +7,7 @@ export default {
              phone: payload.phone,
              index: payload.index,
              email: payload.email,
-             id: payload._id,
+             id: payload._id || payload.id,
          }
      }
 }

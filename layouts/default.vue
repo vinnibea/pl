@@ -37,7 +37,8 @@ const localModalCloser = () => {
       ]"
     ></Footer>
     <div
-      class="absolute bg-slate-800 opacity-90 top-0 left-0 bottom-0 right-0 z-20 backdrop::blur-md px-4 py-4 max-[822px]:bg-slate-700 max-[822px]:hidden max-[822px]:px-2 max-[822px]:py-0 max-[822px]:opacity-90"
+      class="absolute bg-slate-800 opacity-90 top-0 left-0 bottom-0 right-0 z-20 backdrop::blur-md px-4 
+      py-4 max-[822px]:bg-slate-700 max-[822px]:hidden max-[822px]:px-2 max-[822px]:py-0 max-[822px]:opacity-90"
       @click="
         () => {
           store.onPolitics(false);

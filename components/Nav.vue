@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <nav
-    class="flex items-center flex-col max-[822px]:relative max-[822px]:z-50"
+    class="flex items-center flex-col  max-[822px]:relative max-[822px]:z-50"
     :class="[
       {
         'max-[822px]:hidden': !isMobile,
@@ -19,7 +19,7 @@ defineProps({
     ]"
   >
     <ul
-      class="flex gap-14 max-[1224px]:gap-4 max-[882px]:gap-12 font-medium text-base"
+      class="flex min-h-[32px] gap-14 max-[1224px]:gap-4 max-[822px]:gap-12 font-medium text-base"
       :class="[
         {
           'flex-col': isMobile,

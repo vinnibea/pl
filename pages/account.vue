@@ -23,7 +23,7 @@ watch(width, (newVal) => {
     asideStore.setSelectedSection(null);
     asideStore.setMobile(true);
     return;
-  } else if (newVal > 822 && asideStore.isMobile) {
+  } else if (newVal > 822) {
     if (asideStore.selectedSection === null) {
       asideStore.setSelectedSection(0);
       asideStore.setMobile(false);
@@ -33,7 +33,7 @@ watch(width, (newVal) => {
       return;
     }
   }
-});
+}, {immediate: true});
 
 onBeforeMount(() => {
   $fetch("/api/")
@@ -47,10 +47,10 @@ onBeforeMount(() => {
 </script>
 <template>
   <NuxtLayout name="account">
-    <div class="w-full flex" v-if="authStore.isAuth" v-motion-fade>
-      <account-aside v-motion-fade></account-aside>
+    <div class="w-full flex relative" v-if="authStore.isAuth">
+      <account-aside></account-aside>
       <div
-        class="w-full py-16 pl-[388px] max-[822px]:pl-[72px] pr-2 bg-white min-h-[calc(100svh)]"
+        class="w-full py-16 pl-[420px] max-[822px]:pl-[72px] pr-2 bg-white min-h-[calc(100svh)]"
         v-if="asideStore.selectedSection !== null || !asideStore.isMobile"
       >
         <component

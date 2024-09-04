@@ -29,13 +29,13 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
 </script>
 <template>
   <header
-    class="w-full flex z-20 justify-between items-center py-2 px-4 max-[822px]:fixed max-[822px]:z-50 bg-white max-[822px]:px-2"
+    class="w-full flex z-20 justify-between  items-center py-2 px-4 max-[822px]:fixed max-[822px]:z-50 bg-white max-[822px]:px-2"
     :class="[
-      {
+      {  'shadow-lg': !fixedHeader,
         'rounded-b-xl': store.state,
-        'shadow-none': store.state,
-        fixed: fixedHeader,
-        'shadow-md': !fixedHeader && !store.openModal,
+        'max-[822px]:shadow-none': store.state,
+         fixed: fixedHeader,
+        'max-[822px]:shadow-md': !fixedHeader && !store.openModal,
         'border-slate-200': fixedHeader,
         'border-b': fixedHeader,
       },
@@ -95,7 +95,7 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
 
       <USkeleton
         v-if="globalStore.loading"
-        class="h-10 w-[250px] bg-slate-300 max-[822px]:hidden"
+        class="h-[38px] w-[250px] bg-slate-300 max-[822px]:hidden"
         :config="{
           base: 'animate-pulse',
           background: 'bg-gray-100 dark:bg-gray-800',
@@ -108,18 +108,18 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
       />
 
       <div
-        class="flex items-center justify-center w-[250px] max-[820px]:hidden"
+        class="flex items-center justify-center w-[250px] max-[822px]:hidden h-[38px]"
         v-if="!auth.isAuth && !globalStore.loading"
       >
         <button
           @click="localModalOpener()"
-          class="uppercase bg-button-grey h-10 max-[820px]:hidden text-white font-semibold px-6 max-[1224px]:text-xs text-sm py-2 rounded-l-md hover:bg-dark-grey transition-all"
+          class="uppercase bg-button-grey max-[820px]:hidden text-white font-semibold px-6 max-[1224px]:text-xs text-sm py-2 rounded-l-md hover:bg-dark-grey transition-all"
         >
           Войти
         </button>
         <NuxtLink to="/register">
           <button
-            class="uppercase px-6 text-sm py-2 h-10 max-[820px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-r-md hover:bg-hover-yellow transition-all"
+            class="uppercase px-6 text-sm py-2 max-[820px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-r-md hover:bg-hover-yellow transition-all"
           >
             Регистрация
           </button>
@@ -127,14 +127,14 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
       </div>
       <div
         v-if="auth.isAuth && !globalStore.loading"
-        class="flex items-center justify-center w-[250px] max-[820px]:hidden"
+        class="flex items-center justify-center w-[250px] max-[822px]:hidden h-[38px]"
         :class="[
           { 'opacity-0 pointer-events-none': route.fullPath === '/account' },
         ]"
       >
         <NuxtLink to="/account">
           <button
-            class="uppercase h-10 px-6 text-sm py-2 max-[820px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-md hover:bg-hover-yellow transition-all"
+            class="uppercase h-full px-6 text-sm py-2 max-[822px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-md hover:bg-hover-yellow transition-all"
           >
             Личный кабинет
           </button>

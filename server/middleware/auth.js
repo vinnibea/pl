@@ -1,4 +1,14 @@
+import jwt from 'jsonwebtoken';
+  
+  export default defineEventHandler(async (event) => {
+    const token = await getCookie(event, 'uid');
 
-  export default defineEventHandler((event) => {
-    event.context.auth = { user: 123 }
+    if(token) {
+       try {
+        const verified_token = jwt.verify(token, useRuntimeConfig().secret);
+        event.context.auth = {...verified_token}
+       } catch (error) {
+        event.context.auth = false;
+       }
+    }
   })

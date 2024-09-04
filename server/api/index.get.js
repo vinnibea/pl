@@ -4,7 +4,11 @@ import { default as dto } from '../utils/dto';
 const config = useRuntimeConfig();
 
 export default defineEventHandler(async (event) => {
-    console.log(event.context.user)
+    if(event.context.auth) {
+      return dto.user_to_dto(event.context.auth);
+    }
+
+
    try {
     const user = await getCookie(event, "uid");
     if(user) {

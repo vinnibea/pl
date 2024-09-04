@@ -37,7 +37,7 @@ const logout = () => {
 
 <template>
   <aside
-    class="w-[380px] flex flex-col min-h-[calc(100svh)] fixed py-16 max-[1224px]:py-16 justify-between bg-white items-center max-[822px]:px-0 gap-4"
+    class="w-[420px] flex flex-col min-h-[calc(100svh)] fixed py-16 max-[1224px]:py-16 justify-between bg-white items-center max-[822px]:px-0 gap-4"
     :class="[
       {
         'bg-slate-900': asideStore.selectedSection !== null,
@@ -100,7 +100,7 @@ const logout = () => {
         ></Icon>
       </li>
     </ul>
-    <div class="flex justify-center w-full px-4 max-[822px]:px-1">
+    <div class="flex justify-center min-w-full px-4 max-[822px]:px-1">
       <Button
         v-if="
           !asideStore.isMobile ||
@@ -109,7 +109,7 @@ const logout = () => {
         @click="logout"
         :color="'bg-yellow'"
         :text="'text-neutral-600'"
-        class="text-sm normal-nums"
+        class="text-sm normal-nums min-w-full"
         >Выход</Button
       >
       <Icon
