@@ -31,7 +31,7 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
   <header
     class="w-full flex z-20 justify-between  items-center py-2 px-4 max-[822px]:fixed max-[822px]:z-50 bg-white max-[822px]:px-2"
     :class="[
-      {  'shadow-lg': !fixedHeader,
+      {  'min-[822px]:shadow-lg': !fixedHeader,
         'rounded-b-xl': store.state,
         'max-[822px]:shadow-none': store.state,
          fixed: fixedHeader,
@@ -94,7 +94,7 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
       </button>
 
       <USkeleton
-        v-if="globalStore.loading"
+        v-if="globalStore.loading && !route.fullPath === '/account'"
         class="h-[38px] w-[250px] bg-slate-300 max-[822px]:hidden"
         :config="{
           base: 'animate-pulse',
