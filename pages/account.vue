@@ -18,17 +18,21 @@ const asideStore = useAccountStore();
 const components = [Profile, Creditors, Subscription];
 const authStore = useLocalUserStore();
 
-watch(width, (newVal) => {
+watch(width, async (newVal) => {
   if (newVal <= 822) {
+    await asideStore.setMobile(true);
     asideStore.setSelectedSection(null);
-    asideStore.setMobile(true);
+    
     return;
-  } else if (newVal > 822) {
+  } else if (newVal > 822 && asideStore.selectedSection === null) {
     asideStore.setMobile(false);
     asideStore.setSelectedSection(0);
       return;
+  } else if (newVal > 822 && asideStore.selectedSection !== null) {
+    asideStore.setMobile(false);
+    return;
   }
-}, {immediate: true});
+});
 
 onBeforeMount(() => {
   $fetch("/api/")
