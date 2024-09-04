@@ -19,7 +19,7 @@ const components = [Profile, Creditors, Subscription];
 const authStore = useLocalUserStore();
 
 watch(width, (newVal) => {
-  if (newVal <= 822) {
+  if (newVal <= 822 && !asideStore.isMobile) {
     asideStore.setSelectedSection(null);
     asideStore.setMobile(true);
     return;
@@ -47,10 +47,10 @@ onBeforeMount(() => {
 </script>
 <template>
   <NuxtLayout name="account">
-    <div class="w-full flex relative" v-if="authStore.isAuth">
+    <div class="w-full flex relative" v-if="authStore.isAuth" v-motion-fade>
       <account-aside></account-aside>
       <div
-        class="w-full py-16 pl-[420px] max-[822px]:pl-[72px] pr-2 bg-white min-h-[calc(100svh)]"
+        class="w-full py-16 pl-[480px] max-[822px]:pl-[72px] pr-2 bg-white min-h-[calc(100svh)]"
         v-if="asideStore.selectedSection !== null || !asideStore.isMobile"
       >
         <component
