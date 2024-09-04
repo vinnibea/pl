@@ -2,7 +2,7 @@ import { useStorage } from '@vueuse/core'
 import { defineStore } from '#imports';
 export const useAccountStore = defineStore('account_store', () => {
     const selectedSection = ref(0);
-    const isMobile = ref(false);
+    const isMobile = ref(true);
 
     const setSelectedSection = (payload) => {
       if(payload === selectedSection.value && isMobile.value) {

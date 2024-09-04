@@ -19,7 +19,7 @@ const components = [Profile, Creditors, Subscription];
 const authStore = useLocalUserStore();
 
 watch(width, (newVal) => {
-  if (newVal <= 822 && !asideStore.isMobile) {
+  if (newVal <= 822) {
     asideStore.setSelectedSection(null);
     asideStore.setMobile(true);
     return;
