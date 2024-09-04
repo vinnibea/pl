@@ -1,7 +1,7 @@
 <script setup>
 import { useMobileStore } from "~/stores/MobileMenu.js";
 import { useResizeObserver } from "@vueuse/core";
-
+import { useAccountStore } from "~/stores/accountStore";
 const store = useMobileStore();
 
 const windowWidthRef = ref(null);

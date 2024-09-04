@@ -1,6 +1,18 @@
 
 <script setup>
-   const route = useRoute();
+import { useLocalUserStore } from "~/stores/localStore.js";
+import { useMobileStore } from "~/stores/MobileMenu.js";
+  const route = useRoute();
+  const auth = useLocalUserStore();
+
+
+  
+const store = useMobileStore();
+const onModalOpen = () => {
+  document.body.style.overflow = "hidden";
+    store.onModal();
+};
+
  </script>
 
 <template>
@@ -36,15 +48,29 @@
 
    
     
-    <NuxtLink to="/register" class="flex items-center justify-center px-2 py-2">
+    <NuxtLink v-if="auth.isAuth" :to="'/account'" class="flex items-center justify-center px-2 py-2">
       <Icon
         class="transition-all duration-300 hover:bg-amber-300  cursor-pointer"
         name="ic:baseline-person"
         size="36"
         :class="[
           {
-            'bg-amber-300': route.fullPath == '/register',
-            ' bg-slate-300': route.fullPath !== '/register',
+            'bg-amber-300': route.fullPath == '/account',
+            ' bg-slate-300': route.fullPath !== '/account',
+          },
+        ]"
+      ></Icon>
+    </NuxtLink>
+
+    <NuxtLink v-if="!auth.isAuth" :to="'/'" class="flex items-center justify-center px-2 py-2" @click="onModalOpen">
+      <Icon
+        class="transition-all duration-300 hover:bg-amber-300  cursor-pointer"
+        name="ic:baseline-person"
+        size="36"
+        :class="[
+          {
+            'bg-amber-300': route.fullPath == '/account',
+            ' bg-slate-300': route.fullPath !== '/account',
           },
         ]"
       ></Icon>

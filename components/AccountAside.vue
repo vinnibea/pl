@@ -112,6 +112,7 @@ const logout = () => {
         class="text-sm normal-nums min-w-full"
         >Выход</Button
       >
+      
       <Icon
         v-else
         name="material-symbols:exit-to-app"

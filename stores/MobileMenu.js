@@ -10,7 +10,6 @@ export const useMobileStore = defineStore('mobile_menu', () => {
    }
 
    const onModal = () => {
-    
     openModal.value = !openModal.value;
    }
    const onPolitics = (i) => {

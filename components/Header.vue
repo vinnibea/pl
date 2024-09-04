@@ -94,7 +94,7 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
       </button>
 
       <USkeleton
-        v-if="globalStore.loading && !route.fullPath === '/account'"
+        v-if="globalStore.loading && route.fullPath === '/'"
         class="h-[38px] w-[250px] bg-slate-300 max-[822px]:hidden"
         :config="{
           base: 'animate-pulse',

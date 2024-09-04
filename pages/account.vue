@@ -24,16 +24,11 @@ watch(width, (newVal) => {
     asideStore.setMobile(true);
     return;
   } else if (newVal > 822) {
-    if (asideStore.selectedSection === null) {
-      asideStore.setSelectedSection(0);
-      asideStore.setMobile(false);
+    asideStore.setMobile(false);
+    asideStore.setSelectedSection(0);
       return;
-    } else {
-      asideStore.setMobile(true);
-      return;
-    }
   }
-});
+}, {immediate: true});
 
 onBeforeMount(() => {
   $fetch("/api/")

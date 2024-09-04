@@ -4,6 +4,7 @@ import { useLocalUserStore } from "~/stores/localStore.js";
 const store = useMobileStore();
 const menu = ref(null);
 const auth = useLocalUserStore();
+const route = useRoute()
 
 const containerHeight = computed(() => menu?.value?.offsetHeight);
 
@@ -76,8 +77,8 @@ const onModalClose = () => {
         v-else
         class="flex flex-col items-stretch w-full gap-4 px-4 py-4 absolute bottom-6 left-0 right-0"
       >
-        <NuxtLink to="/account" @click="onModalClose">
-          <Button :color="'bg-yellow'">Перейти в профиль</Button>
+        <NuxtLink :to="route.fullPath !== '/account' ? '/account' : '/'" @click="onModalClose">
+          <Button :color="'bg-yellow'">{{route.fullPath !== '/account' ? 'Перейти в профиль' : 'На главную'}}</Button>
         </NuxtLink>
       </div>
     </div>
