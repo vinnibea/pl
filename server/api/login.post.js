@@ -3,7 +3,6 @@ import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
 import {default as dto} from '../utils/dto';
 const config = useRuntimeConfig();
-
 export default defineEventHandler(async (event) => {
     const user_data = await readBody(event);
     if (!user_data.password || !user_data.email) {

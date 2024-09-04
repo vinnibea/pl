@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     '@vueuse/motion/nuxt',
     '@nuxt/ui',
   ],
+
   tailwindcss: {
     exposeConfig: true,
     cssPath: ["~/assets/main.css", { injectPosition: 0 }],
