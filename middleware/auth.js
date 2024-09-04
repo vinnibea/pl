@@ -6,9 +6,11 @@ export default defineNuxtRouteMiddleware((to, from) => {
    console.log(to)
     if (!isAuth.value) {
         $fetch('/api/profile').then(res => {
+            console.log(res)
             localStore.setLocalUser(res);
             return navigateTo(to.fullPath)
-        }).catch(() => {
+        }).catch((e) => {
+            console.log(e)
             return navigateTo('/')
         })
 
