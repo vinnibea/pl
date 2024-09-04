@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
-const config = useRuntimeConfig();
+
 export default async () => {
+
   try {
+    const config = useRuntimeConfig();
     await mongoose.connect(config.mongoUrl);
     console.log("DB connection established.");
   } catch (err) {

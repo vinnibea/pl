@@ -2,12 +2,13 @@ import { default as users } from '../schemas/user';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const config = useRuntimeConfig()
 
-const saltRounds = 3;
 export default defineEventHandler(async (event) => {
+    const config = useRuntimeConfig()
+
+    const saltRounds = 3;
     const register_data = await readBody(event);
-   console.log(register_data)
+    console.log(register_data)
     if (register_data.password && !register_data.email) {
         const cookie = jwt.sign(register_data.password, config.secret);
         setCookie(event, 'tp', cookie);
@@ -48,7 +49,7 @@ export default defineEventHandler(async (event) => {
                         statusCode: 400,
                     })
                 }
-               
+
             }
         }
     } else {

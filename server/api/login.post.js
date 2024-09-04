@@ -2,8 +2,9 @@ import { default as users } from '../schemas/user';
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
 import {default as dto} from '../utils/dto';
-const config = useRuntimeConfig();
+
 export default defineEventHandler(async (event) => {
+    const config = useRuntimeConfig();
     const user_data = await readBody(event);
     if (!user_data.password || !user_data.email) {
         throw createError({

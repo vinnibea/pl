@@ -1,5 +1,4 @@
 export default defineEventHandler(async (event) => {
-    console.log(event)
     try {
         await deleteCookie(event, 'uid');
         return {

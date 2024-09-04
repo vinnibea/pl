@@ -1,18 +1,16 @@
+
 import { useLocalUserStore } from "~/stores/localStore";
-export default defineNuxtRouteMiddleware((to, from) => {
+export default defineNuxtRouteMiddleware(async (to, from) => {
 
     const { isAuth } = storeToRefs(useLocalUserStore());
     const localStore = useLocalUserStore();
-   console.log(to)
     if (!isAuth.value) {
-        $fetch('/api/profile').then(res => {
-            console.log(res)
-            localStore.setLocalUser(res);
-            return navigateTo(to.fullPath)
-        }).catch((e) => {
-            console.log(e)
-            return navigateTo('/')
-        })
 
+        const { data, status, error, refresh, clear } = await useFetch('/api/profile')
+        console.log(data)
+        if(data.value !== null) {
+           return localStore.setLocalUser(data.value);
+        }
+        return navigateTo('/');
     }
 })
