@@ -1,17 +1,125 @@
 <script setup>
+import { required, minLength, helpers } from "@vuelidate/validators";
+import { watch } from "vue";
+import { useVuelidate } from "@vuelidate/core";
 import { useMobileStore } from "~/stores/MobileMenu.js";
 import { useRegisterStore } from "~/stores/RegisterStore.js";
 import { useLocalUserStore } from "~/stores/localStore.js";
-import { loadStripe } from "@stripe/stripe-js";
+import Registerinput from "~/components/Registerinput.vue";
+import { useActiveElement } from "@vueuse/core";
+
+
+
+const focusOnCard = ref(null);
+// const activeElement = useActiveElement();
 const showReverse = ref(false);
+// const key = computed(() => activeElement.value?.dataset?.id || "null");
+// watch(activeElement, (el) => {
+//   if (el.id === "cvc") {
+//     showReverse.value = true;
+//     focusOnCard.value = el.id;
+//     return;
+//   }
+//   showReverse.value = false;
+//   focusOnCard.value = el.id;
+// });
 
 const store = useMobileStore();
 const localStore = useLocalUserStore();
 const registerStore = useRegisterStore();
 
+const icons = {
+  profile: "mdi:account-circle",
+  card: "mdi:credit-card",
+  cvc: "mdi:credit-card-lock",
+  valid_until: "mdi:calendar-month",
+};
+
+const formData = reactive({
+  card: "",
+  card_holder: "",
+  cvc: "",
+  valid_until: "",
+
+  accept: false,
+});
+
 const card_pattern = ref("**** **** **** ****");
 const name_pattern = ref("CARDHOLDER NAME");
 const valid_pattern = ref("MM/YY");
+
+watch(
+  () => formData.valid_until,
+  (newVal, oldVal) => {
+    if (oldVal.length === 2 && !newVal.includes("/") && newVal.length === 3) {
+      formData.valid_until =
+        formData.valid_until.slice(0, 2) + "/" + formData.valid_until.slice(2);
+    }
+  }
+);
+
+const rules = computed(() => {
+  return {
+    valid_until: {
+      required: helpers.withMessage("Это поле не может быть пустым", required),
+      number: helpers.withMessage("Допустимы только числовые значения", (val) =>
+        val.match(/^[0-9/]+$/)
+      ),
+      validMonth: helpers.withMessage(
+        "Значение месяца не может быть больше двенадцати (12)",
+        (val) => +val.split("/")[0] <= 12
+      ),
+
+      minLength: helpers.withMessage(
+        "Укажите месяц и год истечения срока действия карты",
+        minLength(5)
+      ),
+    },
+    cvc: {
+      required: helpers.withMessage("Это поле не может быть пустым", required),
+      number: helpers.withMessage("Допустимы только числовые значения", (val) =>
+        val.match(/^[0-9]+$/)
+      ),
+
+      minLength: helpers.withMessage(
+        `Это поле не может быть короче трех символов`,
+        minLength(3)
+      ),
+    },
+    card: {
+      number: helpers.withMessage("Допустимы только числовые значения", (val) =>
+        val.match(/^[0-9 ]+$/)
+      ),
+      required: helpers.withMessage("Это поле не может быть пустым", required),
+      minLength: helpers.withMessage(
+        `Это поле не может быть короче 16 символов`,
+        minLength(16)
+      ),
+    },
+
+    card_holder: {
+      number: helpers.withMessage(
+        "Допустимы латинские буквы и пробелы",
+        (val) => val.match(/^[A-z a-z]+$/)
+      ),
+      required: helpers.withMessage("Это поле не может быть пустым", required),
+      minLength: helpers.withMessage(
+        `Это поле не может быть короче 3 символов`,
+        minLength(3)
+      ),
+    },
+    accept: {
+      required: helpers.withMessage(
+        "Чтобы продолжить, согласитесь с условиями сервиса",
+        required
+      ),
+      isAccceted: helpers.withMessage(
+        "Чтобы продолжить, согласитесь с условиями сервиса",
+        (val) => val
+      ),
+    },
+  };
+});
 
 const setCardEmmiter = computed(() => {
   if (card_pattern.value.startsWith("5")) {
@@ -23,115 +131,113 @@ const setCardEmmiter = computed(() => {
     return "default";
   }
 });
+const $v = useVuelidate(rules, formData);
+
+const onInputFieldChange = (val, field) => {
+  if (field === "valid_until") {
+    if (val && val.length < 2) {
+      valid_pattern.value = val + "M/YY";
+    }
+    if (val.length === 2) {
+      valid_pattern.value = val + "/YY";
+    }
+    if (val.length === 3 && !val.includes("/")) {
+      valid_pattern.value = val.slice(0, 2) + "/" + val.slice(2) + "Y";
+    }
+    if (val.length === 3 && val.includes("/")) {
+      valid_pattern.value = val.slice(0, 2) + "/YY";
+    }
+    if (val.length === 4) {
+      valid_pattern.value = val.slice(0, 2) + val.slice(2) + "Y";
+    }
+
+    if (val.length === 5) {
+      valid_pattern.value = val;
+    }
+    if (!val.length) {
+      valid_pattern.value = "MM/YY";
+    }
+  }
+
+  if (field === "card") {
+    const local = [[], [], [], []];
+    let r = 0;
+
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
+        local[i][j] = val[r + j];
+      }
+      r += 4;
+    }
+    const joinedArray = local.map((el) => {
+      return el.map((el) => (!el ? "" : el)).join("");
+    });
+    const patternArray = local.map((el, i) => {
+      return el.map((el) => (!el ? "*" : el)).join("");
+    });
+
+    card_pattern.value = patternArray.join(" ");
+    formData.card = joinedArray.reduce((acc, next) => {
+      return acc + next;
+    }, "");
+    return;
+  }
+
+  formData[`${field}`] = val;
+  if (field === "card_holder") {
+    name_pattern.value = val;
+  }
+};
+const formTouched = (field) => {
+  $v.value[`${field}`].$touch();
+};
 
 const changePolitics = (i) => {
   store.onPolitics(i);
 };
-
-
-let stripe, elements, paymentElement, clientSecret,  client, _sid;
-let errors = ref("");
-let terms_accepted = ref(false);
-const proceeding = ref(false);
-const loading = ref(true)
-
-onMounted(async () => {
-  client = await JSON.parse(localStorage.getItem('temp'));
-  stripe = await loadStripe(useRuntimeConfig().public.stripeKey, {
-    locale: "ru",
-  });
-  const { subscription_id, secret } = await $fetch("/api/create", {
-    method: "POST",
-    body: {
-      email: client.email,
-      price: "price_1Pw4lX03KdpVNiYIIVuJm7Zw",
-    },
-  });
-  if (secret) {
-    clientSecret = secret;
-    _sid = subscription_id;
-    elements = await stripe.elements({
-      clientSecret: secret,
-    });
-    paymentElement = await elements.create("payment", {
-      paymentMethodOrder: ["card"],
-      terms: { card: "never" },
-    });
-    await paymentElement.mount("#payment-element");
-    loading.value = false;
-  } else {
-    errors.value = 'Недопустимое действие'
-    registerStore.setActiveTab(0);
-  }
-});
-
-const onSubmit = async () => {
-  proceeding.value = true;
-  const { error } = await stripe.confirmPayment({
-    //`Elements` instance that was used to create the Payment Element
-    elements,
-    confirmParams: {
-      return_url: "https://localhost:3000/",
-    },
-    redirect: "if_required",
-  });
-
-  if (error) {
-    proceeding.value = false;
- 
-    errors.value = "Повторите попытку, " + error.message;
-    setTimeout(() => {
-      errors.value = "";
-    }, 2000);
-  } else {
-    errors.value = "";
-    try {
-      const { paymentIntent } = await stripe.retrievePaymentIntent(
-        clientSecret
-      );
-      if(paymentIntent && paymentIntent.status === 'succeeded') {
-        
-      const data = await $fetch('/api/register', {
-            method: 'POST', 
-            body: {
-               ...client,
-               _sid,
-            },
-          })
-
-          registerStore.setActiveTab(2);
-      } 
-    } catch (error) {
-      errors.value = error?.message;
-      registerStore.setActiveTab(0);
-      setTimeout(() => {
-        errors.value = '';
+const onComplete = async () => {
+  try {
+    const data = await JSON.parse(localStorage.getItem("temp"));
+    const {index: temp_index, phone: temp_phone} = data;
+    $fetch("/api/register/", {
+      method: "POST",
+      body: {
+        ...data,
+        index: Number(temp_index),
+        phone: Number(temp_phone),
+      },
+    })
+      .then((res) => {
+        localStorage.removeItem('temp');
+        localStore.setLocalUser(res);
+        navigateTo('/account')
       })
-    } finally {
-      localStorage.removeItem('temp');
-      proceeding.value = false;
-    }
+      .catch((error) => {
+        console.log(error);
+      });
+  } catch (e) {
+    console.log(e);
   }
 };
+
+
 </script>
 
 <template>
   <form
-    class="flex flex-col w-full bg-slate-50 gap-6 max-[822px]:gap-2 pt-0 max-[822px]:pt-2 relative px-32 max-[822px]:px-2"
+    class="flex bg-white flex-col w-full gap-10 max-[822px]:gap-12 pt-0 max-[822px]:pt-2 relative px-20 max-[822px]:px-2"
   >
-    <div
-      class="w-full flex flex-col justify-center gap-0 items-center p-4"
-    >
+    <div class="w-full flex flex-col justify-center gap-12 items-center p-4 bg-neutral-50 rounded-md">
       <div
         @click="
           () => {
             showReverse = !showReverse;
           }
         "
-        class="w-[300px] relative cursor-pointer shadow-md transition-all duration-500 p-1 max-[822px]:p-1 max-[822px]:w-[280px] min-h-[180px] max-[822px]:min-h-[140px] flex items-center justify-center flex-col rounded-xl bg-gradient-to-r from-amber-300 to-amber-200"
+        class="w-[300px] relative cursor-pointer shadow-md transition-all duration-500 p-1 max-[822px]:p-1 max-[822px]:w-[280px] min-h-[180px] max-[822px]:min-h-[140px] flex items-center justify-center flex-col rounded-xl bg-blue-200"
         :class="[
           {
-            '-scale-x-100': showReverse,
+            '-scale-x-100': focusOnCard === 'cvc' || showReverse,
             'bg-gradient-to-br': setCardEmmiter !== 'default',
             'from-slate-500': setCardEmmiter === 'mastercard',
             'to-slate-900': setCardEmmiter === 'mastercard',
@@ -185,7 +291,9 @@ const onSubmit = async () => {
               code (CVV)
               <span>-></span>
             </span>
-            <span class="skew-x-6 text-[10px]">{{ "***" }}</span>
+            <span class="skew-x-6 text-[10px]">{{
+              formData.cvc || "***"
+            }}</span>
           </span>
         </div>
 
@@ -193,7 +301,7 @@ const onSubmit = async () => {
           class="flex flex-col justify-end w-full"
           :class="[
             {
-              'opacity-0': showReverse,
+              'opacity-0': focusOnCard === 'cvc' || showReverse,
             },
           ]"
         >
@@ -218,12 +326,24 @@ const onSubmit = async () => {
           </div>
           <span
             class="text-white text-md min-h-8 font-medium drop-shadow-2xl [word-spacing:16px] max-[822px]:[word-spacing:18px] max-[822px]:text-sm text-pretty w-full text-center flex items-center justify-center border rounded-md duration-500 border-transparent bg-opacity-30 border-opacity-20"
+            :class="[
+              {
+                'border-neutral-200': focusOnCard === 'card',
+                'bg-slate-100': focusOnCard === 'card',
+              },
+            ]"
             >{{ card_pattern }}</span
           >
           <div class="flex items-end">
             <div class="flex flex-col items-start">
               <span
                 class="text-white min-h-6 border min-w-12 text-[10px] gap-2 ml-36 p-1 max-[822px]:ml-24 max-[822px]:text-[8px] [letter-spacing:2px] transition-all text-center flex items-center justify-center rounded-md duration-500 border-transparent bg-opacity-30 border-opacity-20"
+                :class="[
+                  {
+                    'border-neutral-200': focusOnCard === 'valid_until',
+                    'bg-slate-100': focusOnCard === 'valid_until',
+                  },
+                ]"
               >
                 <span class="text-[5px] min-[822px]:text-[6px]">
                   VALID <br />
@@ -237,6 +357,8 @@ const onSubmit = async () => {
                 class="text-white border min-w-64 max-w-64 items-center justify-start overflow-hidden py-2 flex transition-all rounded-md duration-500 border-transparent min-h-6 text-center text-xs px-4 max-[822px]:px-2 max-[822px]:py-0 [letter-spacing:4px] uppercase bg-opacity-30 border-opacity-20"
                 :class="[
                   {
+                    'border-neutral-200': focusOnCard === 'card_holder',
+                    'bg-slate-100': focusOnCard === 'card_holder',
                     'text-[10px]': name_pattern.length <= 16,
                     'text-[8px]': name_pattern.length > 16,
                     'text-[6px]': name_pattern.length >= 24,
@@ -245,23 +367,73 @@ const onSubmit = async () => {
                     'max-[822px]:text-[6px]': name_pattern.length >= 24,
                   },
                 ]"
-                ><span>{{ "CARDHOLDER NAME" }}</span></span
+                ><span>{{ name_pattern || "CARDHOLDER NAME" }}</span></span
               >
             </div>
           </div>
         </div>
       </div>
+     
     </div>
-    <div class="flex flex-col gap-2">
-      <div id="payment-element"></div>
-      <div class="min-h-6 flex items-center">
-        <span
-          v-if="errors?.length"
-          class="text-red-600 text-[10px] uppercase"
-          >{{ errors }}</span
-        >
-      </div>
-    </div>
+    
+    <!-- <register-input-wrapper>
+      <Registerinput
+        :placeholder="'Держатель карты'"
+        :value="formData.card_holder"
+        @onValue="onInputFieldChange"
+        :id="'card_holder'"
+        @onFormTouched="formTouched"
+        :errors="$v?.card_holder?.$errors[0]"
+        :icon="icons.profile"
+        :data-id="'card_holder'"
+        :input_mode="'text'"
+        :pattern="/^[A-z a-z]+$/"
+      ></Registerinput>
+      <Registerinput
+        :placeholder="'Номер карты (16 цифр)'"
+        :value="formData.card"
+        @onValue="onInputFieldChange"
+        :id="'card'"
+        @onFormTouched="formTouched"
+        :errors="$v?.card?.$errors[0]"
+        :type="tel"
+        :icon="icons.card"
+        :maxLength="16"
+        :data-id="'card'"
+        :input_mode="'numeric'"
+        :pattern="/^[0-9 ]+$/"
+      ></Registerinput>
+    </register-input-wrapper>
+
+    <register-input-wrapper>
+      <Registerinput
+        :placeholder="'Срок действия'"
+        :icon="icons.valid_until"
+        :value="formData.valid_until"
+        @onValue="onInputFieldChange"
+        :id="'valid_until'"
+        :data-id="'valid_until'"
+        @onFormTouched="formTouched"
+        :errors="$v?.valid_until?.$errors[0]"
+        :maxLength="5"
+        :input_mode="'numeric'"
+        :pattern="/^[0-9]+$/"
+      ></Registerinput>
+      <Registerinput
+        :placeholder="'CVV/CVC'"
+        type="password"
+        :id="'cvc'"
+        :data-id="'cvc'"
+        :value="formData.cvc"
+        @onValue="onInputFieldChange"
+        :icon="icons.cvc"
+        @onFormTouched="formTouched"
+        :errors="$v?.cvc?.$errors[0]"
+        :maxLength="3"
+        :input_mode="'numeric'"
+        :pattern="/^[0-9]+$/"
+      ></Registerinput>
+    </register-input-wrapper> -->
     <div class="flex flex-col items-start max-[822px]:items-start gap-2 w-full">
       <div
         class="flex justify-start items-start gap-4 w-2/3 max-[822px]:w-full"
@@ -270,7 +442,7 @@ const onSubmit = async () => {
           <input
             type="checkbox"
             class="px-2 py-2 rounded-full"
-            v-model="terms_accepted"
+            v-model="formData.age"
           />
           <p class="text-xs">
             Я согласен с условиями подписки и регулярного списания средств, я
@@ -284,17 +456,16 @@ const onSubmit = async () => {
         </div>
       </div>
     </div>
-
-    
     <Button
       class="mx-auto min-w-[240px] relative"
-      :disabled="loading|| proceeding || errors?.length != false || !terms_accepted" @click="onSubmit">
-      
+      :disabled="false"
+      @click.prevent="subscribe"
+    >
       <span class="flex items-center justify-center w-full gap-2 mx-auto"
-        >{{ proceeding ? "Идёт обработка данных" : "Далее" }}
+        >{{ registerStore.loading ? "Идёт обработка данных" : "Далее" }}
         <span
           name="loader"
-          v-if="proceeding"
+          v-if="registerStore.loading"
           class="loader bg-yellow border-2 w-4 h-4 bt-2 border-t-white border-slate-300 rounded-full"
         >
         </span>

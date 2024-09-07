@@ -8,41 +8,56 @@ export default defineEventHandler(async (event) => {
 
     const saltRounds = 3;
     const register_data = await readBody(event);
-    console.log(register_data)
+
     if (register_data.password && !register_data.email) {
         const cookie = jwt.sign(register_data.password, config.secret);
-        setCookie(event, 'tp', cookie);
+       await setCookie(event, 'tp', cookie, {httpOnly: true, maxAge: 60 * 60 * 24});
         return {
             statusCode: 200,
         }
     }
 
-    if (Object.keys(register_data).length === 6) {
-        const cookie_from_client = await getCookie(event, 'tp');
-        const verified_cookie = await jwt.verify(cookie_from_client, config.secret);
-        if (!verified_cookie) {
+    if (Object.keys(register_data).length === 7) {
+        const tp_from_client = getCookie(event, 'tp');
+        const client_cid = getCookie(event, '_cid');
+        if(!tp_from_client || !client_cid) {
+            throw createError({
+                statusCode: 400,
+                message: 'Заполните заявку еще раз'
+            })
+        }
+ 
+        const verified_tp = jwt.verify(tp_from_client, config.secret);
+        const verified_cid = jwt.verify(client_cid, config.secret);
+        if (!verified_tp || !verified_cid) {
             throw createError({
                 statusCode: 404,
+                message: 'Отказано в доступе'
             });
         } else {
-            await deleteCookie(event, 'tp')
+
             const user_exist = await users.findOne({ email: register_data.email });
             if (user_exist) {
                 throw createError({
                     statusCode: 409,
-                    statusMessage: "Пользователь с такими данными уже существует"
+                    message: "Пользователь с такими данными уже существует"
                 })
             } else {
-                const { name, surname, index, phone, city, email } = register_data;
-                const hashed_password = bcrypt.hashSync(verified_cookie, saltRounds)
+                const { name, surname, index, phone, city, email, _sid } = register_data;
+                const hashed_password = bcrypt.hashSync(verified_tp, saltRounds)
                 try {
                     await users.create({
                         ...register_data,
                         password: hashed_password,
+                        subscription: true,
+                        _customerID: verified_cid,
+                        _sID: _sid
                     });
-
+                    await deleteCookie(event, 'tp');
+                    await deleteCookie(event, '_cid');
+                    await setCookie(event, 'fr', true, {httpOnly: true, maxAge: 60 * 60})
                     return {
-                        name, surname, index, phone, city, email
+                        name, surname, index, phone, city, email, subscription: true, _sid
                     }
                 } catch (error) {
                     throw createError({

@@ -7,10 +7,12 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     if (!isAuth.value) {
 
         const { data, status, error, refresh, clear } = await useFetch('/api/profile')
-        console.log(data)
-        if(data.value !== null) {
+        if (data.value !== null && to.path === '/account') {
+            console.log(data.value)
            return localStore.setLocalUser(data.value);
-        }
-        return navigateTo('/');
+        } 
+        return navigateTo('/register');
     }
+
+    
 })

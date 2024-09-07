@@ -1,6 +1,7 @@
 <script setup>
 import RegisterStepOne from "~/components/RegisterStepOne.vue";
 import RegisterStepTwo from "~/components/RegisterStepTwo.vue";
+import RegisterSuccess from "~/components/RegisterSuccess.vue";
 import { useMobileStore } from "~/stores/MobileMenu.js";
 import { useRegisterStore } from "~/stores/RegisterStore.js";
 import { useLocalUserStore } from "~/stores/localStore.js";
@@ -14,7 +15,7 @@ const steps = [
   "Завершение регистрации",
 ];
 
-const components = [RegisterStepOne, RegisterStepTwo];
+const components = [RegisterStepOne, RegisterStepTwo, RegisterSuccess];
 
 onMounted(async () => {
   await localStore.setLocalUser(JSON.parse(localStorage.getItem("user")));
@@ -24,7 +25,7 @@ onMounted(async () => {
 <template>
   <NuxtLayout>
     <div
-      class="min-h-dvh bg-slate-800 flex flex-col gap-4 py-4 px-24 max-[1024px]:px-2 mx-8 max-[822px]:px-0 max-[822px]:pt-4 shadow-lg rounded-md my-8 max-[822px]:my-0 max-[822px]:mx-1 max-[822px]:bg-slate-900"
+      class="min-h-dvh flex flex-col gap-4 py-4 px-24 max-[1024px]:px-2 mx-8 max-[822px]:px-0 max-[822px]:pt-4 shadow-lg rounded-md my-8 max-[822px]:my-0 max-[822px]:mx-1 max-[822px]:bg-slate-900"
     >
       <div
         class="min-w-full py-0 flex justify-between max-[822px]:justify-center px-4 gap-8 uppercase text-sm font-medium max-[822px]:pt-12 max-[822px]:gap-0"
@@ -90,7 +91,7 @@ onMounted(async () => {
       </div>
 
       <div
-        class="flex-col items-center justify-center min-w-full py-8 px-8 bg-white mx-auto rounded-lg gap-2 max-[822px]:flex-col max-[822px]:gap-0 max-[822px]:py-8 max-[822px]:px-2 max-[568px]:px-0 max-[568px]:py-4 max-[822px]:rounded-xs max-[822px]:w-full shadow-sm"
+        class="flex-col items-center justify-center min-w-full py-8 px-8 bg-slate-50 mx-auto rounded-lg gap-2 max-[822px]:flex-col max-[822px]:gap-0 max-[822px]:py-8 max-[822px]:px-2 max-[568px]:px-0 max-[568px]:py-4 max-[822px]:rounded-xs max-[822px]:w-full shadow-sm"
         :class="[
           {
             'max-[822px]:hidden': store.politicsOpen !== false,
@@ -99,10 +100,11 @@ onMounted(async () => {
         ]"
       >
         <component
-          v-motion-fade
-          class="py-4 px-2 rounded-lg"
-          :is="components[registerStore.activeTab]"
-        ></component>
+      
+        class="py-4 px-2 rounded-lg bg-slate-200"
+        :is="components[registerStore.activeTab]"
+      ></component>
+
       </div>
       <Politics
         v-motion-fade

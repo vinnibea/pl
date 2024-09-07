@@ -25,7 +25,8 @@ export const useLocalUserStore = defineStore('local_user', () => {
       index: payload.index,
       email: payload.email,
       timeStamp: Date.now(),
-      id: payload.id
+      id: payload.id,
+      _sid: payload._sid,
     };
   
      

@@ -29,6 +29,7 @@ export default defineEventHandler(async (event) => {
             })
         } else {
             const user_dto = dto.user_to_dto(user_exist);
+           
             const token = jwt.sign(
                 user_dto, config.secret, { expiresIn: '2h' });
                 setCookie(event, 'uid', token, {httpOnly: true, maxAge: 60 * 60 * 2});

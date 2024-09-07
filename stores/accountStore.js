@@ -6,7 +6,6 @@ export const useAccountStore = defineStore('account_store', () => {
 
     const setSelectedSection = (payload) => {
       if(payload === selectedSection.value && isMobile.value) {
-        console.log(payload)
         selectedSection.value = null;
         return;
       }

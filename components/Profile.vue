@@ -35,22 +35,17 @@ const registerPhone = computed(() => {
     class="p-2 w-full flex flex-col min-h-full justify-between"
     v-motion-fade-visible-once
   >
-    <div class="flex justify-end flex-col items-center gap-4">
-      <h2 class="text-md font-semibold text-right uppercase w-full">Профиль</h2>
+    <div class="flex justify-end flex-col items-center gap-4"  v-if="profile.localUser.name">
       <div
-        class="flex justify-start items-start max-[822px]:flex-col max-[822px]:items-start gap- w-full h-fit pb-2"
+        class="flex justify-start items-start max-[822px]:flex-col max-[822px]:items-center gap- w-full h-fit pb-2"
       >
         <span
-          class="rounded-full border-4 relative border-amber-300 min-w-32 min-h-32 p-8 font-extrabold text-slate-800 text-2xl flex items-center justify-center text-center"
+          class="rounded-full border-4 relative border-amber-300 min-w-32 min-h-32 p-8 font-extrabold text-slate-800 text-2xl flex uppercase items-center shadow-sm justify-center text-center"
           >{{ computedAvatar }}
-          <span
-            class="absolute top-2 -right-0 bg-white rounded-full w-6 h-6 flex border-2 border-amber-300 items-center justify-center"
-          >
-            <Icon name="material-symbols-light:award-star" class="bg-amber-300"></Icon>
-          </span>
+          
         </span>
-        <p class="flex flex-col items-start gap-2 p-2 text-xl">
-          <span class="flex gap-2">
+        <p class="flex flex-col items-center gap-2 p-4 max-[822px]:px-0 text-xl">
+          <span class="flex gap-2 text-slate-700">
             <span class="uppercase font-semibold">{{
               profile.localUser?.name
             }}</span>
@@ -58,7 +53,7 @@ const registerPhone = computed(() => {
               profile?.localUser?.surname
             }}</span>
           </span>
-          <span class="max-[822px]:text-[10px] text-[12px] font-semibold p-0 text-yellow">
+          <span class="max-[822px]:text-[10px] bg-yellow rounded-md shadow-md px-2 text-[14px] font-medium p-0 ">
             Премиальный пользователь</span
           >
         </p>
@@ -86,13 +81,7 @@ const registerPhone = computed(() => {
           }}</span>
         </p>
       </div>
+      
     </div>
-
-    <!-- <Button
-      :color="'bg-opacity-0'"
-      :hover="'hover:bg-opacity-0'"
-      :text="'text-slate-200'"
-      >Изменить</Button
-    > -->
   </div>
 </template>

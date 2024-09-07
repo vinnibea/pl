@@ -148,9 +148,9 @@ const inputType = ref(false);
           :text="'text-white'"
           :hoverText="'hover:text-white'"
           @click="loggin_function"
-          :disabled="serverErrors.length || $v.$errors[0] || loader"
+          :disabled="serverErrors.length || $v.$errors[0] || loader || !formData.password.length || !formData.email.length"
           :class="[{
-            'pointer-events-none': serverErrors.length || $v.$errors[0] || loader,
+            'pointer-events-none': serverErrors.length || $v.$errors[0] || loader || !formData.password.length || !formData.email.length,
           }]"
         >
           <span class="flex items-center justify-center w-full gap-2 mx-auto"
@@ -158,7 +158,7 @@ const inputType = ref(false);
             <span
               v-if="loader"
               name="loader"
-              class="loader bg-yellow border-2 w-4 h-4 bt-2 border-t-white border-slate-300 rounded-full"
+              class="loader bg-yellow bg-opacity-0 border-2 w-4 h-4 bt-2 border-t-white border-slate-300 rounded-full"
             >
             </span>
           </span>

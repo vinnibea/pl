@@ -36,6 +36,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     mongoUrl: process.env.MONGO_DB_URI,
     secret: process.env.SECRET,
+    bot: process.env.BOT,
+    SSK: process.env.SSK,
+    public: {
+      stripeKey: ''
+    }
   },
 
   icon: {

@@ -62,9 +62,9 @@ const onModalOpen = () => {
       ></Icon>
     </NuxtLink>
 
-    <NuxtLink v-if="!auth.isAuth" :to="'/'" class="flex items-center justify-center px-2 py-2" @click="onModalOpen">
+    <NuxtLink v-if="!auth.isAuth" :to="'/'" class="flex items-center drop-shadow-xl justify-center px-2 py-2" @click="onModalOpen">
       <Icon
-        class="transition-all duration-300 hover:bg-amber-300  cursor-pointer"
+        class="transition-all duration-300  hover:bg-amber-300  cursor-pointer"
         name="ic:baseline-person"
         size="36"
         :class="[

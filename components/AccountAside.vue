@@ -49,7 +49,7 @@ const logout = () => {
     ]"
   >
     <ul
-      class="flex flex-col w-full z-0 max-[822px]:items-center gap-8 text-white px-4 max-[822px]:px-1 max-[822px]:gap-8 text-base"
+      class="flex flex-col w-full z-0 max-[822px]:items-center gap-14 text-white px-1 max-[822px]:px-1 max-[822px]:gap-8 text-base"
       :class="[
         {
           'bg-white': asideStore.selectedSection !== null,
@@ -61,7 +61,7 @@ const logout = () => {
       ]"
     >
       <li
-        class="w-full flex items-center gap-2 max-[822px]:justify-between font-medium p-4 text-slate-900 max-[822px]:border-none max-[822px]:text-sm cursor-pointer transition-all duration-300"
+        class="w-full flex items-center gap-8 max-[822px]:justify-between font-medium p-4 text-slate-900 max-[822px]:border-none max-[822px]:text-sm cursor-pointer transition-all duration-300"
         v-for="(item, i) in menuItems"
         :key="item.icon"
         :class="[
@@ -80,7 +80,7 @@ const logout = () => {
           class="min-h-8 min-w-8 max-[822px]:min-w-6"
           :class="[
             {
-              'bg-white': asideStore.selectedSection === i,
+              'bg-amber-200': asideStore.selectedSection === i,
             },
           ]"
         >

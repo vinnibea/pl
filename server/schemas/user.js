@@ -38,7 +38,19 @@ const userSchema = new Schema({
         type: Number,
         required: [true, "Поле не может быть пустым"],
     },
-
+    subscription: {
+        type: Boolean,
+        default: false,
+        required: true,
+    },
+    _customerID: {
+        type: String,
+        required: true,
+    },
+    _sID: {
+        type: String,
+        required: true,
+    }
   
 });
 

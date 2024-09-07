@@ -36,7 +36,7 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
         'max-[822px]:shadow-none': store.state,
          fixed: fixedHeader,
         'max-[822px]:shadow-md': !fixedHeader && !store.openModal,
-        'border-slate-200': fixedHeader,
+        'border-slate-100': fixedHeader,
         'border-b': fixedHeader,
       },
     ]"
@@ -95,7 +95,7 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
 
       <USkeleton
         v-if="globalStore.loading && route.fullPath === '/'"
-        class="h-[38px] w-[250px] bg-slate-300 max-[822px]:hidden"
+        class="h-[38px] w-[250px] bg-slate-300 max-[822px]:hidden bg-opacity-50"
         :config="{
           base: 'animate-pulse',
           background: 'bg-gray-100 dark:bg-gray-800',

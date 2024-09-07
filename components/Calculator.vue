@@ -82,13 +82,13 @@ const calculatedDate = computed(() =>
 
     <NuxtLink
       to="/register"
-      class="uppercase px-6 text-sm py-4 font-semibold text-dark-grey text-center text-md max-[1024px]:text-xs max-[1024px]:py-4 bg-yellow rounded-md w-2/3 max-[468px]:w-full mx-auto hover:bg-hover-yellow transition-all"
+      class="uppercase px-6 text-sm py-4 font-semibold text-slate-900 text-center text-md max-[1024px]:text-xs max-[1024px]:py-4 bg-yellow rounded-md w-2/3 max-[822px]:w-full shadow-md mx-auto hover:bg-hover-yellow transition-all"
       type="button"
     >
       Получить деньги
     </NuxtLink>
 
-    <div class="form-row flex justify-between items-center px-4">
+    <div class="form-row flex justify-between items-center px-4 max-[822px]:px-0">
       <div class="flex flex-col items-center">
         <h3 class="text-xs font-semibold text-black">Ежемесячный платеж:</h3>
         <span class="text-xs text-yellow font-bold">{{ payment }} тенге</span>
