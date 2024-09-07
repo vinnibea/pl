@@ -36,12 +36,12 @@ const props = defineProps({
   },
   input_mode: {
     type: String,
-    default: 'text',
+    default: "text",
   },
   pattern: {
     type: RegExp,
-    default: /^[A-Z a-z А-Я а-я]+$/
-  }
+    default: /^[A-Z a-z А-Я а-я]+$/,
+  },
 });
 const emit = defineEmits(["onValue", "onFormTouched"]);
 const onInputChange = (val, field) => {
@@ -79,13 +79,18 @@ const onlyNumber = ($event, field) => {
         :id="id"
         :type="type"
         :value="value"
-        :inputmode="input_mode" :pattern="pattern"
-        @input="($event) => {
-              if(!$event.target.value.match(/^[0-9]+$/) === props.input_mode === 'numeric') return false;
-              onInputChange($event.target.value, id)
-       
-        
-        }"
+        :inputmode="input_mode"
+        :pattern="pattern"
+        @input="
+          ($event) => {
+            if (
+              (!$event.target.value.match(/^[0-9]+$/) === props.input_mode) ===
+              'numeric'
+            )
+              return false;
+            onInputChange($event.target.value, id);
+          }
+        "
         @keyup="
           (e) => {
             if (
@@ -96,7 +101,7 @@ const onlyNumber = ($event, field) => {
               id === 'phone'
             ) {
               return onlyNumber(e, id);
-            } 
+            }
           }
         "
         @keypress="
@@ -113,12 +118,12 @@ const onlyNumber = ($event, field) => {
                 $event.preventDefault();
                 return;
               }
-            } 
+            }
           }
         "
         @blur="emit('onFormTouched', id)"
         :maxlength="maxLength"
-        class="peer px-12 py-2 w-full bg-slate-250 border rounded-md outline-0 focus:outline-0 bg-slate-50 focus:bg-slate-100 text-slate-700  placeholder:opacity-0 max-[822px]:text-[10px] max-[822px]:focus:text-[10px] max-[822px]:focus:font-bold max-[822px]:focus:uppercase max-[822px]:uppercase max-[822px]:font-bold font-medium max-[822px]:px-12"
+        class="peer px-12 py-2 w-full bg-slate-250 border rounded-md outline-0 focus:outline-0 bg-slate-50 focus:bg-slate-100 text-slate-700 placeholder:opacity-0 max-[822px]:text-[10px] max-[822px]:focus:text-[10px] max-[822px]:focus:font-bold max-[822px]:focus:uppercase max-[822px]:uppercase max-[822px]:font-bold font-medium max-[822px]:px-12"
         :class="[
           {
             'border-red-200': value && errors.$message,
@@ -148,7 +153,6 @@ const onlyNumber = ($event, field) => {
             'text-slate-300': !value,
             'peer-focus:text-slate-600': !value,
             'text-slate-600': value && !errors.$message,
-            'max-[822px]:-text-[12px]': true,
           },
         ]"
         >{{ placeholder }}</label
