@@ -36,7 +36,7 @@ provide('creditors', data)
     <div class="w-full flex relative" v-if="authStore.isAuth">
       <account-aside></account-aside>
       <div
-        class="w-full py-16 pl-[480px] max-[822px]:pl-[72px] pr-2 bg-white min-h-[calc(100svh)]"
+        class="w-full py-16 pl-[480px] max-[822px]:pl-[66px] pr-2 bg-white min-h-[calc(100svh)]"
       >
         <component
           v-if="asideStore.selectedSection !== null"
