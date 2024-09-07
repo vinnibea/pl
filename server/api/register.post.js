@@ -51,13 +51,14 @@ export default defineEventHandler(async (event) => {
                         password: hashed_password,
                         subscription: true,
                         _customerID: verified_cid,
-                        _sID: _sid
+                        _sID: _sid,
+
                     });
                     await deleteCookie(event, 'tp');
                     await deleteCookie(event, '_cid');
                     await setCookie(event, 'fr', true, {httpOnly: true, maxAge: 60 * 60})
                     return {
-                        name, surname, index, phone, city, email, subscription: true, _sid
+                      statusCode: 201,
                     }
                 } catch (error) {
                     throw createError({

@@ -25,7 +25,7 @@ onMounted(async () => {
 <template>
   <NuxtLayout>
     <div
-      class="min-h-dvh flex flex-col gap-4 py-4 px-24 max-[1024px]:px-2 mx-8 max-[822px]:px-0 max-[822px]:pt-4 shadow-lg rounded-md my-8 max-[822px]:my-0 max-[822px]:mx-1 max-[822px]:bg-slate-900"
+      class="min-h-dvh flex flex-col gap-4 py-0 px-12 max-[1024px]:px-2 max-[822px]:px-0 max-[822px]:pt-4 shadow-lg rounded-md my-4 max-[822px]:my-0 max-[822px]:mx-1 max-[822px]:bg-slate-900"
     >
       <div
         class="min-w-full py-0 flex justify-between max-[822px]:justify-center px-4 gap-8 uppercase text-sm font-medium max-[822px]:pt-12 max-[822px]:gap-0"

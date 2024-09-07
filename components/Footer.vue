@@ -1,6 +1,6 @@
 <script setup>
-import { required, email, minLength, helpers } from "@vuelidate/validators";
-
+import { required, email, 
+  helpers } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
 const formData = reactive({
   email: "",
@@ -49,7 +49,7 @@ const onSubscribe = async (email) => {
     .then((res) => {
       serverError.value = "";
       if (res.status) {
-        serverSuccess.value = "Спасибо за подписку!";
+        useToast().success('Подписка оформлена, проверьте ваш эмейл')
         localUser.setSubsciber(res.email);
         formData.email = "";
       }

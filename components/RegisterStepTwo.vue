@@ -98,7 +98,7 @@ const onSubmit = async () => {
                _sid,
             },
           })
-
+        
           registerStore.setActiveTab(2);
       } 
     } catch (error) {

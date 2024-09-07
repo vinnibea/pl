@@ -50,6 +50,18 @@ const userSchema = new Schema({
     _sID: {
         type: String,
         required: true,
+    },
+    hasEmail: {
+        type: Boolean,
+        default: true,
+    },
+    hasNotification: {
+        type: Boolean,
+        default: true,
+    },
+    deactivated: {
+        type: Boolean,
+        default: false,
     }
   
 });

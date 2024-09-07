@@ -11,7 +11,14 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     '@vueuse/motion/nuxt',
     '@nuxt/ui',
+    'nuxt-snackbar'
   ],
+
+  snackbar: {
+    bottom: true,
+    right: true,
+    duration: 5000
+  },
 
   tailwindcss: {
     exposeConfig: true,

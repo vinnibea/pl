@@ -16,6 +16,18 @@ const creditorSchema = new Schema({
     link: {
         type: String,
         default: '',
+    },
+    isRecommended: {
+        type: Boolean,
+        default: false,
+    },
+    isEmail: {
+        type: Boolean,
+        default: false,
+    },
+    isActive: {
+        type: Boolean,
+        default: true,
     }
 });
 

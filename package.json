@@ -32,6 +32,7 @@
     "nodemailer": "^6.9.14",
     "nuxt": "^3.12.4",
     "nuxt-mongoose": "^1.0.6",
+    "nuxt-snackbar": "^1.1.2",
     "nuxt-stripe-module": "^3.2.0",
     "nuxt-swiper": "^1.2.2",
     "sharp": "^0.33.5",
