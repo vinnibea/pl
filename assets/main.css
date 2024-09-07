@@ -11,6 +11,8 @@
 
     html {
         @apply scroll-smooth;
+        touch-action: pan-x pan-y;
+        height: 100% 
     }
     body {
       @apply font-montserrat;
