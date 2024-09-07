@@ -2,12 +2,9 @@ import jwt from 'jsonwebtoken';
 import { Telegraf } from 'telegraf';
 import { default as users } from '../schemas/user';
 import { default as subscribers } from '../schemas/subscribe';
-import { default as log } from '../utils/log_fn';
 import nodemailer from 'nodemailer';
 
 const bot = new Telegraf(useRuntimeConfig().bot);
-
-
 
 const appPassword = 'qolv wtwa aadb lxeg';
 
