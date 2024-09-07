@@ -69,7 +69,7 @@ onBeforeMount(() => {
       class="hero bg-no-repeat bg-top bg-fixed max-[820px]:bg-center bg-cover py-4 px-0 min-w-full flex flex-col justify-end max-[1024px]:px-2  max-[520px]:px-1 border-b-2 border-slate-700"
     >
       <div
-        class="hero-center min-w-full px-4 gap-12 py-16 flex justify-between items-center max-[1224px]:flex-col max-[822px]:py-0 max-[822px]:gap-4 max-[822px]:pt-12 max-[820px]:px-0 max-[822px]:text-white"
+        class="hero-center min-w-full px-4 gap-12 py-16 flex justify-between items-center max-[1224px]:flex-col max-[822px]:py-0 max-[822px]:gap-12 max-[822px]:pt-14 max-[820px]:px-0 max-[822px]:text-white"
       >
         <div
           class="w-1/2 max-[820px]:text-white max-[1224px]:min-w-full max-[1224px]:flex max-[1224px]:flex-col max-[1224px]:px-4 max-[1224px]:items-center max-[1224px]:mx-auto max-[520px]:px-0 max-[520px]:mx-0 max-[520px]:items-stretch"
