@@ -1,7 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
+  app: {
+    head: {
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1, user-scalable=no',
+    }
+  },
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
@@ -16,8 +22,7 @@ export default defineNuxtConfig({
 
   snackbar: {
     bottom: true,
-    right: true,
-    duration: 5000
+    duration: 2000
   },
 
   tailwindcss: {

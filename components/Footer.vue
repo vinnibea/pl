@@ -5,7 +5,7 @@ import { useVuelidate } from "@vuelidate/core";
 const formData = reactive({
   email: "",
 });
-
+const snackbar = useSnackbar();
 const rules = computed(() => {
   return {
     email: {
@@ -49,7 +49,11 @@ const onSubscribe = async (email) => {
     .then((res) => {
       serverError.value = "";
       if (res.status) {
-        useToast().success('Подписка оформлена, проверьте ваш эмейл')
+        snackbar.add({
+    type: 'success',
+    text: 'Теперь вы подписаны',
+    backgroundOpacity: 0.05,
+})
         localUser.setSubsciber(res.email);
         formData.email = "";
       }
@@ -99,7 +103,7 @@ const onSubscribe = async (email) => {
             </li>
           </ul>
         </div>
-
+        <NuxtSnackbar />
         <form class="flex flex-col py-12 gap-0">
           <div class="flex">
             <input
@@ -198,6 +202,7 @@ const onSubscribe = async (email) => {
         </div>
       </div>
     </div>
+   
     <div
       class="w-full bg-slate-200 flex items-center px-4 py-0 max-[822px]:flex-col-reverse max-[822px]:px-2 max-[822px]:py-0"
     >
@@ -217,10 +222,14 @@ const onSubscribe = async (email) => {
         </p>
       </div>
     </div>
+   
   </footer>
 </template>
 
 <style scoped>
+.action {
+  background-color: yellow;
+}
 .st0 {
   fill: #b4e6dd;
 }
