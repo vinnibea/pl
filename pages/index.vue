@@ -66,23 +66,23 @@ onBeforeMount(() => {
 <template>
   <NuxtLayout>
     <div
-      class="hero bg-no-repeat bg-top bg-fixed max-[820px]:bg-center bg-cover py-4 px-0 min-w-full flex flex-col justify-end max-[1024px]:px-2 border-b-2 border-slate-700"
+      class="hero bg-no-repeat bg-top bg-fixed max-[820px]:bg-center bg-cover py-4 px-0 min-w-full flex flex-col justify-end max-[1024px]:px-2  max-[520px]:px-1 border-b-2 border-slate-700"
     >
       <div
         class="hero-center min-w-full px-4 gap-12 py-16 flex justify-between items-center max-[1224px]:flex-col max-[822px]:py-0 max-[822px]:gap-4 max-[822px]:pt-12 max-[820px]:px-0 max-[822px]:text-white"
       >
         <div
-          class="w-1/2 max-[820px]:text-white max-[1224px]:min-w-full max-[1224px]:flex max-[1224px]:flex-col max-[1224px]:px-4 max-[1224px]:items-center max-[1224px]:mx-auto"
+          class="w-1/2 max-[820px]:text-white max-[1224px]:min-w-full max-[1224px]:flex max-[1224px]:flex-col max-[1224px]:px-4 max-[1224px]:items-center max-[1224px]:mx-auto max-[520px]:px-0 max-[520px]:mx-0 max-[520px]:items-stretch"
         >
           <h1>
-            Получите <br class="min-[470px]:hidden" />
+            Получите <br class="max-[520px]:hidden" />
             от 5 000 до 500 000 тенге
           </h1>
           <p>
             С любой кредитной историей,
-            <br class="min-[820px]:hidden" />
+            <br class="max-[820px]:hidden" />
             возраст до 75 лет,
-            <br class="min-[820px]:hidden" />круглосуточно и без выходных.
+            <br class="max-[820px]:hidden" />круглосуточно и без выходных.
           </p>
         </div>
         <Calculator></Calculator>
@@ -182,6 +182,27 @@ onBeforeMount(() => {
     padding: 0 12px;
     color: #ffffff;
     text-align: center;
+  }
+
+  .hero {
+    background-position: 47%;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .hero-center h1 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #ffe11d;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgb(95, 95, 95);
+  }
+
+  .hero-center p {
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0 2px;
+    color: #ffffff;
   }
 
   .hero {

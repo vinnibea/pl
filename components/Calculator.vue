@@ -23,11 +23,11 @@ const calculatedDate = computed(() =>
 </script>
 <template>
   <form
-    class="form min-h-10 px-6 py-8 min-w-[520px] bg-white rounded-xl shadow-xl flex flex-col gap-10 max-[1024px]:min-w-1/2 max-[822px]:min-w-full"
+    class="form min-h-10 px-6 py-10 min-w-[620px] max-[520px]:px-4 max-[520px]:py-4 bg-white rounded-xl shadow-xl flex flex-col gap-8 max-[520px]:gap-2 max-[1024px]:min-w-1/2 max-[822px]:min-w-full"
   >
     <div class="flex flex-col gap-2">
       <div class="form-row flex justify-between items-center py-2">
-        <h2 class="font-bold text-md max-[1024px]:text-lg text-black">
+        <h2 class="font-bold text-lg max-[1024px]:text-md text-black max-[520px]:text-sm">
           Cумма кредита:
         </h2>
         <span
@@ -46,15 +46,15 @@ const calculatedDate = computed(() =>
         max="500000"
         @change="(e) => (sum = e.target.value)"
       />
-      <div class="form-row flex justify-between items-center px-4">
+      <div class="form-row flex justify-between items-center px-4 max-[520px]:px-2">
         <h2 class="text-xs font-semibold text-lightgrey">5 000 тенге</h2>
         <span class="text-xs font-semibold text-lightgrey">500 000 тенге</span>
       </div>
     </div>
 
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-2">
       <div class="form-row flex justify-between items-center">
-        <h2 class="font-bold text-md max-[1024px]:text-lg text-black">
+        <h2 class="font-bold text-lg max-[1024px]:text-md text-black max-[520px]:text-sm">
           Срок кредита:
         </h2>
         <span
@@ -74,7 +74,7 @@ const calculatedDate = computed(() =>
         :style="{ backgroundSize: `${inputMonthPercentage}% 100%` }"
       />
 
-      <div class="form-row flex justify-between items-center px-4 py-0">
+      <div class="form-row flex justify-between items-center px-4 py-0 max-[520px]:px-2">
         <h2 class="text-xs font-semibold text-lightgrey">3 месяца</h2>
         <span class="text-xs font-semibold text-lightgrey">24 месяца</span>
       </div>
