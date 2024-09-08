@@ -103,7 +103,7 @@ const onSubscribe = async (email) => {
             </li>
           </ul>
         </div>
-        <NuxtSnackbar />
+   
         <form class="flex flex-col py-12 gap-0">
           <div class="flex">
             <input
