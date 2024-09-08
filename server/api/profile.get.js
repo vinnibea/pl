@@ -1,7 +1,7 @@
 import { default as dto } from '../utils/dto';
 
 export default defineEventHandler(async (event) => {
-    if (!event?.context?.user) {
+    if (!event?.context?.auth) {
         throw createError({
             statusCode: 401,
         })

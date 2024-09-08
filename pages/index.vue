@@ -1,4 +1,9 @@
 <script setup>
+import { useGlobalStore } from "~/stores/globalStore.js";
+import { useLocalUserStore } from "~/stores/localStore";
+const localStore = useLocalUserStore();
+
+
 const cardContent = [
   {
     title: "Регистрация на сайте",
@@ -40,12 +45,25 @@ const cardColContent = [
   },
 ];
 
+onMounted(async () => {
+  $fetch("/api/profile")
+    .then((data) => {
+      console.log(data);
+      localStore.setLocalUser(data);
+    })
+    .catch((e) => {
+      localStore.setLocalUser();
+    })
+    .finally(() => {
+      useGlobalStore().setLoading(false);
+    });
+});
 </script>
 
 <template>
   <NuxtLayout>
     <div
-      class="hero bg-no-repeat bg-top bg-fixed max-[820px]:bg-center bg-cover py-4 px-0 min-w-full flex flex-col justify-end max-[1024px]:px-2  max-[520px]:px-1 border-b-2 border-slate-700"
+      class="hero bg-no-repeat bg-top bg-fixed max-[820px]:bg-center bg-cover py-4 px-0 min-w-full flex flex-col justify-end max-[1024px]:px-2 max-[520px]:px-1 border-b-2 border-slate-700"
     >
       <div
         class="hero-center min-w-full px-4 gap-12 py-16 flex justify-between items-center max-[1224px]:flex-col max-[822px]:py-0 max-[822px]:gap-12 max-[822px]:pt-14 max-[820px]:px-0 max-[822px]:text-white"
@@ -88,11 +106,13 @@ const cardColContent = [
       <main-cards-layout>
         <template #title> Как работает сервис </template>
         <template #content>
-          <credit-take :content="cardColContent" :flex="'flex-row'"></credit-take>
+          <credit-take
+            :content="cardColContent"
+            :flex="'flex-row'"
+          ></credit-take>
         </template>
         <template #button-title> Регистрация </template>
       </main-cards-layout>
-      
     </main>
   </NuxtLayout>
 </template>
