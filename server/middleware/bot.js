@@ -1,6 +1,8 @@
 import { Telegraf, Markup, session } from 'telegraf';
 import { default as creditors } from '../schemas/creditor';
-export default defineNitroPlugin(nuxtApp => {
+
+
+export default defineEventHandler(async (event) => {
     let INITIAL_SESSION = { id: null, action: null, type: null };
 
     const bot = new Telegraf(useRuntimeConfig().bot);
@@ -148,6 +150,5 @@ export default defineNitroPlugin(nuxtApp => {
             }
         }
     })
-
     bot.launch()
 })
