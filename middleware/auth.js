@@ -6,6 +6,4 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     if (!isAuth.value && to.path === '/account') {
         return navigateTo('/register'); 
     }
-
-    
 })

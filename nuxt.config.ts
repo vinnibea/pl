@@ -17,7 +17,6 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     '@vueuse/motion/nuxt',
     '@nuxt/ui',
-    'nuxt-snackbar'
   ],
 
   snackbar: {
