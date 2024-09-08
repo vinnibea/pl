@@ -135,11 +135,11 @@ const onlyNumber = ($event, field) => {
         :placeholder="placeholder"
       />
 
-      <Icon
+      <UIcon
         v-if="value && !errors.$message"
         class="absolute right-2 top-1/2 -translate-y-1/2 text-md text-green-500 min-h-6 min-w-6"
         name="mdi:checkbox-marked-circle-outline"
-      ></Icon>
+      ></UIcon>
       <label
         :for="id"
         class="absolute top-1/2 font-medium -translate-y-1/2 transition-all duration-500 peer-focus:-translate-y-[42px] max-[822px]:text-[10px] max-[822px]:font-bold max-[822px]:uppercase max-[822px]:peer-focus:-translate-y-[32px]"

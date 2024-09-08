@@ -75,7 +75,7 @@ const logout = () => {
         ]"
         @click="asideStore.setSelectedSection(i)"
       >
-        <Icon
+        <UIcon
           :name="item.icon"
           class="min-h-8 min-w-8 max-[822px]:min-w-6"
           :class="[
@@ -84,7 +84,7 @@ const logout = () => {
             },
           ]"
         >
-        </Icon>
+        </UIcon>
         <span class="w-2/3 flex justify-start pl-1 max-[822px]:hidden">{{
           item.title
         }}</span>
