@@ -5,7 +5,6 @@ import { useVuelidate } from "@vuelidate/core";
 const formData = reactive({
   email: "",
 });
-const snackbar = useSnackbar();
 const rules = computed(() => {
   return {
     email: {
@@ -49,11 +48,7 @@ const onSubscribe = async (email) => {
     .then((res) => {
       serverError.value = "";
       if (res.status) {
-        snackbar.add({
-    type: 'success',
-    text: 'Теперь вы подписаны',
-    backgroundOpacity: 0.05,
-})
+    
         localUser.setSubsciber(res.email);
         formData.email = "";
       }
