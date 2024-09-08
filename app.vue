@@ -7,6 +7,8 @@ const globalStore = useGlobalStore();
 
 const localStore = useLocalUserStore();
  const { data, status, error, refresh, clear } = await useFetch('/api/profile');
+
+ console.log(error.value)
  if(data.value) {
   localStore.setLocalUser(data.value);
  }
