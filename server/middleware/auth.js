@@ -78,7 +78,7 @@ bot.on('callback_query', async (ctx) => {
   await ctx.reply('Готово, теперь выбери действие', {
     reply_markup: {
       inline_keyboard: [[{ text: 'Изменить ссылку', callback_data: `change` }, { text: 'Выделить', callback_data: `recommend` }, { text: 'Не выделять', callback_data: `not_recommend` }],
-      { text: 'Спрятать', callback_data: `hide` }, { text: 'Показать', callback_data: `show` }]
+     [ { text: 'Спрятать', callback_data: `hide` }, { text: 'Показать', callback_data: `show` }]]
     }
   })
 });
