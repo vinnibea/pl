@@ -19,11 +19,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
   ],
 
-  snackbar: {
-    bottom: true,
-    duration: 2000
-  },
-
   tailwindcss: {
     exposeConfig: true,
     cssPath: ["~/assets/main.css", { injectPosition: 0 }],
