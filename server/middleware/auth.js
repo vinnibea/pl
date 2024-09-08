@@ -33,7 +33,6 @@ const mail = (to, message) => ({
 
 
 
-
 export default defineEventHandler(async (event) => {
   const token = await getCookie(event, 'uid');
 
