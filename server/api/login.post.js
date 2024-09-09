@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
             statusMessage: 'Заполните все необходимые поля для продолжения',
         })
     }
-
+try{
     const user_exist = await users.findOne({ email: user_data.email });
 
     if (!user_exist) {
@@ -39,5 +39,12 @@ export default defineEventHandler(async (event) => {
             }
             
         }
+} 
+   
+    } catch(e) {
+        throw createError({
+            statusCode: 420,
+            message: 'Something with DB'
+        })
     }
 })

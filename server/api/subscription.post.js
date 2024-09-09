@@ -11,8 +11,6 @@ export default defineEventHandler(async (event) => {
         email: email
     })
 
-    console.log(returnURL)
-
     const session = await stripe.subscriptions.create({
         mode: 'subscription',
         customer: customer.id,

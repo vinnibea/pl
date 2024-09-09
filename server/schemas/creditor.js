@@ -1,9 +1,6 @@
 
 import mongoose, { Schema } from "mongoose";
-const titleSchema = new Schema({
-    title: String,
-    subtitle: String,
-})
+
 const creditorSchema = new Schema({
     title: {
         type: String,
