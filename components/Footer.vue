@@ -1,10 +1,47 @@
 <script setup>
-import { required, email, 
-  helpers } from "@vuelidate/validators";
+import { required, email, helpers } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
 const formData = reactive({
   email: "",
 });
+
+const paragraphs = [
+  {
+    content:
+      "ТОО MONEYDEAL БИН: 221140056789 не участвует в договорных отношениях между пользователями и кредитными организациями. Пользователи самостоятельно анализируют риски, связанные с кредитными предложениями, принимают решения о заключении договоров с партнёрами через сервис и берут на себя возможные последствия. Оплата за услуги сервиса не гарантирует одобрение микрокредита.",
+  },
+  {
+    content:
+      "Основные параметры: срок кредитования от 61 дня до 5 лет, процентные ставки от 5,9% до 180,9% годовых, возраст заемщика от 18 лет.",
+  },
+  {
+    content:
+      "Пример расчёта: Заём в размере 300 000 тенге на 36 месяцев под 12,9% годовых. Переплата составит 63 375 тенге, итоговая сумма возврата — 363 375 тенге. Кредитор обязан предоставить полную информацию о кредитных условиях, использовании и возврате займа.",
+  },
+  {
+    content:
+      "Если у вас возникли вопросы по работе сервиса, ознакомьтесь с разделом Ответы на вопросы или воспользуйтесь формой обратной связи на странице ",
+    link: "НАПИШИТЕ НАМ.",
+  },
+  {
+    content:
+      "Пользователю предоставляется доступ к платным функциям сервиса для получения предложений от кредиторов. Сервис не является банком или кредитной организацией, и не несет ответственности за условия и последствия договоров кредитования. Пользователь соглашается с текущими тарифами.",
+  },
+  {
+    content:
+      "С вашей карты будет списана сумма 3999 тенге за 5 дней использования сервиса (платная подписка). Подписка автоматически продлевается, если она не была отменена.",
+  },
+  {
+    content:
+      "Если вам больше не требуется услуга (вы получили микрокредит или не нуждаетесь в нём), вы можете в любое время -",
+    link: "отменить подписку.",
+  },
+  {
+    content:
+      "Этот сайт использует куки для предоставления услуг. Вы можете изменить настройки доступа к куки в вашем браузере. Для удаления персональных данных отправьте письмо с зарегистрированного вами email на адрес ",
+    link: "experts@moneydea.pro.",
+  },
+];
 const rules = computed(() => {
   return {
     email: {
@@ -21,14 +58,14 @@ const formTouched = (field) => {
 };
 
 const footerLinks = [
-  "О сервисе",
-  "Контакты",
-  "Закрытие счета",
-  "Вопросы и ответы",
-  "Публичное предложение",
-  "Конфиденциальность",
-  "Тариф и политика возврата средств",
-  "Хранение персональных данных",
+  { title: "О сервисе", link: "/about" },
+  { title: "Контакты", link: "/contacts" },
+  { title: "Закрытие счета", link: "/close-account" },
+  { title: "Вопросы и ответы", link: "/faq" },
+  { title: "Публичное предложение", link: "/public-offer" },
+  { title: "Конфиденциальность", link: "/privacy" },
+  { title: "Тариф и политика возврата средств", link: "/pricing-refund-policy" },
+  { title: "Хранение персональных данных", link: "/user-data-storage-policy" },
 ];
 
 const serverError = ref("");
@@ -48,7 +85,6 @@ const onSubscribe = async (email) => {
     .then((res) => {
       serverError.value = "";
       if (res.status) {
-    
         localUser.setSubsciber(res.email);
         formData.email = "";
       }
@@ -80,25 +116,25 @@ const onSubscribe = async (email) => {
           class="flex gap-48 max-[822px]:gap-8 max-[822px]:justify-between w-full max-[822px]:py-4"
         >
           <ul class="flex flex-col gap-8 max-[468px]:gap-4">
-            <li v-for="item in footerLinks.slice(0, 4)" :key="item">
+            <li v-for="item in footerLinks.slice(0, 4)" :key="item.title">
               <NuxtLink
-                to="#"
+                :to="item.link"
                 class="text-footer-link text-base max-[822px]:text-sm max-[468px]:text-xs"
-                >{{ item }}</NuxtLink
+                >{{ item.title }}</NuxtLink
               >
             </li>
           </ul>
           <ul class="flex flex-col gap-8 max-[468px]:gap-4">
-            <li v-for="item in footerLinks.slice(4)" :key="item">
+            <li v-for="item in footerLinks.slice(4)" :key="item.title">
               <NuxtLink
-                to="#"
+                :to="item.link"
                 class="text-footer-link text-base max-[822px]:text-sm max-[468px]:text-xs"
-                >{{ item }}</NuxtLink
+                >{{ item.title }}</NuxtLink
               >
             </li>
           </ul>
         </div>
-   
+
         <form class="flex flex-col py-12 gap-0">
           <div class="flex">
             <input
@@ -109,11 +145,14 @@ const onSubscribe = async (email) => {
               class="px-2 py-2 w-full bg-slate-95 bg-slate-900 disabled:opacity-50 placeholder:text-white transition-all duration-300 placeholder:text-sm focus:outline-none focus:bg-slate-800 text-white focus:placeholder:text-slate-600 max-[822px]:placeholder:text-xs"
               :placeholder="localUser.subscriber_email || 'Введите ваш email'"
             />
-           
+
             <Button
               :radius="'rounded-r-md relaive max-[822px]:placeholder:text-xs'"
               :disabled="
-                !formData.email.length || loading || localUser.isSubscriber || $v?.email?.$errors[0]
+                !formData.email.length ||
+                loading ||
+                localUser.isSubscriber ||
+                $v?.email?.$errors[0]
               "
               @click="onSubscribe(formData.email)"
               :color="localUser.isSubscriber ? 'bg-green-500' : 'bg-yellow'"
@@ -145,9 +184,11 @@ const onSubscribe = async (email) => {
               </span>
             </Button>
           </div>
-          <span v-if="serverError.length ||  $v?.email?.$errors[0]?.$message" class="text-red-500">{{
-            serverError || $v?.email?.$errors[0]?.$message
-          }}</span>
+          <span
+            v-if="serverError.length || $v?.email?.$errors[0]?.$message"
+            class="text-red-500"
+            >{{ serverError || $v?.email?.$errors[0]?.$message }}</span
+          >
           <span v-if="serverSuccess.length" class="text-green-600">{{
             serverSuccess
           }}</span>
@@ -197,7 +238,20 @@ const onSubscribe = async (email) => {
         </div>
       </div>
     </div>
-   
+
+    <div class="border-t-2 border-slate-900 py-2">
+      <p
+        v-for="(paragraph, i) in paragraphs"
+        :key="i"
+        class="text-xs text-slate-300 px-2 py-1"
+      >
+        {{ paragraph.content }}
+        <NuxtLink class="text-slate-500" v-if="paragraph.link" :to="paragraph.link">{{
+          paragraph.link
+        }}</NuxtLink>
+      </p>
+    </div>
+
     <div
       class="w-full bg-slate-200 flex items-center px-4 py-0 max-[822px]:flex-col-reverse max-[822px]:px-2 max-[822px]:py-0"
     >
@@ -217,7 +271,6 @@ const onSubscribe = async (email) => {
         </p>
       </div>
     </div>
-   
   </footer>
 </template>
 
