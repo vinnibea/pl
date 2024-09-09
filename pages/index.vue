@@ -1,7 +1,5 @@
 <script setup>
-import { useGlobalStore } from "~/stores/globalStore.js";
-import { useLocalUserStore } from "~/stores/localStore";
-const localStore = useLocalUserStore();
+
 
 
 const cardContent = [
@@ -45,19 +43,7 @@ const cardColContent = [
   },
 ];
 
-onMounted(async () => {
-  $fetch("/api/profile")
-    .then((data) => {
-      console.log(data);
-      localStore.setLocalUser(data);
-    })
-    .catch((e) => {
-      localStore.setLocalUser();
-    })
-    .finally(() => {
-      useGlobalStore().setLoading(false);
-    });
-});
+
 </script>
 
 <template>

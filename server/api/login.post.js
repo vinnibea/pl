@@ -6,6 +6,7 @@ import {default as dto} from '../utils/dto';
 export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig();
     const user_data = await readBody(event);
+    console.log(user_data)
     if (!user_data.password || !user_data.email) {
         throw createError({
             statusCode: 400,

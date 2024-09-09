@@ -1,7 +1,8 @@
 <script setup>
 import { useAccountStore } from "~/stores/accountStore";
 import { useWindowSize } from "@vueuse/core";
-
+import { useGlobalStore } from "~/stores/globalStore.js";
+import { useLocalUserStore } from "~/stores/localStore";
 
 
 const { width, height } = useWindowSize();
@@ -23,6 +24,20 @@ watch(width, (newVal) => {
   }
 });
 
+const localStore = useLocalUserStore();
+onMounted(async () => {
+  $fetch("/api/profile")
+    .then((data) => {
+      console.log(data);
+      localStore.setLocalUser(data);
+    })
+    .catch((e) => {
+      localStore.setLocalUser();
+    })
+    .finally(() => {
+      useGlobalStore().setLoading(false);
+    });
+});
 
 </script>
 

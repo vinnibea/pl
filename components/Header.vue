@@ -94,7 +94,7 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
       </button>
 
       <USkeleton
-        v-if="globalStore.loading && route.fullPath === '/'"
+        v-if="globalStore.loading && route.fullPath !== '/account'"
         class="h-[38px] w-[250px] bg-slate-300 max-[822px]:hidden bg-opacity-50"
         :config="{
           base: 'animate-pulse',
@@ -129,7 +129,7 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
         v-if="auth.isAuth && !globalStore.loading"
         class="flex items-center justify-center w-[250px] max-[822px]:hidden h-[38px]"
         :class="[
-          { 'opacity-0 pointer-events-none': route.fullPath === '/account' },
+          { 'opacity-0 pointer-events-none': route.path === '/account' },
         ]"
       >
         <NuxtLink to="/account">

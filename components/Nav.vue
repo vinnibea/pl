@@ -11,7 +11,6 @@ const route = useRoute();
 
 <template>
   <nav
-    v-if="(route.path === '/' || route.path === '/register' || isMobile)"
     class="flex items-center flex-col  max-[822px]:relative max-[822px]:z-50"
     :class="[
       {
