@@ -15,7 +15,6 @@ export default defineEventHandler(async (event) => {
     }
 try{
     const user_exist = await users.findOne({ email: user_data.email });
-
     if (!user_exist) {
         throw createError({
             statusCode: 404,
