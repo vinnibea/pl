@@ -140,7 +140,7 @@ const onCardSelected = (index) => {
           @click="onCardSelected(index + 1)"
         >
           <div
-            class="flex items-center w-full gap-2 justify-between max-[822px]:gap-0 bg-slate-800 max-[822px]:py-1 max-[822px]:px-1"
+            class="flex items-center w-full gap-2 px-1 justify-between max-[822px]:gap-0 bg-slate-800 max-[822px]:py-1 max-[822px]:px-1"
             :class="[
               {
                 'rounded-t-md': selectedCard === index + 1,
@@ -152,7 +152,7 @@ const onCardSelected = (index) => {
               class="rounded-full transition-transform duration-500 min-h-6 min-w-6 max-[822px]:border-2  max-[822px]:max-h-4 max-[822px]:max-w-4 bg-slate-900 border-2 border-yellow flex items-center justify-center"
             >
               <span
-                class="rounded-full group-hover:bg-white transition-all duration-500 group-hover:text-slate-900 h-4 w-4  max-[822px]:max-w-[15px] max-[822px]:max-h-[15px] text-xs max-[822px]:text-[8px] flex items-center justify-center"
+                class="rounded-full group-hover:bg-white transition-all duration-500 group-hover:text-slate-900 h-4 w-4  max-[822px]:max-w-[16px] max-[822px]:max-h-[16px] text-xs max-[822px]:text-[12px] flex items-center justify-center"
                 :class="[
                   {
                     'bg-white': selectedCard === index + 1,
@@ -164,7 +164,7 @@ const onCardSelected = (index) => {
             </span>
 
             <h3
-              class="font-semibold text-center text-base max-[1024px]:text-[12px] max-[476px]:text-[10px]"
+              class="font-semibold text-center py-2 text-base max-[1024px]:text-[12px] max-[476px]:text-[10px]"
               :class="[
                 {
                   'text-yellow': selectedCard === index + 1,
@@ -221,7 +221,11 @@ const onCardSelected = (index) => {
             ]"
           >
             {{ item.content }}
+            <ul class="text-[12px] text-amber-300 max-[822px]:text-[9px]">
+              <li v-for="listItem in item.list" :key="listItem" >- {{listItem}}</li>
+           </ul>
           </p>
+          
         </div>
       </div>
       <Calculator class="max-[1024px]:hidden"></Calculator>
