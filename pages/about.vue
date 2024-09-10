@@ -67,7 +67,7 @@ const onCardSelected = (index) => {
         class="flex group flex-col w-full max-[1224px]:min-w-full bg-opacity-60 items-start text-4xl font-semibold rounded-md text-white transition-all cursor-pointer max-[1024px]:px-2 max-[820px]:px-0 bg-slate-900"
       >
         <div
-          class="flex items-center w-full gap-2 px-1 rounded-t-md justify-between max-[822px]:gap-0 bg-opacity-60  bg-slate-800 max-[822px]:py-1 max-[822px]:px-1"
+          class="flex items-center w-full gap-2 px-1 rounded-t-md justify-between max-[822px]:gap-0 bg-opacity-60  bg-slate-800 max-[822px]:py-0 max-[822px]:px-1"
           v-if="item.title"
         
         >
@@ -139,20 +139,9 @@ const onCardSelected = (index) => {
 
 <style scoped>
 .with-bg{
-  position: relative;
-  z-index: 0; 
+  background: url('../assets/about.jpeg') 25% 25% / cover fixed;
 }
 
-.with-bg::before {
-  content: '';
-  position: absolute;
-  top: 0px;
-  left: 0;
-  right: 0;
-  bottom: 0px;
-  background: url('../assets/about.jpeg') 25% 25% / cover fixed;
-  filter: blur(5px) brightness(70%);
-  z-index: -1; 
-}
+
 
 </style>

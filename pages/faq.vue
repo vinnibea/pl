@@ -241,33 +241,10 @@ const onCardSelected = (index) => {
 </template>
 <style>
   .with-bg-2{
-    position: relative;
-    z-index: 1; /* Зробимо вміст вище за фон */
+    background: url('../assets/faq.jpeg') 25% 25% / cover fixed;
   }
   
-  .with-bg-2::before {
-    content: '';
-    position: absolute;
-    top: -80px;
-    left: 0;
-    right: 0;
-    bottom: -80px;
-    background: url('../assets/faq.jpeg') 25% 25% / cover fixed;
-    filter: blur(5px) brightness(70%); /* Застосовуємо фільтри тільки до фону */
-    z-index: -1; /* Фон за текстом */
-  }
-
 .hidden-scroll::-webkit-scrollbar {
   display: none;
-}
-
-@media screen and(max-width: 822px) {
-  .with-bg-2::before {
-    background: url('../assets/faq.jpeg') center center / cover fixed;
-    top: 20px;
-    left: 0;
-    right: 0;
-    bottom: -180px;
-  }
 }
 </style>

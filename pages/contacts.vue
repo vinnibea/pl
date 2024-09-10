@@ -95,19 +95,7 @@ const contacts = {
 <style scoped>
 
 .with-bg-3{
-  position: relative;
-  z-index: 1; 
+  background: url('../assets/contacts.jpeg') 25% 25% / cover fixed;
 }
 
-.with-bg-3::before {
-  content: '';
-  position: absolute;
-  top: -4px;
-  left: 0;
-  right: 0;
-  bottom: 0px;
-  background: url('../assets/contacts.jpeg') 25% 25% / cover fixed;
-  filter: blur(5px) brightness(70%);
-  z-index: -1; 
-}
 </style>
