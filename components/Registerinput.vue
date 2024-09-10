@@ -64,11 +64,12 @@ const onlyNumber = ($event, field) => {
 <template>
   <div class="flex flex-col justify-stretch w-full">
     <div class="relative w-full max-[822px]:w-full px-0 py-0 group">
-      <Icon
+      <UI
         v-if="!tel"
         class="absolute left-2 top-1/2 -translate-y-1/2 text-md text-slate-200 bg-slate-300 min-h-6 min-w-6"
         :name="icon"
-      ></Icon>
+        dynamic
+      ></UI>
       <span
         v-else
         class="absolute left-2 top-1/2 -translate-y-1/2 text-md font-bold text-slate-300"
@@ -139,6 +140,7 @@ const onlyNumber = ($event, field) => {
         v-if="value && !errors.$message"
         class="absolute right-2 top-1/2 -translate-y-1/2 text-md text-green-500 min-h-6 min-w-6"
         name="mdi:checkbox-marked-circle-outline"
+        dynamic
       ></UIcon>
       <label
         :for="id"

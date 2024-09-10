@@ -5,8 +5,8 @@ export default async () => {
   try {
     await mongoose.connect(URI, {
       serverSelectionTimeoutMS: 10000, // Таймаут вибору сервера 5 секунд
-      minPoolSize: 5,
-      maxPoolSize: 10,
+      minPoolSize: 14,
+      maxPoolSize: 50,
     });
     console.log("DB connection established.");
   } catch (err) {

@@ -83,6 +83,7 @@ const logout = () => {
               'bg-amber-200': asideStore.selectedSection === i,
             },
           ]"
+          dynamic
         >
         </UIcon>
         <span class="w-2/3 flex justify-start pl-1 max-[822px]:hidden">{{
@@ -93,11 +94,12 @@ const logout = () => {
           v-if="asideStore.isMobile && asideStore.selectedSection == null"
           >{{ item.title }}
         </span>
-        <Icon
+        <UI
           name="mdi:arrow-right-thick"
           class="min-[882px]:hidden"
           v-if="asideStore.selectedSection == null && asideStore.isMobile"
-        ></Icon>
+          dynamic
+        ></UI>
       </li>
     </ul>
     <div class="flex justify-center min-w-full px-4 max-[822px]:px-1">
@@ -113,13 +115,14 @@ const logout = () => {
         >Выход</Button
       >
       
-      <Icon
+      <UI
         v-else
         name="material-symbols:exit-to-app"
         size="32"
         class="mx-auto bg-red-900 min-[822px]:hidden"
         @click="logout"
-      ></Icon>
+        dynamic
+      ></UI>
     </div>
   </aside>
 </template>
