@@ -115,14 +115,14 @@ const logout = () => {
         >Выход</Button
       >
       
-      <UI
+      <UICon
         v-else
         name="material-symbols:exit-to-app"
         size="32"
         class="mx-auto bg-red-900 min-[822px]:hidden"
         @click="logout"
         dynamic
-      ></UI>
+      ></UIcon>
     </div>
   </aside>
 </template>

@@ -17,14 +17,14 @@ const contacts = {
 
 <template>
   <NuxtLayout>
-    <div class="with-bg-3">
+    <div class="with-bg-3 min-h-svh">
       <h1
         class="w-full text-center text-3xl max-[822px]:text-2xl font-bold uppercase text-white backdrop-blur-lg bg-slate-700 bg-opacity-60  pt-2 max-[820px]:pt-[42px]"
       >
         Контакты
       </h1>
       <div
-        class="flex items-start pt-4 max-h-full  gap-16 w-full max-[822px]:pt-4  px-4 max-[820px]:py-4 max-[820px]:px-2 max-[820px]:gap-4 cursor-pointer relative"
+        class="flex justify-between items-start pt-4 max-h-full  gap-16 w-full max-[822px]:pt-4  px-4 max-[820px]:py-4 max-[820px]:px-2 max-[820px]:gap-4 cursor-pointer relative"
       >
         <div
           class="flex flex-col justify-stretch w-1/2 bg-opacity-60 max-[822px]:w-full"
@@ -79,8 +79,14 @@ const contacts = {
               >
             </p>
           </div>
+   
+        <div class="flex justify-center w-full py-16 max-[822px]:hidden">
+          <NuxtLink>
+            <Button class="min-w-full">Напишите нам</Button>
+        </NuxtLink>
+      </div>
         </div>
-        <Calculator class="max-[1024px]:hidden sticky top-16"></Calculator>
+        <Calculator class="max-[1024px]:hidden"></Calculator>
       </div>
       <div
         class="w-2/3 max-[822px]:w-full mx-auto max-[822px]:mx-0 max-[822px]:px-2 pt-32 pb-16 max-[822px]:pt-8"
@@ -95,7 +101,7 @@ const contacts = {
 <style scoped>
 
 .with-bg-3{
-  background: url('../assets/contacts.jpeg') 25% 25% / cover fixed;
+  background: url('../assets/contacts.webp') 25% 25% / cover fixed;
 }
 
 </style>

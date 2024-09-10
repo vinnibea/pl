@@ -64,12 +64,12 @@ const onlyNumber = ($event, field) => {
 <template>
   <div class="flex flex-col justify-stretch w-full">
     <div class="relative w-full max-[822px]:w-full px-0 py-0 group">
-      <UI
+      <UIcon
         v-if="!tel"
         class="absolute left-2 top-1/2 -translate-y-1/2 text-md text-slate-200 bg-slate-300 min-h-6 min-w-6"
         :name="icon"
         dynamic
-      ></UI>
+      ></UIcon>
       <span
         v-else
         class="absolute left-2 top-1/2 -translate-y-1/2 text-md font-bold text-slate-300"

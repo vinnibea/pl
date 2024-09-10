@@ -61,4 +61,3 @@ const localModalCloser = () => {
   </div>
 </template>
 
-<style></style>

@@ -106,7 +106,7 @@ const cardColContent = [
 <style>
 .hero {
   min-height: calc(100dvh - 52px);
-  background-image: url("../assets/main.jpeg");
+  background-image: url("../assets/main.webp");
 }
 
 .hero-center h1 {
