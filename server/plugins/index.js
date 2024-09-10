@@ -4,7 +4,7 @@ export default async () => {
   const URI = useRuntimeConfig().mongoUrl;
   try {
     await mongoose.connect(URI, {
-      serverSelectionTimeoutMS: 10000, // Таймаут вибору сервера 5 секунд
+      serverSelectionTimeoutMS: 10000,
       minPoolSize: 14,
       maxPoolSize: 50,
     });

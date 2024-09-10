@@ -51,22 +51,23 @@ const onCardSelected = (index) => {
 
 <template>
   <NuxtLayout>
+   <div class="with-bg">
     <h1
-    class="w-full text-center text-3xl font-bold uppercase text-white pb-4 pt-8 max-[820px]:pt-16"
+    class="w-full text-center text-3xl max-[822px]:text-2xl font-bold uppercase text-white  bg-slate-700 bg-opacity-60  pt-2 max-[820px]:pt-[42px]"
   >
    О сервисе
   </h1>
   <div
-    class="flex items-start bg-slate-900 gap-16 w-full pt-8 pb-16 max-[822px]:pt-4 max-[822px]:pb-8 px-4 max-[820px]:py-4 max-[820px]:px-2 max-[820px]:gap-4 cursor-pointer relative"
+    class="flex items-start gap-16 w-full pt-8 pb-16 max-[822px]:pt-4 max-[822px]:pb-8 px-4 max-[820px]:py-4 max-[820px]:px-2 max-[820px]:gap-4 cursor-pointer"
   >
-    <div class="max-[1224px]:static flex flex-col justify-center">
+    <div class="flex flex-col gap-4 justify-center">
       <div
         v-for="(item, index) in serviceInfo"
         :key="item.title"
-        class="flex group flex-col w-full max-[1224px]:min-w-full p-2 items-start text-4xl font-semibold rounded-md text-white transition-all cursor-pointer max-[1024px]:px-2 max-[820px]:px-0 bg-slate-900"
+        class="flex group flex-col w-full max-[1224px]:min-w-full bg-opacity-60 items-start text-4xl font-semibold rounded-md text-white transition-all cursor-pointer max-[1024px]:px-2 max-[820px]:px-0 bg-slate-900"
       >
         <div
-          class="flex items-center w-full gap-2 px-1 rounded-t-md justify-between max-[822px]:gap-0 bg-slate-800 max-[822px]:py-1 max-[822px]:px-1"
+          class="flex items-center w-full gap-2 px-1 rounded-t-md justify-between max-[822px]:gap-0 bg-opacity-60  bg-slate-800 max-[822px]:py-1 max-[822px]:px-1"
           v-if="item.title"
         
         >
@@ -104,7 +105,7 @@ const onCardSelected = (index) => {
         </div>
 
         <p
-          class="text-sm w-full px-4 py-4 rounded-b-md text-justify bg-slate-700 transition-all duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-2"
+          class="text-sm w-full px-4 py-4 rounded-b-md text-justify bg-opacity-60 backdrop-blur-lg bg-slate-700 transition-all duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-2"
           :class="[
             {
               'rounded-t-md': index === 0,
@@ -126,9 +127,32 @@ const onCardSelected = (index) => {
   <div
     class="w-2/3 max-[822px]:w-full mx-auto max-[822px]:mx-0 max-[822px]:px-2 pt-32 pb-16 max-[822px]:pt-8"
   >
-    <NuxtLink to="/register">
-      <Button class="min-w-full"> </Button>
-    </NuxtLink>
+
+  <div class="p-2 min-[822px]:hidden">
+    <NuxtLink ><Button></Button></NuxtLink>
   </div>
+ </div>
+  </div>
+    
   </NuxtLayout>
 </template>
+
+<style scoped>
+.with-bg{
+  position: relative;
+  z-index: 0; 
+}
+
+.with-bg::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  background: url('../assets/about.jpeg') 25% 25% / cover fixed;
+  filter: blur(5px) brightness(70%);
+  z-index: -1; 
+}
+
+</style>

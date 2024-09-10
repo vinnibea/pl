@@ -124,23 +124,27 @@ const onCardSelected = (index) => {
 
 <template>
   <NuxtLayout>
-    <h1
-      class="w-full text-center text-3xl font-bold uppercase text-white pb-4 pt-8 max-[820px]:pt-16"
+    <div class="with-bg-2 min-h-[1020px]  max-h-[1020px] max-[822px]:min-h-svh overflow-y-scroll hidden-scroll">
+      <h1
+      class="w-full text-center text-3xl max-[822px]:text-2xl font-bold uppercase text-white backdrop-blur-lg bg-slate-700 bg-opacity-60  pt-2 max-[820px]:pt-[42px]"
     >
       Вопросы и ответы
     </h1>
+   
     <div
-      class="flex items-start bg-slate-900 gap-16 w-full pt-8 pb-16 max-[822px]:pt-4 max-[822px]:pb-8 px-4 max-[820px]:py-4 max-[820px]:px-2 max-[820px]:gap-4 cursor-pointer relative"
-    >
-      <div class="max-[1224px]:static flex flex-col justify-center">
+      class="flex items-start pt-4 max-h-full  gap-16 w-full max-[822px]:pt-4  px-4 max-[820px]:py-4 max-[820px]:px-2 max-[820px]:gap-4 cursor-pointer"
+    > 
+    
+      <div class=" flex flex-col gap-1 justify-center">
+       
         <div
           v-for="(item, index) in faqItems"
           :key="item.title"
-          class="flex group flex-col w-full max-[1224px]:min-w-full p-2 items-start text-4xl font-semibold rounded-md text-white transition-all cursor-pointer max-[1024px]:px-2 max-[820px]:px-0 bg-slate-900"
+          class="flex group flex-col w-full max-[1224px]:min-w-full items-start bg-opacity-60 text-4xl font-semibold rounded-md text-white transition-all cursor-pointer max-[1024px]:px-2 max-[820px]:px-0 bg-slate-900"
           @click="onCardSelected(index + 1)"
         >
           <div
-            class="flex items-center w-full gap-2 px-1 justify-between max-[822px]:gap-0 bg-slate-800 max-[822px]:py-1 max-[822px]:px-1"
+            class="flex items-center w-full gap-2 px-1 justify-between max-[822px]:gap-0 bg-opacity-60 backdrop-blur-lg bg-slate-800 max-[822px]:py-0 max-[822px]:px-1"
             :class="[
               {
                 'rounded-t-md': selectedCard === index + 1,
@@ -206,7 +210,7 @@ const onCardSelected = (index) => {
           </div>
 
           <p
-            class="text-sm w-full px-2 rounded-b-md text-justify bg-slate-700 transition-all duration-300 group-hover:text-orange-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-2"
+            class="text-sm w-full px-2 rounded-b-md text-justify bg-slate-700 transition-all bg-opacity-60 backdrop-blur-lg duration-300 group-hover:text-orange-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-2"
             :class="[
               {
                 'py-4': index + 1 === selectedCard,
@@ -228,12 +232,42 @@ const onCardSelected = (index) => {
           
         </div>
       </div>
-      <Calculator class="max-[1024px]:hidden"></Calculator>
+      <Calculator class="max-[1024px]:hidden sticky top-16"></Calculator>
+      
     </div>
-    <div
-      class="w-2/3 max-[822px]:w-full mx-auto max-[822px]:mx-0 max-[822px]:px-2 pt-32 pb-16 max-[822px]:pt-8"
-    >
-      <NuxtLink to="/register"><Button class="min-w-full"> </Button></NuxtLink>
+    
     </div>
   </NuxtLayout>
 </template>
+<style>
+  .with-bg-2{
+    position: relative;
+    z-index: 1; /* Зробимо вміст вище за фон */
+  }
+  
+  .with-bg-2::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: 0;
+    right: 0;
+    bottom: -80px;
+    background: url('../assets/faq.jpeg') 25% 25% / cover fixed;
+    filter: blur(5px) brightness(70%); /* Застосовуємо фільтри тільки до фону */
+    z-index: -1; /* Фон за текстом */
+  }
+
+.hidden-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and(max-width: 822px) {
+  .with-bg-2::before {
+    background: url('../assets/faq.jpeg') center center / cover fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    bottom: -180px;
+  }
+}
+</style>
