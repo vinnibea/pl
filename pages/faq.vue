@@ -144,7 +144,7 @@ const onCardSelected = (index) => {
           @click="onCardSelected(index + 1)"
         >
           <div
-            class="flex items-center w-full gap-2 px-1 justify-between max-[822px]:gap-0 bg-opacity-60 backdrop-blur-lg bg-slate-800 max-[822px]:py-0 max-[822px]:px-1"
+            class="flex items-center w-full gap-2 px-1 justify-between max-[822px]:gap-0 bg-opacity-60 bg-slate-800 max-[822px]:py-0 max-[822px]:px-1"
             :class="[
               {
                 'rounded-t-md': selectedCard === index + 1,
