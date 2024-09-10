@@ -104,7 +104,7 @@ const onCardSelected = (index) => {
         </div>
 
         <p
-          class="text-sm w-full px-4 py-4 rounded-b-md text-justify bg-slate-700 transition-all duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-6"
+          class="text-sm w-full px-4 py-4 rounded-b-md text-justify bg-slate-700 transition-all duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-2"
           :class="[
             {
               'rounded-t-md': index === 0,

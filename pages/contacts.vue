@@ -42,7 +42,7 @@ const contacts = {
             </span>
 
             <h3
-              class="font-semibold pl-4 py-2 text-2xl max-[476px]:text-[24px] text-amber-300 text-center"
+              class="font-semibold pl-4 py-2 text-2xl max-[476px]:text-[18px] drop-shadow-md text-amber-300 text-center"
             >
               {{ contacts.company }}
             </h3>
@@ -50,26 +50,26 @@ const contacts = {
           </div>
 
           <p
-            class="text-sm w-full px-4 py-4 xt-justify bg-slate-700 transition-all duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-6"
+            class="text-sm w-full px-4 py-4 xt-justify bg-slate-700 transition-all duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-2"
           >
           <span class="uppercase text-amber-300 pr-2">BIN:</span>
             {{ contacts.BIN }}
           </p>
           <p
-            class="text-sm w-full px-4 py-4 text-justify bg-slate-700 transition-all duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-6"
+            class="text-sm w-full px-4 py-4 text-justify bg-slate-700 transition-all duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-2"
           >
           <span class="uppercase text-amber-300 pr-2">Адрес:</span>
             {{ contacts.address.country }}, {{ contacts.address.city }},
             {{ contacts.address.district }}, {{ contacts.address.house }}
           </p>
           <p
-            class="text-sm w-full px-4 py-4  text-justify bg-slate-700 transition-all duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-6"
+            class="text-sm w-full px-4 py-4  text-justify bg-slate-700 transition-all duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-2"
           > 
           <span class="uppercase text-amber-300 pr-2">Телефон:</span>
             {{ contacts.phone }}
           </p>
           <p
-            class="text-sm w-full px-4 py-4 rounded-b-md text-justify bg-slate-700 transition-all duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-6"
+            class="text-sm w-full px-4 py-4 rounded-b-md text-justify bg-slate-700 transition-all duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-2"
           >
             <NuxtLink :to="`mailto:${contacts.email}`">
               <span class="uppercase text-amber-300 pr-2">Почта:</span>

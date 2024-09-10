@@ -206,7 +206,7 @@ const onCardSelected = (index) => {
           </div>
 
           <p
-            class="text-sm w-full px-2 rounded-b-md text-justify bg-slate-700 transition-all duration-300 group-hover:text-orange-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-6"
+            class="text-sm w-full px-2 rounded-b-md text-justify bg-slate-700 transition-all duration-300 group-hover:text-orange-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-2"
             :class="[
               {
                 'py-4': index + 1 === selectedCard,
@@ -233,7 +233,7 @@ const onCardSelected = (index) => {
     <div
       class="w-2/3 max-[822px]:w-full mx-auto max-[822px]:mx-0 max-[822px]:px-2 pt-32 pb-16 max-[822px]:pt-8"
     >
-      <Button class="min-w-full"> </Button>
+      <NuxtLink to="/register"><Button class="min-w-full"> </Button></NuxtLink>
     </div>
   </NuxtLayout>
 </template>

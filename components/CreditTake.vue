@@ -59,7 +59,7 @@ const onCardSelected = (index) => {
 
       
       <p
-        class="text-sm px-2 text-justify transition-all duration-300 group-hover:text-orange-300 max-[822px]:group-hover:text-white  py-4 max-[822px]:text-xs max-[822px]:px-6 "
+        class="text-sm px-2 text-justify transition-all duration-300 group-hover:text-orange-300 max-[822px]:group-hover:text-white  py-4 max-[822px]:text-xs max-[822px]:px-2 "
         :class="[
             
           { 
