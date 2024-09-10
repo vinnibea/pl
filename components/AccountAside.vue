@@ -94,12 +94,12 @@ const logout = () => {
           v-if="asideStore.isMobile && asideStore.selectedSection == null"
           >{{ item.title }}
         </span>
-        <UI
+        <UIcon
           name="mdi:arrow-right-thick"
           class="min-[882px]:hidden"
           v-if="asideStore.selectedSection == null && asideStore.isMobile"
           dynamic
-        ></UI>
+        ></UIcon>
       </li>
     </ul>
     <div class="flex justify-center min-w-full px-4 max-[822px]:px-1">
@@ -115,7 +115,7 @@ const logout = () => {
         >Выход</Button
       >
       
-      <UICon
+      <UIcon
         v-else
         name="material-symbols:exit-to-app"
         size="32"
