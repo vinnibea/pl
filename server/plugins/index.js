@@ -12,8 +12,8 @@ const mongoose_runner = async () => {
   }
 
   const options = {
-    serverSelectionTimeoutMS: 5000, // 30 секунд
-    socketTimeoutMS: 5000, // 45 секунд
+    serverSelectionTimeoutMS: 50000, // 30 секунд
+    socketTimeoutMS: 50000, // 45 секунд
     minPoolSize: 5,
     maxPoolSize: 10,
   }
