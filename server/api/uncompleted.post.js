@@ -8,33 +8,33 @@ export default defineEventHandler(async (event) => {
             message: 'Invalid data',
         })
     } else {
-            const in_db = await uncompleted.find({email: body.email});
+        const in_db = await uncompleted.find({ email: body.email });
 
-            if(in_db) {
-                return {
-                    statusCode: 203,
-                    status: 'OK'
-                },
-            }
-    
-        try {
-            const fresh_uncompleted = await uncompleted.create({
-                email: body.email,
-                name: body.name,
-                surname: body.surname,
-                phone: body.phone,
-                city: body.city,
-            })
-            console.log(fresh_uncompleted);
+        if (in_db) {
             return {
-                statusCode: 201,
-                message: 'Created',
+                statusCode: 203,
+                status: 'OK'
             }
-        } catch (e) {
-            throw createError({
-                statusCode: 405,
-                message: 'DB process failed',
-            })
+        }}
+    
+
+    try {
+        const fresh_uncompleted = await uncompleted.create({
+            email: body.email,
+            name: body.name,
+            surname: body.surname,
+            phone: body.phone,
+            city: body.city,
+        })
+        console.log(fresh_uncompleted);
+        return {
+            statusCode: 201,
+            message: 'Created',
         }
+    } catch (e) {
+        throw createError({
+            statusCode: 405,
+            message: 'DB process failed',
+        })
     }
 })
