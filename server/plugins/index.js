@@ -6,10 +6,10 @@ if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
 const URI = useRuntimeConfig().mongoUrl;
-const mongoose_runner = async () => {
-  if (cached.conn) {
-    return cached.conn;
-  }
+// const mongoose_runner = async () => {
+//   if (cached.conn) {
+//     return cached.conn;
+//   }
 
   const options = {
     serverSelectionTimeoutMS: 10000, // 30 секунд
