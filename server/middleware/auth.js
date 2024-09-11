@@ -35,7 +35,7 @@ const mail = (to, message) => ({
 
 export default defineEventHandler(async (event) => {
   const token = await getCookie(event, 'uid');
-
+  console.log(token)
   if (token) {
     try {
       const verified_token = jwt.verify(token, useRuntimeConfig().secret);

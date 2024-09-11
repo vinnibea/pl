@@ -44,6 +44,7 @@ export default defineEventHandler(async (event) => {
                 })
             } else {
                 const { name, surname, index, phone, city, email, _sid } = register_data;
+                console.log(register_data)
                 const hashed_password = bcrypt.hashSync(verified_tp, saltRounds)
                 try {
                     await users.create({

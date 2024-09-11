@@ -8,7 +8,7 @@ export default {
             index: payload.index,
             email: payload.email,
             id: payload._id || payload.id,
-            _sid: payload._sID || null,
+            sid: payload._sID,
             hasEmail: payload.hasEmail,
             hasNotification: payload.hasNotification,
             deactivated: payload.deactivated,

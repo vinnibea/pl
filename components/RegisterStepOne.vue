@@ -142,7 +142,15 @@ const changePolitics = (i) => {
 const onComplete = async (data) => {
   const { password } = data;
   const { email, name, surname, index, phone, city } = data;
-  $fetch('/api/register', {
+  console.log(data)
+  try {
+    await $fetch('/api/uncompleted', {
+    method: 'POST',
+    body: {
+       email, name, surname, phone, city,
+    }
+  })
+  await $fetch('/api/register', {
     method: "POST", 
     body: {
       password,
@@ -153,6 +161,10 @@ const onComplete = async (data) => {
     JSON.stringify({ email, name, surname, index, phone, city })
   );
   registerStore.setActiveTab(1);
+  } catch (e) {
+    console.log(e)
+    // window.location.reload()
+  }
 };
 </script>
 <template>

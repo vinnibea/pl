@@ -20,12 +20,12 @@ export default defineEventHandler(async (event) => {
                 quantity: 1,
 
             }],
-            success_url: returnURL.origin,
+        success_url: returnURL.origin,
     })
 
-        console.log(session, customer)
+    console.log(session, customer)
 
-return {
-
-}
+    return {
+        status: 'OK',
+    }
 })

@@ -12,6 +12,7 @@ export const useLocalUserStore = defineStore('local_user', () => {
     isSubscriber.value = true;
   }
   const setLocalUser = (payload) => {
+    console.log(payload)
     if (!payload?.email) {
       isAuth.value = false;
       return;
@@ -24,12 +25,15 @@ export const useLocalUserStore = defineStore('local_user', () => {
       phone: String(payload.phone),
       index: payload.index,
       email: payload.email,
+      hasEmail: payload.hasEmail,
+      hasNotification: payload.hasNotification,
+      deactivated: payload.deactivated,
       timeStamp: Date.now(),
       id: payload.id,
-      _sid: payload._sid,
+      sid: payload.sid,
     };
   
-     
+     console.log(DTO)
     localUser.value = DTO;
     isAuth.value = true;
   }

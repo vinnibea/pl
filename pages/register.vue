@@ -18,7 +18,7 @@ const steps = [
 const components = [RegisterStepOne, RegisterStepTwo, RegisterSuccess];
 
 onMounted(async () => {
-  await localStore.setLocalUser(JSON.parse(localStorage.getItem("user")));
+  !localStore.isAuth && await localStore.setLocalUser(JSON.parse(localStorage.getItem("user")));
 });
 </script>
 

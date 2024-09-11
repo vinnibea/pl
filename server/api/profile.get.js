@@ -1,5 +1,3 @@
-import { default as dto } from '../utils/dto';
-
 export default defineEventHandler(async (event) => {
     if (!event?.context?.auth) {
         throw createError({
@@ -9,9 +7,7 @@ export default defineEventHandler(async (event) => {
     
     const user = event.context.auth;
     if (user) {
-
-        const sent_user = dto.user_to_dto(user);
-        return sent_user;
+        return user;
     } else {
         throw createError({
             statusCode: 401,
