@@ -55,12 +55,14 @@ export default async () => {
 
 
   } catch (err) {
+    console.log(err)
     console.error("DB connection failed.", err);
     try {
       await mongoose_runner();
       console.log("DB connection established.");
 
     } catch (e) {
+      console.log(e)
       console.error('Not stable')
     }
   }
