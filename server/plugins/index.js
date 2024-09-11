@@ -56,15 +56,18 @@ async function connectToDatabase() {
     setTimeout(connectToDatabase, 5000); // Перепідключення через 5 секунд
   }
 }
-export default async () => {
 
+  export default defineNitroPlugin((nitroApp) => {
+    console.log('Nitro plugin', nitroApp)
+      connectToDatabase() 
+  })
   // try {
   //   await mongoose_runner();
   //   console.log("DB connection established.");
   //   ping()
   //   console.log("Ping is on.");
 
-  connectToDatabase() 
+ 
   // } catch (err) {
   //   console.log(err)
   //   console.error("DB connection failed.", err);
@@ -77,4 +80,3 @@ export default async () => {
   //     console.error('Not stable')
   //   }
   // }
-};
