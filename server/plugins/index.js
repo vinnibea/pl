@@ -12,9 +12,10 @@ const mongoose_runner = async () => {
   }
 
   const options = {
-    serverSelectionTimeoutMS: 10000,
+    serverSelectionTimeoutMS: 30000, // 30 секунд
+    socketTimeoutMS: 45000, // 45 секунд
     minPoolSize: 2,
-    maxPoolSize: 10,
+    maxPoolSize: 5,
   }
 
   cached.promise = mongoose.connect(URI, options).then(connection => connection);

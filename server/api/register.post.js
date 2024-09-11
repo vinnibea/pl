@@ -1,4 +1,5 @@
 import { default as users } from '../schemas/user';
+import {default as uncompleted} from '../schemas/uncompleted';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -37,6 +38,7 @@ export default defineEventHandler(async (event) => {
         } else {
 
             const user_exist = await users.findOne({ email: register_data.email });
+            
             if (user_exist) {
                 throw createError({
                     statusCode: 409,
@@ -46,6 +48,7 @@ export default defineEventHandler(async (event) => {
                 const { name, surname, index, phone, city, email, _sid } = register_data;
                 console.log(register_data)
                 const hashed_password = bcrypt.hashSync(verified_tp, saltRounds)
+                await uncompleted.findOneAndDelete({email: register_data.email })
                 try {
                     await users.create({
                         ...register_data,

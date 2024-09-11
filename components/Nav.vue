@@ -33,7 +33,7 @@ const route = useRoute();
           'items-start': isMobile,
           'items-center': !isMobile,
           'text-white': isMobile,
-          'text-navbar-passive': !isMobile,
+          'text-slate-700': !isMobile,
         },
       ]"
     >
@@ -46,7 +46,7 @@ const route = useRoute();
       >
         <NuxtLink
           to="#req"
-          class="py-4 px-4 transition-all max-[822px]:font-bold max-[1224px]:px-2 border-transparent min-[822px]:border-b-2 min-[822px]:hover:border-slate-900"
+          class="py-4 px-4 transition-all max-[822px]:font-bold max-[1224px]:px-2 border-transparent min-[822px]:border-b-2 hover:text-slate-300 min-[822px]:hover:border-amber-300"
         >
           Требования к заказчику
         </NuxtLink>
@@ -61,7 +61,7 @@ const route = useRoute();
       >
         <NuxtLink
           to="/"
-          class="py-4 px-4 transition-all max-[1224px]:px-2 max-[822px]:font-bold min-[822px]:border-b-2 border-transparent min-[822px]:hover:border-slate-900"
+          class="py-4 px-4 transition-all max-[1224px]:px-2 max-[822px]:font-bold min-[822px]:border-b-2 border-transparent hover:text-slate-300 min-[822px]:hover:border-amber-300"
         >
           Получение кредита
         </NuxtLink>
@@ -75,7 +75,7 @@ const route = useRoute();
       >
         <NuxtLink
           to="/"
-          class="py-4 px-4 transition-all max-[822px]:font-bold max-[1224px]:px-2 border-transparent min-[822px]:border-b-2 min-[822px]:hover:border-slate-900"
+          class="py-4 px-4 transition-all max-[822px]:font-bold max-[1224px]:px-2 border-transparent min-[822px]:border-b-2 hover:text-slate-300 min-[822px]:hover:border-amber-300"
         >
           Как работает сервис
         </NuxtLink>

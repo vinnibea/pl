@@ -8,6 +8,15 @@ export default defineEventHandler(async (event) => {
             message: 'Invalid data',
         })
     } else {
+            const in_db = await uncompleted.find({email: body.email});
+
+            if(in_db) {
+                return {
+                    statusCode: 203,
+                    status: 'OK'
+                },
+            }
+    
         try {
             const fresh_uncompleted = await uncompleted.create({
                 email: body.email,

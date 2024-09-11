@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 import { default as users } from '../schemas/user';
-import { default as subscribers } from '../schemas/subscribe';
+import { default as subscribers } from '../schemas/email';
 
 import nodemailer from 'nodemailer';
 

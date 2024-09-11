@@ -75,7 +75,7 @@ const localUser = useLocalUserStore();
 
 const onSubscribe = async (email) => {
   loading.value = true;
-  $fetch("/api/subscribe", {
+  $fetch("/api/email", {
     method: "POST",
     body: {
       email: email,
