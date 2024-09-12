@@ -250,7 +250,7 @@ const onSubscribe = async (email) => {
       >
         {{ paragraph.content }}
         <NuxtLink class="text-slate-500" v-if="paragraph.link" :to="paragraph.link">{{
-          paragraph.link
+          paragraph.linkContent
         }}</NuxtLink>
       </p>
     </div>

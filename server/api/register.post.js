@@ -60,16 +60,7 @@ export default defineEventHandler(async (event) => {
 
                     });
 
-                    setTimeout(async () => {
-                        phone_service.messages
-                            .create({
-                                body: `Команда MONEYDEAL приветствует вас \n ${name}, спасибо за регистрацию и доверие нашему сервису \n О ходе рассмотрения заявок вы будете уведомлены при помощи смс- и эмейл-сообщений на ${email}`,
-                                from: '+18652722281',
-                                to: '+4'
-                            }).then((response) => {
-                                console.log(response)
-                            }).done()
-                    }, 1000 * 10)
+                
                     await deleteCookie(event, 'tp');
                     await deleteCookie(event, '_cid');
                     await setCookie(event, 'fr', true, { httpOnly: true, maxAge: 60 * 60 })
