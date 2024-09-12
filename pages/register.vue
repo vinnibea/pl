@@ -99,10 +99,13 @@ onMounted(async () => {
           },
         ]"
       >
+  
         <component
-          class="py-4 px-2 rounded-lg"
-          :is="components[registerStore.activeTab]"
-        ></component>
+        class="py-4 px-2 rounded-lg"
+        :is="components[registerStore.activeTab]"
+      ></component>
+      
+       
       </div>
       <Politics
         v-motion-fade
@@ -118,9 +121,9 @@ onMounted(async () => {
   background: url("../assets/main_blured.webp") center/ cover;
 }
 
-@media screen and(max-width: 822px) {
+@media screen and (max-width: 822px) {
   .with-bg-1 {
-    background-position: -47% -47%;
+    background-position: 47% 40%;
   }
 }
 </style>

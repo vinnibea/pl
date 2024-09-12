@@ -45,7 +45,7 @@ const props = defineProps({
   disabled: {
     type: Boolean,
     default: false,
-  }
+  },
 });
 const emit = defineEmits(["onValue", "onFormTouched"]);
 const onInputChange = (val, field) => {
@@ -70,12 +70,14 @@ const route = useRoute();
 <template>
   <div class="flex flex-col justify-stretch w-full">
     <div class="relative w-full max-[822px]:w-full px-0 py-0 group">
-      <UIcon
-        v-if="!tel"
-        class="absolute left-2 top-1/2 -translate-y-1/2 text-md text-slate-200 bg-slate-300 min-h-6 min-w-6"
-        :name="icon"
-        dynamic
-      ></UIcon>
+
+        <UIcon
+         v-if="!tel" 
+          class="absolute left-2 top-1/2 -translate-y-1/2 text-md text-slate-200 bg-slate-300 min-h-6 min-w-6"
+          :name="icon"
+          dynamic
+        ></UIcon>
+   
       <span
         v-else
         class="absolute left-2 top-1/2 -translate-y-1/2 text-md font-bold text-slate-300"

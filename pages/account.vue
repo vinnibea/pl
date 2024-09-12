@@ -28,15 +28,14 @@ onMounted(() => {
 
 
 const { data, status, error, refresh, clear } = await useFetch('/api/creditors')
-
 provide('creditors', data)
 </script>
 <template>
   <NuxtLayout name="account">
     <div class="w-full flex relative" v-if="authStore.isAuth">
-     <ClientOnly>
+    
       <account-aside></account-aside>
-     </ClientOnly>
+     
       <div
         class="w-full py-16 pl-[480px] max-[822px]:pl-[66px] pr-2 bg-white min-h-[calc(100svh)]"
       >

@@ -81,6 +81,7 @@ const calculatedDate = computed(() =>
     </div>
 
     <NuxtLink
+      no-prefetch
       to="/register"
       class="uppercase px-6 text-sm py-4 font-semibold text-slate-900 text-center text-md max-[1024px]:text-xs max-[1024px]:py-4 bg-yellow rounded-md w-2/3 max-[822px]:w-full shadow-md mx-auto hover:bg-hover-yellow transition-all"
       type="button"

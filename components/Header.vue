@@ -117,7 +117,7 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
         >
           Войти
         </button>
-        <NuxtLink to="/register">
+        <NuxtLink noprefetch to="/register">
           <button
             class="uppercase px-6 text-sm py-2 max-[820px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-r-md hover:bg-hover-yellow transition-all"
           >
@@ -132,7 +132,7 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
           { 'opacity-0 pointer-events-none': route.path === '/account' },
         ]"
       >
-        <NuxtLink to="/account">
+        <NuxtLink to="/account" no-prefetch>
           <button
             class="uppercase h-full px-6 text-sm py-2 max-[822px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-md hover:bg-hover-yellow transition-all"
           >

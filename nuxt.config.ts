@@ -60,11 +60,7 @@ export default defineNuxtConfig({
   },
 
 
-  //eslint-ignore-next-line
-  icons: {
-    // конфігурація для іконок
-    autoInstall: true, // автоматична інсталяція при використанні іконок
-  },
+ 
   nitro: {
     plugins: ["~/server/plugins/index.js"],
   },
