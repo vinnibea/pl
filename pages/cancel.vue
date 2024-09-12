@@ -150,6 +150,6 @@ const onCancel = async () => {
 </template>
 <style scoped>
 .with-bg-12 {
-  background: url("../assets/cancel.webp") center center / cover fixed;
+  background: url("../assets/cancel.webp");
 }
 </style>

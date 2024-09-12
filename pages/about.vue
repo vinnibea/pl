@@ -139,7 +139,7 @@ const onCardSelected = (index) => {
 
 <style scoped>
 .with-bg{
-  background: url('../assets/about.webp') 25% 25% / cover fixed;
+  background: url('../assets/about.webp') center/ cover;
 }
 
 

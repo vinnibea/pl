@@ -101,7 +101,7 @@ const contacts = {
 <style scoped>
 
 .with-bg-3{
-  background: url('../assets/contacts.webp') 25% 25% / cover fixed;
+  background: url('../assets/contacts.webp')  center / cover;
 }
 
 </style>

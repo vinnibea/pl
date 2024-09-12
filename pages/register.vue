@@ -18,7 +18,8 @@ const steps = [
 const components = [RegisterStepOne, RegisterStepTwo, RegisterSuccess];
 
 onMounted(async () => {
-  !localStore.isAuth && await localStore.setLocalUser(JSON.parse(localStorage.getItem("user")));
+  !localStore.isAuth &&
+    (await localStore.setLocalUser(JSON.parse(localStorage.getItem("user"))));
 });
 </script>
 
@@ -91,20 +92,17 @@ onMounted(async () => {
       </div>
 
       <div
-        class="flex-col items-center justify-center  min-w-full py-8 px-8 backdrop-blur-lg  bg-slate-700 bg-opacity-60 shadow- mx-auto rounded-lg max-[822px]:rounded-none gap-2 max-[822px]:flex-col max-[822px]:gap-0 max-[822px]:py-8 max-[822px]:px-2 max-[568px]:px-0 max-[568px]:py-4 max-[822px]:rounded-xs max-[822px]:w-full shadow-sm"
+        class="flex-col items-center justify-center min-w-full py-8 px-8 backdrop-blur-lg bg-slate-700 bg-opacity-60 shadow- mx-auto rounded-lg max-[822px]:rounded-none gap-2 max-[822px]:flex-col max-[822px]:gap-0 max-[822px]:py-8 max-[822px]:px-2 max-[568px]:px-0 max-[568px]:py-4 max-[822px]:rounded-xs max-[822px]:w-full shadow-sm"
         :class="[
           {
             'max-[822px]:hidden': store.politicsOpen !== false,
-            
           },
         ]"
       >
         <component
-      
-        class="py-4 px-2 rounded-lg"
-        :is="components[registerStore.activeTab]"
-      ></component>
-
+          class="py-4 px-2 rounded-lg"
+          :is="components[registerStore.activeTab]"
+        ></component>
       </div>
       <Politics
         v-motion-fade
@@ -117,6 +115,12 @@ onMounted(async () => {
 </template>
 <style scoped>
 .with-bg-1 {
-  background: url('../assets/main_blured.webp') center center / cover fixed;
+  background: url("../assets/main_blured.webp") center/ cover;
+}
+
+@media screen and(max-width: 822px) {
+  .with-bg-1 {
+    background-position: -47% -47%;
+  }
 }
 </style>

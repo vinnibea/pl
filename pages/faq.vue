@@ -241,7 +241,7 @@ const onCardSelected = (index) => {
 </template>
 <style>
   .with-bg-2{
-    background: url('../assets/faq.webp') 25% 25% / cover fixed;
+    background: url('../assets/faq.webp') center / cover;
   }
   
 .hidden-scroll::-webkit-scrollbar {
