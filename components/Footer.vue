@@ -60,7 +60,7 @@ const formTouched = (field) => {
 const footerLinks = [
   { title: "О сервисе", link: "/about" },
   { title: "Контакты", link: "/contacts" },
-  { title: "Закрытие счета", link: "/close-account" },
+  { title: "Закрытие счета", link: "/cancel" },
   { title: "Вопросы и ответы", link: "/faq" },
   { title: "Публичное предложение", link: "/public-offer" },
   { title: "Конфиденциальность", link: "/privacy" },

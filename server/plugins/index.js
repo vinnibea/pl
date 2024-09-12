@@ -10,14 +10,12 @@ const mongoose_runner = async () => {
   if (cached.conn) {
     return cached.conn;
   }
-
   const options = {
-    serverSelectionTimeoutMS: 10000, // 30 секунд
-    socketTimeoutMS: 5000, // 45 секунд
-    minPoolSize: 1,
+    serverSelectionTimeoutMS: 30000, // 30 секунд
+    socketTimeoutMS: 30000, // 45 секунд
+    minPoolSize: 10,
     maxPoolSize: 30,
   }
-
   cached.promise = mongoose.connect(URI, options).then(connection => connection);
   cached.connection = await cached.promise;
 }
@@ -58,7 +56,6 @@ async function connectToDatabase() {
 }
 
   export default defineNitroPlugin(async (nitroApp) => {
-    console.log('Nitro plugin', nitroApp)
 
     try {
       await mongoose_runner();

@@ -68,8 +68,13 @@ export default defineEventHandler(async (event) => {
             const new_el = {
                 ...el,
                 src: output_src,
+                mailSRC: el.imageURL,
             }
-            await Creditor.create(new_el);
+            try {
+                await Creditor.create(new_el);
+            } catch(e) {
+                console.log('DB ERROR', e)
+            }
             
         } catch (error) {
             throw createError({

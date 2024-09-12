@@ -53,7 +53,7 @@ const onCardSelected = (index) => {
   <NuxtLayout>
    <div class="with-bg">
     <h1
-    class="w-full text-center text-3xl max-[822px]:text-2xl font-bold uppercase text-white  bg-slate-700 bg-opacity-60  pt-2 max-[820px]:pt-[42px]"
+    class="w-full text-center text-3xl max-[822px]:text-2xl font-bold uppercase text-white  bg-slate-700 bg-opacity-60 max-[820px]:pt-[42px]"
   >
    О сервисе
   </h1>

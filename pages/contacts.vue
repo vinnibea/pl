@@ -19,7 +19,7 @@ const contacts = {
   <NuxtLayout>
     <div class="with-bg-3 min-h-svh">
       <h1
-        class="w-full text-center text-3xl max-[822px]:text-2xl font-bold uppercase text-white backdrop-blur-lg bg-slate-700 bg-opacity-60  pt-2 max-[820px]:pt-[42px]"
+        class="w-full text-center text-3xl max-[822px]:text-2xl font-bold uppercase text-white backdrop-blur-lg bg-slate-700 bg-opacity-60 max-[820px]:pt-[42px]"
       >
         Контакты
       </h1>

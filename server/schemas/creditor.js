@@ -8,6 +8,7 @@ const creditorSchema = new Schema({
     },
     subtitle: String,
     src: String,
+    mailSRC: String,
     blocks: [{title: String, value: String}],
     advantages: [String],
     link: {

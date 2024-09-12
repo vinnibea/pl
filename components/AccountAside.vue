@@ -14,10 +14,6 @@ const menuItems = [
     icon: "material-symbols:credit-card",
   },
   {
-    title: "Управление подписками",
-    icon: "material-symbols:subtitles",
-  },
-  {
     title: "Настройки",
     icon: "material-symbols:settings",
   },

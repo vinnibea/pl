@@ -45,6 +45,9 @@ export default defineNuxtConfig({
     secret: process.env.SECRET,
     bot: process.env.BOT,
     SSK: process.env.SSK,
+    email: process.env.EMAIL,
+    tsid: process.env.TSID,
+    ttoken: process.env.TTOKEN,
     public: {
       stripeKey: ''
     }
