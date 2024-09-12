@@ -31,6 +31,7 @@ export const useLocalUserStore = defineStore('local_user', () => {
       timeStamp: Date.now(),
       id: payload.id,
       sid: payload.sid,
+      subscription: payload.subscription
     };
   
      console.log(DTO)

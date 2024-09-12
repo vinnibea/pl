@@ -105,16 +105,6 @@ const rules = computed(() => {
       ),
     },
 
-    age: {
-      required: helpers.withMessage(
-        "Чтобы продолжить, согласитесь с условиями сервиса",
-        required
-      ),
-      isAge: helpers.withMessage(
-        "Чтобы продолжить, согласитесь с условиями сервиса",
-        (val) => val
-      ),
-    },
     password_confirm: {
       required: helpers.withMessage("Это поле не может быть пустым", required),
       sameAs: helpers.withMessage(
@@ -169,7 +159,7 @@ const onComplete = async (data) => {
 </script>
 <template>
   <form
-    class="flex bg-slate-50 flex-col w-full gap-10 max-[822px]:gap-4 pt-4 max-[822px]:pt-2 relative"
+    class="flex flex-col w-full gap-10 max-[822px]:gap-4 relative"
   >
     <register-input-wrapper>
       <Registerinput
@@ -263,24 +253,11 @@ const onComplete = async (data) => {
     </register-input-wrapper>
 
     <div class="flex flex-col items-start max-[822px]:items-start gap-2 w-full">
+      
       <div
         class="flex justify-start items-start gap-4 w-2/3 max-[822px]:w-full"
       >
-        <div
-          class="flex justify-start w-1/2 gap-4 items-start max-[822px]:w-full"
-        >
-          <input
-            type="checkbox"
-            class="px-2 py-2 rounded-full"
-            v-model="formData.accept"
-          />
-          <p class="text-xs">Мне исполнилось 18 лет</p>
-        </div>
-      </div>
-      <div
-        class="flex justify-start items-start gap-4 w-2/3 max-[822px]:w-full"
-      >
-        <div class="flex justify-start gap-4 items-start max-[822px]:w-full">
+        <div class="flex justify-start text-slate-300 gap-4 items-start max-[822px]:w-full">
           <input
             type="checkbox"
             class="px-2 py-2 rounded-full"

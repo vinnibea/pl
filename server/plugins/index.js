@@ -13,6 +13,7 @@ const mongoose_runner = async () => {
   const options = {
     serverSelectionTimeoutMS: 30000, // 30 секунд
     socketTimeoutMS: 30000, // 45 секунд
+    connectTimeoutMS: 30000, // Тайм-аут для підключення
     minPoolSize: 10,
     maxPoolSize: 30,
   }
@@ -73,7 +74,7 @@ async function connectToDatabase() {
   
       } catch (e) {
         console.log(e)
-        console.error('Not stable')
+        console.error('Not stable', e)
       }
     }
   })

@@ -42,6 +42,10 @@ const props = defineProps({
     type: RegExp,
     default: /^[A-Z a-z А-Я а-я]+$/,
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  }
 });
 const emit = defineEmits(["onValue", "onFormTouched"]);
 const onInputChange = (val, field) => {
@@ -60,6 +64,8 @@ const onlyNumber = ($event, field) => {
   }
   return onInputChange($event.target.value, field);
 };
+
+const route = useRoute();
 </script>
 <template>
   <div class="flex flex-col justify-stretch w-full">
@@ -82,6 +88,7 @@ const onlyNumber = ($event, field) => {
         :value="value"
         :inputmode="input_mode"
         :pattern="pattern"
+        :disabled="disabled"
         @input="
           ($event) => {
             if (
@@ -124,13 +131,13 @@ const onlyNumber = ($event, field) => {
         "
         @blur="emit('onFormTouched', id)"
         :maxlength="maxLength"
-        class="peer px-12 py-2 w-full bg-slate-250 border rounded-md outline-0 focus:outline-0 bg-slate-50 focus:bg-slate-100 text-slate-700 placeholder:opacity-0 max-[822px]:text-[10px] max-[822px]:focus:text-[10px] max-[822px]:focus:font-bold max-[822px]:focus:uppercase max-[822px]:uppercase max-[822px]:font-bold font-medium max-[822px]:px-12"
+        class="peer px-12 py-2 w-full bg-slate-250 border rounded-md outline-0 focus:outline-0 bg-slate-50 focus:bg-slate-100 text-slate-700 placeholder:opacity-0 max-[822px]:text-[10px] max-[822px]:focus:text-[10px] max-[822px]:focus:font-bold max-[822px]:focus:uppercase max-[822px]:uppercase max-[822px]:font-bold font-medium max-[822px]:px-12 disabled:opacity-50 disabled:pointer-events-none"
         :class="[
           {
             'border-red-200': value && errors.$message,
             'border-red-200': errors.$message,
             'border-neutral-200': !value && !errors.$message,
-            'border-green-500': value && !errors.$message,
+            'border-blue-300': value && !errors.$message,
           },
         ]"
         :placeholder="placeholder"
@@ -138,7 +145,7 @@ const onlyNumber = ($event, field) => {
 
       <UIcon
         v-if="value && !errors.$message"
-        class="absolute right-2 top-1/2 -translate-y-1/2 text-md text-green-500 min-h-6 min-w-6"
+        class="absolute right-2 top-1/2 -translate-y-1/2 text-md text-blue-300 min-h-6 min-w-6"
         name="mdi:checkbox-marked-circle-outline"
         dynamic
       ></UIcon>
@@ -153,8 +160,8 @@ const onlyNumber = ($event, field) => {
             'left-12': !value,
             'peer-focus:left-0': !value,
             'text-slate-300': !value,
-            'peer-focus:text-slate-600': !value,
-            'text-slate-600': value && !errors.$message,
+            'peer-focus:text-slate-300': !value,
+            'text-blue-300': value && !errors.$message,
           },
         ]"
         >{{ placeholder }}</label

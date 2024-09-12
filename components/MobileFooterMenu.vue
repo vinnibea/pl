@@ -21,12 +21,12 @@ const onModalOpen = () => {
   >
   <NuxtLink to="/" class="flex items-center justify-center px-2 py-2"
   ><UIcon
-    class="transition-all duration-30 hover:bg-amber-300 cursor-pointer"
+    class="transition-all duration-30 hover:bg-blue-300 cursor-pointer"
     name="ic:outline-other-houses"
     size="36"
     :class="[
       {
-        'bg-amber-300': route.fullPath == '/',
+        'bg-blue-300': route.fullPath == '/',
         ' bg-slate-300': route.fullPath != '/',
       },
     ]"
@@ -37,7 +37,7 @@ const onModalOpen = () => {
 
   <NuxtLink to='/' class="flex items-center justify-center text-center">
     <UIcon
-    class="transition-all duration-300 hover:bg-amber-300 cursor-pointer px-2 py-2 bg-slate-300"
+    class="transition-all duration-300 hover:bg-blue-300 cursor-pointer px-2 py-2 bg-slate-300"
     name="material-symbols:circle-notifications-outline-rounded"
     size="36"
     
@@ -48,12 +48,12 @@ const onModalOpen = () => {
     
     <NuxtLink v-if="auth.isAuth" :to="'/account'" class="flex items-center justify-center px-2 py-2">
       <UIcon
-        class="transition-all duration-300 hover:bg-amber-300  cursor-pointer"
+        class="transition-all duration-300 hover:bg-blue-300  cursor-pointer"
         name="ic:baseline-person"
         size="36"
         :class="[
           {
-            'bg-amber-300': route.fullPath == '/account',
+            'bg-blue-300': route.fullPath == '/account',
             ' bg-slate-300': route.fullPath !== '/account',
           },
         ]"
@@ -62,12 +62,12 @@ const onModalOpen = () => {
 
     <NuxtLink v-if="!auth.isAuth" :to="'/'" class="flex items-center drop-shadow-xl justify-center px-2 py-2" @click="onModalOpen">
       <UIcon
-        class="transition-all duration-300  hover:bg-amber-300  cursor-pointer"
+        class="transition-all duration-300  hover:bg-blue-300  cursor-pointer"
         name="ic:baseline-person"
         size="36"
         :class="[
           {
-            'bg-amber-300': route.fullPath == '/account',
+            'bg-blue-300': route.fullPath == '/account',
             ' bg-slate-300': route.fullPath !== '/account',
           },
         ]"
