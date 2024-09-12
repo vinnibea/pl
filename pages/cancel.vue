@@ -98,7 +98,7 @@ const onCancel = async () => {
           </p>
           <div
             class="w-full flex flex-col items-center bg-opacity-60 shadow-xl rounded-b-md"
-          >
+          > 
             <Button
               class="min-w-full"
               v-if="localUser.isAuth && localUser.localUser.subscription"
@@ -129,6 +129,7 @@ const onCancel = async () => {
             :color="'bg-green-600'"
             :text="'text-white'"
             >
+           
             Услуга отключена
             </Button
           >
