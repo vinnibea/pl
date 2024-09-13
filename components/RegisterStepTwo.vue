@@ -102,6 +102,7 @@ const onSubmit = async () => {
           registerStore.setActiveTab(2);
       } 
     } catch (error) {
+      console.log(error)
       errors.value = error?.message;
       setTimeout(() => {
         errors.value = '';

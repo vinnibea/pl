@@ -31,7 +31,6 @@ const formData = reactive({
   name: "",
   surname: "",
   city: "",
-  index: "",
   email: "",
   password: "",
   password_confirm: "",
@@ -60,16 +59,7 @@ const rules = computed(() => {
         minLength(3)
       ),
     },
-    index: {
-      number: helpers.withMessage("Допустимы только числовые значения", (val) =>
-        val.match(/^[0-9]+$/)
-      ),
-      required: helpers.withMessage("Это поле не может быть пустым", required),
-      minLength: helpers.withMessage(
-        `Это поле не может быть короче шести символов`,
-        minLength(6)
-      ),
-    },
+  
     phone: {
       number: helpers.withMessage("Допустимы только числовые значения", (val) =>
         val.match(/^[0-9]+$/)
@@ -131,8 +121,7 @@ const changePolitics = (i) => {
 
 const onComplete = async (data) => {
   const { password } = data;
-  const { email, name, surname, index, phone, city } = data;
-  console.log(data)
+  const { email, name, surname, phone, city } = data;
   try {
     await $fetch('/api/uncompleted', {
     method: 'POST',
@@ -148,7 +137,7 @@ const onComplete = async (data) => {
   })
   await localStorage.setItem(
     "temp",
-    JSON.stringify({ email, name, surname, index, phone, city })
+    JSON.stringify({ email, name, surname, phone, city })
   );
   registerStore.setActiveTab(1);
   } catch (e) {

@@ -23,7 +23,6 @@ export const useLocalUserStore = defineStore('local_user', () => {
       surname: payload.surname,
       city: payload.city,
       phone: String(payload.phone),
-      index: payload.index,
       email: payload.email,
       hasEmail: payload.hasEmail,
       hasNotification: payload.hasNotification,
@@ -34,7 +33,6 @@ export const useLocalUserStore = defineStore('local_user', () => {
       subscription: payload.subscription
     };
   
-     console.log(DTO)
     localUser.value = DTO;
     isAuth.value = true;
   }

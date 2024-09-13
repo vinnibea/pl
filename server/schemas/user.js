@@ -34,10 +34,7 @@ const userSchema = new Schema({
         type: Number,
         required: [true, "Поле не может быть пустым"],
     },
-    index: {
-        type: Number,
-        required: [true, "Поле не может быть пустым"],
-    },
+   
     subscription: {
         type: Boolean,
         default: false,
