@@ -1,16 +1,26 @@
 import {default as creditors} from '../schemas/creditor';
 
 export default defineEventHandler(async (event) => {
-    const {id, action, link }= await readBody(event);
-    if(id === null || action === null) {
+    const body = await readBody(event);
+    console.log(body)
+    if(!body) {
+        throw createError({
+            statusCode: 400,
+            message: 'Data can`t be empty',
+        })
+    }
+  
+     
+    
+    if(!body || body.id === null || body.action === null) {
         throw createError({
             message: 'Ты что мне такое шлешь, бля'
         })
     }
-
-  if(link !== null && action !== null && id !== null) {
+  
+  if(body.link && body.link !== null && body?.action !== null && body?.id !== null) {
         try {
-            await creditors.findByIdAndUpdate(id, { link}, {
+            await creditors.findByIdAndUpdate(body.id, { link: body.link }, {
                 upsert: true,
                 new: true,
             })
@@ -30,10 +40,10 @@ export default defineEventHandler(async (event) => {
   }
   
 
-    switch (action) {
+    switch (body.action) {
         case 'recommend': {
             try {
-                await creditors.findByIdAndUpdate(id, { isRecommended: true }, {
+                await creditors.findByIdAndUpdate(body.id, { isRecommended: true }, {
                     upsert: true,
                     new: true,
                 })
@@ -53,7 +63,7 @@ export default defineEventHandler(async (event) => {
 
         case 'not_recommend': {
             try {
-                await creditors.findByIdAndUpdate(id, { isRecommended: false }, {
+                await creditors.findByIdAndUpdate(body.id, { isRecommended: false }, {
                     upsert: true,
                     new: true,
                 })
@@ -72,7 +82,7 @@ export default defineEventHandler(async (event) => {
         }
         case 'hide': {
             try {
-                await creditors.findByIdAndUpdate(id, { isActive: false }, {
+                await creditors.findByIdAndUpdate(body.id, { isActive: false }, {
                     upsert: true,
                     new: true,
                 })
@@ -90,7 +100,7 @@ export default defineEventHandler(async (event) => {
 
         case 'show': {
             try {
-                await creditors.findByIdAndUpdate(ctx.session.id, { isActive: true }, {
+                await creditors.findByIdAndUpdate(body.id, { isActive: true }, {
                     upsert: true,
                     new: true,
                 })

@@ -4,7 +4,20 @@ import { useVuelidate } from "@vuelidate/core";
 const formData = reactive({
   email: "",
 });
-
+const contacts = {
+  company: "ТОО MONEYDEAL КЗ",
+  BIN: "221140056789",
+  address: {
+    country: "Казахстан",
+    city: "Нур-Султан",
+    district: "район Байконур",
+    street: "улица Абая",
+    house: "дом 12",
+    apartment: "кв. 34",
+  },
+  phone: "+77273145678",
+  email: "experts@moneydeal.pro",
+};
 const paragraphs = [
   {
     content:
@@ -264,13 +277,12 @@ const onSubscribe = async (email) => {
         <p
           class="font-semibold text-slate-600 text-[12px] w-1/6 max-[822px]:w-full max-[822px]:text-[10px]"
         >
-          Тел.: +48 221 530 522
+          Тел.: +77273145678
         </p>
         <p
           class="font-semibold text-slate-600 text-[12px] w-1/3 max-[822px]:w-full max-[822px]:text-[10px]"
         >
-          SIA "LeadProm Media", зарегистрированная по адресу улица Матиса, 61 -
-          31, Рига, LV-1009, Латвия
+          SIA "TОО MONEYDEAL КЗ", зарегистрированная по адресу улица Абая, 12, Нур-Султан, Казахстан
         </p>
       </div>
     </div>

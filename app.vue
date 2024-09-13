@@ -28,11 +28,12 @@ const localStore = useLocalUserStore();
 onMounted(async () => {
   $fetch("/api/profile")
     .then((data) => {
-      console.log(data);
       localStore.setLocalUser(data);
     })
     .catch((e) => {
-      localStore.setLocalUser();
+      
+      window.console.error = () => {};
+      return Promise.resolve()
     })
     .finally(() => {
       useGlobalStore().setLoading(false);

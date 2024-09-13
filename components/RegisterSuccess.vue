@@ -1,5 +1,12 @@
 <script setup>
+import { useMobileStore } from "~/stores/MobileMenu.js";
 const { data, status, error, refresh, clear } = await useFetch('/api/creditors')
+
+const store = useMobileStore();
+const localModalOpener = () => {
+  store.onModal();
+  document.body.style.overflow = "hidden";
+};
 </script>
 <template>
   <div class="flex flex-col justify-between min-h-svh w-full">
@@ -15,14 +22,14 @@ const { data, status, error, refresh, clear } = await useFetch('/api/creditors')
 
     <div class="flex flex-col text-[12px] max-[822px]:text-[10px] items-center gap-4 text-center py-4">
       <p >
-        Инструкции по получению кредита, а также полный список доступых Вам кредиторов, будет доставлено
-        на вашу почту в ближайшее время
+        Инструкции по получению кредита, список доступых Вам кредиторов, а также статус отправленных заявок можно посмотреть в личном кабинете
       </p>
       <NuxtLink
+      @click="localModalOpener"
         to="/"
         class="w-full flex justify-center text-center text-xs uppercase underline font-medium text-slate-300"
       >
-        <span> Вернуться на главную </span>
+        <span> Войти в личный кабинет</span>
       </NuxtLink>
     </div>
   </div>

@@ -1,11 +1,18 @@
 <script setup>
+import { useCreditorsStore } from "../stores/creditorsStore";
+
 const props = defineProps({
   shortData: {
     type: Array,
-    default: "",
+    default: [],
   },
 });
-const data = props.shortData.slice(0, 6) || inject("creditors");
+
+const store = useCreditorsStore();
+
+
+await store.fetchCreditors();
+const sortedData = computed(() => props.shortData.length ? props.shortData.slice(0, 6) : store.creditors.sort((a, b) => b.isRecommended - a.isRecommended))
 </script>
 
 <template>
@@ -19,13 +26,9 @@ const data = props.shortData.slice(0, 6) || inject("creditors");
       Мои кредиторы
     </h2>
     <div
-      v-for="item in data"
+      v-for="item in sortedData"
       :key="item.title"
-      class="w-[45%] max-[1024px]:w-full flex flex-col justify-between gap-4 shadow-md p-2 rounded-xl "
-      :class="[{
-        'bg-amber-200': item.isRecommended,
-        'bg-white': !item.isRecommended,
-      }]"
+      class="w-[45%] max-[1024px]:w-full flex flex-col justify-between gap-4 shadow-md p-2 rounded-xl"
       v-motion-fade-visible-once
     >
       <span
@@ -68,19 +71,25 @@ const data = props.shortData.slice(0, 6) || inject("creditors");
           <span class="">{{ block.value }}</span>
         </div>
       </div>
-      <div class="flex flex-col gap-2 w-full items-stretch">
+      <div class="flex flex-col gap-2 w-full items-stretch bg-">
         <Button
-          :color="'bg-slate-600'"
+          v-if="item.isRecommended && !shortData.length"
+          :color="'bg-lime-500'"
           :text="'text-white'"
-          :hover="'hover:bg-blue-900'"
-          v-if="!shortData"
-          :hoverText="'text-white'"
-          >Отправить анкету</Button
+          :disabled="true"
+          >Ваша заявка принята</Button
         >
-        <NuxtLink :to="item.link" class="min-w-full"> 
+        <Button
+          v-if="!item.isRecommended && !shortData.length"
+          :color="'bg-slate-900'"
+          :text="'text-white'"
+          :disabled="true"
+          >Ваша заявка рассматривается</Button
+        >
+        <NuxtLink :to="item.link" class="min-w-full">
           <Button class="min-w-full">Перейти на сайт</Button>
         </NuxtLink>
       </div>
-    </div>
+   </div>
   </div>
 </template>

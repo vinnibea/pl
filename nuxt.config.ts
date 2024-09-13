@@ -48,6 +48,7 @@ export default defineNuxtConfig({
     email: process.env.EMAIL,
     tsid: process.env.TSID,
     ttoken: process.env.TTOKEN,
+    key: process.env.KEY,
     public: {
       stripeKey: ''
     }

@@ -17,17 +17,17 @@ const registerDate = computed(() => {
   return format(profile?.localUser?.timeStamp, "dd.MM.yyyy");
 });
 
-const registerPhone = computed(() => {
-  if (!profile?.localUser?.phone) {
-    return;
-  }
-  return (
-    " (" +
-    profile?.localUser?.phone.slice(0, 3) +
-    ") " +
-    profile?.localUser?.phone.slice(3)
-  );
-});
+// const registerPhone = computed(() => {
+//   if (!profile?.localUser?.phone) {
+//     return;
+//   }
+//   return (
+//     " (" +
+//     profile?.localUser?.phone.slice(0, 3) +
+//     ") " +
+//     profile?.localUser?.phone.slice(3)
+//   );
+// });
 </script>
 
 <template>
@@ -72,7 +72,7 @@ const registerPhone = computed(() => {
         </p>
         <p class="w-full flex justify-between items-center">
           <span class="font-medium text-xs uppercase">Телефон: </span>
-          <span class="font-medium text-xs uppercase">{{ "+7 " + registerPhone }}</span>
+          <span class="font-medium text-xs uppercase">{{profile?.localUser?.phone}}</span>
         </p>
         <p class="w-full flex justify-between items-center">
           <span class="font-medium text-xs uppercase">Город: </span>

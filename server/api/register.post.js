@@ -18,9 +18,8 @@ export default defineEventHandler(async (event) => {
             statusCode: 200,
         }
     }
-    console.log(register_data)
+
     if (Object.keys(register_data).length === 6) {
-        console.log(register_data)
         const tp_from_client = getCookie(event, 'tp');
         const client_cid = getCookie(event, '_cid');
         if (!tp_from_client || !client_cid) {
@@ -42,8 +41,8 @@ export default defineEventHandler(async (event) => {
             const user_exist = await users.findOne({ email: register_data.email });
 
             if (user_exist) {
-                throw createError({
-                    statusCode: 409,
+               return ({
+                    statusCode: 202,
                     message: "Пользователь с такими данными уже существует"
                 })
             } else {

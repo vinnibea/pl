@@ -49,10 +49,12 @@ const loggin_function = async () => {
       }
     })
     .catch((error) => {
+      window.console.error = () => {};
       if (error.statusCode === 404) {
         serverErrors.value =
           "Пользователь с такой почтой не существует и/или неверный пароль";
-        setTimeout(() => (serverErrors.value = ""), 2000);
+          
+        setTimeout(() => (serverErrors.value = ""), 3000);
       }
     })
     .finally(() => {

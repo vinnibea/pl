@@ -22,7 +22,7 @@ export const useLocalUserStore = defineStore('local_user', () => {
       name: payload.name,
       surname: payload.surname,
       city: payload.city,
-      phone: String(payload.phone),
+      phone: payload.phone,
       email: payload.email,
       hasEmail: payload.hasEmail,
       hasNotification: payload.hasNotification,

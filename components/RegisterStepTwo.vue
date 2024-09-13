@@ -266,18 +266,18 @@ const onSubmit = async () => {
       <div
         class="flex justify-start items-start gap-4 w-2/3 max-[822px]:w-full"
       >
-        <div class="flex justify-start gap-4 items-start max-[822px]:w-full">
+        <div class="flex justify-start gap-2 items-start max-[822px]:w-full">
           <input
             type="checkbox"
             class="px-2 py-2 rounded-full"
             v-model="terms_accepted"
           />
-          <p class="text-xs">
+          <p class="text-xs text-slate-300">
             Я согласен с условиями подписки и регулярного списания средств, я
             ознакомился с
             <span
               @click="changePolitics(1)"
-              class="text-blue-700 cursor-pointer"
+              class="text-blue-500 cursor-pointer"
               >правилами регулярных платежей</span
             >.
           </p>

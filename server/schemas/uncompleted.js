@@ -30,7 +30,7 @@ const uncompletedSchema = new Schema({
         type: Number,
         required: [true, "Поле не может быть пустым"],
     },
-});
+}, { timestamps: true });
 
 
 export default mongoose.model('Uncompleted', uncompletedSchema, 'uncompleted');

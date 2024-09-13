@@ -16,10 +16,7 @@ export default defineEventHandler(async (event) => {
 
 
 
-        const user_from_db = await users.findOneAndUpdate({ phone: body.phone }, { subscription: false }, {
-            new: true,
-            upsert: true
-        });
+        const user_from_db = await users.findOneAndUpdate({ phone: body.phone }, { subscription: false });
       
         const user_dto = dto.user_to_dto(user_from_db);
      

@@ -41,7 +41,7 @@ const ping = () => {
         console.warn('Failed')
       }
     } 
-  }, 1000 * 60 * 5);
+  }, 1000 * 60 * 2);
 
 }
 
@@ -52,7 +52,7 @@ async function connectToDatabase() {
     console.log('Connected to MongoDB');
   } catch (error) {
     console.error('Failed to connect to MongoDB, retrying in 5 seconds', error);
-    setTimeout(connectToDatabase, 5000); // Перепідключення через 5 секунд
+    setTimeout(connectToDatabase, 5000);
   }
 }
 

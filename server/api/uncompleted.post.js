@@ -1,8 +1,9 @@
 import { default as uncompleted } from '../schemas/uncompleted';
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
+    const {name, email, surname, phone, city} = body;
     console.log(body)
-    if (!body) {
+    if (!body || [name, email, surname, phone, city].some(el => !el.length)) {
         throw createError({
             statusCode: 400,
             message: 'Invalid data',

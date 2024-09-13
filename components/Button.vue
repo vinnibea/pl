@@ -40,7 +40,7 @@ const props = defineProps({
 </script>
 <template>
     <button
-        class="uppercase px-6 text-sm py-4 font-semibold text-slate-900 max-[1024px]:text-xs transition-all border-b-1 disabled:pointer-events-none disabled:opacity-50 shadow-md disabled:cursor-not-allowed"
+        class="uppercase px-6 text-sm py-4 font-semibold max-[1024px]:text-xs transition-all border-b-1 disabled:pointer-events-none disabled:opacity-50 shadow-md disabled:cursor-not-allowed"
         :class="[color, text, hover, hoverText, radius, {
             'max-[820px]:hidden': false,
             'max-[820px]:w-1/2': fromFooter,
@@ -48,7 +48,7 @@ const props = defineProps({
         }]"
          type="button"
         :disabled="disabled"
-      >
+      > 
        <slot>Регистрация</slot>
       </button>
 </template>

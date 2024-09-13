@@ -17,35 +17,31 @@ const asideStore = useAccountStore();
 const components = [Profile, Creditors, Subscription];
 const authStore = useLocalUserStore();
 
-
 onMounted(() => {
   if (width.value > 822) {
     asideStore.setMobile(false);
     asideStore.setSelectedSection(0);
   }
 });
-
-
-
-const { data, status, error, refresh, clear } = await useFetch('/api/creditors')
-provide('creditors', data)
 </script>
 <template>
   <NuxtLayout name="account">
     <div class="w-full flex relative" v-if="authStore.isAuth">
-    
       <account-aside></account-aside>
-     
+
       <div
         class="w-full py-16 pl-[480px] max-[822px]:pl-[66px] pr-2 bg-white min-h-[calc(100svh)]"
       >
-        <component
-          v-if="asideStore.selectedSection !== null"
-          :is="components[asideStore.selectedSection]"
-          :data="data"
-        ></component>
+   
+          <component
+            v-if="asideStore.selectedSection !== null"
+            :is="components[asideStore.selectedSection]"
+          ></component>
 
-        <div class="relative w-svh h-full flex justify-center items-center max-[822px]:hidden" v-if="asideStore.selectedSection === null">
+        <div
+          class="relative w-svh h-full flex justify-center items-center max-[822px]:hidden"
+          v-if="asideStore.selectedSection === null"
+        >
           <span
             name="loader"
             class="loader bg-yellow bg-opacity-0 border-2 w-20 h-20 bt-2 border-t-yellow border-slate-300 rounded-full"

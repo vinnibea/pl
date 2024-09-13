@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
             statusMessage: 'Заполните все необходимые поля для продолжения',
         })
     }
-try{
+try {
     const user_exists = await users.findOne({ email: user_data.email });
     if (!user_exists) {
         throw createError({
@@ -29,8 +29,7 @@ try{
             })
         } else {
             const user_dto = dto.user_to_dto(user_exists);
-           console.log(user_dto, 'dto')
-           console.log(user_exists, 'user_exists')
+         
             const token = jwt.sign(
                 user_dto, config.secret, { expiresIn: '2h' });
                 setCookie(event, 'uid', token, {httpOnly: true, maxAge: 60 * 60 * 2});
@@ -43,9 +42,9 @@ try{
 } 
    
     } catch(e) {
-        console.log(e)
+     
         throw createError({
-            statusCode: 409,
+            statusCode: 404,
             message: 'Something with DB'
         })
     }
