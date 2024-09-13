@@ -4,7 +4,7 @@
 
 <template>
   <div
-    class="flex flex-row justify-between w-full gap-8 py-8 px-6 max-[820px]:items-center max-[820px]:py-4 max-[820px]:px-0 max-[820px]:gap-2"
+    class="flex flex-row justify-between w-full gap-8 py-8 px-6 max-[820px]:items-center max-[820px]:py-8 max-[820px]:px-0 max-[820px]:gap-2"
   >
   
     <div

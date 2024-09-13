@@ -16,7 +16,7 @@ const data = props.shortData.slice(0, 6) || inject("creditors");
       class="text-md font-semibold w-full text-center uppercase"
       v-if="!shortData"
     >
-      Премиальные кредиторы
+      Мои кредиторы
     </h2>
     <div
       v-for="item in data"

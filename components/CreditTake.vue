@@ -18,7 +18,7 @@ const onCardSelected = (index) => {
 
 <template>
   <div
-    class="flex bg-slate-900 justify-between w-full gap-0 py-8 px-4  max-[820px]:flex-col max-[820px]:items-center max-[820px]:py-4 max-[820px]:px-0 max-[820px]:gap-4 cursor-pointer" :class="[
+    class="flex bg-slate-900 justify-between w-full gap-0 py-8 px-4  max-[820px]:flex-col max-[820px]:items-center max-[820px]:py-8 max-[820px]:px-0 max-[820px]:gap-4 cursor-pointer" :class="[
         flex
     ]"
   >

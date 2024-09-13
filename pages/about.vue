@@ -129,7 +129,7 @@ const onCardSelected = (index) => {
   >
 
   <div class="p-2 min-[822px]:hidden">
-    <NuxtLink ><Button></Button></NuxtLink>
+    <NuxtLink no-prefetch to='/register'><Button></Button></NuxtLink>
   </div>
  </div>
   </div>

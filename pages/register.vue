@@ -41,7 +41,7 @@ onMounted(async () => {
             'max-[822px]:hidden': i !== registerStore.activeTab,
           }"
         >
-          <div class="flex items-center gap-4 max-[822px]:gap-0 py-4">
+          <div class="flex items-center gap-4 max-[822px]:gap-0">
             <span
               class="pointer-events-none rounded-full max-[822px]:group-hover:scale-100 border-4 transition-transform duration-500 min-w-8 min-h-8 max-[1024px]:max-h-14 max-[1024px]:min-w-8 max-[822px]:border-2 max-[822px]:min-h-2 max-[822px]:min-w-6 max-[822px]:hidden bg-slate-900 flex items-center justify-center"
               :class="{
@@ -92,7 +92,7 @@ onMounted(async () => {
       </div>
 
       <div
-        class="flex-col items-center justify-center min-w-full py-8 px-8 backdrop-blur-lg bg-slate-700 bg-opacity-60 shadow- mx-auto rounded-lg max-[822px]:rounded-none gap-2 max-[822px]:flex-col max-[822px]:gap-0 max-[822px]:py-8 max-[822px]:px-2 max-[568px]:px-0 max-[568px]:py-4 max-[822px]:rounded-xs max-[822px]:w-full shadow-sm"
+        class="flex-col items-center justify-center min-w-full py-2 px-8 backdrop-blur-lg bg-slate-700 bg-opacity-60 shadow- mx-auto rounded-lg max-[822px]:rounded-none gap-2 max-[822px]:flex-col max-[822px]:gap-0 max-[822px]:py-8 max-[822px]:px-2 max-[568px]:px-0 max-[568px]:py-4 max-[822px]:rounded-xs max-[822px]:w-full shadow-sm"
         :class="[
           {
             'max-[822px]:hidden': store.politicsOpen !== false,

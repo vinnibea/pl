@@ -242,7 +242,7 @@ const onSubscribe = async (email) => {
       </div>
     </div>
 
-    <div class="border-t-2 border-slate-900 py-2">
+    <div class="border-t-2 border-slate-900 pt-8">
       <p
         v-for="(paragraph, i) in paragraphs"
         :key="i"

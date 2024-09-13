@@ -1,18 +1,39 @@
 <script setup>
-defineProps({
+import { useMobileStore } from "~/stores/MobileMenu.js";
+const props = defineProps({
   isMobile: {
     type: Boolean,
     default: false,
   },
 });
 
+const store = useMobileStore();
+const localMenuCloser = (href) => {
+  console.log(href)
+  if (!store.state) return;
+  if (route.path !== "/") {
+    navigateTo(`/#${href}`);
+    if (props.isMobile) {
+      console.log("fires");
+      store.onMenuClose();
+    }
+    document.body.style.overflow = "auto";
+    return;
+  }
+
+  if (props.isMobile) {
+    store.onMenuClose();
+    document.body.style.overflow = "auto";
+  }
+};
+
 const route = useRoute();
 </script>
 
 <template>
   <nav
-    v-if="(route.path === '/' || route.path !== '/account' || isMobile)"
-    class="flex items-center flex-col  max-[822px]:relative max-[822px]:z-50"
+    v-if="route.path === '/' || route.path !== '/account' || isMobile"
+    class="flex items-center flex-col max-[822px]:relative max-[822px]:z-50"
     :class="[
       {
         'max-[822px]:hidden': !isMobile,
@@ -45,7 +66,8 @@ const route = useRoute();
         ]"
       >
         <NuxtLink
-          to="#req"
+          to="#requirements"
+          @click="localMenuCloser('requirements')"
           class="py-4 px-4 transition-all max-[822px]:font-bold max-[1224px]:px-2 border-transparent min-[822px]:border-b-2 hover:text-slate-300 min-[822px]:hover:border-amber-300"
         >
           Требования к заказчику
@@ -53,6 +75,7 @@ const route = useRoute();
       </li>
 
       <li
+        @click="localMenuCloser"
         :class="[
           {
             'min-w-full text-center py-4': isMobile,
@@ -60,7 +83,8 @@ const route = useRoute();
         ]"
       >
         <NuxtLink
-          to="/"
+          to="#credit"
+          @click="localMenuCloser('credit')"
           class="py-4 px-4 transition-all max-[1224px]:px-2 max-[822px]:font-bold min-[822px]:border-b-2 border-transparent hover:text-slate-300 min-[822px]:hover:border-amber-300"
         >
           Получение кредита
@@ -74,7 +98,8 @@ const route = useRoute();
         ]"
       >
         <NuxtLink
-          to="/"
+          to="#about-service"
+          @click="localMenuCloser('about-service')"
           class="py-4 px-4 transition-all max-[822px]:font-bold max-[1224px]:px-2 border-transparent min-[822px]:border-b-2 hover:text-slate-300 min-[822px]:hover:border-amber-300"
         >
           Как работает сервис

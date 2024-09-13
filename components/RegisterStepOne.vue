@@ -180,6 +180,15 @@ const onComplete = async (data) => {
         :errors="$v?.surname?.$errors[0]"
         :icon="icons.profile_empty"
       ></Registerinput>
+      <Registerinput
+        :placeholder="'Город'"
+        :icon="icons.city"
+        :value="formData.city"
+        @onValue="onInputFieldChange"
+        :id="'city'"
+        @onFormTouched="formTouched"
+        :errors="$v?.city?.$errors[0]"
+      ></Registerinput>
     </register-input-wrapper>
     <register-input-wrapper>
       <Registerinput
@@ -204,33 +213,12 @@ const onComplete = async (data) => {
         :errors="$v?.email?.$errors[0]"
         :icon="icons.email"
       ></Registerinput>
-    </register-input-wrapper>
 
-    <register-input-wrapper>
-      <Registerinput
-        :placeholder="'Город'"
-        :icon="icons.city"
-        :value="formData.city"
-        @onValue="onInputFieldChange"
-        :id="'city'"
-        @onFormTouched="formTouched"
-        :errors="$v?.city?.$errors[0]"
-      ></Registerinput>
-      <Registerinput
-        :placeholder="'Почтовый индекс'"
-        type="text"
-        :id="'index'"
-        :input_mode="'numeric'"
-        :pattern="/^[0-9]+$/"
-        :value="formData.index"
-        @onValue="onInputFieldChange"
-        :icon="icons.index"
-        @onFormTouched="formTouched"
-        :errors="$v?.index?.$errors[0]"
-      ></Registerinput>
+      
     </register-input-wrapper>
     <register-input-wrapper>
       <Registerinput
+        class="max-w-1/2"
         :placeholder="'Пароль'"
         :type="'password'"
         :value="formData.password"

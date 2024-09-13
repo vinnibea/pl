@@ -103,7 +103,6 @@ const onSubmit = async () => {
       } 
     } catch (error) {
       errors.value = error?.message;
-      registerStore.setActiveTab(0);
       setTimeout(() => {
         errors.value = '';
       })
@@ -262,7 +261,7 @@ const onSubmit = async () => {
         >
       </div>
     </div>
-    <div class="flex flex-col items-start max-[822px]:items-start gap-2 w-full">
+    <div class="flex flex-col items-start max-[822px]:items-start gap-2 w-full pt-2">
       <div
         class="flex justify-start items-start gap-4 w-2/3 max-[822px]:w-full"
       >
@@ -301,7 +300,7 @@ const onSubmit = async () => {
       </span>
     </Button>
     <div
-      class="text-xs text-slate-300 flex flex-col gap-2 max-[822px]:text-[10px] max-[822px]:pt-8"
+      class="text-xs text-slate-300 pt-16 flex flex-col gap-2 max-[822px]:text-[10px] max-[822px]:pt-24"
     >
       <p>
         Введите данные действующей кредитной карты, чтобы подписаться на услугу.

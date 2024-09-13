@@ -44,7 +44,10 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
     <h2
       class="text-2xl max-[1224px]:text-lg font-extrabold uppercase text-logo-yellow"
     >
-      <NuxtLink to="/"> Moneydeal.<span class="text-xs">kz</span></NuxtLink>
+      <NuxtLink to="/" @click="() => {
+        if(!store.state) return;
+        localMenuCloser()
+      }"> Moneydeal.<span class="text-xs">kz</span></NuxtLink>
     </h2>
     <Nav class="max-[820px]:hidden"></Nav>
     <div class="flex items-center gap-1">
@@ -132,7 +135,7 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
           { 'opacity-0 pointer-events-none': route.path === '/account' },
         ]"
       >
-        <NuxtLink to="/account" no-prefetch>
+        <NuxtLink no-prefetch to="/account">
           <button
             class="uppercase h-full px-6 text-sm py-2 max-[822px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-md hover:bg-hover-yellow transition-all"
           >

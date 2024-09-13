@@ -13,10 +13,6 @@ const menuItems = [
     title: "Мои кредиторы",
     icon: "material-symbols:credit-card",
   },
-  {
-    title: "Настройки",
-    icon: "material-symbols:settings",
-  },
 ];
 
 const logout = () => {

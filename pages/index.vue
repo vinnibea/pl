@@ -1,7 +1,4 @@
 <script setup>
-
-
-
 const cardContent = [
   {
     title: "Регистрация на сайте",
@@ -42,8 +39,6 @@ const cardColContent = [
       "Став пользователем сервиса, вы можете отправить свой профиль сразу в несколько компаний, получить информацию о своей кредитоспособности, текущих курсах валют, кредитный калькулятор.",
   },
 ];
-
-
 </script>
 
 <template>
@@ -59,7 +54,7 @@ const cardColContent = [
         >
           <h1>
             Получите <br class="max-[520px]:hidden" />
-            от 5 000 до 500 000 тенге
+            от 5 000 до 500 000 тенге под 0%
           </h1>
           <p>
             С любой кредитной историей,
@@ -73,24 +68,30 @@ const cardColContent = [
       <top-cards></top-cards>
     </div>
     <main class="px-4 max-[1024px]:px-0">
-      <main-cards-layout>
-        <template #title> Требования к заказчику </template>
+      <main-cards-layout id="requirements">
+        <template #title>
+          <h2>Требования к заказчику</h2>
+        </template>
         <template #content>
           <requirements></requirements>
         </template>
         <template #button-title> Оформить заявку </template>
       </main-cards-layout>
 
-      <main-cards-layout>
-        <template #title> Получение кредита </template>
+      <main-cards-layout id="credit">
+        <template #title>
+          <h2>Получение кредита</h2>
+        </template>
         <template #content>
           <credit-take :content="cardContent"></credit-take>
         </template>
         <template #button-title> Получить деньги </template>
       </main-cards-layout>
 
-      <main-cards-layout>
-        <template #title> Как работает сервис </template>
+      <main-cards-layout id="about-service">
+        <template #title>
+          <h2>Как работает сервис</h2>
+        </template>
         <template #content>
           <credit-take
             :content="cardColContent"
@@ -114,7 +115,7 @@ const cardColContent = [
   font-weight: 700;
   margin: 0;
   color: rgb(227, 210, 20);
-  text-shadow: 2px 2px 2px rgb(35, 35, 35);
+  text-shadow: 2px 2px 2px rgba(35, 35, 35, 0.238);
 }
 
 .hero-center p {
