@@ -4,7 +4,7 @@ const store = useMobileStore();
 import { useAccountStore } from "~/stores/accountStore";
 const {isMobile} = storeToRefs(useAccountStore());
 watch(isMobile, (newVal, oldVal) => {
-  console.log(newVal, oldVal);
+  
   if(newVal) {
     window.scrollTo(0, 0)
     document.body.style.overflow = 'hidden';
@@ -966,7 +966,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div
-    class="max-[822px]:px-0 max-[822px]:py-0 z-50 overflow-scroll hidden-scroll rounded-xl bg-white  min-h-[calc(100svh)] max-h-[calc(100svh)] w-3/4 mx-auto mt-20 fixed top-0 bottom-0 max-[822px]:w-full max-[822px]:mt-0 shadow-lg max-[822px]:shadow-none"
+    class="max-[822px]:px-0 max-[822px]:py-0 z-50 overflow-scroll hidden-scroll rounded-xl max-[822px]:rounded-none bg-white  min-h-[calc(100svh)] max-h-[calc(100svh)] w-3/4 mx-auto mt-20 fixed top-0 bottom-0 max-[822px]:w-full max-[822px]:mt-0 shadow-lg max-[822px]:shadow-none"
   >
     <h3
       class="mx-auto w-full text-center rounded-t-none  shadow-md text-xl py-4 sticky top-0 font-bold text-white bg-slate-900 max-[822px]:py-2 max-[822px]:text-base max-[822px]:font-semibold"
@@ -974,7 +974,7 @@ onBeforeUnmount(() => {
       {{ data[index][0].title }}
     </h3>
     <div
-      class=" shadow-lg rounded-md  w-full flex flex-col justify-center max-[822px]:w-full max-[822px]:shadow-none cursor-move"
+      class=" shadow-lg rounded-md max-[822px]:rounded-none w-full flex flex-col justify-center max-[822px]:w-full max-[822px]:shadow-none cursor-move"
     >
       <div v-for="(item,i) in data[index]" :key="item.title">
         <h2 class="font-bold text-center py-2" v-if="i">{{ item.title }}</h2>
@@ -991,7 +991,7 @@ onBeforeUnmount(() => {
     </div>
     <Button
       class="hover:bg-slate-400 sticky bottom-0 left-0 right-0 min-w-full"
-      :radius="'rounded-b-md'"
+      :radius="'rounded-b-md max-[822px]:rounded-b-none'"
       @click="store.onPolitics(false)"
       :color="'bg-slate-900'"
       :hover="'bg-slate-300'"

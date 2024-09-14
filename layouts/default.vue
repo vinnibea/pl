@@ -56,7 +56,7 @@ const localModalCloser = () => {
       </div>
     </div>
 
-    <mobile-footer-menu></mobile-footer-menu>
+    <mobile-footer-menu v-if="!store.politicsOpen"></mobile-footer-menu>
     <login v-if="store.openModal"></login>
   </div>
 </template>
