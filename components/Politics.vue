@@ -966,7 +966,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div
-    class="max-[822px]:px-0 max-[822px]:py-0 z-50 overflow-scroll hidden-scroll rounded-xl max-[822px]:rounded-none bg-white  min-h-vh max-h-vh w-3/4 mx-auto mt-20 fixed top-0 bottom-0 max-[822px]:w-full max-[822px]:mt-0 shadow-lg max-[822px]:shadow-none"
+    class="max-[822px]:px-0 max-[822px]:py-0 z-50 overflow-scroll hidden-scroll rounded-xl max-[822px]:rounded-none bg-white  min-h-screen max-h-screen w-3/4 mx-auto mt-20 fixed top-0 bottom-0 max-[822px]:w-full max-[822px]:mt-0 shadow-lg max-[822px]:shadow-none"
   >
     <h3
       class="mx-auto w-full text-center rounded-t-none  shadow-md text-xl py-4 sticky top-0 font-bold text-white bg-slate-900 max-[822px]:py-2 max-[822px]:text-base max-[822px]:font-semibold"
