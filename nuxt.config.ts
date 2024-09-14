@@ -59,8 +59,6 @@ export default defineNuxtConfig({
       externalizeIconsJson: true,
     }
   },
-
-
  
   nitro: {
     plugins: ["~/server/plugins/index.js"],

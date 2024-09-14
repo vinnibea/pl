@@ -20,6 +20,7 @@ const components = [RegisterStepOne, RegisterStepTwo, RegisterSuccess];
 onMounted(async () => {
   !localStore.isAuth &&
     (await localStore.setLocalUser(JSON.parse(localStorage.getItem("user"))));
+    registerStore.setActiveTab(!!localStorage.getItem('temp') ? 1 : 0)
 });
 </script>
 

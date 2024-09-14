@@ -19,7 +19,9 @@ const rules = computed(() => {
   return {
     email: {
       required: helpers.withMessage("Это поле не может быть пустым", required),
-      email: helpers.withMessage("Неверный формат электронной почты", email),
+      email: helpers.withMessage("Неверный формат электронной почты", (val) => {
+        return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(val);
+      }),
     },
     password: {
       required: helpers.withMessage("Это поле не может быть пустым", required),

@@ -7,27 +7,19 @@ const props = defineProps({
   },
 });
 
+const route = useRoute();
 const store = useMobileStore();
 const localMenuCloser = (href) => {
-  console.log(href)
-  if (!store.state) return;
-  if (route.path !== "/") {
+  console.log(props.isMobile, href)
+  if (props.isMobile) {
     navigateTo(`/#${href}`);
-    if (props.isMobile) {
-      console.log("fires");
-      store.onMenuClose();
-    }
+    store.onMenuClose();
     document.body.style.overflow = "auto";
     return;
   }
-
-  if (props.isMobile) {
-    store.onMenuClose();
-    document.body.style.overflow = "auto";
-  }
 };
 
-const route = useRoute();
+
 </script>
 
 <template>
@@ -66,8 +58,8 @@ const route = useRoute();
         ]"
       >
         <NuxtLink
-          to="#requirements"
-          @click="localMenuCloser('requirements')"
+          to="/#requirements"
+          @click.prevent="localMenuCloser('requirements')"
           class="py-4 px-4 transition-all max-[822px]:font-bold max-[1224px]:px-2 border-transparent min-[822px]:border-b-2 hover:text-slate-300 min-[822px]:hover:border-amber-300"
         >
           Требования к заказчику
@@ -83,8 +75,11 @@ const route = useRoute();
         ]"
       >
         <NuxtLink
-          to="#credit"
-          @click="localMenuCloser('credit')"
+           to="/#credit"
+          @click.prevent.stop="() => {
+            localMenuCloser('credit');
+            return false
+          }"
           class="py-4 px-4 transition-all max-[1224px]:px-2 max-[822px]:font-bold min-[822px]:border-b-2 border-transparent hover:text-slate-300 min-[822px]:hover:border-amber-300"
         >
           Получение кредита
@@ -98,8 +93,8 @@ const route = useRoute();
         ]"
       >
         <NuxtLink
-          to="#about-service"
-          @click="localMenuCloser('about-service')"
+          to="/#about-service"
+          @click.prevent="localMenuCloser('about-service')"
           class="py-4 px-4 transition-all max-[822px]:font-bold max-[1224px]:px-2 border-transparent min-[822px]:border-b-2 hover:text-slate-300 min-[822px]:hover:border-amber-300"
         >
           Как работает сервис

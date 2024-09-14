@@ -69,6 +69,7 @@ const onModalClose = () => {
           :color="'bg-button-grey'"
           text="text-white"
           :hover="'bg-dark-grey'"
+          :hoverText="'text-white'"
           >Войти</Button
         >
       </div>

@@ -54,8 +54,8 @@ const paragraphs = [
   {
     content:
       "Этот сайт использует куки для предоставления услуг. Вы можете изменить настройки доступа к куки в вашем браузере. Для удаления персональных данных отправьте письмо с зарегистрированного вами email на адрес ",
-    linkContent: "experts@moneydea.pro.",
-    link: "mailto:experts@moneyadeall.pro",
+    linkContent: "experts@moneydeal.pro.",
+    link: "mailto:experts@moneyadeal.pro",
   },
 ];
 const rules = computed(() => {

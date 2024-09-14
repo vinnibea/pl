@@ -34,7 +34,7 @@ let errors = ref("");
 let terms_accepted = ref(false);
 const proceeding = ref(false);
 const loading = ref(true)
-
+const completed = ref(false)
 onMounted(async () => {
   client = await JSON.parse(localStorage.getItem('temp'));
   stripe = await loadStripe(useRuntimeConfig().public.stripeKey, {
@@ -58,6 +58,9 @@ onMounted(async () => {
       terms: { card: "never" },
     });
     await paymentElement.mount("#payment-element");
+    paymentElement.on('change', (event) => {
+      completed.value = event.complete
+    })
     loading.value = false;
   } else {
     errors.value = 'Недопустимое действие'
@@ -71,9 +74,10 @@ const onSubmit = async () => {
     //`Elements` instance that was used to create the Payment Element
     elements,
     confirmParams: {
-      return_url: "https://localhost:3000/",
+      return_url: "https://localhost:3000/register",
     },
     redirect: "if_required",
+    
   });
 
   if (error) {
@@ -98,7 +102,7 @@ const onSubmit = async () => {
                _sid,
             },
           })
-        
+          localStorage.removeItem('temp');
           registerStore.setActiveTab(2);
       } 
     } catch (error) {
@@ -108,7 +112,6 @@ const onSubmit = async () => {
         errors.value = '';
       })
     } finally {
-      localStorage.removeItem('temp');
       proceeding.value = false;
     }
   }
@@ -288,7 +291,7 @@ const onSubmit = async () => {
     
     <Button
       class="mx-auto min-w-[240px] relative"
-      :disabled="loading|| proceeding || errors?.length != false || !terms_accepted" @click="onSubmit">
+      :disabled="loading|| proceeding || errors?.length != false || !terms_accepted || !completed" @click="onSubmit">
       
       <span class="flex items-center justify-center w-full gap-2 mx-auto"
         >{{ proceeding ? "Идёт обработка данных" : "Далее" }}
@@ -309,7 +312,7 @@ const onSubmit = async () => {
         (стандартный период). Вы можете отменить подписку в любое время, нажав кнопку
         «Закрытие счета» в нижнем блоке страницы, предварительно войдя в личный кабинет при помощи логина и пароля, созданных при регистрации.
       </p>
-      <p>SIA LeadProm Media, ул. Матиса, 61 - 31, Рига, Латвия, LV-1009</p>
+      <p>SIA "TОО MONEYDEAL КЗ", улица Абая, 12, Нур-Султан, Казахстан</p>
       <p>Платеж появится в выписке по вашей карте как MONEYDEAL.</p>
     </div>
   </form>
