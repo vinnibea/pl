@@ -112,11 +112,27 @@ let public_offer = [
   },
 ]; 
 
+
+const contacts = {
+  company: "ТОО MONEYDEAL КЗ",
+  BIN: "БИН 221140056789",
+  address: {
+    country: "Казахстан",
+    city: "Нур-Султан",
+    district: "район Байконур",
+    street: "улица Абая",
+    house: "дом 12",
+    apartment: "кв. 34",
+  },
+  phone: "+77273145678",
+  email: "experts@moneydeal.pro",
+};
+
 </script>
 
 <template>
  <NuxtLayout>
-  <div class="bg-white p-4 max-[822px]:p-2 max-[822px]:py-16 w-full">
+  <div class="bg-white py-4 px-24  max-[822px]:p-2 max-[822px]:py-16 w-full border-t border-slate-300">
     <div v-for="item in public_offer" :key="item.title">
         <h2 class="font-bold text-center py-2">{{ item.title }}</h2>
         <p v-if="item.content" class="max-[822px]:text-sm p-2">
@@ -129,6 +145,35 @@ let public_offer = [
           </div>
         </div>
       </div>
+
+      <h2 class="font-bold text-center py-2">Контакты Лицензиара</h2>
+      <h2 class="font-bold text-left py-2">
+        Партнерство {{ contacts.company }}
+      </h2>
+      <h2 class="font-light text-xs text-left py-2">{{ contacts.BIN }}</h2>
+      <h2 class="font-semibold text-left py-2">
+        Aдрес:
+        <span class="font-light"
+          >{{ contacts.address.country }}, {{ contacts.address.city }},
+          {{ contacts.address.district }}, {{ contacts.address.street }},
+          {{ contacts.address.house }}
+        </span>
+      </h2>
+      <div>
+      <h2 class="font-semibold text-left py-2">
+        Телефон:
+        <span class="font-light">{{ contacts.phone }} </span>
+      </h2>
+      <h2 class="font-semibold text-left py-2">
+        Email:
+        <span class="font-light">{{ contacts.email }} </span>
+      </h2>
+      <NuxtLink
+        to="/"
+        class="w-full text-center flex justify-center font-bold text-amber-300 py-4"
+        >Вернуться на главную</NuxtLink
+      >
+    </div>
   </div>
  </NuxtLayout>
     

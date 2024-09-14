@@ -80,8 +80,8 @@ const footerLinks = [
   { title: "Вопросы и ответы", link: "/faq" },
   { title: "Пользовательское соглашение", link: "/public-offer" },
   { title: "Конфиденциальность", link: "/privacy" },
-  { title: "Тариф и политика возврата средств", link: "/pricing-refund-policy" },
-  { title: "Хранение персональных данных", link: "/user-data-storage-policy" },
+  { title: "Тариф и политика возврата средств", link: "/pricing" },
+  { title: "Хранение персональных данных", link: "/data-storage-policy" },
 ];
 
 const serverError = ref("");

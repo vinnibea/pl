@@ -712,7 +712,7 @@ const contacts = {
 
 <template>
   <NuxtLayout>
-    <div class="bg-white p-4 max-[822px]:p-2 max-[822px]:py-16 w-full">
+    <div class="bg-white py-4 px-24 max-[822px]:p-2 max-[822px]:py-16 w-full border-t border-slate-300">
       <div v-for="item in public_offer" :key="item.title">
         <h2 class="font-bold text-center py-2">{{ item.title }}</h2>
         <p v-if="item.content" class="max-[822px]:text-sm p-2">

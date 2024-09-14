@@ -276,7 +276,7 @@ const onSubmit = async () => {
             Я согласен с условиями подписки и регулярного списания средств, я
             ознакомился с
             <span
-              @click="changePolitics(1)"
+              @click="changePolitics(2)"
               class="text-blue-500 cursor-pointer"
               >правилами регулярных платежей</span
             >.

@@ -244,14 +244,14 @@ const onComplete = async (data) => {
             рекламной информации, а также соглашаюсь на хранение своих данных,
             согласно
             <span
-              @click="changePolitics(1)"
-              class="text-blue-700 cursor-pointer"
+              @click="changePolitics(0)"
+              class="text-blue-500 cursor-pointer"
               >договору на хранение персональных данных пользователя</span
             >.
             <span
-              @click="changePolitics(0)"
+              @click="changePolitics(1)"
               class="text-blue-500 cursor-pointer"
-              >С политикой возрватов и тарифов </span
+              >С пользовательским соглашением </span
             >ознакомлен и согласен.
           </p>
         </div>
