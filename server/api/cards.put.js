@@ -2,7 +2,6 @@ import {default as creditors} from '../schemas/creditor';
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
-    console.log(body)
     if(!body) {
         throw createError({
             statusCode: 400,
@@ -10,7 +9,6 @@ export default defineEventHandler(async (event) => {
         })
     }
   
-     
     
     if(!body || body.id === null || body.action === null) {
         throw createError({

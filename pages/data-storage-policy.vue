@@ -111,17 +111,17 @@ const contacts = {
 <template>
   <NuxtLayout>
     <div
-      class="bg-white py-4 px-24 max-[822px]:p-2 max-[822px]:py-16 w-full border-t border-slate-300"
+      class="bg-white py-4 px-4 max-[822px]:p-2 max-[822px]:py-16 w-full border-t border-slate-300"
     >
       <div v-for="item in public_offer" :key="item.title">
-        <h2 class="font-bold text-center py-2">{{ item.title }}</h2>
-        <p v-if="item.content" class="max-[822px]:text-sm p-2">
+        <h2 class="font-bold text-center py-0">{{ item.title }}</h2>
+        <p v-if="item.content" class="max-[822px]:text-sm text-justify p-2">
           {{ item.content }}
         </p>
         <div v-for="(data, k) in item.list" :key="k">
-          <p class="text-sm text-slate-900 p-1">{{ data.title || "" }}</p>
+          <p class="text-sm text-justify text-slate-900 p-1">{{ data.title || "" }}</p>
           <div v-for="(sub_data, i) in data.sublist" :key="i">
-            <p class="text-xs pl-4 text-slate-600">{{ sub_data.content }}</p>
+            <p class="text-xs text-justify  pl-4 text-slate-600">{{ sub_data.content }}</p>
           </div>
         </div>
       </div>

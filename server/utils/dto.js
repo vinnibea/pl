@@ -5,7 +5,6 @@ export default {
             surname: payload.surname,
             city: payload.city,
             phone: payload.phone,
-            index: payload.index,
             email: payload.email,
             id: payload._id || payload.id,
             sid: payload._sID,

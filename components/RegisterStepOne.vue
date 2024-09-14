@@ -139,8 +139,7 @@ const changePolitics = (i) => {
 };
 
 const onComplete = async (data) => {
-  const { password } = data;
-  const { email, name, surname, phone, city } = data;
+  const { email, name, surname, phone, city, password } = data;
 
   try {
     loading.value = true;
@@ -152,14 +151,10 @@ const onComplete = async (data) => {
         surname,
         phone,
         city,
-      },
-    });
-    await $fetch("/api/register", {
-      method: "POST",
-      body: {
         password,
       },
     });
+   
     await localStorage.setItem(
       "temp",
       JSON.stringify({ email, name, surname, phone, city })

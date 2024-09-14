@@ -127,4 +127,10 @@ onMounted(async () => {
     background-position: 47% 40%;
   }
 }
+
+@media screen and(max-width: 568px) {
+  .with-bg-1 {
+    background: url("../assets/main_blure_s.avif") center/ cover;
+  }
+}
 </style>

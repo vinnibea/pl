@@ -11,14 +11,7 @@ export default defineEventHandler(async (event) => {
     const saltRounds = 3;
     const register_data = await readBody(event);
 
-    if (register_data.password && !register_data.email) {
-        const cookie = jwt.sign(register_data.password, config.secret);
-        await setCookie(event, 'tp', cookie, { httpOnly: true, maxAge: 60 * 60 * 24 });
-        return {
-            statusCode: 200,
-        }
-    }
-
+    
     if (Object.keys(register_data).length === 6) {
         const tp_from_client = getCookie(event, 'tp');
         const client_cid = getCookie(event, '_cid');
@@ -42,7 +35,7 @@ export default defineEventHandler(async (event) => {
 
             if (user_exist) {
                return ({
-                    statusCode: 202,
+                    statusCode: 201,
                     message: "Пользователь с такими данными уже существует"
                 })
             } else {
@@ -68,7 +61,6 @@ export default defineEventHandler(async (event) => {
                         statusCode: 201,
                     }
                 } catch (error) {
-                    console.log(error)
                     throw createError({
                         statusCode: 400,
                     })

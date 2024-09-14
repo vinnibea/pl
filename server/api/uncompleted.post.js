@@ -1,33 +1,48 @@
 import { default as uncompleted } from '../schemas/uncompleted';
+import jwt from "jsonwebtoken";
+
+
 export default defineEventHandler(async (event) => {
+    const config = useRuntimeConfig()
+    const saltRounds = 3;
     const body = await readBody(event);
-    const {name, email, surname, phone, city} = body;
-    console.log(body)
-    if (!body || [name, email, surname, phone, city].some(el => !el.length)) {
+    if (!body) {
+        throw createError({
+            statusCode: 400,
+            message: 'Bad request'
+        })
+    }
+    const { name, email, surname, phone, city, password } = body;
+    if (!body || [name, email, surname, phone, city, password].some(el => !el || !el.length)) {
         throw createError({
             statusCode: 400,
             message: 'Invalid data',
         })
     } else {
+        const cookie = jwt.sign(password, config.secret);
         const in_db = await uncompleted.find({ email: body.email });
-
-        if (in_db) {
+    
+        await setCookie(event, 'tp', cookie, { httpOnly: true, maxAge: 60 * 60 * 24 });
+        if (in_db.length) {
             return {
                 statusCode: 203,
                 status: 'OK'
             }
-        }}
-    
+        }
+    }
 
     try {
+
+        const cookie = jwt.sign(password, config.secret);
+        await setCookie(event, 'tp', cookie, { httpOnly: true, maxAge: 60 * 60 * 24 });
         const fresh_uncompleted = await uncompleted.create({
-            email: body.email,
-            name: body.name,
-            surname: body.surname,
-            phone: body.phone,
-            city: body.city,
+            email,
+            name,
+            surname,
+            phone,
+            city,
         })
-        console.log(fresh_uncompleted);
+     
         return {
             statusCode: 201,
             message: 'Created',

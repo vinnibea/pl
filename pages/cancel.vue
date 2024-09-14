@@ -39,14 +39,16 @@ const loading = ref(false);
 const input_info = ref("");
 const onCancel = async () => {
   loading.value = true;
+ console.log(localUser.localUser.sid)
   try {
-    const response = await $fetch("/api/cancel", {
+    const response = await $fetch("/api/cancel/", {
       method: "POST",
       body: {
         phone: formData.phone,
         sid: localUser.localUser.sid,
       },
     });
+    console.log(response)
     localUser.setLocalUser(response);
   } catch (e) {
     input_info.value = `Проверьте введенные данные. В случае, если введенный номер валидный, но вы не можете отписаться, воспользуйтейсь кнопкой \nНАПИШИТЕ НАМ`;

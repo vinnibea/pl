@@ -12,7 +12,6 @@ export const useLocalUserStore = defineStore('local_user', () => {
     isSubscriber.value = true;
   }
   const setLocalUser = (payload) => {
-    console.log(payload)
     if (!payload?.email) {
       isAuth.value = false;
       return;

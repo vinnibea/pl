@@ -9,17 +9,18 @@ export default defineEventHandler(async (event) => {
 
     try {
         const body = await readBody(event);
+        console.log(body.sid, 'sid')
         const un_sub = await stripe.subscriptions.update(
             body.sid,
             { cancel_at_period_end: true }
         );
 
+      console.log(un_sub)
 
-
-        const user_from_db = await users.findOneAndUpdate({ phone: body.phone }, { subscription: false });
+        const user_from_db = await users.findOneAndUpdate({ phone: body.phone }, { subscription: false }, {new: true});
       
         const user_dto = dto.user_to_dto(user_from_db);
-     
+       console.log(user_dto, 'dto')
         const token = jwt.sign(
             user_dto, secret, { expiresIn: '2h' });
         setCookie(event, 'uid', token, { httpOnly: true, maxAge: 60 * 60 * 2 });

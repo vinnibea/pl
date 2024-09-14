@@ -1,29 +1,5 @@
 import { default as subscribers } from '../schemas/email';
-import nodemailer from 'nodemailer';
 
-const appPassword = 'qolv wtwa aadb lxeg';
-
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    auth: {
-        user: 'vinnibea3@gmail.com',
-        pass: appPassword,
-    }
-});
-
-const mail = (to) => ({
-
-    from: '<moneydeal@gmail.com>',
-
-    to: `<${to}>`,
-
-    // Subject of Email
-    subject: 'MONEYDEAL',
-    html: '<b>Спасибо за подписку</b>',
-    // This would be the text of email body
-    text: 'Спасибо за подписку.'
-});
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
@@ -52,14 +28,6 @@ export default defineEventHandler(async (event) => {
 
     try {
         await subscribers.create({ email: body.email });
-        transporter.sendMail(mail(body.email), (err, info) => {
-            if (err) {
-                return process.exit(1);
-            }
-
-            console.log('Message sent: %s', info.messageId);
-            console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-        });
         setCookie(event, 'subscriber', JSON.stringify({ status: true, email: body.email }));
         return {
             status: true,

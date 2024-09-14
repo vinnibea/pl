@@ -954,7 +954,8 @@ onBeforeUnmount(() => {
     class="max-[822px]:px-0 max-[822px]:py-0 z-50 max-[822px]:rounded-none rounded-3xl bg-white max-h-screen w-3/4 mx-auto fixed top-0 bottom-0 max-[822px]:w-full max-[822px]:mt-0 shadow-lg max-[822px]:shadow-none"
   >
     <h3
-      class="mx-auto w-full text-center rounded-t-md max-[822px]:rounded-t-none z-50 rounded- fixed shadow-md text-xl py-4 top-0 font-bold text-white bg-slate-900 max-[822px]:py-2 max-[822px]:text-base max-[822px]:font-semibold"
+      class="mx-auto w-full text-center rounded-t-md max-[822px]:rounded-t-none z-50 rounded- fixed shadow-md text-xl 
+      py-4 top-0 font-bold text-white bg-slate-900 max-[822px]:py-2 max-[822px]:text-[12px] max-[822px]:font-semibold"
     >
       {{ data[index][0].title }}
     </h3>
@@ -962,14 +963,14 @@ onBeforeUnmount(() => {
       class="rounded-md max-[822px]:rounded-none w-full max-h-[calc(100vh)] hidden-scroll overflow-scroll py-12 z-30 max-[822px]:w-full max-[822px]:shadow-none cursor-move relative"
     >
       <div v-for="(item,i) in data[index]" :key="item.title">
-        <h2 class="font-bold text-center py-2" v-if="i">{{ item.title }}</h2>
-        <p v-if="item.content" class="max-[822px]:text-[12px] p-2">
+        <h2 class="font-bold text-center py-2 max-[822px]:py-0" v-if="i">{{ item.title }}</h2>
+        <p v-if="item.content" class="max-[822px]:text-[12px] text-justify p-2 max-[822px]:p-1">
           {{ item.content }}
         </p>
         <div v-for="(data, k) in item.list" :key="k">
           <p class="text-[12px] text-slate-900 p-1">{{ data.title || "" }}</p>
           <div v-for="(sub_data, i) in data.sublist" :key="i">
-            <p class="text-[10px] pl-4 text-slate-600">{{ sub_data.content }}</p>
+            <p class="text-[10px] text-justify pl-4 max-[822px]:pl-0 text-slate-600">{{ sub_data.content }}</p>
           </div>
         </div>
    
