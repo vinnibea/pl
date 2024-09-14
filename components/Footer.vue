@@ -78,7 +78,7 @@ const footerLinks = [
   { title: "Контакты", link: "/contacts" },
   { title: "Закрытие счета", link: "/cancel" },
   { title: "Вопросы и ответы", link: "/faq" },
-  { title: "Публичное предложение", link: "/public-offer" },
+  { title: "Пользовательское соглашение", link: "/public-offer" },
   { title: "Конфиденциальность", link: "/privacy" },
   { title: "Тариф и политика возврата средств", link: "/pricing-refund-policy" },
   { title: "Хранение персональных данных", link: "/user-data-storage-policy" },

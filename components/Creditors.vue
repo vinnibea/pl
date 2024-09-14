@@ -9,7 +9,7 @@ const props = defineProps({
 });
 
 const store = useCreditorsStore();
-
+const profile = useLocalUserStore();
 
 await store.fetchCreditors();
 const sortedData = computed(() => props.shortData.length ? props.shortData.slice(0, 6) : store.creditors.sort((a, b) => b.isRecommended - a.isRecommended))
@@ -73,18 +73,18 @@ const sortedData = computed(() => props.shortData.length ? props.shortData.slice
       </div>
       <div class="flex flex-col gap-2 w-full items-stretch bg-">
         <Button
-          v-if="item.isRecommended && !shortData.length"
+          v-if="item.isRecommended && !shortData.length && profile.localUser.subscription"
           :color="'bg-lime-500'"
           :text="'text-white'"
           :disabled="true"
-          >Ваша заявка принята</Button
+          >Заявка принята</Button
         >
         <Button
-          v-if="!item.isRecommended && !shortData.length"
+          v-if="!item.isRecommended && !shortData.length && profile.localUser.subscription"
           :color="'bg-slate-900'"
           :text="'text-white'"
           :disabled="true"
-          >Ваша заявка рассматривается</Button
+          >Заявка рассматривается</Button
         >
         <NuxtLink :to="item.link" class="min-w-full">
           <Button class="min-w-full">Перейти на сайт</Button>

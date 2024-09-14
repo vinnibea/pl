@@ -17,17 +17,17 @@ const registerDate = computed(() => {
   return format(profile?.localUser?.timeStamp, "dd.MM.yyyy");
 });
 
-// const registerPhone = computed(() => {
-//   if (!profile?.localUser?.phone) {
-//     return;
-//   }
-//   return (
-//     " (" +
-//     profile?.localUser?.phone.slice(0, 3) +
-//     ") " +
-//     profile?.localUser?.phone.slice(3)
-//   );
-// });
+const registerPhone = computed(() => {
+  if (!profile?.localUser?.phone) {
+    return;
+  }
+  return (
+    " (" +
+    profile?.localUser?.phone.slice(0, 3) +
+    ") " +
+    profile?.localUser?.phone.slice(3)
+  );
+});
 </script>
 
 <template>
@@ -41,6 +41,10 @@ const registerDate = computed(() => {
       >
         <span
           class="rounded-full border-4 relative border-amber-300 min-w-32 min-h-32 p-8 font-extrabold text-slate-800 text-2xl flex uppercase items-center shadow-sm justify-center text-center"
+          :class="[{
+            'border-amber-300': profile.localUser.subscription,
+            'border-slate-500': !profile.localUser.subscription,
+          }]"
           >{{ computedAvatar }}
           
         </span>
@@ -53,8 +57,11 @@ const registerDate = computed(() => {
               profile?.localUser?.surname
             }}</span>
           </span>
-          <span class="max-[822px]:text-[10px] bg-yellow rounded-md shadow-md px-2 text-[14px] font-medium p-0 ">
+          <span v-if="profile.localUser.subscription" class="max-[822px]:text-[10px] bg-yellow rounded-md shadow-md px-2 text-[14px] font-medium p-0 ">
             Премиальный пользователь</span
+          >
+          <span v-if="!profile.localUser.subscription" class="max-[822px]:text-[10px] text-white bg-slate-500 rounded-md shadow-md px-2 text-[14px] font-medium p-0 ">
+            Пользователь</span
           >
         </p>
       </div>
@@ -72,7 +79,7 @@ const registerDate = computed(() => {
         </p>
         <p class="w-full flex justify-between items-center">
           <span class="font-medium text-xs uppercase">Телефон: </span>
-          <span class="font-medium text-xs uppercase">{{profile?.localUser?.phone}}</span>
+          <span class="font-medium text-xs uppercase">+7 {{ registerPhone }}</span>
         </p>
         <p class="w-full flex justify-between items-center">
           <span class="font-medium text-xs uppercase">Город: </span>
