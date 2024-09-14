@@ -2,16 +2,7 @@
 import { useMobileStore } from "~/stores/MobileMenu.js";
 const store = useMobileStore();
 import { useAccountStore } from "~/stores/accountStore";
-const {isMobile} = storeToRefs(useAccountStore());
-watch(isMobile, (newVal, oldVal) => {
-  
-  if(newVal) {
-    window.scrollTo(0, 0)
-    document.body.style.overflow = 'hidden';
-    return;
-  }
-  document.body.style.overflow = 'auto';
-})
+
 const props = defineProps({
   index: {
     type: Number,
@@ -19,13 +10,6 @@ const props = defineProps({
   },
 });
 
-onMounted(() => {
-  document.body.style.overflow = 'hidden';
-})
-
-onBeforeUnmount(() => {
-  document.body.style.overflow = 'auto';
-})
 const public_offer = [
   {
     title: "Пользовательское соглашение",
@@ -955,23 +939,27 @@ const data = [
   pricing_offer
 ];
 
+onMounted(() => {
+  document.body.style.overflow = 'hidden';
+})
 
 onBeforeUnmount(() => {
   document.body.style.overflow = 'auto';
 })
+
 </script>
 
 <template>
   <div
-    class="max-[822px]:px-0 max-[822px]:py-0 z-50 overflow-scroll hidden-scroll rounded-xl max-[822px]:rounded-none bg-white  min-h-svh max-h-svh w-3/4 mx-auto mt-20 fixed top-0 bottom-0 max-[822px]:w-full max-[822px]:mt-0 shadow-lg max-[822px]:shadow-none"
+    class="max-[822px]:px-0 max-[822px]:py-0 z-50 max-[822px]:rounded-none bg-white max-h-screen w-3/4 mx-auto mt-20 fixed top-0 bottom-0 max-[822px]:w-full max-[822px]:mt-0 shadow-lg max-[822px]:shadow-none"
   >
     <h3
-      class="mx-auto w-full text-center rounded-t-none sticky z-50 shadow-md text-xl py-4 top-0 font-bold text-white bg-slate-900 max-[822px]:py-2 max-[822px]:text-base max-[822px]:font-semibold"
+      class="mx-auto w-full text-center rounded-t-md z-50 rounded- fixed shadow-md text-xl py-4 top-0 font-bold text-white bg-slate-900 max-[822px]:py-2 max-[822px]:text-base max-[822px]:font-semibold"
     >
       {{ data[index][0].title }}
     </h3>
-    <div
-      class=" shadow-lg rounded-md max-[822px]:rounded-none w-full relative flex z-30 flex-col justify-center max-[822px]:w-full max-[822px]:shadow-none cursor-move"
+    <div 
+      class="rounded-md max-[822px]:rounded-none w-full max-h-[calc(100vh)] hidden-scroll overflow-scroll py-12 z-30 max-[822px]:w-full max-[822px]:shadow-none cursor-move relative"
     >
       <div v-for="(item,i) in data[index]" :key="item.title">
         <h2 class="font-bold text-center py-2" v-if="i">{{ item.title }}</h2>
@@ -984,18 +972,18 @@ onBeforeUnmount(() => {
             <p class="text-[10px] pl-4 text-slate-600">{{ sub_data.content }}</p>
           </div>
         </div>
+   
       </div>
-      <Button
-      class="hover:bg-slate-400 z-50 sticky bottom-0 left-0 right-0 min-w-full"
+      
+    </div>
+    <Button
+      class="hover:bg-slate-400 fixed bottom-0 z-50 right-0 min-w-full"
       :radius="'rounded-b-md max-[822px]:rounded-b-none'"
       @click="store.onPolitics(false)"
       :color="'bg-slate-900'"
       :hover="'bg-slate-300'"
       :text="'text-white'"
-      >Закрыть</Button
-    >
-    </div>
-    
+      >Закрыть</Button>
   </div>
 </template>
 <style scoped>
