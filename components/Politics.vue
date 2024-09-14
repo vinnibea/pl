@@ -20,10 +20,7 @@ const props = defineProps({
 });
 
 onMounted(() => {
-  console.log(window.screen.width)
-  if(window.screen.width < 822) {
-    document.body.style.overflow = 'hidden';
-  }
+  document.body.style.overflow = 'hidden';
 })
 
 onBeforeUnmount(() => {
@@ -966,10 +963,10 @@ onBeforeUnmount(() => {
 
 <template>
   <div
-    class="max-[822px]:px-0 max-[822px]:py-0 z-50 overflow-scroll hidden-scroll rounded-xl max-[822px]:rounded-none bg-white  min-h-lvh max-h-lvh w-3/4 mx-auto mt-20 fixed top-0 bottom-0 max-[822px]:w-full max-[822px]:mt-0 shadow-lg max-[822px]:shadow-none"
+    class="max-[822px]:px-0 max-[822px]:py-0 z-50 overflow-scroll hidden-scroll rounded-xl max-[822px]:rounded-none bg-white  min-h-svh max-h-dvh w-3/4 mx-auto mt-20 fixed top-0 bottom-0 max-[822px]:w-full max-[822px]:mt-0 shadow-lg max-[822px]:shadow-none"
   >
     <h3
-      class="mx-auto w-full text-center rounded-t-none  shadow-md text-xl py-4 sticky top-0 font-bold text-white bg-slate-900 max-[822px]:py-2 max-[822px]:text-base max-[822px]:font-semibold"
+      class="mx-auto w-full text-center rounded-t-none sticky  shadow-md text-xl py-4 top-0 font-bold text-white bg-slate-900 max-[822px]:py-2 max-[822px]:text-base max-[822px]:font-semibold"
     >
       {{ data[index][0].title }}
     </h3>
@@ -990,7 +987,7 @@ onBeforeUnmount(() => {
       </div>
     </div>
     <Button
-      class="hover:bg-slate-400 sticky bottom-0 left-0 right-0 min-w-full"
+      class="hover:bg-slate-400 z-50 sticky bottom-0 left-0 right-0 min-w-full"
       :radius="'rounded-b-md max-[822px]:rounded-b-none'"
       @click="store.onPolitics(false)"
       :color="'bg-slate-900'"
