@@ -43,8 +43,7 @@ onMounted(async () => {
   const { subscription_id, secret } = await $fetch("/api/create", {
     method: "POST",
     body: {
-      email: client.email,
-      price: "price_1Pw4lX03KdpVNiYIIVuJm7Zw",
+      email: client.email
     },
   });
   if (secret) {
@@ -74,7 +73,7 @@ const onSubmit = async () => {
     //`Elements` instance that was used to create the Payment Element
     elements,
     confirmParams: {
-      return_url: "https://localhost:3000/register",
+      return_url: "https://moneydeal.kz/register/",
     },
     redirect: "if_required",
     
@@ -106,7 +105,6 @@ const onSubmit = async () => {
           registerStore.setActiveTab(2);
       } 
     } catch (error) {
-      console.log(error)
       errors.value = error?.message;
       setTimeout(() => {
         errors.value = '';
@@ -256,7 +254,19 @@ const onSubmit = async () => {
       </div>
     </div>
     <div class="flex flex-col gap-2">
+
+
       <div id="payment-element"></div>
+      <div v-if="loading" class="flex items-center justify-center">
+        <span class="flex items-center justify-center w-full gap-2 mx-auto"
+        >
+        <span
+          name="loader"
+          v-if="loading"
+          class="loader bg-opacity-0 border-4 w-32 h-32 bt-2 border-t-white border-slate-300 rounded-full"
+        >
+        </span>
+      </span></div>
       <div class="min-h-6 flex items-center">
         <span
           v-if="errors?.length"
@@ -291,7 +301,7 @@ const onSubmit = async () => {
     
     <Button
       class="mx-auto min-w-[240px] relative"
-      :disabled="loading|| proceeding || errors?.length != false || !terms_accepted || !completed" @click="onSubmit">
+      :disabled="proceeding || errors?.length != false || !terms_accepted || !completed" @click="onSubmit">
       
       <span class="flex items-center justify-center w-full gap-2 mx-auto"
         >{{ proceeding ? "Идёт обработка данных" : "Далее" }}
