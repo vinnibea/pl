@@ -1,9 +1,16 @@
 import { default as creditors } from '../schemas/creditor';
 
 export default defineEventHandler(async (event) => {
-    const headers = getHeaders(event);
+
+    if (!event.context._bot) throw createError({
+        statusCode: 400,
+        statusMessage: 'Forbidden',
+    })
+
+
 
     try {
+
         const data_to_send = await creditors.find({});
         return data_to_send;
     } catch (e) {
@@ -12,6 +19,4 @@ export default defineEventHandler(async (event) => {
             message: 'НИчего не найдено, возможна ошибка с базой данных'
         })
     }
-
-
 })

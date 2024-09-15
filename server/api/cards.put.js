@@ -1,7 +1,12 @@
 import {default as creditors} from '../schemas/creditor';
-
+import bcrypt from 'bcrypt';
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
+    if (!event.context._bot) throw createError({
+        statusCode: 400,
+        statusMessage: 'Forbidden',
+    })
+
     if(!body) {
         throw createError({
             statusCode: 400,

@@ -5,6 +5,16 @@ import { default as Creditor } from '../schemas/creditor';
 
 export default defineEventHandler(async (event) => {
     //parser
+
+   if(!event.context._bot) {
+    throw createError({
+        statusCode: 400,
+        statusMessage: 'Forbidden',
+    });
+   }
+
+
+   
     const browser = await puppeteer.launch({
         headless: true,
         defaultViewport: null,

@@ -1,41 +1,12 @@
 import jwt from 'jsonwebtoken';
-
-import { default as users } from '../schemas/user';
-import { default as subscribers } from '../schemas/email';
-
-import nodemailer from 'nodemailer';
-
-
-
-const appPassword = 'qolv wtwa aadb lxeg';
-
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  auth: {
-    user: 'vinnibea3@gmail.com',
-    pass: appPassword,
-  }
-});
-
-const mail = (to, message) => ({
-
-  from: '<moneydeal@gmail.com>',
-
-  to: `<${to}>`,
-
-  // Subject of Email
-  subject: 'MONEYDEAL',
-  html: `<b>Спасибо за подписку</b>`,
-  // This would be the text of email body
-  text: `${message}`
-});
-
-
-
+import bcrypt from 'bcrypt';
 export default defineEventHandler(async (event) => {
+  const headers = getHeaders(event);
+  const valid_password = bcrypt.compareSync(headers.authorization, useRuntimeConfig().api);
   const token = await getCookie(event, 'uid');
-
+  if(valid_password) {
+    event.context._bot = true;
+  }
   if (token) {
     try {
       const verified_token = jwt.verify(token, useRuntimeConfig().secret);

@@ -50,6 +50,7 @@ export default defineNuxtConfig({
     ttoken: process.env.TTOKEN,
     key: process.env.KEY,
     price: process.env.price,
+    api: process.env.API_KEY,
     public: {
       stripeKey: ''
     }
