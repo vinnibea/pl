@@ -43,7 +43,8 @@ onMounted(async () => {
   const { subscription_id, secret } = await $fetch("/api/create", {
     method: "POST",
     body: {
-      email: client.email
+      email: client.email,
+      price: 'price_1Pw4lX03KdpVNiYIIVuJm7Zw',
     },
   });
   if (secret) {

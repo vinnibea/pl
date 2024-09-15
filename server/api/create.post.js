@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 const stripe = new Stripe(useRuntimeConfig().SSK)
 export default defineEventHandler(async(event) => {
    try {
-    const {email} = await readBody(event);
+    const {email, price} = await readBody(event);
     const customer = await stripe.customers.create({
         email,
     }); 
@@ -16,7 +16,7 @@ export default defineEventHandler(async(event) => {
     const subscription = await stripe.subscriptions.create({
         customer: customer.id,
         items: [{
-          price: useRuntimeConfig().price,
+          price,
         }],
         payment_behavior: 'default_incomplete',
         payment_settings: { save_default_payment_method: 'on_subscription' },
