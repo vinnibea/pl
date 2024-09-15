@@ -1,8 +1,11 @@
-import { default as Creditors } from '../schemas/creditor';
-
+import prisma from "~/lib/prisma"
 export default defineEventHandler(async (event) => {
     try {
-        const creditors_from_db = await Creditors.find({});
+        const creditors_from_db = await prisma.creditor.findMany({
+            include: {
+              blocks: true,
+            }
+        })
         return creditors_from_db;
     } catch (error) {
         console.log(error)

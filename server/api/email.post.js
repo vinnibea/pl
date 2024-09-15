@@ -1,4 +1,5 @@
 import { default as subscribers } from '../schemas/email';
+import prisma from "~/lib/prisma"
 
 
 export default defineEventHandler(async (event) => {
@@ -11,13 +12,12 @@ export default defineEventHandler(async (event) => {
     if (!body.email) {
         throw createError({ statusCode: 400, statusMessage: 'Неправильное значение электронной почты, повторите попытку' });
     } else {
-        const active_subscriber = await subscribers.findOne({ email: body.email });
-
+        const active_subscriber = await prisma.email.findUnique({
+            where: {
+                email: body.email
+            }
+        });
         if (active_subscriber) {
-            throw createError({ statusCode: 409, statusMessage: 'You are already a subscriber' });
-        } 
-       
-        if (!active_subscriber) {
             setCookie(event, 'subscriber', JSON.stringify({ status: true, email: body.email }));
             return {
                 status: true,
@@ -27,7 +27,12 @@ export default defineEventHandler(async (event) => {
     }
 
     try {
-        await subscribers.create({ email: body.email });
+        const created_email = await prisma.email.create({
+            data: {
+                email: body.email,
+            }
+        })
+
         setCookie(event, 'subscriber', JSON.stringify({ status: true, email: body.email }));
         return {
             status: true,

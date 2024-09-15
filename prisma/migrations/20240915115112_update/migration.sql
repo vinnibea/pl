@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Creditor" ALTER COLUMN "imgURL" DROP NOT NULL;

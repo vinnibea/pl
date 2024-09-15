@@ -1,7 +1,8 @@
 import puppeteer from 'puppeteer';
 import axios from 'axios';
 import sharp from 'sharp';
-import { default as Creditor } from '../schemas/creditor';
+import prisma from "~/lib/prisma"
+
 
 export default defineEventHandler(async (event) => {
     //parser
@@ -13,8 +14,6 @@ export default defineEventHandler(async (event) => {
     });
    }
 
-
-   
     const browser = await puppeteer.launch({
         headless: true,
         defaultViewport: null,
@@ -78,10 +77,17 @@ export default defineEventHandler(async (event) => {
             const new_el = {
                 ...el,
                 src: output_src,
-                mailSRC: el.imageURL,
             }
             try {
-                await Creditor.create(new_el);
+                await prisma.creditor.create({
+                    data: {
+                        ...new_el,
+                        blocks: {
+                            create: new_el.blocks
+                        }
+                    }
+            })
+                // await Creditor.create(new_el);
             } catch(e) {
                 console.log('DB ERROR', e)
             }

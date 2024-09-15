@@ -1,5 +1,5 @@
-import { default as uncompleted } from '../schemas/uncompleted';
 import jwt from "jsonwebtoken";
+import prisma from "~/lib/prisma"
 
 
 export default defineEventHandler(async (event) => {
@@ -20,10 +20,13 @@ export default defineEventHandler(async (event) => {
         })
     } else {
         const cookie = jwt.sign(password, config.secret);
-        const in_db = await uncompleted.find({ email: body.email });
-    
+        const in_db = await prisma.uncompleted.findFirst({
+            where: {
+                email: body.email,
+            }
+        });
         await setCookie(event, 'tp', cookie, { httpOnly: true, maxAge: 60 * 60 * 24 });
-        if (in_db.length) {
+        if (in_db) {
             return {
                 statusCode: 203,
                 status: 'OK'
@@ -35,14 +38,15 @@ export default defineEventHandler(async (event) => {
 
         const cookie = jwt.sign(password, config.secret);
         await setCookie(event, 'tp', cookie, { httpOnly: true, maxAge: 60 * 60 * 24 });
-        const fresh_uncompleted = await uncompleted.create({
-            email,
-            name,
-            surname,
-            phone,
-            city,
+        const fresh_uncompleted = await prisma.uncompleted.create({
+            data: {
+                email, 
+                name,
+                surname,
+                city,
+                phone,
+            }
         })
-     
         return {
             statusCode: 201,
             message: 'Created',

@@ -1,8 +1,6 @@
-import { default as users } from '../schemas/user';
-import { default as uncompleted } from '../schemas/uncompleted';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-
+import prisma from "~/lib/prisma"
 
 
 export default defineEventHandler(async (event) => {
@@ -11,7 +9,7 @@ export default defineEventHandler(async (event) => {
     const saltRounds = 3;
     const register_data = await readBody(event);
 
-    
+
     if (Object.keys(register_data).length === 6) {
         const tp_from_client = getCookie(event, 'tp');
         const client_cid = getCookie(event, '_cid');
@@ -21,7 +19,7 @@ export default defineEventHandler(async (event) => {
                 message: 'Заполните заявку еще раз'
             })
         }
-        console.log(tp_from_client, client_cid   )
+        console.log(tp_from_client, client_cid)
         const verified_tp = jwt.verify(tp_from_client, config.secret);
         const verified_cid = jwt.verify(client_cid, config.secret);
         if (!verified_tp || !verified_cid) {
@@ -30,30 +28,41 @@ export default defineEventHandler(async (event) => {
                 message: 'Отказано в доступе'
             });
         } else {
-
-            const user_exist = await users.findOne({ email: register_data.email });
-
+            const user_exist = await prisma.user.findFirst({
+                where: {
+                    email: register_data.email,
+                }
+            })
             if (user_exist) {
-               return ({
+                return ({
                     statusCode: 201,
                     message: "Пользователь с такими данными уже существует"
                 })
             } else {
                 const { name, surname, phone, city, email, _sid } = register_data;
-                console.log(register_data)
                 const hashed_password = bcrypt.hashSync(verified_tp, saltRounds)
-                await uncompleted.findOneAndDelete({ email: register_data.email })
+
+                await prisma.uncompleted.delete({
+                    where: {
+                        email: register_data.email,
+                    }
+                })
                 try {
-                    await users.create({
-                        ...register_data,
-                        password: hashed_password,
-                        subscription: true,
-                        _customerID: verified_cid,
-                        _sID: _sid,
+                    const new_user = await prisma.user.create({
+                        data: {
+                            name,
+                            surname,
+                            phone,
+                            city,
+                            email,
+                            password: hashed_password,
+                            subscription: true,
+                            customerID: verified_cid,
+                            sID: _sid,
+                        }
+                    })
 
-                    });
 
-                
                     await deleteCookie(event, 'tp');
                     await deleteCookie(event, '_cid');
                     await setCookie(event, 'fr', true, { httpOnly: true, maxAge: 60 * 60 })

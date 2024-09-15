@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
-
+import { PrismaClient } from "@prisma/client";
 let cached = global.mongoose;
 
 if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
 const URI = useRuntimeConfig().mongoUrl;
+const prisma = new PrismaClient();
 const mongoose_runner = async () => {
   if (cached.conn) {
     return cached.conn;
@@ -47,6 +48,7 @@ const ping = () => {
 
 
 async function connectToDatabase() {
+
   try {
     await mongoose.connect(URI, options);
     console.log('Connected to MongoDB');
@@ -57,8 +59,9 @@ async function connectToDatabase() {
 }
 
   export default defineNitroPlugin(async (nitroApp) => {
-
+     
     try {
+      await  prisma.$connect()
       await mongoose_runner();
       console.log("DB connection established.");
       ping()

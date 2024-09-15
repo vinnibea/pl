@@ -1,8 +1,5 @@
 
-
-
-import { default as uncompleted } from '../schemas/uncompleted';
-
+import prisma from "~/lib/prisma"
 export default defineEventHandler(async (event) => {
 
     if (!event.context._bot) {
@@ -13,7 +10,7 @@ export default defineEventHandler(async (event) => {
     }
 
     try {
-        const uncompleted_from_db = await uncompleted.find({});
+        const uncompleted_from_db = await prisma.uncompleted.findMany();
 
         return uncompleted_from_db;
     } catch (e) {

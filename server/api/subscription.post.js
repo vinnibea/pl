@@ -23,8 +23,6 @@ export default defineEventHandler(async (event) => {
         success_url: returnURL.origin,
     })
 
-    console.log(session, customer)
-
     return {
         status: 'OK',
     }

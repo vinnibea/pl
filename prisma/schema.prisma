@@ -1,0 +1,66 @@
+datasource db {
+    provider  = "postgresql"
+    url       = env("DATABASE_URL")
+    directUrl = env("DIRECT_URL")
+}
+
+generator client {
+    provider      = "prisma-client-js"
+    binaryTargets = "native"
+}
+
+model User {
+    id              Int      @id @default(autoincrement())
+    email           String   @unique
+    name            String
+    surname         String
+    city            String
+    phone           String   @unique
+    deactivated     Boolean  @default(false)
+    hasNotification Boolean  @default(true)
+    hasEmail        Boolean  @default(true)
+    sID             String
+    customerID      String
+    password        String
+    subscription    Boolean  @default(false)
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+}
+
+model Uncompleted {
+    id      Int    @id @default(autoincrement())
+    email   String @unique
+    name    String
+    surname String
+    city    String
+    phone   String @unique
+}
+
+model email {
+    id    Int    @id @default(autoincrement())
+    email String @unique
+}
+
+model Creditor {
+    id            Int      @id @default(autoincrement())
+    title         String?   @unique
+    subtitle      String?
+    src           String?
+    blocks        Block[]
+    imageURL      String?
+    advantages    String[] @default([])
+    link          String   @default("")
+    isRecommended Boolean  @default(false)
+    isEmail       Boolean  @default(false)
+    isActive      Boolean  @default(true)
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
+}
+
+model Block {
+    id         Int      @id @default(autoincrement())
+    title      String?
+    value      String?
+    creditorId Int
+    creditor   Creditor @relation(fields: [creditorId], references: [id], onDelete: Cascade)
+}

@@ -1,5 +1,4 @@
-import { default as emails } from '../schemas/email';
-
+import prisma from "~/lib/prisma"
 export default defineEventHandler(async (event) => {
     if (!event.context._bot) throw createError({
         statusCode: 400,
@@ -7,7 +6,7 @@ export default defineEventHandler(async (event) => {
     })
   
     try {
-        const emails_from_db = await emails.find({});
+        const emails_from_db = await prisma.email.findMany();
         return emails_from_db;
     } catch (error) {
         throw createError({

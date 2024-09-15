@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     '@vueuse/motion/nuxt',
     '@nuxt/ui',
     'unplugin-icons/nuxt',
+    "@prisma/nuxt"
   ],
 
   tailwindcss: {

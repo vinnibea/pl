@@ -1,7 +1,7 @@
-import { default as users } from '../schemas/user';
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
 import {default as dto} from '../utils/dto';
+import prisma from "~/lib/prisma"
 
 export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig();
@@ -14,7 +14,11 @@ export default defineEventHandler(async (event) => {
         })
     }
 try {
-    const user_exists = await users.findOne({ email: user_data.email });
+    const user_exists = await prisma.user.findUnique({
+        where: {
+            email: user_data.email
+        }
+    })
     if (!user_exists) {
         throw createError({
             statusCode: 404,

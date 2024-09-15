@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
         }
     } catch (error) {
         throw createError({
-            statusCode: 500,
+            statusCode: 400,
             message: 'Something went wrong on the server'
     })
     }

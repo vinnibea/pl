@@ -1,4 +1,4 @@
-import { default as users } from '../schemas/user';
+import prisma from "~/lib/prisma"
 
 export default defineEventHandler(async (event) => {
     if (!event.context._bot) throw createError({
@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
     
 
     try {
-    const users_from_db = await users.find({});
+    const users_from_db = await prisma.user.findMany();
     return users_from_db;
     } catch (error) {
         throw createError({
