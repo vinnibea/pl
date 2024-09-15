@@ -55,7 +55,7 @@
     "@iconify-json/material-symbols-light": "^1.2.1",
     "@iconify-json/mdi": "^1.2.0",
     "@prisma/client": "^5.19.1",
-    "@vueuse/core": "^11.0.1",
+    "@vueuse/core": "^11.0.3",
     "@vueuse/nuxt": "^11.0.1",
     "prisma": "^5.19.1",
     "puppeteer": "^23.3.0",
