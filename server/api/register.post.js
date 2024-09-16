@@ -42,12 +42,13 @@ export default defineEventHandler(async (event) => {
                 const { name, surname, phone, city, email, _sid } = register_data;
                 const hashed_password = bcrypt.hashSync(verified_tp, saltRounds)
 
-                await prisma.uncompleted.delete({
-                    where: {
-                        email: register_data.email,
-                    }
-                })
+               
                 try {
+                    await prisma.uncompleted.delete({
+                        where: {
+                            email: register_data.email,
+                        }
+                    })
                     const new_user = await prisma.user.create({
                         data: {
                             name,
@@ -70,6 +71,7 @@ export default defineEventHandler(async (event) => {
                         statusCode: 201,
                     }
                 } catch (error) {
+                    console.log(error)
                     throw createError({
                         statusCode: 400,
                     })

@@ -34,7 +34,7 @@ const cardContent = [
       </div>
     </div>
     <div class="min-[822px]:hidden py-16 relative z-0">
-      <Swiper
+      <!-- <Swiper
         class="z-0"
         :modules="[SwiperAutoplay, SwiperEffectCreative]"
         :slidesPerView="1.1"
@@ -66,7 +66,7 @@ const cardContent = [
             <span class="text-sm text-black">{{ item.span2 }}</span>
           </div>
         </SwiperSlide>
-      </Swiper>
+      </Swiper> -->
     </div>
   </div>
 </template>

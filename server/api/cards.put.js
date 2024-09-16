@@ -31,7 +31,6 @@ export default defineEventHandler(async (event) => {
                     link: body.link,
                 }
             })
-
             return {
                 statusCode: 200,
                 message: 'Действие успешно произведено'

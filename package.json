@@ -21,9 +21,9 @@
     "@prisma/nuxt": "^0.0.35",
     "@stripe/stripe-js": "^4.4.0",
     "@supabase/supabase-js": "^2.45.4",
-    "@vueuse/core": "^11.0.3",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",
+    "@vueuse/core": "^11.0.3",
     "@vueuse/motion": "^2.2.3",
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
@@ -37,9 +37,10 @@
     "nuxt": "^3.12.4",
     "nuxt-protected-mailto": "^0.0.12",
     "nuxt-stripe-module": "^3.2.0",
-    "nuxt-swiper": "^1.2.2",
+    "nuxt-swiper": "^1.0.1",
     "sharp": "^0.33.5",
     "stripe": "^16.10.0",
+    "swiper": "^11.1.14",
     "telegraf": "^4.16.3",
     "twilio": "^5.3.0",
     "vue": "latest"
@@ -56,9 +57,7 @@
     "@iconify-json/material-symbols-light": "^1.2.1",
     "@iconify-json/mdi": "^1.2.0",
     "@prisma/client": "^5.19.1",
-   
     "@vueuse/nuxt": "^11.0.3",
-    "prisma": "^5.19.1",
     "puppeteer": "^23.3.0",
     "unplugin-icons": "^0.19.3"
   }
