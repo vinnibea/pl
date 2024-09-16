@@ -43,7 +43,7 @@ onMounted(async () => {
     method: "POST",
     body: {
       email: client.email,
-      price: 'price_1PzlQkKtNVs0SaOQu91H48Go',
+      price: 'price_1PzlwrKtNVs0SaOQyO5lLYTx',
     },
   });
   if (secret) {
