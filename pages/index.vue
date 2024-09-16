@@ -192,8 +192,7 @@ const cardColContent = [
   }
 
   .hero {
-    background-position: 25% 50%;
-    background-image: url("../assets/main_small.avif");
+    background-position: 47%;
   }
 }
 </style>

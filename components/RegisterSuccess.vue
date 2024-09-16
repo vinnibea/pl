@@ -9,6 +9,7 @@ const localModalOpener = () => {
   store.onModal();
   document.body.style.overflow = "hidden";
 };
+console.log()
 </script>
 <template>
   <div class="flex flex-col justify-between min-h-svh w-full">
@@ -44,10 +45,16 @@ const localModalOpener = () => {
       </NuxtLink>
     </div>
     <div
-      v-if="!data"
+      v-if="status !== 'success'"
       class="w-full flex flex-col min-h-svh text-center max-[822px]:items-stretch"
     >
-      
+      <span class="flex items-center justify-center w-full gap-2 mx-auto">
+        <span
+          name="loader"
+          class="loader bg-opacity-0 border-4 w-32 h-32 bt-2 border-t-white border-slate-300 rounded-full"
+        >
+        </span>
+      </span>
     </div>
   </div>
 </template>
