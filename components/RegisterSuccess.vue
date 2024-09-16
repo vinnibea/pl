@@ -21,7 +21,7 @@ console.log()
         <h2 class="text-green-500 text-[14px] font-semibold uppercase">
           Регистрация завершена
         </h2>
-        <p class="font-medium text-sm text-slate-300">
+        <p class="font-medium text-sm text-slate-500">
           Теперь Вы можете воспользоваться услугами одного из следующих
           кредиторов
         </p>
@@ -39,7 +39,7 @@ console.log()
       <NuxtLink
         @click="localModalOpener"
         to="/"
-        class="w-full flex justify-center text-center text-xs uppercase underline font-medium text-slate-300"
+        class="w-full flex justify-center text-center text-xs uppercase underline font-medium text-amber-300"
       >
         <span>Войти в личный кабинет</span>
       </NuxtLink>

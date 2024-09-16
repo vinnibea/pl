@@ -93,7 +93,7 @@ onMounted(async () => {
       </div>
 
       <div
-        class="flex-col items-center justify-center min-w-full py-2 px-8 backdrop-blur-lg bg-slate-700 bg-opacity-60 shadow- mx-auto rounded-lg max-[822px]:rounded-none gap-2 max-[822px]:flex-col max-[822px]:gap-0 max-[822px]:py-8 max-[822px]:px-2 max-[568px]:px-0 max-[568px]:py-4 max-[822px]:rounded-xs max-[822px]:w-full shadow-sm"
+        class="flex-col items-center justify-center min-w-full py-2 px-8 backdrop-blur-lg bg-white bg-opacity-90 shadow- mx-auto rounded-lg max-[822px]:rounded-none gap-2 max-[822px]:flex-col max-[822px]:gap-0 max-[822px]:py-8 max-[822px]:px-2 max-[568px]:px-0 max-[568px]:py-4 max-[822px]:rounded-xs max-[822px]:w-full shadow-sm"
         :class="[
           {
             'max-[822px]:hidden': store.politicsOpen !== false,

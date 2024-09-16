@@ -166,7 +166,7 @@ const onComplete = async (data) => {
     setTimeout(() => {
       server_error.value = '';
 
-    }, 2000)
+    }, 5000)
   } finally {
     loading.value = false;
   }
@@ -268,7 +268,7 @@ const empty_values = computed(() =>
         class="flex justify-start items-start gap-4 w-2/3 max-[822px]:w-full"
       >
         <div
-          class="flex justify-start text-slate-300 gap-2 items-start max-[822px]:w-full"
+          class="flex justify-start text-slate-500 gap-2 items-start max-[822px]:w-full"
         >
           <input
             type="checkbox"

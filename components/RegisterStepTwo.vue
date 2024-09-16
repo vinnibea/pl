@@ -86,7 +86,7 @@ const onSubmit = async () => {
     errors.value = "Повторите попытку, " + error.message;
     setTimeout(() => {
       errors.value = "";
-    }, 2000);
+    }, 7000);
   } else {
     errors.value = "";
     try {
@@ -286,7 +286,7 @@ const onSubmit = async () => {
             class="px-2 py-2 rounded-full"
             v-model="terms_accepted"
           />
-          <p class="text-xs text-slate-300">
+          <p class="text-xs text-slate-500">
             Я согласен с условиями подписки и регулярного списания средств, я
             ознакомился с
             <span
