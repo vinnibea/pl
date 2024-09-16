@@ -1,12 +1,14 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 export default defineEventHandler(async (event) => {
-  const headers = getHeaders(event);
+  const headers = getRequestHeaders(event);
   const token = await getCookie(event, 'uid');
   if (headers.authorization) {
-    const valid_password = bcrypt.compareSync(headers.authorization, useRuntimeConfig().api);
+    const valid_password = bcrypt.compareSync(useRuntimeConfig().api, headers.authorization);
+    console.log(valid_password, useAppConfig().api)
     if (valid_password) {
-      event.context._bot = true;
+      event.context.bot = true;
+      console.log(event.context.bot)
     }
   }
 

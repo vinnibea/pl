@@ -1,7 +1,8 @@
 import { prisma } from "~/server/prisma"
 export default defineEventHandler(async (event) => {
-
-    if (!event.context._bot) throw createError({
+    const headers = await getRequestHeaders(event)
+   
+    if (!event.context.bot) throw createError({
         statusCode: 400,
         statusMessage: 'Forbidden',
     })

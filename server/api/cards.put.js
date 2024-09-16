@@ -2,7 +2,8 @@ import { default as creditors } from '../schemas/creditor';
 import prisma from '~/lib/prisma';
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
-    if (!event.context._bot) throw createError({
+   
+    if (!event.context.bot) throw createError({
         statusCode: 402,
         statusMessage: 'Forbidden',
     })
@@ -25,7 +26,7 @@ export default defineEventHandler(async (event) => {
         try {
             await prisma.creditor.update({
                 where: {
-                    id: body.id,
+                    id: Number(body.id),
                 },
                 data: {
                     link: body.link,
@@ -45,13 +46,14 @@ export default defineEventHandler(async (event) => {
 
     }
 
-
+   
     switch (body.action) {
         case 'recommend': {
             try {
+                console.log(body.id, event.context.bot)
                 await prisma.creditor.update({
                     where: {
-                        id: body.id,
+                        id: Number(body.id),
                     },
                     data: {
                         isRecommended: true,
@@ -64,6 +66,7 @@ export default defineEventHandler(async (event) => {
                 };
 
             } catch (error) {
+                console.log(error, 'error')
                 throw createError({
                     statusCode: 400,
                     message: 'Не удалось..'
@@ -75,7 +78,7 @@ export default defineEventHandler(async (event) => {
             try {
                 await prisma.creditor.update({
                     where: {
-                        id: body.id,
+                        id: Number(body.id),
                     },
                     data: {
                         isRecommended: false,
@@ -97,7 +100,7 @@ export default defineEventHandler(async (event) => {
             try {
                 await prisma.creditor.update({
                     where: {
-                        id: body.id,
+                        id: Number(body.id),
                     },
                     data: {
                         isActive: false,
@@ -119,7 +122,7 @@ export default defineEventHandler(async (event) => {
             try {
                 await prisma.creditor.update({
                     where: {
-                        id: body.id,
+                        id: Number(body.id),
                     },
                     data: {
                         isActive: true,

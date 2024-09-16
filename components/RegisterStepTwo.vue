@@ -276,7 +276,7 @@ const onSubmit = async () => {
         >
       </div>
     </div>
-    <div class="flex flex-col items-start max-[822px]:items-start gap-2 w-full pt-2">
+    <div v-if="!loading" class="flex flex-col items-start max-[822px]:items-start gap-2 w-full pt-2">
       <div
         class="flex justify-start items-start gap-4 w-2/3 max-[822px]:w-full"
       >
