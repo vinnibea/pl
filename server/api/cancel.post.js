@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
 import jwt from 'jsonwebtoken';
 import { default as dto } from '../utils/dto';
-import prisma from "~/lib/prisma"
+import { prisma } from "~/server/prisma"
 export default defineEventHandler(async (event) => {
     const secret = useRuntimeConfig().secret;
     const stripe = new Stripe(useRuntimeConfig().SSK)

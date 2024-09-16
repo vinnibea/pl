@@ -1,5 +1,5 @@
 import { default as creditors } from '../schemas/creditor';
-import prisma from "~/lib/prisma"
+import { prisma } from "~/server/prisma"
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
     if (!event.context._bot) throw createError({

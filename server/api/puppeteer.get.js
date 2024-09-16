@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
 import axios from 'axios';
 import sharp from 'sharp';
-import prisma from "~/lib/prisma"
+import { prisma } from "~/server/prisma"
 
 
 export default defineEventHandler(async (event) => {

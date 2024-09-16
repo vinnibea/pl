@@ -1,4 +1,4 @@
-import prisma from "~/lib/prisma"
+import { prisma } from "~/server/prisma"
 export default defineEventHandler(async (event) => {
     try {
         const creditors_from_db = await prisma.creditor.findMany({

@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
 import {default as dto} from '../utils/dto';
-import prisma from "~/lib/prisma"
+import { prisma } from "~/server/prisma"
 
 export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig();

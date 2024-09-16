@@ -1,5 +1,5 @@
 
-import prisma from "~/lib/prisma"
+import { prisma } from "~/server/prisma"
 export default defineEventHandler(async (event) => {
 
     if (!event.context._bot) {
