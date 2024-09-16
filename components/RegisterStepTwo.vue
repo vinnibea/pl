@@ -28,7 +28,6 @@ const changePolitics = (i) => {
   store.onPolitics(i);
 };
 
-
 let stripe, elements, paymentElement, clientSecret,  client, _sid;
 let errors = ref("");
 let terms_accepted = ref(false);
