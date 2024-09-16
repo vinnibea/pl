@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { prisma } from "~/server/prisma"
+import prisma from '~/lib/prisma';
 
 
 export default defineEventHandler(async (event) => {

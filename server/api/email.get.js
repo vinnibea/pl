@@ -1,4 +1,4 @@
-import { prisma } from "~/server/prisma"
+import prisma from '~/lib/prisma';
 export default defineEventHandler(async (event) => {
     if (!event.context._bot) throw createError({
         statusCode: 400,
