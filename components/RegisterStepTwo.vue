@@ -44,7 +44,7 @@ onMounted(async () => {
     method: "POST",
     body: {
       email: client.email,
-      price: 'price_1Pw4lX03KdpVNiYIIVuJm7Zw',
+      price: 'price_1PzlQkKtNVs0SaOQu91H48Go',
     },
   });
   if (secret) {
