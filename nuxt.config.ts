@@ -14,11 +14,11 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     '@vueuse/nuxt',
     "@nuxt/icon",
-    'nuxt-swiper',
     '@vueuse/motion/nuxt',
     '@nuxt/ui',
     'unplugin-icons/nuxt',
-    "@prisma/nuxt"
+    "@prisma/nuxt",
+    "nuxt-swiper"
     ],
 
   tailwindcss: {

@@ -138,6 +138,7 @@ const changePolitics = (i) => {
   store.onPolitics(i);
 };
 
+const server_error = ref('');
 const onComplete = async (data) => {
   const { email, name, surname, phone, city, password } = data;
 
@@ -161,6 +162,11 @@ const onComplete = async (data) => {
     );
     registerStore.setActiveTab(1);
   } catch (e) {
+    server_error.value = 'Что-то пошло не так, повторите попытку';
+    setTimeout(() => {
+      server_error.value = '';
+
+    }, 2000)
   } finally {
     loading.value = false;
   }
@@ -254,7 +260,9 @@ const empty_values = computed(() =>
         :disabled="loading"
       ></Registerinput>
     </register-input-wrapper>
-
+    <span class="min-h-6 w-full text-center flex items-center text-[12px] justify-center font-semibold text-red-500 uppercase" >
+      <span v-if="server_error.length">{{server_error}}</span>
+    </span>
     <div class="flex flex-col items-start max-[822px]:items-start gap-2 w-full">
       <div
         class="flex justify-start items-start gap-4 w-2/3 max-[822px]:w-full"

@@ -3,7 +3,7 @@ import prisma from '~/lib/prisma';
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
     if (!event.context._bot) throw createError({
-        statusCode: 400,
+        statusCode: 402,
         statusMessage: 'Forbidden',
     })
 

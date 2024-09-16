@@ -22,11 +22,28 @@ export default defineEventHandler(async (event) => {
         const cookie = jwt.sign(password, config.secret);
         const in_db = await prisma.uncompleted.findFirst({
             where: {
-                email: body.email,
+                OR: [
+                    {
+                        email: body.email,
+                    },
+                    {
+                        phone: body.phone
+                    }
+                ]
             }
         });
-        await setCookie(event, 'tp', cookie, { httpOnly: true, maxAge: 60 * 60 * 24 });
+
         if (in_db) {
+            await prisma.uncompleted.update({
+                where: {
+                    id: in_db.id,
+                },
+                data: {
+                    email,
+                    phone,
+                }
+            })
+            await setCookie(event, 'tp', cookie, { httpOnly: true, maxAge: 60 * 60 * 24 });
             return {
                 statusCode: 203,
                 status: 'OK'
@@ -40,7 +57,7 @@ export default defineEventHandler(async (event) => {
         await setCookie(event, 'tp', cookie, { httpOnly: true, maxAge: 60 * 60 * 24 });
         const fresh_uncompleted = await prisma.uncompleted.create({
             data: {
-                email, 
+                email,
                 name,
                 surname,
                 city,

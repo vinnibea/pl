@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
                 message: 'Заполните заявку еще раз'
             })
         }
-        console.log(tp_from_client, client_cid)
+
         const verified_tp = jwt.verify(tp_from_client, config.secret);
         const verified_cid = jwt.verify(client_cid, config.secret);
         if (!verified_tp || !verified_cid) {
@@ -28,27 +28,43 @@ export default defineEventHandler(async (event) => {
                 message: 'Отказано в доступе'
             });
         } else {
-            const user_exist = await prisma.user.findFirst({
-                where: {
-                    email: register_data.email,
-                }
-            })
-            if (user_exist) {
-                return ({
-                    statusCode: 201,
-                    message: "Пользователь с такими данными уже существует"
-                })
-            } else {
-                const { name, surname, phone, city, email, _sid } = register_data;
-                const hashed_password = bcrypt.hashSync(verified_tp, saltRounds)
 
-               
-                try {
-                    await prisma.uncompleted.delete({
+            const { name, surname, phone, city, email, _sid } = register_data;
+            const hashed_password = bcrypt.hashSync(verified_tp, saltRounds)
+
+
+            try {
+                await prisma.uncompleted.delete({
+                    where: {
+                        email: register_data.email,
+                    }
+                })
+                const user_exist = await prisma.user.findFirst({
+                    where: {
+                        OR: [
+                            { email: register_data.email },
+                            { phone: register_data.phone }
+                        ]
+                    }
+                })
+
+                if (user_exist) {
+                    await prisma.user.update({
                         where: {
-                            email: register_data.email,
+                            id: user_exist.id,
+                        },
+
+                        data: {
+                            subscription: true,
                         }
                     })
+                    await deleteCookie(event, 'tp');
+                    await deleteCookie(event, '_cid');
+                    await setCookie(event, 'fr', true, { httpOnly: true, maxAge: 60 * 60 })
+                    return {
+                        statusCode: 201,
+                    }
+                } else {
                     const new_user = await prisma.user.create({
                         data: {
                             name,
@@ -70,20 +86,18 @@ export default defineEventHandler(async (event) => {
                     return {
                         statusCode: 201,
                     }
-                } catch (error) {
-                    console.log(error)
-                    throw createError({
-                        statusCode: 400,
-                    })
+
                 }
 
+
+
+            } catch (error) {
+
+                throw createError({
+                    statusCode: 400,
+                    message: 'Пользователь с такими данными уже существует'
+                })
             }
         }
-    } else {
-        throw createError({
-            statusCode: 400,
-        })
     }
-
-
 })
