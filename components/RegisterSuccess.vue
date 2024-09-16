@@ -9,7 +9,7 @@ const localModalOpener = () => {
   store.onModal();
   document.body.style.overflow = "hidden";
 };
-console.log()
+
 </script>
 <template>
   <div class="flex flex-col justify-between min-h-svh w-full">

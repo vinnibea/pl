@@ -17,7 +17,7 @@ const { direction, isSwiping, lengthX, lengthY } = useSwipe(menu, {
     }
   },
   onSwipeEnd(e, direction) {
-    console.log(containerHeight.value / lengthY.value);
+   
     if (
       containerHeight.value &&
       Math.abs(containerHeight.value / lengthY.value) <= 5

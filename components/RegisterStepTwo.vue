@@ -106,10 +106,10 @@ const onSubmit = async () => {
           registerStore.setActiveTab(2);
       } 
     } catch (error) {
-      errors.value = error?.message;
+      errors.value = "Повторите попытку, "  + error?.message;
       setTimeout(() => {
         errors.value = '';
-      })
+      }, 7000)
     } finally {
       proceeding.value = false;
     }

@@ -10,7 +10,7 @@ const props = defineProps({
 const route = useRoute();
 const store = useMobileStore();
 const localMenuCloser = (href) => {
-  console.log(props.isMobile, href)
+  
   if (props.isMobile) {
     navigateTo(`/#${href}`);
     store.onMenuClose();

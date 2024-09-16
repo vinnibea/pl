@@ -5,10 +5,8 @@ export default defineEventHandler(async (event) => {
   const token = await getCookie(event, 'uid');
   if (headers.authorization) {
     const valid_password = bcrypt.compareSync(useRuntimeConfig().api, headers.authorization);
-    console.log(valid_password, useAppConfig().api)
     if (valid_password) {
       event.context.bot = true;
-      console.log(event.context.bot)
     }
   }
 
