@@ -41,6 +41,7 @@ const onCancel = async () => {
   loading.value = true;
  
   try {
+    console.log(localUser.localUser.sid, formData.phone)
     const response = await $fetch("/api/cancel/", {
       method: "POST",
       body: {

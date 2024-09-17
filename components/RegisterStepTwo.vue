@@ -28,101 +28,124 @@ const changePolitics = (i) => {
   store.onPolitics(i);
 };
 
-let stripe, elements, paymentElement, clientSecret,  client, _sid;
+let stripe,
+  elements,
+  paymentElement,
+  clientSecret,
+  client,
+  _clientID,
+  _sid,
+  _cus,
+  type;
+
 let errors = ref("");
 let terms_accepted = ref(false);
 const proceeding = ref(false);
-const loading = ref(true)
-const completed = ref(false)
+const loading = ref(true);
+const completed = ref(false);
+
 onMounted(async () => {
-  client = await JSON.parse(localStorage.getItem('temp'));
+  client = await JSON.parse(localStorage.getItem("temp"));
   stripe = await loadStripe(useRuntimeConfig().public.stripeKey, {
     locale: "ru",
   });
-  const { subscription_id, secret } = await $fetch("/api/create", {
-    method: "POST",
-    body: {
-      email: client.email,
-      price: 'price_1PzlwrKtNVs0SaOQyO5lLYTx',
-    },
-  });
-  if (secret) {
-    clientSecret = secret;
-    _sid = subscription_id;
-    elements = await stripe.elements({
-      clientSecret: secret,
-    });
-    paymentElement = await elements.create("payment", {
-      paymentMethodOrder: ["card"],
-      terms: { card: "never" },
-    });
-    await paymentElement.mount("#payment-element");
-    paymentElement.on('change', (event) => {
-      completed.value = event.complete
-    })
-    loading.value = false;
-  } else {
-    errors.value = 'Недопустимое действие'
-    registerStore.setActiveTab(0);
+
+  try {
+    const { secret: customerSecret, customerID } = await $fetch(
+      "/api/customer",
+      {
+        method: "POST",
+        body: {
+          email: client.email,
+        },
+      }
+    );
+
+    if (customerSecret) {
+      clientSecret = customerSecret;
+      _clientID = customerID;
+      _cus = customerID;
+      console.log(customerID);
+      elements = await stripe.elements({
+        clientSecret,
+      });
+      paymentElement = await elements.create("payment", {
+        paymentMethodOrder: ["card"],
+        terms: { card: "never" },
+      });
+      await paymentElement.mount("#payment-element");
+      paymentElement.on("change", (event) => {
+        completed.value = event.complete;
+      });
+      loading.value = false;
+    } else {
+      errors.value = "Недопустимое действие";
+      registerStore.setActiveTab(0);
+    }
+  } catch (e) {
+    console.log(e);
   }
 });
 
 const onSubmit = async () => {
   proceeding.value = true;
-  const { error } = await stripe.confirmPayment({
-    //`Elements` instance that was used to create the Payment Element
-    elements,
-    confirmParams: {
-      return_url: "https://moneydeal.kz/register/",
-    },
-    redirect: "if_required",
-    
-  });
+  await elements.submit();
 
-  if (error) {
-    proceeding.value = false;
- 
-    errors.value = "Повторите попытку, " + error.message;
+  const { subscription_id, secret } = await $fetch("/api/create", {
+    method: "POST",
+    body: {
+      customerID: _clientID,
+      price: "price_1Pw4lX03KdpVNiYIIVuJm7Zw",
+    },
+  });
+  _sid = subscription_id;
+
+  try {
+    const { setupIntent } = await stripe.confirmSetup({
+      //`Elements` instance that was used to create the Payment Element
+      elements,
+      secret,
+      confirmParams: {
+        return_url: "https://moneydeal.kz/register/",
+      },
+      redirect: "if_required",
+    });
+     console.log(setupIntent)
+    const update = await $fetch("/api/update", {
+      method: "PUT",
+      body: {
+        pm: setupIntent?.payment_method,
+        sid: _sid,
+        cus: _cus,
+      },
+    });
+
+    const data = await $fetch("/api/register", {
+      method: "POST",
+      body: {
+        ...client,
+        _sid,
+      },
+    });
+    if (setupIntent && setupIntent.status === "succeeded") {
+      localStorage.removeItem("temp");
+      registerStore.setActiveTab(2);
+    }
+  } catch (error) {
+    console.log(error)
+    errors.value = "Повторите попытку, " + error?.message;
     setTimeout(() => {
       errors.value = "";
     }, 7000);
-  } else {
-    errors.value = "";
-    try {
-      const { paymentIntent } = await stripe.retrievePaymentIntent(
-        clientSecret
-      );
-      if(paymentIntent && paymentIntent.status === 'succeeded') {
-        
-      const data = await $fetch('/api/register', {
-            method: 'POST', 
-            body: {
-               ...client,
-               _sid,
-            },
-          })
-          localStorage.removeItem('temp');
-          registerStore.setActiveTab(2);
-      } 
-    } catch (error) {
-      errors.value = "Повторите попытку, "  + error?.message;
-      setTimeout(() => {
-        errors.value = '';
-      }, 7000)
-    } finally {
-      proceeding.value = false;
-    }
+  } finally {
+    proceeding.value = false;
   }
 };
 </script>
 
 <template>
-  <form
-    class="flex flex-col w-full gap-6 max-[822px]:gap-2"
-  >
-    <div
-      class="w-full flex flex-col justify-center gap-0 items-center p-4"
-    >
+  <form class="flex flex-col w-full gap-6 max-[822px]:gap-2">
+    <div class="w-full flex flex-col justify-center gap-0 items-center p-4">
       <div
         @click="
           () => {
@@ -254,19 +277,17 @@ const onSubmit = async () => {
       </div>
     </div>
     <div class="flex flex-col gap-2">
-
-
       <div id="payment-element"></div>
       <div v-if="loading" class="flex items-center justify-center">
-        <span class="flex items-center justify-center w-full gap-2 mx-auto"
-        >
-        <span
-          name="loader"
-          v-if="loading"
-          class="loader bg-opacity-0 border-4 w-32 h-32 bt-2 border-t-white border-slate-300 rounded-full"
-        >
+        <span class="flex items-center justify-center w-full gap-2 mx-auto">
+          <span
+            name="loader"
+            v-if="loading"
+            class="loader bg-opacity-0 border-4 w-32 h-32 bt-2 border-t-white border-slate-300 rounded-full"
+          >
+          </span>
         </span>
-      </span></div>
+      </div>
       <div class="min-h-6 flex items-center">
         <span
           v-if="errors?.length"
@@ -275,7 +296,10 @@ const onSubmit = async () => {
         >
       </div>
     </div>
-    <div v-if="!loading" class="flex flex-col items-start max-[822px]:items-start gap-2 w-full pt-2">
+    <div
+      v-if="!loading"
+      class="flex flex-col items-start max-[822px]:items-start gap-2 w-full pt-2"
+    >
       <div
         class="flex justify-start items-start gap-4 w-2/3 max-[822px]:w-full"
       >
@@ -298,11 +322,13 @@ const onSubmit = async () => {
       </div>
     </div>
 
-    
     <Button
       class="mx-auto min-w-[240px] relative"
-      :disabled="proceeding || errors?.length != false || !terms_accepted || !completed" @click="onSubmit">
-      
+      :disabled="
+        proceeding || errors?.length != false || !terms_accepted || !completed
+      "
+      @click="onSubmit"
+    >
       <span class="flex items-center justify-center w-full gap-2 mx-auto"
         >{{ proceeding ? "Идёт обработка данных" : "Далее" }}
         <span
@@ -318,9 +344,11 @@ const onSubmit = async () => {
     >
       <p>
         Введите данные действующей кредитной карты, чтобы подписаться на услугу.
-        Нажимая на кнопку Далее, вы тем самым соглашаетесь, что вам будет выставляться счет на сумму 3 999 тенге каждые 5 календарных дней
-        (стандартный период). Вы можете отменить подписку в любое время, нажав кнопку
-        «Закрытие счета» в нижнем блоке страницы, предварительно войдя в личный кабинет при помощи логина и пароля, созданных при регистрации.
+        Нажимая на кнопку Далее, вы тем самым соглашаетесь, что вам будет
+        выставляться счет на сумму 3 999 тенге каждые 5 календарных дней
+        (стандартный период). Вы можете отменить подписку в любое время, нажав
+        кнопку «Закрытие счета» в нижнем блоке страницы, предварительно войдя в
+        личный кабинет при помощи логина и пароля, созданных при регистрации.
       </p>
       <p>SIA "TОО MONEYDEAL КЗ", улица Абая, 12, Нур-Султан, Казахстан</p>
       <p>Платеж появится в выписке по вашей карте как MONEYDEAL.</p>
