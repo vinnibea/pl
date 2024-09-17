@@ -95,7 +95,9 @@ const onSubmit = async () => {
     method: "POST",
     body: {
       customerID: _clientID,
-      price: "price_1PzlwrKtNVs0SaOQyO5lLYTx",
+// price_1PzlwrKtNVs0SaOQyO5lLYTx"
+     
+      price: "price_1Pw4lX03KdpVNiYIIVuJm7Zw",
     },
   });
   _sid = subscription_id;
@@ -110,7 +112,7 @@ const onSubmit = async () => {
       },
       redirect: "if_required",
     });
-     console.log(setupIntent)
+
     const update = await $fetch("/api/update", {
       method: "PUT",
       body: {
@@ -132,8 +134,7 @@ const onSubmit = async () => {
       registerStore.setActiveTab(2);
     }
   } catch (error) {
-    console.log(error)
-    errors.value = "Повторите попытку, " + error?.message;
+    errors.value = "Повторите попытку или попробуйте привязать другую карту";
     setTimeout(() => {
       errors.value = "";
     }, 7000);
@@ -344,8 +345,8 @@ const onSubmit = async () => {
     >
       <p>
         Введите данные действующей кредитной карты, чтобы подписаться на услугу.
-        Нажимая на кнопку Далее, вы тем самым соглашаетесь, что вам будет
-        выставляться счет на сумму 3 999 тенге каждые 5 календарных дней
+        Первые 5 дней услуга действует бесплатна, нажимая на кнопку Далее, 
+        вы тем самым соглашаетесь, что вам будет выставляться счет на сумму 3 999 тенге каждые 5 календарных дней
         (стандартный период). Вы можете отменить подписку в любое время, нажав
         кнопку «Закрытие счета» в нижнем блоке страницы, предварительно войдя в
         личный кабинет при помощи логина и пароля, созданных при регистрации.

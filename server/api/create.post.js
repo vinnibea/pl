@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
       payment_behavior: 'default_incomplete',
       payment_settings: { save_default_payment_method: 'on_subscription' },
       expand: ['latest_invoice.payment_intent', 'pending_setup_intent'],
-      trial_end: Math.floor(Date.now() / 1000) + 2000
+      trial_end: Math.floor(Date.now() / 1000) + 432000
     });
     return (
       {
@@ -29,7 +29,7 @@ export default defineEventHandler(async (event) => {
 
       }
     )
-    
+
   } catch (error) {
     throw createError({
       statusCode: 400,
