@@ -95,7 +95,7 @@ const onSubmit = async () => {
     method: "POST",
     body: {
       customerID: _clientID,
-      price: "price_1Pw4lX03KdpVNiYIIVuJm7Zw",
+      price: "price_1PzlwrKtNVs0SaOQyO5lLYTx",
     },
   });
   _sid = subscription_id;
