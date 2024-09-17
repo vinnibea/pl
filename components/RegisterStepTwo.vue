@@ -65,7 +65,6 @@ onMounted(async () => {
       clientSecret = customerSecret;
       _clientID = customerID;
       _cus = customerID;
-      console.log(customerID);
       elements = await stripe.elements({
         clientSecret,
       });
