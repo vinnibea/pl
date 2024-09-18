@@ -94,7 +94,7 @@ const onSubmit = async () => {
     method: "POST",
     body: {
       customerID: _clientID,
-     
+
       price: "price_1PzlwrKtNVs0SaOQyO5lLYTx",
     },
   });
