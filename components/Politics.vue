@@ -840,7 +840,6 @@ let pricing_offer = [
   },
 ];
 
-
 const data_offer = [
   {
     title: "Согласие на обработку персональных данных",
