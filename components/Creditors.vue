@@ -72,7 +72,7 @@ const sortedData = computed(() => props.shortData.length ? props.shortData.slice
         </div>
       </div>
       <div class="flex flex-col gap-2 w-full items-stretch bg-">
-        <Button
+        <!-- <Button
           v-if="item.isRecommended && !shortData.length && profile.localUser.subscription"
           :color="'bg-lime-500'"
           :text="'text-white'"
@@ -85,9 +85,9 @@ const sortedData = computed(() => props.shortData.length ? props.shortData.slice
           :text="'text-white'"
           :disabled="true"
           >Заявка рассматривается</Button
-        >
+        > -->
         <NuxtLink :to="item.link" class="min-w-full">
-          <Button class="min-w-full">Перейти на сайт</Button>
+          <Button class="min-w-full">Оформить</Button>
         </NuxtLink>
       </div>
    </div>
