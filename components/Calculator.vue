@@ -57,7 +57,7 @@ const calculatedDate = computed(() =>
     </div>
 
     <div class="flex flex-col gap-2">
-      <div class="form-row flex justify-between items-center">
+      <div class="form-row flex justify-between items-center py-2">
         <h2
           class="font-bold text-lg max-[1024px]:text-md text-black max-[520px]:text-sm"
         >
@@ -81,7 +81,7 @@ const calculatedDate = computed(() =>
       />
 
       <div
-        class="form-row flex justify-between items-center px-4 py-0 max-[520px]:px-2"
+        class="form-row flex gap-2 justify-between items-center px-4 py-0 max-[520px]:px-2"
       >
         <h2 class="text-xs font-semibold text-lightgrey">3 mies.</h2>
         <span class="text-xs font-semibold text-lightgrey">24 mies.</span>

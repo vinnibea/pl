@@ -146,7 +146,7 @@ const cardColContent = [
     font-size: 1.5rem;
     font-weight: 700;
     padding: 18px 4px;
-    color: #2f2f2f;
+    color: #ffffff;
   }
 }
 @media screen and (max-width: 820px) {
@@ -188,7 +188,7 @@ const cardColContent = [
   }
 
   .hero {
-    background-position: 47%;
+    background-position: 52%;
   }
 }
 </style>

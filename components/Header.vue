@@ -181,7 +181,7 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
           <button
             class="uppercase h-full px-6 text-sm py-2 max-[822px]:hidden font-semibold text-button-text-primary max-[1224px]:text-xs bg-button-primary rounded-base hover:bg-button-primary-hover transition-all"
           >
-            Личный кабинет
+          konto
           </button>
         </NuxtLink>
       </div>

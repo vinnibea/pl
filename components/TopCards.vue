@@ -24,7 +24,7 @@ const cardContent = [
     >
       <div
         v-motion-fade-visible-once
-        class="flex flex-col w-1/3 max-w-1/3 max-[950px]:w-full bg-white items-center flex-shrink-0 shadow-md text-4xl text-white font-semibold rounded-base px-2 py-4 cursor-pointer"
+        class="flex flex-col w-1/3 max-w-1/3 max-[950px]:w-full bg-white bg-opacity-90 items-center flex-shrink-0 shadow-md text-4xl text-white font-semibold rounded-base px-2 py-4 cursor-pointer"
         v-for="item in cardContent"
         :key="item.title"
       >
