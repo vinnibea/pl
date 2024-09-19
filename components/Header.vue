@@ -52,7 +52,10 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
           }
         "
       >
-        <span class="text-xs text-dark-grey">Gotówka</span>Max.<span class="text-xs text-dark-grey">pl</span></NuxtLink
+        <span class="text-xs text-dark-grey">Gotówka</span>Max.<span
+          class="text-xs text-dark-grey"
+          >pl</span
+        ></NuxtLink
       >
     </h2>
     <Nav class="max-[820px]:hidden"></Nav>
@@ -139,7 +142,7 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
 
       <USkeleton
         v-if="globalStore.loading && route.fullPath !== '/account'"
-        class="h-[38px] w-[250px] bg-slate-300 rounded-base max-[822px]:hidden bg-opacity-50"
+        class="h-[38px] w-[320px] bg-slate-300 rounded-base max-[822px]:hidden bg-opacity-50"
         :config="{
           base: 'animate-pulse',
           w: 'max-[822px]:hidden',
@@ -150,20 +153,20 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
       />
 
       <div
-        class="flex items-center justify-center w-[250px] max-[822px]:hidden h-[38px]"
+        class="flex items-center justify-center w-[320px] max-[822px]:hidden h-[38px]"
         v-if="!auth.isAuth && !globalStore.loading"
       >
         <button
           @click="localModalOpener()"
           class="uppercase bg-button-grey max-[820px]:hidden text-white font-semibold px-6 max-[1224px]:text-xs text-sm py-2 rounded-l-base hover:bg-dark-grey transition-all"
         >
-          Войти
+          Zaloguj się
         </button>
         <NuxtLink noprefetch to="/register">
           <button
             class="uppercase px-6 text-sm py-2 max-[820px]:hidden font-semibold text-button-text-primary max-[1224px]:text-xs bg-button-primary rounded-r-base hover:bg-button-primary-hover transition-all"
           >
-            Регистрация
+            Zarejestruj się
           </button>
         </NuxtLink>
       </div>

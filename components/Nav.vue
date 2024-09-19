@@ -62,7 +62,7 @@ const localMenuCloser = (href) => {
           @click.prevent="localMenuCloser('requirements')"
           class="py-4 px-4 transition-all max-[822px]:font-bold max-[1224px]:px-2 border-transparent min-[822px]:border-b-2 hover:text-slate-300 min-[822px]:hover:border-button-primary"
         >
-          Требования к заказчику
+        Wymagania do klienta
         </NuxtLink>
       </li>
 
@@ -82,7 +82,7 @@ const localMenuCloser = (href) => {
           }"
           class="py-4 px-4 transition-all max-[1224px]:px-2 max-[822px]:font-bold min-[822px]:border-b-2 border-transparent hover:text-slate-300 min-[822px]:hover:border-button-primary"
         >
-          Получение кредита
+        Uzyskiwanie pożyczki
         </NuxtLink>
       </li>
       <li
@@ -97,7 +97,7 @@ const localMenuCloser = (href) => {
           @click.prevent="localMenuCloser('about-service')"
           class="py-4 px-4 transition-all max-[822px]:font-bold max-[1224px]:px-2 border-transparent min-[822px]:border-b-2 hover:text-slate-300 min-[822px]:hover:border-button-primary"
         >
-          Как работает сервис
+        Jak działa serwis
         </NuxtLink>
       </li>
     </ul>

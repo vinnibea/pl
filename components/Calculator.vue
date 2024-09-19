@@ -1,7 +1,7 @@
 <script setup>
 import { format } from "date-fns";
-const sum = ref(5000);
-const maxSum = 500000;
+const sum = ref(100);
+const maxSum = 30000;
 const month = ref(3);
 const maxMonth = 24;
 
@@ -27,12 +27,14 @@ const calculatedDate = computed(() =>
   >
     <div class="flex flex-col gap-2">
       <div class="form-row flex justify-between items-center py-2">
-        <h2 class="font-bold text-lg max-[1024px]:text-md text-black max-[520px]:text-sm">
-          Cумма кредита:
+        <h2
+          class="font-bold text-lg max-[1024px]:text-md text-black max-[520px]:text-sm"
+        >
+          Kwota pożyczki:
         </h2>
         <span
           class="rounded-base text-xs font-bold border bg-button-primary text-button-text-primary border-button-primary px-4 py-0"
-          >{{ sum }} тенге</span
+          >{{ sum }} zł</span
         >
       </div>
 
@@ -41,25 +43,29 @@ const calculatedDate = computed(() =>
         class="min-w-full accent-yellow"
         :style="{ backgroundSize: `${inputSumPercentage}% 100%` }"
         v-model="sum"
-        step="1000"
-        min="5000"
-        max="500000"
+        step="100"
+        min="100"
+        max="30000"
         @change="(e) => (sum = e.target.value)"
       />
-      <div class="form-row flex justify-between items-center px-4 max-[520px]:px-2">
-        <h2 class="text-xs font-semibold text-lightgrey">5 000 тенге</h2>
-        <span class="text-xs font-semibold text-lightgrey">500 000 тенге</span>
+      <div
+        class="form-row flex justify-between items-center px-4 max-[520px]:px-2"
+      >
+        <h2 class="text-xs font-semibold text-lightgrey">100 zł</h2>
+        <span class="text-xs font-semibold text-lightgrey">30 000 zł</span>
       </div>
     </div>
 
     <div class="flex flex-col gap-2">
       <div class="form-row flex justify-between items-center">
-        <h2 class="font-bold text-lg max-[1024px]:text-md text-black max-[520px]:text-sm">
-          Срок кредита:
+        <h2
+          class="font-bold text-lg max-[1024px]:text-md text-black max-[520px]:text-sm"
+        >
+        Okres kredytowania:
         </h2>
         <span
           class="rounded-base text-xs font-bold bg-button-primary text-button-text-primary border border-button-primary px-4 py-0"
-          >{{ month < 3 ? 3 : month }} мес.</span
+          >{{ month < 3 ? 3 : month }} mies.</span
         >
       </div>
 
@@ -74,9 +80,11 @@ const calculatedDate = computed(() =>
         :style="{ backgroundSize: `${inputMonthPercentage}% 100%` }"
       />
 
-      <div class="form-row flex justify-between items-center px-4 py-0 max-[520px]:px-2">
-        <h2 class="text-xs font-semibold text-lightgrey">3 месяца</h2>
-        <span class="text-xs font-semibold text-lightgrey">24 месяца</span>
+      <div
+        class="form-row flex justify-between items-center px-4 py-0 max-[520px]:px-2"
+      >
+        <h2 class="text-xs font-semibold text-lightgrey">3 mies.</h2>
+        <span class="text-xs font-semibold text-lightgrey">24 mies.</span>
       </div>
     </div>
 
@@ -86,17 +94,23 @@ const calculatedDate = computed(() =>
       class="uppercase px-6 text-sm py-4 font-semibold text-button-text-primary text-center text-md max-[1024px]:text-xs max-[1024px]:py-4 bg-button-primary rounded-base w-2/3 max-[822px]:w-full shadow-md mx-auto hover:bg-button-primary-hover transition-all"
       type="button"
     >
-      Получить деньги
+      Otrzymaj pieniądze
     </NuxtLink>
 
-    <div class="form-row flex justify-between items-center px-4 max-[822px]:px-0">
+    <div
+      class="form-row flex justify-between items-center px-4 max-[822px]:px-0"
+    >
       <div class="flex flex-col items-center">
-        <h3 class="text-xs font-semibold text-black">Ежемесячный платеж:</h3>
-        <span class="text-xs text-button-primary font-bold">{{ payment }} тенге</span>
+        <h3 class="text-xs font-semibold text-black">Miesięczna płatność:</h3>
+        <span class="text-xs text-button-primary font-bold"
+          >{{ payment }} zł</span
+        >
       </div>
       <div class="flex flex-col items-center">
-        <h3 class="text-xs font-semibold text-black">Дата возвращения:</h3>
-        <span class="text-xs text-button-primary font-bold">{{ calculatedDate }}</span>
+        <h3 class="text-xs font-semibold text-black">Data powrotu:</h3>
+        <span class="text-xs text-button-primary font-bold">{{
+          calculatedDate
+        }}</span>
       </div>
     </div>
   </form>
@@ -110,7 +124,7 @@ input[type="range"] {
   height: 7px;
   background: rgba(236, 236, 236, 0.6);
   border-radius: 5px;
-  background-image: linear-gradient(to right, #fff, #ED7E7E);
+  background-image: linear-gradient(to right, #fff, #ed7e7e);
   background-repeat: no-repeat;
   cursor: grabbing;
 }
@@ -121,7 +135,7 @@ input[type="range"]::-webkit-slider-thumb {
   width: 20px;
   border-radius: 0%;
   background: #ffffff;
-  border: 4px solid #E94040;
+  border: 4px solid #e94040;
   cursor: ew-resize;
   box-shadow: 0 0 2px 0 #ffffff;
   transition: background 0.3s ease-in-out;

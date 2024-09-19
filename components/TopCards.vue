@@ -2,18 +2,18 @@
 const cardContent = [
   {
     title: "250 00000+",
-    span1: "тенге",
-    span2: "получено нашими клиентам",
+    span1: "złotych",
+    span2: "otrzymanych przez naszych klientów",
   },
   {
     title: "150 000+",
-    span1: "кредитов",
-    span2: "подобрано для наших клиентов",
+    span1: "kredytów",
+    span2: "dopasowanych dla naszych klientów",
   },
   {
     title: "2000+",
-    span1: "заявок",
-    span2: "рассматривается нами ежедневно",
+    span1: "wniosków",
+    span2: "rozpatrywanych przez nas codziennie",
   },
 ];
 </script>

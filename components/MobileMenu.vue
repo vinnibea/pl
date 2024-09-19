@@ -61,7 +61,7 @@ const onModalClose = () => {
       >
         <NuxtLink no-prefetch to="/register">
           <Button :color="'bg-yellow'" @click.stop="store.onMenuClose()"
-            >Регистрация</Button
+            >Zarejestruj się</Button
           >
         </NuxtLink>
         <Button
@@ -70,7 +70,7 @@ const onModalClose = () => {
           text="text-white"
           :hover="'bg-dark-grey'"
           :hoverText="'text-white'"
-          >Войти</Button
+          >Zaloguj się</Button
         >
       </div>
 

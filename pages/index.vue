@@ -1,42 +1,42 @@
 <script setup>
 const cardContent = [
   {
-    title: "Регистрация на сайте",
+    title: "Rejestracja na stronie",
     content:
-      "Зарегистрироваться на сайте очень просто. Это займет всего 10 минут. Для регистрации необходимы: мобильный телефон для приема СМС, электронная почта и платежная карта.",
+      "Zarejestrowanie się na stronie jest bardzo proste. To zajmie tylko 10 minut. Do rejestracji potrzebne są: telefon komórkowy do odbioru SMS, adres e-mail i karta płatnicza.",
   },
   {
-    title: "Оплата услуг",
+    title: "Opłata za usługi",
     content:
-      "Услуги, предоставляемые сайтом, являются платными. Чтобы оплатить их после регистрации, нужно подключить платежную карту к аккаунту MONEYDEAL. Из него будет вычтена комиссия. Триальный (пробный) период, в течение которого плата не спрашивается с клиента - 5 дней от начала действия подписки. Далее стоимость пользования услугами сервиса составляет 3 999 тенге за 5 дней.",
+      "Usługi oferowane przez stronę są płatne. Aby dokonać opłaty po rejestracji, należy podłączyć kartę płatniczą do konta GotówkaMax.pl. Z niego zostanie pobrana opłata. Okres próbny, w którym klient nie jest obciążany opłatą, wynosi 5 dni od momentu rozpoczęcia subskrypcji. Następnie koszt korzystania z usług serwisu wynosi 19,99 euro za 5 dni.",
   },
   {
-    title: "Выбор кредита",
+    title: "Wybór kredytu",
     content:
-      "После того, как вы завершите регистрацию, вы получите свой кредитный рейтинг, а также общую анкету для отправки по почте в большое количество кредитных организаций. Кроме того, будет представлен список наиболее выгодных кредитов. Активация услуги не гарантирует, что вы получите кредит. Взимаемый сервисный сбор не возвращается.",
+      "Po zakończeniu rejestracji otrzymasz swoją ocenę kredytową, a także ogólny formularz do wysłania pocztą do wielu instytucji kredytowych. Ponadto zostanie przedstawiona lista najbardziej korzystnych kredytów. Aktywacja usługi nie gwarantuje uzyskania kredytu. Pobrana opłata za usługę nie podlega zwrotowi.",
   },
   {
-    title: "Условия кредитования",
+    title: "Warunki kredytowania",
     content:
-      "Процентная ставка по кредиту составляет не менее 30% и не более 365%. Срок кредитования составляет от 60 дней до максимум 2 лет.",
+      "Oprocentowanie kredytu wynosi co najmniej 30% i nie więcej niż 365%. Okres kredytowania wynosi od 60 dni do maksymalnie 2 lat.",
   },
 ];
 
 const cardColContent = [
   {
-    title: "Полезные инструменты",
+    title: "Przydatne narzędzia",
     content:
-      "Став пользователем сервиса, вы можете отправить свой профиль сразу в несколько компаний, получить информацию о своей кредитоспособности, текущих курсах валют, кредитный калькулятор.",
+      "Zostając użytkownikiem serwisu, możesz wysłać swój profil od razu do kilku firm, uzyskać informacje o swojej zdolności kredytowej, aktualnych kursach walut, kalkulator kredytowy.",
   },
   {
-    title: "Заполните форму в течение 5 минут",
+    title: "Wypełnij formularz w ciągu 5 minut",
     content:
-      "Простой и понятный интерфейс позволяет быстро оформить приложение всего за несколько минут.",
+      "Prosty i przejrzysty interfejs pozwala szybko wypełnić aplikację w zaledwie kilka minut.",
   },
   {
-    title: "Большой список вариантов кредитования",
+    title: "Duża lista opcji kredytowania",
     content:
-      "Став пользователем сервиса, вы можете отправить свой профиль сразу в несколько компаний, получить информацию о своей кредитоспособности, текущих курсах валют, кредитный калькулятор.",
+      "Zostając użytkownikiem serwisu, możesz wysłać swój profil od razu do kilku firm, uzyskać informacje o swojej zdolności kredytowej, aktualnych kursach walut, kalkulator kredytowy.",
   },
 ];
 </script>
@@ -52,13 +52,10 @@ const cardColContent = [
         <div
           class="max-[820px]:text-white flex flex-col items-end text-button-primary justify-end max-[1224px]:min-w-full max-[1224px]:flex max-[1224px]:flex-col max-[1224px]:px-4 max-[1224px]:items-center max-[1224px]:mx-auto max-[520px]:px-0 max-[520px]:mx-0 max-[520px]:items-stretch"
         >
-          <h1>
-            Получите <br class="max-[520px]:hidden" />
-            от 5 000 до 500 000 тенге под 0%
-          </h1>
-          <p>
-            С любой кредитной историей, возраст до 75 лет, круглосуточно и без
-            выходных.
+          <h1>Odbierz od 100 zł do 30000 zł</h1>
+          <p class="drop-shadow-lg">
+            Z dowolną historią kredytową, wiekiem do 75 lat, przez całą dobę i
+            siedem dni w tygodniu
           </p>
         </div>
         <Calculator></Calculator>
@@ -68,27 +65,27 @@ const cardColContent = [
     <main class="px-4 max-[1024px]:px-0">
       <main-cards-layout id="requirements">
         <template #title>
-          <h2>Требования к заказчику</h2>
+          <h2>Wymagania do klienta</h2>
         </template>
         <template #content>
           <requirements></requirements>
         </template>
-        <template #button-title> Оформить заявку </template>
+        <template #button-title> Zarejestruj się</template>
       </main-cards-layout>
 
       <main-cards-layout id="credit">
         <template #title>
-          <h2>Получение кредита</h2>
+          <h2>Uzyskiwanie pożyczki</h2>
         </template>
         <template #content>
           <credit-take :content="cardContent"></credit-take>
         </template>
-        <template #button-title> Получить деньги </template>
+        <template #button-title> Otrzymaj pieniądze </template>
       </main-cards-layout>
 
       <main-cards-layout id="about-service">
         <template #title>
-          <h2>Как работает сервис</h2>
+          <h2>Jak działa serwis</h2>
         </template>
         <template #content>
           <credit-take
@@ -96,7 +93,7 @@ const cardColContent = [
             :flex="'flex-row'"
           ></credit-take>
         </template>
-        <template #button-title> Регистрация </template>
+        <template #button-title> Zarejestruj się</template>
       </main-cards-layout>
     </main>
   </NuxtLayout>
@@ -156,7 +153,7 @@ const cardColContent = [
   .hero-center h1 {
     font-size: 1.7rem;
     font-weight: 700;
-    color: #F85A5A;
+    color: #f85a5a;
     text-align: center;
     padding: 4px;
     text-shadow: 1px 1px 1px rgb(255, 255, 255);
