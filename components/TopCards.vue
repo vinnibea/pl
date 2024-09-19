@@ -24,15 +24,15 @@ const cardContent = [
     >
       <div
         v-motion-fade-visible-once
-        class="flex flex-col w-1/3 max-w-1/3 max-[950px]:w-full bg-yellow items-center flex-shrink-0 shadow-md text-whit text-4xl text-white font-semibold rounded-md px-2 py-4 cursor-pointer"
+        class="flex flex-col w-1/3 max-w-1/3 max-[950px]:w-full bg-white items-center flex-shrink-0 shadow-md text-4xl text-white font-semibold rounded-base px-2 py-4 cursor-pointer"
         v-for="item in cardContent"
         :key="item.title"
       >
-        <h3>
+        <h3 class="text-4xl font-bold text-button-primary">
           {{ item.title }}
         </h3>
-        <span class="text-sm">{{ item.span1 }}</span>
-        <span class="text-sm text-black">{{ item.span2 }}</span>
+        <span class="text-sm text-black">{{ item.span1 }}</span>
+        <span class="text-sm text-button-primary">{{ item.span2 }}</span>
       </div>
     </div>
   </div>

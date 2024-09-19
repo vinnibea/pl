@@ -42,12 +42,12 @@ const onModalClose = () => {
 </script>
 <template>
   <div
-    class="fixed bg-opacity-20 backdrop-blur-md left-0 right-0 z-50 bottom-0 top-0 bg-slate-800 transform transition-all duration-500 min-[822px]:hidden flex flex-col items-center"
+    class="fixed bg-opacity-90 backdrop-blur-md left-0 right-0 z-50 bottom-0 top-0 bg-slate-800 transition-all duration-500 min-[822px]:hidden flex flex-col items-center"
     :class="[
       {
-        '-translate-y-full': !store.state,
-        'translate-y-0': store.state,
-        '-translate-y-[220px]': isSwiping,
+        'translate-x-full': !store.state,
+        'translate-x-0': store.state,
+        '-translate-x-[220px]': isSwiping,
       },
     ]"
   >

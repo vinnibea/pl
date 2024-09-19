@@ -60,7 +60,7 @@ const localMenuCloser = (href) => {
         <NuxtLink
           to="/#requirements"
           @click.prevent="localMenuCloser('requirements')"
-          class="py-4 px-4 transition-all max-[822px]:font-bold max-[1224px]:px-2 border-transparent min-[822px]:border-b-2 hover:text-slate-300 min-[822px]:hover:border-amber-300"
+          class="py-4 px-4 transition-all max-[822px]:font-bold max-[1224px]:px-2 border-transparent min-[822px]:border-b-2 hover:text-slate-300 min-[822px]:hover:border-button-primary"
         >
           Требования к заказчику
         </NuxtLink>
@@ -80,7 +80,7 @@ const localMenuCloser = (href) => {
             localMenuCloser('credit');
             return false
           }"
-          class="py-4 px-4 transition-all max-[1224px]:px-2 max-[822px]:font-bold min-[822px]:border-b-2 border-transparent hover:text-slate-300 min-[822px]:hover:border-amber-300"
+          class="py-4 px-4 transition-all max-[1224px]:px-2 max-[822px]:font-bold min-[822px]:border-b-2 border-transparent hover:text-slate-300 min-[822px]:hover:border-button-primary"
         >
           Получение кредита
         </NuxtLink>
@@ -95,7 +95,7 @@ const localMenuCloser = (href) => {
         <NuxtLink
           to="/#about-service"
           @click.prevent="localMenuCloser('about-service')"
-          class="py-4 px-4 transition-all max-[822px]:font-bold max-[1224px]:px-2 border-transparent min-[822px]:border-b-2 hover:text-slate-300 min-[822px]:hover:border-amber-300"
+          class="py-4 px-4 transition-all max-[822px]:font-bold max-[1224px]:px-2 border-transparent min-[822px]:border-b-2 hover:text-slate-300 min-[822px]:hover:border-button-primary"
         >
           Как работает сервис
         </NuxtLink>

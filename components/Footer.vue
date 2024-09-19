@@ -122,29 +122,29 @@ const onSubscribe = async (email) => {
 
 <template>
   <footer
-    class="pt-8 px-0 mt-0 bg-slate-950 max-[822px]:px-0 max-[822px]:pt-2 shadow-md max-[822px]:mt-0 relative z-10"
+    class="pt-8 px-0 mt-0 bg-white max-[822px]:px-0 max-[822px]:pt-2 shadow-md max-[822px]:mt-0 relative z-10"
   >
     <div
-      class="flex justify-between max-[822px]:flex-col-reverse px-8 max-[822px]:px-2"
+      class="flex flex-row-reverse justify-between max-[822px]:flex-col-reverse px-8 max-[822px]:px-2"
     >
       <div class="max-[822px]:text-xs">
         <div
           class="flex gap-48 max-[822px]:gap-8 max-[822px]:justify-between w-full max-[822px]:py-4"
         >
-          <ul class="flex flex-col gap-8 max-[468px]:gap-4">
+          <ul class="flex flex-col gap-8 max-[468px]:gap-4 text-dark-grey">
             <li v-for="item in footerLinks.slice(0, 4)" :key="item.title">
               <NuxtLink
                 :to="item.link"
-                class="text-footer-link text-base max-[822px]:text-sm max-[468px]:text-xs"
+                class="text-base max-[822px]:text-sm max-[468px]:text-xs  hover:text-button-primary"
                 >{{ item.title }}</NuxtLink
               >
             </li>
           </ul>
-          <ul class="flex flex-col gap-8 max-[468px]:gap-4">
+          <ul class="flex text-dark-grey flex-col gap-8 max-[468px]:gap-4">
             <li v-for="item in footerLinks.slice(4)" :key="item.title">
               <NuxtLink
                 :to="item.link"
-                class="text-footer-link text-base max-[822px]:text-sm max-[468px]:text-xs"
+                class="text-base max-[822px]:text-sm max-[468px]:text-xs hover:text-button-primary"
                 >{{ item.title }}</NuxtLink
               >
             </li>
@@ -158,12 +158,12 @@ const onSubscribe = async (email) => {
               v-model="formData.email"
               :disabled="loading || localUser.isSubscriber"
               @blur="() => formTouched('email')"
-              class="px-2 py-2 w-full bg-slate-95 bg-slate-900 disabled:opacity-50 placeholder:text-white transition-all duration-300 placeholder:text-sm focus:outline-none focus:bg-slate-800 text-white focus:placeholder:text-slate-600 max-[822px]:placeholder:text-xs"
+              class="px-2 py-2 w-full bg-slate-95 bg-button-primary disabled:opacity-50 placeholder:text-white transition-all duration-300 placeholder:text-sm focus:outline-none focus:bg-button-primary text-white focus:placeholder:text-slate-600 max-[822px]:placeholder:text-xs"
               :placeholder="localUser.subscriber_email || 'Введите ваш email'"
             />
 
             <Button
-              :radius="'rounded-r-md relaive max-[822px]:placeholder:text-xs'"
+              :radius="'rounded-base'"
               :disabled="
                 !formData.email.length ||
                 loading ||
@@ -171,13 +171,13 @@ const onSubscribe = async (email) => {
                 $v?.email?.$errors[0]
               "
               @click="onSubscribe(formData.email)"
-              :color="localUser.isSubscriber ? 'bg-green-500' : 'bg-yellow'"
+              :color="localUser.isSubscriber ? 'bg-green-500' : 'bg-button-primary'"
               :hover="
                 localUser.isSubscriber
                   ? 'hover:bg-green-500'
                   : 'hover:bg-yellow'
               "
-              :text="localUser.isSubscriber ? 'text-white' : 'text-slate-800'"
+              :text="localUser.isSubscriber ? 'text-white' : 'text-white'"
               :hoverText="
                 localUser.isSubscriber
                   ? 'hover:text-white'
@@ -195,7 +195,7 @@ const onSubscribe = async (email) => {
               <span
                 name="loader"
                 v-if="loading"
-                class="loader bg-yellow border-2 absolute w-4 h-4 bt-2 border-t-white border-slate-300 rounded-full"
+                class="loader bg-yellow border absolute w-4 h-4  border-t-white border-slate-300 rounded-full"
               >
               </span>
             </Button>
@@ -215,9 +215,9 @@ const onSubscribe = async (email) => {
         class="flex flex-col items-center max-[822px]:flex max-[822px]:flex-row max-[822px]:items-center max-[822px]:justify-between"
       >
         <h2
-          class="text-2xl max-[1024px]:text-xl font-extrabold text-white uppercase max-[822px]:text-base"
+          class="text-2xl max-[1024px]:text-xl font-extrabold text-dark-grey uppercase max-[822px]:text-base"
         >
-          Moneydeal.<span class="text-xs">kz</span>
+        GotówkaMax.<span class="text-xs">pl</span>
         </h2>
 
         <div class="flex gap-2 items-center">
@@ -255,11 +255,11 @@ const onSubscribe = async (email) => {
       </div>
     </div>
 
-    <div class="border-t-2 border-slate-900 pt-8">
+    <div class="border-t-2 border-button-primary pt-8">
       <p
         v-for="(paragraph, i) in paragraphs"
         :key="i"
-        class="text-xs text-slate-300 px-2 py-1"
+        class="text-xs text-slate-700 px-2 py-1"
       >
         {{ paragraph.content }}
         <NuxtLink class="text-slate-500" v-if="paragraph.link" :to="paragraph.link">{{
@@ -269,18 +269,18 @@ const onSubscribe = async (email) => {
     </div>
 
     <div
-      class="w-full bg-slate-200 flex items-center px-4 py-0 max-[822px]:flex-col-reverse max-[822px]:px-2 max-[822px]:py-0"
+      class="w-full bg-button-primary flex items-center px-4 py-0 max-[822px]:flex-col-reverse max-[822px]:px-2 max-[822px]:py-0"
     >
       <div
         class="flex items-center gap-2 w-full justify-end max-[822px]:flex-col-reverse max-[822px]:justify-center"
       >
         <p
-          class="font-semibold text-slate-600 text-[12px] w-1/6 max-[822px]:w-full max-[822px]:text-[10px]"
+          class="font-semibold text-white text-[12px] w-1/6 max-[822px]:w-full max-[822px]:text-[10px]"
         >
           Тел.: +77273145678
         </p>
         <p
-          class="font-semibold text-slate-600 text-[12px] w-1/3 max-[822px]:w-full max-[822px]:text-[10px]"
+          class="font-semibold text-white text-[12px] w-1/3 max-[822px]:w-full max-[822px]:text-[10px]"
         >
           SIA "TОО MONEYDEAL КЗ", зарегистрированная по адресу улица Абая, 12, Нур-Султан, Казахстан
         </p>

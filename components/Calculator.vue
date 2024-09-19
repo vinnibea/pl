@@ -23,7 +23,7 @@ const calculatedDate = computed(() =>
 </script>
 <template>
   <form
-    class="form min-h-10 px-6 py-10 min-w-[620px] max-[520px]:px-4 max-[520px]:py-4 bg-white rounded-xl shadow-xl flex flex-col gap-8 max-[520px]:gap-2 max-[1024px]:min-w-1/2 max-[822px]:min-w-full"
+    class="form min-h-10 px-6 py-10 min-w-[620px] max-[520px]:px-4 max-[520px]:py-4 bg-white rounded-base shadow-xl flex flex-col gap-8 max-[520px]:gap-2 max-[1024px]:min-w-1/2 max-[822px]:min-w-full"
   >
     <div class="flex flex-col gap-2">
       <div class="form-row flex justify-between items-center py-2">
@@ -31,7 +31,7 @@ const calculatedDate = computed(() =>
           Cумма кредита:
         </h2>
         <span
-          class="rounded-xl text-xs font-bold text-navbar-passive border border-yellow px-4 py-0"
+          class="rounded-base text-xs font-bold border bg-button-primary text-button-text-primary border-button-primary px-4 py-0"
           >{{ sum }} тенге</span
         >
       </div>
@@ -58,7 +58,7 @@ const calculatedDate = computed(() =>
           Срок кредита:
         </h2>
         <span
-          class="rounded-xl text-xs font-bold text-navbar-passive border border-yellow px-4 py-0"
+          class="rounded-base text-xs font-bold bg-button-primary text-button-text-primary border border-button-primary px-4 py-0"
           >{{ month < 3 ? 3 : month }} мес.</span
         >
       </div>
@@ -83,7 +83,7 @@ const calculatedDate = computed(() =>
     <NuxtLink
       no-prefetch
       to="/register"
-      class="uppercase px-6 text-sm py-4 font-semibold text-slate-900 text-center text-md max-[1024px]:text-xs max-[1024px]:py-4 bg-yellow rounded-md w-2/3 max-[822px]:w-full shadow-md mx-auto hover:bg-hover-yellow transition-all"
+      class="uppercase px-6 text-sm py-4 font-semibold text-button-text-primary text-center text-md max-[1024px]:text-xs max-[1024px]:py-4 bg-button-primary rounded-base w-2/3 max-[822px]:w-full shadow-md mx-auto hover:bg-button-primary-hover transition-all"
       type="button"
     >
       Получить деньги
@@ -92,11 +92,11 @@ const calculatedDate = computed(() =>
     <div class="form-row flex justify-between items-center px-4 max-[822px]:px-0">
       <div class="flex flex-col items-center">
         <h3 class="text-xs font-semibold text-black">Ежемесячный платеж:</h3>
-        <span class="text-xs text-yellow font-bold">{{ payment }} тенге</span>
+        <span class="text-xs text-button-primary font-bold">{{ payment }} тенге</span>
       </div>
       <div class="flex flex-col items-center">
         <h3 class="text-xs font-semibold text-black">Дата возвращения:</h3>
-        <span class="text-xs text-yellow font-bold">{{ calculatedDate }}</span>
+        <span class="text-xs text-button-primary font-bold">{{ calculatedDate }}</span>
       </div>
     </div>
   </form>
@@ -110,7 +110,7 @@ input[type="range"] {
   height: 7px;
   background: rgba(236, 236, 236, 0.6);
   border-radius: 5px;
-  background-image: linear-gradient(to right, #fae311, #fae311);
+  background-image: linear-gradient(to right, #fff, #ED7E7E);
   background-repeat: no-repeat;
   cursor: grabbing;
 }
@@ -119,9 +119,9 @@ input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 20px;
   width: 20px;
-  border-radius: 50%;
+  border-radius: 0%;
   background: #ffffff;
-  border: 4px solid yellow;
+  border: 4px solid #E94040;
   cursor: ew-resize;
   box-shadow: 0 0 2px 0 #ffffff;
   transition: background 0.3s ease-in-out;

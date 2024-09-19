@@ -1,17 +1,12 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
   <div
-    class="flex flex-row justify-between w-full gap-8 py-8 px-6 max-[820px]:items-center max-[820px]:py-8 max-[820px]:px-0 max-[820px]:gap-2"
+    class="flex flex-row-reverse justify-between w-full gap-8 py-8 px-6 max-[820px]:items-center max-[820px]:py-8 max-[820px]:px-0 max-[820px]:gap-2"
   >
-  
     <div
-      class="flex flex-col w-1/3 max-[820px]:w-full py-4 bg-white items-center text-4xl font-semibold rounded-md shadow-md duration-500 text-white transition-all max-[822px]:w-full min-[822px]:hover:scale-110"
+      class="flex flex-col w-1/3 max-[820px]:w-full py-4 bg-dark-grey items-center text-4xl font-semibold rounded-base shadow-md duration-500 text-white transition-all max-[822px]:w-full min-[822px]:hover:scale-110"
     >
-      
-    
       <svg
         version="1.1"
         id="_x32_"
@@ -21,7 +16,7 @@
         height="120px"
         viewBox="0 0 512 512"
         xml:space="preserve"
-        fill="#000000"
+        fill="#ffffff"
       >
         <g>
           <path
@@ -101,7 +96,7 @@
     </div>
 
     <div
-      class="flex flex-col w-1/3 max-[820px]:w-full py-4 bg-white items-center text-4xl font-semibold rounded-md shadow-md text-white transition-all duration-500 min-[822px]:hover:scale-110 max-[822px]:py-4"
+      class="flex flex-col w-1/3 max-[820px]:w-full py-4 bg-dark-grey items-center text-4xl font-semibold rounded-base shadow-md text-white transition-all duration-500 min-[822px]:hover:scale-110 max-[822px]:py-4"
     >
       <svg
         width="120px"
@@ -110,38 +105,57 @@
         id="Layer_1"
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
+        fill="#ffffff"
       >
-        <defs></defs>
-        <path class="cls-1" d="M19.45,19.42a10.5,10.5,0,1,1,0-14.84" />
-        <rect
-          class="cls-1"
-          x="11.07"
-          y="8.18"
-          width="4.77"
-          height="3.82"
-          rx="1.91"
+        <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+        <g
+          id="SVGRepo_tracerCarrier"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         />
-        <rect
-          class="cls-1"
-          x="11.07"
-          y="12"
-          width="4.77"
-          height="3.82"
-          rx="1.91"
-        />
-        <line class="cls-1" x1="7.25" y1="7.23" x2="7.25" y2="15.82" />
-        <line class="cls-1" x1="5.34" y1="15.82" x2="9.16" y2="15.82" />
-        <line class="cls-1" x1="5.34" y1="9.14" x2="8.2" y2="9.14" />
-        <line class="cls-1" x1="17.75" y1="12" x2="23.48" y2="12" />
-        <line class="cls-1" x1="20.61" y1="9.14" x2="20.61" y2="14.86" />
+
+        <g id="SVGRepo_iconCarrier">
+          <defs></defs>
+
+          <path class="cls-1" d="M19.45,19.42a10.5,10.5,0,1,1,0-14.84" />
+
+          <rect
+            class="cls-1"
+            x="11.07"
+            y="8.18"
+            width="4.77"
+            height="3.82"
+            rx="1.91"
+          />
+
+          <rect
+            class="cls-1"
+            x="11.07"
+            y="12"
+            width="4.77"
+            height="3.82"
+            rx="1.91"
+          />
+
+          <line class="cls-1" x1="7.25" y1="7.23" x2="7.25" y2="15.82" />
+
+          <line class="cls-1" x1="5.34" y1="15.82" x2="9.16" y2="15.82" />
+
+          <line class="cls-1" x1="5.34" y1="9.14" x2="8.2" y2="9.14" />
+
+          <line class="cls-1" x1="17.75" y1="12" x2="23.48" y2="12" />
+
+          <line class="cls-1" x1="20.61" y1="9.14" x2="20.61" y2="14.86" />
+        </g>
       </svg>
     </div>
 
     <div
-      class="flex flex-col w-1/3 max-[820px]:w-full py-4 bg-white items-center text-4xl font-semibold rounded-md shadow-md text-white transition-all duration-500 min-[822px]:hover:scale-110"
+      class="flex flex-col w-1/3 max-[820px]:w-full py-4 bg-dark-grey items-center text-4xl font-semibold rounded-base shadow-md text-white transition-all duration-500 min-[822px]:hover:scale-110"
     >
       <svg
-        fill="#000000"
+        fill="#ffffff"
         height="120px"
         width="120px"
         version="1.1"
@@ -205,7 +219,7 @@
     </div>
 
     <div
-      class="flex flex-col w-1/3 max-[820px]:w-full py-4 bg-white items-center text-4xl font-semibold rounded-md shadow-md text-white transition-all duration-500 min-[822px]:hover:scale-110"
+      class="flex flex-col w-1/3 max-[820px]:w-full py-4 bg-dark-grey items-center text-4xl font-semibold rounded-base shadow-md text-white transition-all duration-500 min-[822px]:hover:scale-110"
     >
       <svg
         width="120px"
@@ -214,7 +228,7 @@
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          fill="#000000"
+          fill="#ffffff"
           d="M134.5 30.5v451h243v-451zm100.68 20h41.6a8 8 0 0 1 0 16h-41.6a8 8 0 1 1 0-16zm20.32 420.51a19.26 19.26 0 1 1 19.26-19.26 19.26 19.26 0 0 1-19.26 19.26zm105-44.51h-211v-343h211z"
         />
       </svg>
@@ -223,6 +237,12 @@
 </template>
 
 <style scoped>
+.cls-1 {
+  fill: none;
+  stroke: #ffffff;
+  stroke-miterlimit: 10;
+  stroke-width: 1.91px;
+}
 @media screen and (max-width: 820px) {
   svg {
     width: 48px;

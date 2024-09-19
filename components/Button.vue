@@ -3,11 +3,11 @@ import { useMobileStore } from '~/stores/MobileMenu';
 const props = defineProps({
     color: {
         type: String,
-        default: 'bg-yellow',
+        default: 'bg-button-primary',
     },
     text: {
         type: String,
-        default: 'text-slate-900'
+        default: 'text-button-text-primary'
     },
     border: {
         type: String,
@@ -15,7 +15,7 @@ const props = defineProps({
     },
     hover: {
         type: String,
-        default: 'bg-hover-yellow',
+        default: 'bg-button-primary-hover',
     },
     hoverText: {
         type: String,
@@ -24,7 +24,7 @@ const props = defineProps({
 
     radius: {
         type: String,
-        default: 'rounded-md'
+        default: 'rounded-base'
     },
 
     fromFooter: {

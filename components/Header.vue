@@ -29,25 +29,31 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
 </script>
 <template>
   <header
-    class="w-full flex z-20 justify-between  items-center py-2 px-4 max-[822px]:fixed max-[822px]:z-50 bg-white max-[822px]:px-2"
+    class="w-full flex z-20 justify-between sticky top-0 items-center py-2 px-4 max-[822px]:fixed max-[822px]:z-50 bg-white max-[822px]:px-2"
     :class="[
-      {  'min-[822px]:shadow-lg': !fixedHeader,
+      {
+        'min-[822px]:shadow-lg': !fixedHeader,
         'rounded-b-xl': store.state,
         'max-[822px]:shadow-none': store.state,
-         fixed: fixedHeader,
+        fixed: fixedHeader,
         'max-[822px]:shadow-md': !fixedHeader && !store.openModal,
         'border-slate-100': fixedHeader,
         'border-b': fixedHeader,
       },
     ]"
   >
-    <h2
-      class="text-2xl max-[1224px]:text-lg font-extrabold uppercase text-logo-yellow"
-    >
-      <NuxtLink to="/" @click="() => {
-        if(!store.state) return;
-        localMenuCloser()
-      }"> Moneydeal.<span class="text-xs">kz</span></NuxtLink>
+    <h2 class="text-xl max-[1224px]:text-lg font-extrabold uppercase text-logo">
+      <NuxtLink
+        to="/"
+        @click="
+          () => {
+            if (!store.state) return;
+            localMenuCloser();
+          }
+        "
+      >
+        GotówkaMax.<span class="text-xs">pl</span></NuxtLink
+      >
     </h2>
     <Nav class="max-[820px]:hidden"></Nav>
     <div class="flex items-center gap-1">
@@ -57,52 +63,85 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
         v-if="!store.state && !store.openModal"
       >
         <svg
-          alt="open_menu"
+          height="32px"
+          width="32px"
+          version="1.1"
+          id="_x32_"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 50 50"
-          width="24px"
-          height="24px"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 512 512"
+          xml:space="preserve"
+          fill="#ffffff"
+          stroke="#ffffff"
         >
-          <path
-            d="M 0 9 L 0 11 L 50 11 L 50 9 Z M 0 24 L 0 26 L 50 26 L 50 24 Z M 0 39 L 0 41 L 50 41 L 50 39 Z"
+          <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
           />
+
+          <g id="SVGRepo_iconCarrier">
+            <g>
+              <path
+                class="st0"
+                d="M0,0v512h512V0H0z M400,390.992H112v-45h288V390.992z M400,278.492H112v-45h288V278.492z M400,165.984H112V121 h288V165.984z"
+              />
+            </g>
+          </g>
         </svg>
       </button>
 
-      <button class="menu min-[822px]:hidden" v-else>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          alt="close_menu"
-          x="0px"
-          y="0px"
-          width="24"
-          height="24"
-          viewBox="0 0 50 50"
-          @click.stop="
-            () => {
-              if (store.state) {
-                localMenuCloser();
-                return;
-              }
-              if (store.openModal) {
-                localModalCloser();
-              }
+      <button
+        class="menu min-[822px]:hidden"
+        @click.stop="
+          () => {
+            if (store.state) {
+              localMenuCloser();
+              return;
             }
-          "
+            if (store.openModal) {
+              localModalCloser();
+            }
+          }
+        "
+        v-else
+      >
+        <svg
+          width="32px"
+          height="32px"
+          viewBox="0 0 64 64"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          class="iconify iconify--emojione"
+          preserveAspectRatio="xMidYMid meet"
+          fill="#000000"
         >
-          <path
-            d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z"
-          ></path>
+          <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+          <g id="SVGRepo_iconCarrier">
+            <path
+              fill="#F85A5A"
+              d="M62 10.6L53.4 2L32 23.4L10.6 2L2 10.6L23.4 32L2 53.4l8.6 8.6L32 40.6L53.4 62l8.6-8.6L40.6 32z"
+            />
+          </g>
         </svg>
       </button>
 
       <USkeleton
         v-if="globalStore.loading && route.fullPath !== '/account'"
-        class="h-[38px] w-[250px] bg-slate-300 max-[822px]:hidden bg-opacity-50"
+        class="h-[38px] w-[250px] bg-slate-300 rounded-base max-[822px]:hidden bg-opacity-50"
         :config="{
           base: 'animate-pulse',
-          background: 'bg-gray-100 dark:bg-gray-800',
-          rounded: 'rounded-md',
           w: 'max-[822px]:hidden',
         }"
         :class="[
@@ -116,13 +155,13 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
       >
         <button
           @click="localModalOpener()"
-          class="uppercase bg-button-grey max-[820px]:hidden text-white font-semibold px-6 max-[1224px]:text-xs text-sm py-2 rounded-l-md hover:bg-dark-grey transition-all"
+          class="uppercase bg-button-grey max-[820px]:hidden text-white font-semibold px-6 max-[1224px]:text-xs text-sm py-2 rounded-l-base hover:bg-dark-grey transition-all"
         >
           Войти
         </button>
         <NuxtLink noprefetch to="/register">
           <button
-            class="uppercase px-6 text-sm py-2 max-[820px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-r-md hover:bg-hover-yellow transition-all"
+            class="uppercase px-6 text-sm py-2 max-[820px]:hidden font-semibold text-button-text-primary max-[1224px]:text-xs bg-button-primary rounded-r-base hover:bg-button-primary-hover transition-all"
           >
             Регистрация
           </button>
@@ -137,7 +176,7 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
       >
         <NuxtLink no-prefetch to="/account">
           <button
-            class="uppercase h-full px-6 text-sm py-2 max-[822px]:hidden font-semibold text-dark-grey max-[1224px]:text-xs bg-yellow rounded-md hover:bg-hover-yellow transition-all"
+            class="uppercase h-full px-6 text-sm py-2 max-[822px]:hidden font-semibold text-button-text-primary max-[1224px]:text-xs bg-button-primary rounded-base hover:bg-button-primary-hover transition-all"
           >
             Личный кабинет
           </button>
@@ -147,4 +186,8 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
   </header>
 </template>
 
-<style></style>
+<style>
+.st0 {
+  fill: #f85a5a;
+}
+</style>
