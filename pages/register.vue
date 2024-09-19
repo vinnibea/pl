@@ -10,9 +10,9 @@ const store = useMobileStore();
 const registerStore = useRegisterStore();
 const localStore = useLocalUserStore();
 const steps = [
-  "Информация o клиенте",
-  "Прикрепление платежной карты",
-  "Завершение регистрации",
+  "Informacje o kliencie",
+  "Podłączenie karty płatniczej",
+  "Zakończenie rejestracji",
 ];
 
 const components = [RegisterStepOne, RegisterStepTwo, RegisterSuccess];
@@ -27,7 +27,7 @@ onMounted(async () => {
 <template>
   <NuxtLayout>
     <div
-      class="min-h-dvh flex flex-col gap-4 with-bg-1 py-2 px-12 max-[1024px]:px-2 max-[822px]:px-0 max-[822px]:pt-4 shadow-lg max-[822px]:my-0 max-[822px]:mx-1"
+      class="min-h-dvh flex flex-col gap-4 bg-bg-main py-2 px-12 max-[1024px]:px-2 max-[822px]:px-0 max-[822px]:pt-4 shadow-lg max-[822px]:my-0 max-[822px]:mx-1"
     >
       <div
         class="min-w-full py-0 flex justify-between max-[822px]:justify-center px-4 gap-8 uppercase text-sm font-medium max-[822px]:pt-12 max-[822px]:gap-0"
@@ -69,7 +69,7 @@ onMounted(async () => {
             <h5
               class="text-xs max-[822px]:text-xs max-[822px]:hidden font-bold"
               :class="{
-                'text-white': i === registerStore.activeTab,
+                'text-dark-grey': i === registerStore.activeTab,
                 'text-green-500': i < registerStore.activeTab,
                 'text-slate-400': i > registerStore.activeTab,
                 'opacity-50': i > registerStore.activeTab,
@@ -93,7 +93,7 @@ onMounted(async () => {
       </div>
 
       <div
-        class="flex-col items-center justify-center min-w-full py-2 px-8 backdrop-blur-lg bg-white bg-opacity-100 shadow- mx-auto rounded-base max-[822px]:rounded-none gap-2 max-[822px]:flex-col max-[822px]:gap-0 max-[822px]:py-8 max-[822px]:px-2 max-[568px]:px-0 max-[568px]:py-4 max-[822px]:rounded-base max-[822px]:w-full shadow-sm"
+        class="flex-col items-center justify-center min-w-full py-2 px-8  bg-white bg-opacity-100 shadow- mx-auto rounded-base max-[822px]:rounded-none gap-2 max-[822px]:flex-col max-[822px]:gap-0 max-[822px]:py-8 max-[822px]:px-2 max-[568px]:px-0 max-[568px]:py-4 max-[822px]:rounded-base max-[822px]:w-full shadow-sm"
         :class="[
           {
             'max-[822px]:hidden': store.politicsOpen !== false,

@@ -81,7 +81,7 @@ const route = useRoute();
       <span
         v-else
         class="absolute left-2 top-1/2 -translate-y-1/2 text-md font-bold text-slate-300"
-        >+7</span
+        >+48</span
       >
 
       <input

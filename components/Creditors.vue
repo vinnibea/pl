@@ -87,7 +87,7 @@ const sortedData = computed(() => props.shortData.length ? props.shortData.slice
           >Заявка рассматривается</Button
         > -->
         <NuxtLink :to="item.link" class="min-w-full">
-          <Button class="min-w-full">Оформить</Button>
+          <Button class="min-w-full uppercase">wziąć pożyczkę</Button>
         </NuxtLink>
       </div>
    </div>

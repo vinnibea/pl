@@ -101,10 +101,9 @@ const logout = () => {
           (asideStore.isMobile && asideStore.selectedSection === null)
         "
         @click="logout"
-        :color="'bg-yellow'"
-        :text="'text-neutral-600'"
-        class="text-sm normal-nums min-w-full"
-        >Выход</Button
+        :text="'text-white'"
+        class="text-sm normal-nums min-w-full uppercase"
+        >wyjście</Button
       >
       
       <UIcon

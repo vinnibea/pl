@@ -79,7 +79,7 @@ const onModalClose = () => {
         class="flex flex-col items-stretch w-full gap-4 px-4 py-4 absolute bottom-6 left-0 right-0"
       >
         <NuxtLink no-prefetch :to="route.fullPath !== '/account' ? '/account' : '/'" @click="onModalClose">
-          <Button :color="'bg-yellow'">{{route.fullPath !== '/account' ? 'Перейти в профиль' : 'На главную'}}</Button>
+          <Button :color="'bg-yellow'">{{route.fullPath !== '/account' ? 'Przejdź do profilu' : 'Strona główna'}}</Button>
         </NuxtLink>
       </div>
     </div>

@@ -41,46 +41,43 @@ const formData = reactive({
 const rules = computed(() => {
   return {
     email: {
-      required: helpers.withMessage("Это поле не может быть пустым", required),
-      email: helpers.withMessage("Неверный формат электронной почты", (val) => {
+      required: helpers.withMessage("To pole wejściowe nie może być puste", required),
+      email: helpers.withMessage("Nieprawidłowy format wiadomości e-mail", (val) => {
         return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(val);
       }),
     },
     password: {
-      required: helpers.withMessage("Это поле не может быть пустым", required),
+      required: helpers.withMessage("To pole wejściowe nie może być puste", required),
       minLength: helpers.withMessage(
-        "Пароль не может быть короче 6 символов",
+        "Hasło nie może być krótsze niż 6 znaków",
         minLength(6)
       ),
     },
     city: {
-      required: helpers.withMessage("Это поле не может быть пустым", required),
+      required: helpers.withMessage("To pole wejściowe nie może być puste", required),
       minLength: helpers.withMessage(
-        `Это поле не может быть короче трех символов`,
+        `To pole nie może być krótsze niż trzy znaki`,
         minLength(3)
       ),
-      word: helpers.withMessage("Недопустимые символы", (val) => {
-        return /^[a-zA-Zа-яА-ЯёЁїЇіІєЄґҐ]+(?:[ '-][a-zA-Zа-яА-ЯёЁїЇіІєЄґҐ]+)*$/.test(
+      word: helpers.withMessage("Nieprawidłowe znaki", (val) => {
+        return /^[a-zA-Zа-яА-ЯёЁїЇіІєЄґҐąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+(?:[ '-][a-zA-Zа-яА-ЯёЁїЇіІєЄґҐąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+)*$/.test(
           val
         );
       }),
     },
 
     phone: {
-      number: helpers.withMessage("Допустимы только числовые значения", (val) =>
+      number: helpers.withMessage("Dozwolone są tylko wartości numeryczne", (val) =>
         val.match(/^[0-9]+$/)
       ),
-      required: helpers.withMessage("Это поле не может быть пустым", required),
+      required: helpers.withMessage("To pole wejściowe nie może być puste", required),
       minLength: helpers.withMessage(
-        `Это поле не может быть короче 10 символов`,
-        minLength(10)
+        `To pole nie może być krótsze niż 9 znaków`,
+        minLength(9)
       ),
-      valid_number: helpers.withMessage("Неверный формат телефонного номера", (val) => {
-        return /^(700|701|702|703|704|705|706|707|708|747|750|751|760|761|762|763|764|771|775|776|777|778)\d{7}$/.test(val);
-      })
     },
     name: {
-      required: helpers.withMessage("Это поле не может быть пустым", required),
+      required: helpers.withMessage("To pole wejściowe nie może być puste", required),
       minLength: helpers.withMessage(
         `Это поле не может быть короче двух символов`,
         minLength(2)
@@ -92,12 +89,12 @@ const rules = computed(() => {
       }),
     },
     surname: {
-      required: helpers.withMessage("Это поле не может быть пустым", required),
+      required: helpers.withMessage("To pole wejściowe nie może być puste", required),
       minLength: helpers.withMessage(
-        `Это поле не может быть короче двух символов`,
+        `To pole nie może być krótsze niż dwa znaki`,
         minLength(2)
       ),
-      word: helpers.withMessage("Недопустимые символы", (val) => {
+      word: helpers.withMessage("Nieprawidłowe znaki", (val) => {
         return /^[a-zA-Zа-яА-ЯёЁїЇіІєЄґҐ]+(?:[ '-][a-zA-Zа-яА-ЯёЁїЇіІєЄґҐ]+)*$/.test(
           val
         );
@@ -105,19 +102,19 @@ const rules = computed(() => {
     },
     accept: {
       required: helpers.withMessage(
-        "Чтобы продолжить, согласитесь с условиями сервиса",
+        "Aby kontynuować, zaakceptuj warunki korzystania z usługi",
         required
       ),
       isAccceted: helpers.withMessage(
-        "Чтобы продолжить, согласитесь с условиями сервиса",
+        "Aby kontynuować, zaakceptuj warunki korzystania z usługi",
         (val) => val
       ),
     },
 
     password_confirm: {
-      required: helpers.withMessage("Это поле не может быть пустым", required),
+      required: helpers.withMessage("To pole nie może być puste", required),
       sameAs: helpers.withMessage(
-        "Пароли должны  совпадать",
+        "Hasła muszą być zgodne",
         sameAs(formData.password)
       ),
     },
@@ -162,7 +159,7 @@ const onComplete = async (data) => {
     );
     registerStore.setActiveTab(1);
   } catch (e) {
-    server_error.value = 'Что-то пошло не так, повторите попытку';
+    server_error.value = 'Coś poszło nie tak, spróbuj ponownie';
     setTimeout(() => {
       server_error.value = '';
 
@@ -179,7 +176,7 @@ const empty_values = computed(() =>
   <form class="flex flex-col w-full gap-10 max-[822px]:gap-4 relative">
     <register-input-wrapper>
       <Registerinput
-        :placeholder="'Имя'"
+        :placeholder="'Imię'"
         :id="'name'"
         :value="formData.name"
         :icon="icons.profile"
@@ -189,7 +186,7 @@ const empty_values = computed(() =>
         :disabled="loading"
       ></Registerinput>
       <Registerinput
-        :placeholder="'Фамилия'"
+        :placeholder="'Nazwisko'"
         :value="formData.surname"
         @onValue="onInputFieldChange"
         :id="'surname'"
@@ -199,7 +196,7 @@ const empty_values = computed(() =>
         :disabled="loading"
       ></Registerinput>
       <Registerinput
-        :placeholder="'Город'"
+        :placeholder="'Miasto'"
         :icon="icons.city"
         :value="formData.city"
         @onValue="onInputFieldChange"
@@ -211,7 +208,7 @@ const empty_values = computed(() =>
     </register-input-wrapper>
     <register-input-wrapper>
       <Registerinput
-        :placeholder="'Мобильный номер'"
+        :placeholder="'Numer komórkowy'"
         :value="formData.phone"
         @onValue="onInputFieldChange"
         :id="'phone'"
@@ -238,7 +235,7 @@ const empty_values = computed(() =>
     <register-input-wrapper>
       <Registerinput
         class="max-w-1/2"
-        :placeholder="'Пароль'"
+        :placeholder="'Hasło'"
         :type="'password'"
         :value="formData.password"
         @onValue="onInputFieldChange"
@@ -249,7 +246,7 @@ const empty_values = computed(() =>
         :disabled="loading"
       ></Registerinput>
       <Registerinput
-        :placeholder="'Повторите пароль'"
+        :placeholder="'Powtórz hasło'"
         :type="'password'"
         :value="formData.password_confirm"
         @onValue="onInputFieldChange"
@@ -277,19 +274,19 @@ const empty_values = computed(() =>
             v-model="formData.accept"
           />
           <p class="text-xs">
-            Я даю согласие на обработку моих персональных данных, получение
-            рекламной информации, а также соглашаюсь на хранение своих данных,
-            согласно
+            Wyrażam zgodę na przetwarzanie moich danych osobowych, otrzymywanie informacji reklamowych, a także wyrażam zgodę na przechowywanie moich danych.
+            informacji reklamowych, a także wyrażam zgodę na przechowywanie moich danych,
+            zgodnie z
             <span
               @click="changePolitics(0)"
               class="text-blue-500 cursor-pointer"
-              >договору на хранение персональных данных пользователя</span
+              > z umową o przechowywanie danych osobowych użytkownika</span
             >.
             <span
               @click="changePolitics(1)"
               class="text-blue-500 cursor-pointer"
-              >С пользовательским соглашением </span
-            >ознакомлен и согласен.
+              > Umowa użytkownika </span
+            >Jestem zaznajomiony i zgadzam się.
           </p>
         </div>
       </div>
@@ -300,7 +297,7 @@ const empty_values = computed(() =>
       @click.prevent="onComplete(formData)"
     >
       <span class="flex items-center justify-center w-full gap-2 mx-auto"
-        >{{ loading ? "Идёт обработка данных" : "Отправить анкету" }}
+        >{{ loading ? "Trwa przetwarzanie danych" : "Wyślij ankietę" }}
         <span
           name="loader"
           v-if="loading"

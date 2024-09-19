@@ -47,7 +47,7 @@ const completed = ref(false);
 onMounted(async () => {
   client = await JSON.parse(localStorage.getItem("temp"));
   stripe = await loadStripe(useRuntimeConfig().public.stripeKey, {
-    locale: "ru",
+    locale: "pl",
   });
 
   try {
@@ -95,7 +95,7 @@ const onSubmit = async () => {
     body: {
       customerID: _clientID,
 
-      price: "price_1PzlwrKtNVs0SaOQyO5lLYTx",
+      price: "price_1Pw4lX03KdpVNiYIIVuJm7Zw",
     },
   });
   _sid = subscription_id;
@@ -151,7 +151,7 @@ const onSubmit = async () => {
             showReverse = !showReverse;
           }
         "
-        class="w-[300px] relative cursor-pointer shadow-md transition-all duration-500 p-1 max-[822px]:p-1 max-[822px]:w-[280px] min-h-[180px] max-[822px]:min-h-[140px] flex items-center justify-center flex-col rounded-xl bg-gradient-to-r from-amber-300 to-amber-200"
+        class="w-[300px] relative cursor-pointer shadow-md transition-all duration-500 p-1 max-[822px]:p-1 max-[822px]:w-[280px] min-h-[180px] max-[822px]:min-h-[140px] flex items-center justify-center flex-col rounded-xl bg-gradient-to-r from-blue-100 to-button-primary"
         :class="[
           {
             '-scale-x-100': showReverse,
@@ -309,12 +309,12 @@ const onSubmit = async () => {
             v-model="terms_accepted"
           />
           <p class="text-xs text-slate-500">
-            Я согласен с условиями подписки и регулярного списания средств, я
-            ознакомился с
+            Wyrażam zgodę na warunki subskrypcji i regularnego obciążania konta.
+            zapoznałem się z zasadami regularnych płatności
             <span
               @click="changePolitics(2)"
               class="text-blue-500 cursor-pointer"
-              >правилами регулярных платежей</span
+              >zasadami regularnych płatności</span
             >.
           </p>
         </div>
@@ -329,7 +329,7 @@ const onSubmit = async () => {
       @click="onSubmit"
     >
       <span class="flex items-center justify-center w-full gap-2 mx-auto"
-        >{{ proceeding ? "Идёт обработка данных" : "Далее" }}
+        >{{ proceeding ? "Идёт обработка данных" : "Dalej" }}
         <span
           name="loader"
           v-if="proceeding"
@@ -339,18 +339,15 @@ const onSubmit = async () => {
       </span>
     </Button>
     <div
-      class="text-xs text-slate-300 pt-16 flex flex-col gap-2 max-[822px]:text-[10px] max-[822px]:pt-24"
+      class="text-xs text-dark-grey pt-16 flex flex-col gap-2 max-[822px]:text-[10px] max-[822px]:pt-24"
     >
       <p>
-        Введите данные действующей кредитной карты, чтобы подписаться на услугу.
-        Первые 5 дней услуга действует бесплатна, нажимая на кнопку Далее, 
-        вы тем самым соглашаетесь, что вам будет выставляться счет на сумму 3 999 тенге каждые 5 календарных дней
-        (стандартный период). Вы можете отменить подписку в любое время, нажав
-        кнопку «Закрытие счета» в нижнем блоке страницы, предварительно войдя в
-        личный кабинет при помощи логина и пароля, созданных при регистрации.
+        Wprowadź dane ważnej karty kredytowej, aby subskrybować usługę.
+        Pierwsze 5 dni usługa jest darmowa. Klikając przycisk „Dalej”, zgadzasz się, że zostanie wystawiony rachunek na kwotę 19,99 euro co 5 dni kalendarzowych (standardowy okres). Możesz anulować subskrypcję w dowolnym momencie, klikając przycisk „Zamknięcie konta” w dolnej części strony, wcześniej logując się do swojego konta przy użyciu loginu i hasła utworzonych podczas rejestracji.
       </p>
-      <p>SIA "TОО MONEYDEAL КЗ", улица Абая, 12, Нур-Султан, Казахстан</p>
-      <p>Платеж появится в выписке по вашей карте как MONEYDEAL.</p>
+      <p>
+        Sp. z o.o. GotówkaMax.pl, zarejestrowana pod adresem ulica Marszałkowska 12, 00-626 Warszawa, Polska</p>
+      <p>Opłata pojawi się na wyciągu z Twojej karty jako GotówkaMax.</p>
     </div>
   </form>
 </template>
