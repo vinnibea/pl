@@ -87,7 +87,7 @@ const inputType = ref(false);
     class="w-1/2 max-[822px]:w-full max-[822px]:top-8 max-[822px]:bottom-0 max-[822px]:left-0 max-[822px]:translate-x-0 max-[822px]:translate-y-0 z-30 fixed top-1/2 -translate-y-1/2 -translate-x-1/2 left-1/2 py-12 max-[822px]:pt-12 min-[822px]:rounded-base bg-white"
   >
     <h2 class="w-full flex items-center justify-center text-2xl font-semibold">
-      Вход в аккаунт
+      Logowanie do konta
     </h2>
     <form
       class="flex flex-col gap-2 max-[822px]:gap-4 py-16 max-[822px]:py-12 px-16 max-[822px]:px-2 max-[822px]:justify-between"
@@ -107,7 +107,7 @@ const inputType = ref(false);
 
       <register-input-wrapper>
         <Registerinput
-          :placeholder="'Пароль'"
+          :placeholder="'Hasło'"
           :type="inputType ? 'text' : 'password'"
           :value="formData.password"
           @onValue="onInputFieldChange"
@@ -123,7 +123,7 @@ const inputType = ref(false);
           <label
             for="enter"
             class="text-center uppercase text-[8px] cursor-pointer font-semibold text-slate-700"
-            >Запомнить меня</label
+            >Zapamiętaj mnie</label
           >
         </div>
         <span
@@ -134,7 +134,7 @@ const inputType = ref(false);
               'opacity-0 pointer-events-none': formData.password.length < 6,
             },
           ]"
-          >{{ inputType ? "Скрыть пароль" : "Показать пароль" }}</span
+          >{{ inputType ? "Ukryj hasło" : "Pokaż hasło" }}</span
         >
       </div>
 
@@ -158,7 +158,7 @@ const inputType = ref(false);
           }]"
         >
           <span class="flex items-center justify-center w-full gap-2 mx-auto"
-            >{{ "Войти" }}
+            >{{ "Zaloguj się" }}
             <span
               v-if="loader"
               name="loader"
@@ -171,14 +171,14 @@ const inputType = ref(false);
           <div class="h-[1px] w-1/2 bg-slate-300"></div>
           <span
             class="w-1/3 text-center uppercase text-[8px] font-semibold text-neutral-500"
-            >Нет аккаунта?</span
+            >Nie masz konta?</span
           >
           <div class="h-[1px] w-1/2 bg-slate-300"></div>
         </div>
         <NuxtLink to="/register" @click="toRegister">
-          <Button class="mx-auto w-full relative">
+          <Button class="mx-auto w-full relative" :hover-text="'text-white'">
             <span class="flex items-center justify-center w-full gap-2 mx-auto"
-              >{{ "Регистрация" }}
+              >{{ "Zarejestruj się" }}
             </span>
           </Button>
         </NuxtLink>
