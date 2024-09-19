@@ -133,7 +133,7 @@ const route = useRoute();
         "
         @blur="emit('onFormTouched', id)"
         :maxlength="maxLength"
-        class="peer px-12 py-2 w-full bg-slate-250 border rounded-md outline-0 focus:outline-0 bg-slate-50 focus:bg-slate-100 text-slate-700 placeholder:opacity-0 max-[822px]:text-[10px] max-[822px]:focus:text-[10px] max-[822px]:focus:font-bold max-[822px]:focus:uppercase max-[822px]:uppercase max-[822px]:font-bold font-medium max-[822px]:px-12 disabled:opacity-50 disabled:pointer-events-none"
+        class="peer px-12 py-2 w-full bg-slate-250 border rounded-base outline-0 focus:outline-0 bg-slate-50 focus:bg-slate-100 text-slate-700 placeholder:opacity-0 max-[822px]:text-[10px] max-[822px]:focus:text-[10px] max-[822px]:focus:font-bold max-[822px]:focus:uppercase max-[822px]:uppercase max-[822px]:font-bold font-medium max-[822px]:px-12 disabled:opacity-50 disabled:pointer-events-none"
         :class="[
           {
             'border-red-200': value && errors.$message,

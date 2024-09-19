@@ -45,7 +45,7 @@ const localMenuCloser = (href) => {
           'max-[1024px]:text-xs': !isMobile,
           'items-start': isMobile,
           'items-center': !isMobile,
-          'text-white': isMobile,
+          'text-button-primary': isMobile,
           'text-slate-700': !isMobile,
         },
       ]"

@@ -44,9 +44,9 @@ onMounted(async () => {
         >
           <div class="flex items-center gap-4 max-[822px]:gap-0">
             <span
-              class="pointer-events-none rounded-full max-[822px]:group-hover:scale-100 border-4 transition-transform duration-500 min-w-8 min-h-8 max-[1024px]:max-h-14 max-[1024px]:min-w-8 max-[822px]:border-2 max-[822px]:min-h-2 max-[822px]:min-w-6 max-[822px]:hidden bg-slate-900 flex items-center justify-center"
+              class="pointer-events-none rounded-base max-[822px]:group-hover:scale-100 border-4 transition-transform duration-500 min-w-8 min-h-8 max-[1024px]:max-h-14 max-[1024px]:min-w-8 max-[822px]:border-2 max-[822px]:min-h-2 max-[822px]:min-w-6 max-[822px]:hidden bg-slate-900 flex items-center justify-center"
               :class="{
-                'border-yellow': i === registerStore.activeTab,
+                'border-button-primary': i === registerStore.activeTab,
                 'border-green-500': i < registerStore.activeTab,
                 'border-slate-400': i > registerStore.activeTab,
                 'opacity-50': i > registerStore.activeTab,
@@ -67,9 +67,9 @@ onMounted(async () => {
               </span>
             </span>
             <h5
-              class="text-xs max-[822px]:text-xs max-[822px]:hidden"
+              class="text-xs max-[822px]:text-xs max-[822px]:hidden font-bold"
               :class="{
-                'text-yellow': i === registerStore.activeTab,
+                'text-white': i === registerStore.activeTab,
                 'text-green-500': i < registerStore.activeTab,
                 'text-slate-400': i > registerStore.activeTab,
                 'opacity-50': i > registerStore.activeTab,
@@ -93,7 +93,7 @@ onMounted(async () => {
       </div>
 
       <div
-        class="flex-col items-center justify-center min-w-full py-2 px-8 backdrop-blur-lg bg-white bg-opacity-90 shadow- mx-auto rounded-lg max-[822px]:rounded-none gap-2 max-[822px]:flex-col max-[822px]:gap-0 max-[822px]:py-8 max-[822px]:px-2 max-[568px]:px-0 max-[568px]:py-4 max-[822px]:rounded-xs max-[822px]:w-full shadow-sm"
+        class="flex-col items-center justify-center min-w-full py-2 px-8 backdrop-blur-lg bg-white bg-opacity-100 shadow- mx-auto rounded-base max-[822px]:rounded-none gap-2 max-[822px]:flex-col max-[822px]:gap-0 max-[822px]:py-8 max-[822px]:px-2 max-[568px]:px-0 max-[568px]:py-4 max-[822px]:rounded-base max-[822px]:w-full shadow-sm"
         :class="[
           {
             'max-[822px]:hidden': store.politicsOpen !== false,
@@ -102,7 +102,7 @@ onMounted(async () => {
       >
   
         <component
-        class="py-4 px-2 rounded-lg"
+        class="py-4 px-2 rounded-base"
         :is="components[registerStore.activeTab]"
       ></component>
       

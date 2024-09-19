@@ -131,20 +131,20 @@ const onSubscribe = async (email) => {
         <div
           class="flex gap-48 max-[822px]:gap-8 max-[822px]:justify-between w-full max-[822px]:py-4"
         >
-          <ul class="flex flex-col gap-8 max-[468px]:gap-4 text-dark-grey">
+          <ul class="flex flex-col gap-8 max-[468px]:gap-4 text-dark-grey uppercase font-semibold">
             <li v-for="item in footerLinks.slice(0, 4)" :key="item.title">
               <NuxtLink
                 :to="item.link"
-                class="text-base max-[822px]:text-sm max-[468px]:text-xs  hover:text-button-primary"
+                class="text-xs max-[822px]:text-sm max-[468px]:text-xs  hover:text-button-primary"
                 >{{ item.title }}</NuxtLink
               >
             </li>
           </ul>
-          <ul class="flex text-dark-grey flex-col gap-8 max-[468px]:gap-4">
+          <ul class="flex text-dark-grey flex-col gap-8 max-[468px]:gap-4 uppercase font-semibold">
             <li v-for="item in footerLinks.slice(4)" :key="item.title">
               <NuxtLink
                 :to="item.link"
-                class="text-base max-[822px]:text-sm max-[468px]:text-xs hover:text-button-primary"
+                class="text-xs max-[822px]:text-sm max-[468px]:text-xs hover:text-button-primary"
                 >{{ item.title }}</NuxtLink
               >
             </li>
@@ -212,18 +212,19 @@ const onSubscribe = async (email) => {
       </div>
 
       <div
-        class="flex flex-col items-center max-[822px]:flex max-[822px]:flex-row max-[822px]:items-center max-[822px]:justify-between"
+        class="flex gap-12 items-start max-[822px]:flex max-[822px]:flex-row max-[822px]:items-center max-[822px]:justify-between"
       >
-        <h2
-          class="text-2xl max-[1024px]:text-xl font-extrabold text-dark-grey uppercase max-[822px]:text-base"
+         <div class="flex items-center gap-4">
+          <h2
+          class="text-2xl max-[1024px]:text-xl font-extrabold uppercase max-[822px]:text-base text-button-primary"
         >
-        GotówkaMax.<span class="text-xs">pl</span>
+        <span class="text-xs text-dark-grey">Gotówka</span>Max.<span class="text-xs text-dark-grey">pl</span>
         </h2>
 
         <div class="flex gap-2 items-center">
           <svg
-            width="80px"
-            height="80px"
+            width="48px"
+            height="48px"
             viewBox="0 -140 780 780"
             enable-background="new 0 0 780 500"
             version="1.1"
@@ -241,8 +242,8 @@ const onSubscribe = async (email) => {
           </svg>
 
           <svg
-            width="80px"
-            height="80px"
+            width="48px"
+            height="48px"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -251,6 +252,7 @@ const onSubscribe = async (email) => {
               <circle cx="17" cy="12" r="7" fill="#FFA200" fill-opacity=".8" />
             </g>
           </svg>
+         </div>
         </div>
       </div>
     </div>

@@ -52,7 +52,7 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
           }
         "
       >
-        GotówkaMax.<span class="text-xs">pl</span></NuxtLink
+        <span class="text-xs text-dark-grey">Gotówka</span>Max.<span class="text-xs text-dark-grey">pl</span></NuxtLink
       >
     </h2>
     <Nav class="max-[820px]:hidden"></Nav>

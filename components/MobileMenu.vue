@@ -42,7 +42,7 @@ const onModalClose = () => {
 </script>
 <template>
   <div
-    class="fixed bg-opacity-90 backdrop-blur-md left-0 right-0 z-50 bottom-0 top-0 bg-slate-800 transition-all duration-500 min-[822px]:hidden flex flex-col items-center"
+    class="fixed bg-opacity-90 backdrop-blur-md left-0 right-0 z-50 bottom-0 top-0 bg-white transition-all duration-500 min-[822px]:hidden flex flex-col items-center"
     :class="[
       {
         'translate-x-full': !store.state,
@@ -56,7 +56,7 @@ const onModalClose = () => {
     <div class="min-h-dvh transition-all duration-600">
       <Nav :isMobile="true"></Nav>
       <div
-        class="flex flex-col items-stretch w-full gap-4 px-4 py-4 z-50 absolute bottom-6 left-0 right-0"
+        class="flex flex-col-reverse items-stretch w-full gap-4 px-4 py-4 z-50 absolute bottom-6 left-0 right-0"
         v-if="!auth.isAuth"
       >
         <NuxtLink no-prefetch to="/register">
