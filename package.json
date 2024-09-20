@@ -40,6 +40,7 @@
     "nuxt-swiper": "latest",
     "sharp": "^0.33.5",
     "stripe": "^16.10.0",
+    "universal-cookie": "^7.2.0",
     "vue": "latest"
   },
   "overrides": {

@@ -4,9 +4,10 @@ import { useWindowSize } from "@vueuse/core";
 import { useGlobalStore } from "~/stores/globalStore.js";
 import { useLocalUserStore } from "~/stores/localStore";
 import { useRegisterStore } from "~/stores/RegisterStore.js";
-
+import { useCookies } from '@vueuse/integrations/useCookies'
 const { width, height } = useWindowSize();
 const asideStore = useAccountStore();
+const cookies_accepted = useCookies(['cookies'])
 watch(width, (newVal) => {
   if (newVal <= 822) {
     asideStore.setMobile(true);
@@ -25,6 +26,9 @@ watch(width, (newVal) => {
 });
 
 
+if(cookies_accepted.get('cookies')) {
+  useGlobalStore().setCookies(true);
+}
 const registerStore = useRegisterStore();
 
 const localStore = useLocalUserStore();
