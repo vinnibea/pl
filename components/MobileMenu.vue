@@ -60,7 +60,7 @@ const onModalClose = () => {
         v-if="!auth.isAuth"
       >
         <NuxtLink no-prefetch to="/register">
-          <Button :color="'bg-yellow'"  :hoverText="'text-white'" @click.stop="store.onMenuClose()"
+          <Button :color="'bg-button-primary'"  :hoverText="'text-white'" @click.stop="store.onMenuClose()"
             >Zarejestruj się</Button
           >
         </NuxtLink>
