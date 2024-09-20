@@ -19,9 +19,6 @@ const rules = computed(() => {
         `Это поле не может быть короче 10 символов`,
         minLength(10)
       ),
-      valid_number: helpers.withMessage("Неверный формат телефонного номера", (val) => {
-        return /^(700|701|702|703|704|705|706|707|708|747|750|751|760|761|762|763|764|771|775|776|777|778)\d{7}$/.test(val);
-      })
     },
   };
 });
@@ -39,9 +36,9 @@ const loading = ref(false);
 const input_info = ref("");
 const onCancel = async () => {
   loading.value = true;
- 
+
   try {
-    console.log(localUser.localUser.sid, formData.phone)
+    console.log(localUser.localUser.sid, formData.phone);
     const response = await $fetch("/api/cancel/", {
       method: "POST",
       body: {
@@ -52,7 +49,7 @@ const onCancel = async () => {
 
     localUser.setLocalUser(response);
   } catch (e) {
-    input_info.value = `Проверьте введенные данные. В случае, если введенный номер валидный, но вы не можете отписаться, воспользуйтейсь кнопкой \nНАПИШИТЕ НАМ`;
+    input_info.value = `Sprawdź wprowadzone dane. Jeśli wprowadzony numer jest prawidłowy, ale nie możesz zrezygnować z subskrypcji, użyj przycisku`;
     setTimeout(() => {
       input_info.value = "";
     }, 5000);
@@ -64,24 +61,25 @@ const onCancel = async () => {
 
 <template>
   <NuxtLayout>
-    <div class="with-bg-12 min-h-svh">
+    <div class="min-h-svh bg-bg-main py-16">
       <h1
-        class="w-full text-center text-3xl max-[822px]:text-2xl font-bold uppercase text-white backdrop-blur-lg bg-opacity-60 max-[820px]:pt-[42px]"
+        class="w-full text-center text-3xl max-[822px]:text-2xl font-bold uppercase text-dark-grey backdrop-blur-lg bg-opacity-60 max-[820px]:pt-[42px]"
       >
-        Отказ от подписки
+        Anulowanie subskrypcji
       </h1>
 
       <div class="flex justify-center items-center min h-full py-8">
         <div
-          class="flex flex-col items-center w-1/2 max-[822px]:min-w-full bg-slate-700 bg-opacity-60 backdrop-blur-lg p-4 rounded-md justify-center pt-4 gap-6 max-[822px]:pt-4 px-4 max-[820px]:py-4 max-[820px]:px-2 max-[820px]:gap-4"
+          class="flex flex-col items-center w-1/2 max-[822px]:min-w-full bg-bg-primary backdrop-blur-lg p-4 rounded-base justify-center pt-4 gap-6 max-[822px]:pt-4 px-4 max-[820px]:py-4 max-[820px]:px-2 max-[820px]:gap-4"
         >
           <p
-            class="text-base text-center w-full text-slate-200 px-4 py-2 bg-slate-700 transition-all bg-opacity-0 duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[12px] max-[822px]:px-2"
+            class="text-base text-center w-full text-dark-grey px-4 py-2 bg-slate-700 transition-all bg-opacity-0 duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[12px] max-[822px]:px-2"
           >
-            Отписавшись от услуг сервиса, вы потеряете возможность внеочерeдного
-            обслуживания у ряда кредиторов, возможности узнавать о новых услугах
-            наших партнеров, а также не сможете автоматически отправлять ваши
-            анкетные данные в МФО.
+            Rezygnacja z subskrypcji usługi oznacza utratę możliwości
+            otrzymywania nadzwyczajnych usług. Nie będziesz mógł otrzymywać
+            niezaplanowanych usług od wielu pożyczkodawców, nie będziesz mógł
+            dowiedzieć się o nowych usługach naszych partnerów i nie będziesz
+            mógł automatycznie wysyłać swoich danych do MIF.
           </p>
           <span
             class="text-[14px] min-h-16 flex items-center justify-center font-bold text-center rounded-md text-red-500"
@@ -89,7 +87,7 @@ const onCancel = async () => {
           >
           <register-input-wrapper class="min-w-full">
             <registerinput
-              :placeholder="'Мобильный номер'"
+              :placeholder="'Numer komórkowy'"
               :id="'phone'"
               :tel="true"
               :pattern="/^[0-9]+$/"
@@ -99,7 +97,7 @@ const onCancel = async () => {
               :disabled="
                 !localUser.isAuth ||
                 (localUser.isAuth && !localUser.localUser.subscription) ||
-                loading 
+                loading
               "
               @onValue="onInputFieldChange"
               @onFormTouched="formTouched"
@@ -111,10 +109,10 @@ const onCancel = async () => {
             v-if="!localUser.isAuth"
             class="text-[12px] text-center w-full text-red-500 px-2 bg-slate-700 transition-all bg-opacity-0 duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[12px] max-[822px]:px-1"
           >
-            Чтобы воспользоваться формой нужно иметь активную подписку, зайти в
-            личный кабинет и вернуться на эту страницу. После чего кнопка станет
-            активной и можно будет ввести телефонный номер, на который был
-            зарегистрирован аккаунт
+            Aby skorzystać z formularza, musisz mieć aktywną subskrypcję,
+            zalogować się do swojej i powrócić do tej strony. Następnie przycisk
+            stanie się aktywny i będzie można wprowadzić numer telefonu, na
+            który konto zostało zarejestrowane. zarejestrowane konto
           </p>
 
           <div
@@ -123,7 +121,12 @@ const onCancel = async () => {
             <Button
               class="min-w-full"
               v-if="localUser.isAuth && localUser.localUser.subscription"
-              :disabled="!localUser.isAuth || loading || $v?.phone?.$errors[0] || formData.phone.length < 10"
+              :disabled="
+                !localUser.isAuth ||
+                loading ||
+                $v?.phone?.$errors[0] ||
+                formData.phone.length < 10
+              "
               :color="'bg-blue-400'"
               :hover="'hover:bg-blue-600'"
               :hoverText="'hover:text-white'"
@@ -132,7 +135,7 @@ const onCancel = async () => {
             >
               <span
                 class="flex items-center justify-center w-full gap-2 mx-auto"
-                >{{ loading ? "Идёт обработка данных" : "Отписаться" }}
+                >{{ loading ? "Trwa przetwarzanie danych" : "Anuluj subskrypcję" }}
                 <span
                   name="loader"
                   v-if="loading"
@@ -141,25 +144,26 @@ const onCancel = async () => {
                 </span>
               </span>
             </Button>
-           
-              <Button
-                class="min-w-full"
-                v-if="localUser.isAuth && !localUser.localUser.subscription"
-                :disabled="true"
-                :color="'bg-red-500'"
-                :text="'text-white'"
-              >
-                Услуга отключена
-              </Button>
-        
-            <p
-              class="text-xs text-center w-full text-slate-200 px-4 py-2 transition-all bg-opacity-0 duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-2"
+
+            <Button
+              class="min-w-full"
+              v-if="localUser.isAuth && !localUser.localUser.subscription"
+              :disabled="true"
+              :color="'bg-red-500'"
+              :text="'text-white'"
             >
-              В случае возникновения неполадок с формой или других трудностей
+              Usługa jest wyłączona
+            </Button>
+
+            <p
+              class="text-xs text-center w-full text-dark-grey px-4 py-2 transition-all bg-opacity-0 duration-300 max-[822px]:group-hover:text-white max-[822px]:text-[10px] max-[822px]:px-2"
+            >
+              W przypadku nieprawidłowego działania formularza lub innych
+              trudności
             </p>
 
             <NuxtLink class="w-full">
-              <Button class="min-w-full">Напишите нам</Button>
+              <Button class="min-w-full" :hover-text="'text-white'">Napisz do nas</Button>
             </NuxtLink>
           </div>
         </div>

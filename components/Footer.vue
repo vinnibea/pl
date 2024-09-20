@@ -220,7 +220,7 @@ const onSubscribe = async (email) => {
       <div
         class="flex flex-col gap-12 items-start max-[822px]:flex max-[822px]:flex-col max-[822px]:items-start max-[822px]:gap-2 max-[822px]:justify-between"
       >
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-4 max-[822px]:justify-between max-[822px]:w-full">
           <h2
             class="text-2xl max-[1024px]:text-xl font-extrabold uppercase max-[822px]:text-base text-button-primary"
           >
@@ -230,7 +230,7 @@ const onSubscribe = async (email) => {
             >
           </h2>
 
-          <div class="flex gap-2 items-center">
+          <div class="flex gap-2 items-center max-[822px]:justify-between ">
             <svg
               width="48px"
               height="48px"
@@ -272,11 +272,11 @@ const onSubscribe = async (email) => {
 
         <div class="flex flex-col items-start gap-4 max-[822px]:flex-row max-[822px]:justify-between max-[822px]:w-full">
           <span class="flex items-center gap-2">
-             <UIcon name="mdi:phone-classic"></UIcon><span class="text-xs text-button-primary font-bold">+77273145678</span></span>
+             <UIcon name="mdi:phone-classic"></UIcon><span class="text-xs text-button-primary font-bold">+48 (221) 234 567</span></span>
           <span class="flex items-center gap-2">
              <UIcon name="mdi:envelope"></UIcon> 
              <span class="text-xs text-button-primary font-bold">
-              experts@moneydeal.pro</span>
+              experts@gotówkamax.pl.pro</span>
             </span>
         </div>
       </div>
@@ -307,7 +307,7 @@ const onSubscribe = async (email) => {
         <p
           class="font-semibold text-white text-[12px] w-1/6 max-[822px]:w-full max-[822px]:text-[10px]"
         >
-        Tel.: +48 22 123 45 67
+        Tel.: +48 (221) 234 567
         </p>
         <p
           class="font-semibold text-white text-[12px] w-1/3 max-[822px]:w-full max-[822px]:text-[10px]"

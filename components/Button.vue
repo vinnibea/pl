@@ -19,7 +19,7 @@ const props = defineProps({
     },
     hoverText: {
         type: String,
-        default: 'hover:text-black'
+        default: 'hover:text-white'
     },
 
     radius: {
