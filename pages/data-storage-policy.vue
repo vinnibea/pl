@@ -98,7 +98,6 @@ const contacts = {
   address: {
     country: "Polska",
     city: "Warszawa",
-    district: "район Байконур",
     street: "ulica Marszałkowska 12",
     index: "00-626",
   },
@@ -134,8 +133,7 @@ const contacts = {
         Adres:
         <span class="font-light"
           >{{ contacts.address.country }}, {{ contacts.address.city }},
-          {{ contacts.address.district }}, {{ contacts.address.street }},
-          {{ contacts.address.house }}
+          {{ contacts.address.index}}, {{ contacts.address.street }},
         </span>
       </h2>
       <h2 class="font-semibold text-left py-2">
