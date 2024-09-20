@@ -78,7 +78,7 @@ onMounted(async () => {
       });
       loading.value = false;
     } else {
-      errors.value = "Недопустимое действие";
+      errors.value = "Niedopuszczalne działanie";
       registerStore.setActiveTab(0);
     }
   } catch (e) {
@@ -132,7 +132,7 @@ const onSubmit = async () => {
       registerStore.setActiveTab(2);
     }
   } catch (error) {
-    errors.value = "Повторите попытку или попробуйте привязать другую карту";
+    errors.value = "Spróbuj ponownie lub połącz inną kartę";
     setTimeout(() => {
       errors.value = "";
     }, 7000);
@@ -329,7 +329,7 @@ const onSubmit = async () => {
       @click="onSubmit"
     >
       <span class="flex items-center justify-center w-full gap-2 mx-auto"
-        >{{ proceeding ? "Идёт обработка данных" : "Dalej" }}
+        >{{ proceeding ? "Trwa przetwarzanie danych" : "Dalej" }}
         <span
           name="loader"
           v-if="proceeding"
