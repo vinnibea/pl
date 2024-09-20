@@ -18,15 +18,24 @@ const loader = ref(false);
 const rules = computed(() => {
   return {
     email: {
-      required: helpers.withMessage("Это поле не может быть пустым", required),
-      email: helpers.withMessage("Неверный формат электронной почты", (val) => {
-        return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(val);
-      }),
+      required: helpers.withMessage(
+        "To pole wejściowe nie może być puste",
+        required
+      ),
+      email: helpers.withMessage(
+        "Nieprawidłowy format wiadomości e-mail",
+        (val) => {
+          return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(val);
+        }
+      ),
     },
     password: {
-      required: helpers.withMessage("Это поле не может быть пустым", required),
+      required: helpers.withMessage(
+        "To pole wejściowe nie może być puste",
+        required
+      ),
       minLength: helpers.withMessage(
-        "Пароль не может быть короче 6 символов",
+        "Hasło nie może być krótsze niż 6 znaków",
         minLength(6)
       ),
     },
@@ -54,8 +63,8 @@ const loggin_function = async () => {
       window.console.error = () => {};
       if (error.statusCode === 404) {
         serverErrors.value =
-          "Пользователь с такой почтой не существует и/или неверный пароль";
-          
+          "Użytkownik o tym adresie nie istnieje i/lub hasło jest nieprawidłowe";
+
         setTimeout(() => (serverErrors.value = ""), 3000);
       }
     })
@@ -152,10 +161,23 @@ const inputType = ref(false);
           :text="'text-white'"
           :hoverText="'hover:text-white'"
           @click="loggin_function"
-          :disabled="serverErrors.length || $v.$errors[0] || loader || !formData.password.length || !formData.email.length"
-          :class="[{
-            'pointer-events-none': serverErrors.length || $v.$errors[0] || loader || !formData.password.length || !formData.email.length,
-          }]"
+          :disabled="
+            serverErrors.length ||
+            $v.$errors[0] ||
+            loader ||
+            !formData.password.length ||
+            !formData.email.length
+          "
+          :class="[
+            {
+              'pointer-events-none':
+                serverErrors.length ||
+                $v.$errors[0] ||
+                loader ||
+                !formData.password.length ||
+                !formData.email.length,
+            },
+          ]"
         >
           <span class="flex items-center justify-center w-full gap-2 mx-auto"
             >{{ "Zaloguj się" }}
