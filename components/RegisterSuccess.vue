@@ -9,7 +9,6 @@ const localModalOpener = () => {
   store.onModal();
   document.body.style.overflow = "hidden";
 };
-
 </script>
 <template>
   <div class="flex flex-col justify-between min-h-svh w-full">
@@ -19,11 +18,10 @@ const localModalOpener = () => {
     >
       <div class="pb-4">
         <h2 class="text-green-500 text-[14px] font-semibold uppercase">
-          Регистрация завершена
+          Rejestracja zakończona
         </h2>
         <p class="font-medium text-sm text-slate-500">
-          Теперь Вы можете воспользоваться услугами одного из следующих
-          кредиторов
+          Możesz teraz skorzystać z usług jednego z następujących pożyczkodawców
         </p>
       </div>
       <Creditors :shortData="data"></Creditors>
@@ -33,15 +31,17 @@ const localModalOpener = () => {
       class="flex flex-col text-[12px] max-[822px]:text-[10px] items-center gap-4 text-center py-4"
     >
       <p>
-        Инструкции по получению кредита, список доступых Вам кредиторов, а также
-        статус отправленных заявок можно посмотреть в личном кабинете
+        Instrukcje dotyczące uzyskania pożyczki, listę dostępnych
+        pożyczkodawców, a także status wysłanych wniosków można wyświetlić w
+        osobistej szafce. Możesz sprawdzić status wysłanych wniosków na stronie
+        swojego konta.
       </p>
       <NuxtLink
         @click="localModalOpener"
         to="/"
-        class="w-full flex justify-center text-center text-xs uppercase underline font-medium text-amber-300"
+        class="w-full flex justify-center text-center text-xs uppercase underline font-medium text-button-primary"
       >
-        <span>Войти в личный кабинет</span>
+        <span>Zaloguj się</span>
       </NuxtLink>
     </div>
     <div

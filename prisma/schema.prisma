@@ -42,12 +42,9 @@ model email {
 
 model Creditor {
     id            Int      @id @default(autoincrement())
-    title         String?  @unique
-    subtitle      String?
     src           String?
     blocks        Block[]
     imageURL      String?
-    advantages    String[] @default([])
     link          String   @default("")
     isRecommended Boolean  @default(false)
     isEmail       Boolean  @default(false)

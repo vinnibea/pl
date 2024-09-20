@@ -5,12 +5,12 @@ const asideStore = useAccountStore();
 const localUser = useLocalUserStore();
 const menuItems = [
   {
-    title: "Информация об аккаунтe",
+    title: "Informacje o koncie",
     icon: "material-symbols-light:account-circle",
   },
 
   {
-    title: "Мои кредиторы",
+    title: "Moi kredytodawcy",
     icon: "material-symbols:credit-card",
   },
 ];
@@ -53,15 +53,15 @@ const logout = () => {
       ]"
     >
       <li
-        class="w-full flex items-center gap-8 max-[822px]:justify-between font-medium p-4 text-slate-900 max-[822px]:border-none max-[822px]:text-sm cursor-pointer transition-all duration-300"
+        class="w-full flex items-center gap-8 max-[822px]:justify-between font-medium p-4 text-dark-grey max-[822px]:border-none max-[822px]:text-sm cursor-pointer transition-all duration-300"
         v-for="(item, i) in menuItems"
         :key="item.icon"
         :class="[
           {
-            'text-amber-300': i === asideStore.selectedSection,
+            'text-button-primary': i === asideStore.selectedSection,
             'w-fit': i === asideStore.selectedSection && asideStore.isMobile,
-            'bg-slate-300': i === asideStore.selectedSection,
-            'rounded-md': i === asideStore.selectedSection,
+            'bg-bg-main': i === asideStore.selectedSection,
+            'rounded-base': i === asideStore.selectedSection,
             'max-[822px]:font-semibold': true,
           },
         ]"
@@ -72,7 +72,7 @@ const logout = () => {
           class="min-h-8 min-w-8 max-[822px]:min-w-6"
           :class="[
             {
-              'bg-amber-200': asideStore.selectedSection === i,
+              'bg-button-primary': asideStore.selectedSection === i,
             },
           ]"
           dynamic
@@ -110,7 +110,7 @@ const logout = () => {
         v-else
         name="material-symbols:exit-to-app"
         size="32"
-        class="mx-auto bg-red-900 min-[822px]:hidden"
+        class="mx-auto bg-button-primary min-[822px]:hidden"
         @click="logout"
         dynamic
       ></UIcon>

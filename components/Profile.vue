@@ -40,10 +40,10 @@ const registerPhone = computed(() => {
         class="flex justify-start items-start max-[822px]:flex-col max-[822px]:items-center gap- w-full h-fit pb-2"
       >
         <span
-          class="rounded-full border-4 relative border-amber-300 min-w-32 min-h-32 p-8 font-extrabold text-slate-800 text-2xl flex uppercase items-center shadow-sm justify-center text-center"
+          class="rounded-base border-4 relative min-w-32 min-h-32 p-8 font-extrabold text-dark-grey text-2xl flex uppercase items-center shadow-sm justify-center text-center"
           :class="[{
-            'border-amber-300': profile.localUser.subscription,
-            'border-slate-500': !profile.localUser.subscription,
+            'border-button-primary': profile.localUser.subscription,
+            'border-dark-grey': !profile.localUser.subscription,
           }]"
           >{{ computedAvatar }}
           
@@ -57,18 +57,18 @@ const registerPhone = computed(() => {
               profile?.localUser?.surname
             }}</span>
           </span>
-          <span v-if="profile.localUser.subscription" class="max-[822px]:text-[10px] bg-yellow rounded-md shadow-md px-2 text-[14px] font-medium p-0 ">
-            Премиальный пользователь</span
+          <span v-if="profile.localUser.subscription" class="max-[822px]:text-[10px] bg-button-primary text-amber-300 rounded-base shadow-md px-2 text-[14px] font-medium p-0 ">
+            Użytkownik premium</span
           >
-          <span v-if="!profile.localUser.subscription" class="max-[822px]:text-[10px] text-white bg-slate-500 rounded-md shadow-md px-2 text-[14px] font-medium p-0 ">
-            Пользователь</span
+          <span v-if="!profile.localUser.subscription" class="max-[822px]:text-[10px] text-white bg-dark-grey rounded-base shadow-md px-2 text-[14px] font-medium p-0 ">
+            Użytkownik</span
           >
         </p>
       </div>
 
       <div class="flex items-center justify-end w-full pb-2 border-b border-slate-200">
         <span class="max-[822px]:text-[10px] text-[12px] text-slate-300 font-semibold"
-          >Дата регистрации: {{ registerDate }}</span
+          >Data zarejestrowania: {{ registerDate }}</span
         >
       </div>
 
@@ -78,11 +78,11 @@ const registerPhone = computed(() => {
           ><span class="font-medium text-xs">{{ profile?.localUser?.email }}</span>
         </p>
         <p class="w-full flex justify-between items-center">
-          <span class="font-medium text-xs uppercase">Телефон: </span>
-          <span class="font-medium text-xs uppercase">+7 {{ registerPhone }}</span>
+          <span class="font-medium text-xs uppercase">Tel: </span>
+          <span class="font-medium text-xs uppercase">+48 {{ registerPhone }}</span>
         </p>
         <p class="w-full flex justify-between items-center">
-          <span class="font-medium text-xs uppercase">Город: </span>
+          <span class="font-medium text-xs uppercase">Miasto: </span>
           <span class="font-medium text-xs uppercase">{{
             profile?.localUser?.city
           }}</span>
