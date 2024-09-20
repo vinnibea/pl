@@ -47,7 +47,7 @@ const onCookiesAccepted = async () => {
     <slot></slot>
 
     <span
-     v-if="!globalStore.cookies"
+     v-if="!globalStore.cookies && !globalStore.loading"
       class="fixed bottom-0 left-0 right-0 z-20 bg-bg-primary bg-opacity-70 text-black flex items-center justify-center max-[822px]:flex-col max-[822px]:bg-opacity-90 max-[822px]:px-2 px-12 py-2 shadow-lg"
     >
       <span

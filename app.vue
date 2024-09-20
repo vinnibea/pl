@@ -7,6 +7,7 @@ import { useRegisterStore } from "~/stores/RegisterStore.js";
 import { useCookies } from '@vueuse/integrations/useCookies'
 const { width, height } = useWindowSize();
 const asideStore = useAccountStore();
+const globalStore = useGlobalStore();
 const cookies_accepted = useCookies(['cookies'])
 watch(width, (newVal) => {
   if (newVal <= 822) {
@@ -27,7 +28,9 @@ watch(width, (newVal) => {
 
 
 if(cookies_accepted.get('cookies')) {
-  useGlobalStore().setCookies(true);
+  globalStore.setCookies(true);
+} else {
+  globalStore.setCookies(false);
 }
 const registerStore = useRegisterStore();
 
@@ -35,7 +38,7 @@ const localStore = useLocalUserStore();
 onMounted(async () => {
   if(!!localStorage.getItem('temp') ? 1 : 0) {
     registerStore.setActiveTab(1);
-    useGlobalStore().setLoading(false);
+    globalStore.setLoading(false);
     return;
   }
   
@@ -49,7 +52,7 @@ onMounted(async () => {
       return Promise.resolve()
     })
     .finally(() => {
-      useGlobalStore().setLoading(false);
+      globalStore.setLoading(false);
     });
 });
 
