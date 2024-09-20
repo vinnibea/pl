@@ -41,20 +41,32 @@ const formData = reactive({
 const rules = computed(() => {
   return {
     email: {
-      required: helpers.withMessage("To pole wejściowe nie może być puste", required),
-      email: helpers.withMessage("Nieprawidłowy format wiadomości e-mail", (val) => {
-        return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(val);
-      }),
+      required: helpers.withMessage(
+        "To pole wejściowe nie może być puste",
+        required
+      ),
+      email: helpers.withMessage(
+        "Nieprawidłowy format wiadomości e-mail",
+        (val) => {
+          return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(val);
+        }
+      ),
     },
     password: {
-      required: helpers.withMessage("To pole wejściowe nie może być puste", required),
+      required: helpers.withMessage(
+        "To pole wejściowe nie może być puste",
+        required
+      ),
       minLength: helpers.withMessage(
         "Hasło nie może być krótsze niż 6 znaków",
         minLength(6)
       ),
     },
     city: {
-      required: helpers.withMessage("To pole wejściowe nie może być puste", required),
+      required: helpers.withMessage(
+        "To pole wejściowe nie może być puste",
+        required
+      ),
       minLength: helpers.withMessage(
         `To pole nie może być krótsze niż trzy znaki`,
         minLength(3)
@@ -67,17 +79,24 @@ const rules = computed(() => {
     },
 
     phone: {
-      number: helpers.withMessage("Dozwolone są tylko wartości numeryczne", (val) =>
-        val.match(/^[0-9]+$/)
+      number: helpers.withMessage(
+        "Dozwolone są tylko wartości numeryczne",
+        (val) => val.match(/^[0-9]+$/)
       ),
-      required: helpers.withMessage("To pole wejściowe nie może być puste", required),
+      required: helpers.withMessage(
+        "To pole wejściowe nie może być puste",
+        required
+      ),
       minLength: helpers.withMessage(
         `To pole nie może być krótsze niż 9 znaków`,
         minLength(9)
       ),
     },
     name: {
-      required: helpers.withMessage("To pole wejściowe nie może być puste", required),
+      required: helpers.withMessage(
+        "To pole wejściowe nie może być puste",
+        required
+      ),
       minLength: helpers.withMessage(
         `Это поле не может быть короче двух символов`,
         minLength(2)
@@ -89,7 +108,10 @@ const rules = computed(() => {
       }),
     },
     surname: {
-      required: helpers.withMessage("To pole wejściowe nie może być puste", required),
+      required: helpers.withMessage(
+        "To pole wejściowe nie może być puste",
+        required
+      ),
       minLength: helpers.withMessage(
         `To pole nie może być krótsze niż dwa znaki`,
         minLength(2)
@@ -135,7 +157,7 @@ const changePolitics = (i) => {
   store.onPolitics(i);
 };
 
-const server_error = ref('');
+const server_error = ref("");
 const onComplete = async (data) => {
   const { email, name, surname, phone, city, password } = data;
 
@@ -152,18 +174,17 @@ const onComplete = async (data) => {
         password,
       },
     });
-   
+
     await localStorage.setItem(
       "temp",
       JSON.stringify({ email, name, surname, phone, city })
     );
     registerStore.setActiveTab(1);
   } catch (e) {
-    server_error.value = 'Coś poszło nie tak, spróbuj ponownie';
+    server_error.value = "Coś poszło nie tak, spróbuj ponownie";
     setTimeout(() => {
-      server_error.value = '';
-
-    }, 5000)
+      server_error.value = "";
+    }, 5000);
   } finally {
     loading.value = false;
   }
@@ -217,7 +238,7 @@ const empty_values = computed(() =>
         :errors="$v?.phone?.$errors[0]"
         :input_mode="'numeric'"
         :pattern="/^[0-9]+$/"
-        :maxLength="10"
+        :maxLength="9"
         :disabled="loading"
       ></Registerinput>
       <Registerinput
@@ -257,8 +278,10 @@ const empty_values = computed(() =>
         :disabled="loading"
       ></Registerinput>
     </register-input-wrapper>
-    <span class="min-h-6 w-full text-center flex items-center text-[12px] justify-center font-semibold text-red-500 uppercase" >
-      <span v-if="server_error.length">{{server_error}}</span>
+    <span
+      class="min-h-6 w-full text-center flex items-center text-[12px] justify-center font-semibold text-red-500 uppercase"
+    >
+      <span v-if="server_error.length">{{ server_error }}</span>
     </span>
     <div class="flex flex-col items-start max-[822px]:items-start gap-2 w-full">
       <div
@@ -274,18 +297,20 @@ const empty_values = computed(() =>
             v-model="formData.accept"
           />
           <p class="text-xs">
-            Wyrażam zgodę na przetwarzanie moich danych osobowych, otrzymywanie informacji reklamowych, a także wyrażam zgodę na przechowywanie moich danych.
-            informacji reklamowych, a także wyrażam zgodę na przechowywanie moich danych,
-            zgodnie z
+            Wyrażam zgodę na przetwarzanie moich danych osobowych, otrzymywanie
+            informacji reklamowych, a także wyrażam zgodę na przechowywanie
+            moich danych zgodnie z
             <span
               @click="changePolitics(0)"
               class="text-blue-500 cursor-pointer"
-              > z umową o przechowywanie danych osobowych użytkownika</span
+            >
+              z umową o przechowywanie danych osobowych użytkownika</span
             >.
             <span
               @click="changePolitics(1)"
               class="text-blue-500 cursor-pointer"
-              > Umowa użytkownika </span
+            >
+              Umowa użytkownika </span
             >Jestem zaznajomiony i zgadzam się.
           </p>
         </div>

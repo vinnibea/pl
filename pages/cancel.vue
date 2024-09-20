@@ -91,7 +91,7 @@ const onCancel = async () => {
               :id="'phone'"
               :tel="true"
               :pattern="/^[0-9]+$/"
-              :maxLength="10"
+              :maxLength="9"
               :input_mode="'numeric'"
               :value="formData.phone"
               :disabled="

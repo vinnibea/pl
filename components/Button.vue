@@ -15,7 +15,7 @@ const props = defineProps({
     },
     hover: {
         type: String,
-        default: 'bg-button-primary-hover',
+        default: 'hover:bg-button-primary-hover',
     },
     hoverText: {
         type: String,

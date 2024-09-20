@@ -1,110 +1,109 @@
 <script setup>
 const public_offer = [
   {
-    title: "Согласие на обработку персональных данных",
+    title: "Zgoda na przetwarzanie danych osobowych",
     content:
-      "Я, физическое лицо, данные которого указаны при регистрации на сайте https://moneydeal.kz/, являясь субъектом персональных данных, (далее — Субъект), выражаю согласие на обработку моих персональных данных в соответствии с условиями Политики обработки персональных данных TOO MONEYDEAL (БИН: 221140056789) (далее — Оператор) через сайт https://moneydeal.kz (далее – Сервис).",
+      "Ja, osoba fizyczna, której dane zostały podane podczas rejestracji na stronie https://gotowkamax.pl/, jako podmiot danych osobowych (dalej — Podmiot), wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z warunkami Polityki przetwarzania danych osobowych Sp. z o.o. GotówkaMax.pl (NIP: 5261040827) (dalej — Operator) poprzez stronę https://gotowkamax.pl (dalej – Serwis).",
   },
   {
-    title: "Согласие на обработку данных",
+    title: "Zgoda na przetwarzanie danych",
     content:
-      "Субъект выражает полное безоговорочное согласие со всеми условиями обработки его персональных данных путем проставления галочки в чек-боксе рядом с текстом «Я даю свое согласие на обработку персональных данных и соглашаюсь с политикой обработки персональных данных» в Сервисе. Субъект гарантирует, что перед выражением согласия на обработку персональных данных ознакомился со всеми условиями Политики обработки данных Оператора (далее – Политика).",
+      "Podmiot wyraża pełną i bezwarunkową zgodę na wszystkie warunki przetwarzania jego danych osobowych poprzez zaznaczenie pola wyboru obok tekstu „Wyrażam zgodę na przetwarzanie danych osobowych i zgadzam się z polityką przetwarzania danych osobowych” w Serwisie. Podmiot gwarantuje, że przed wyrażeniem zgody na przetwarzanie danych osobowych zapoznał się ze wszystkimi warunkami Polityki przetwarzania danych Operatora (dalej – Polityka).",
   },
   {
-    title: "Дееспособность и согласие",
+    title: "Zdolność do czynności prawnych i zgoda",
     content:
-      "Субъект, выражая согласие на обработку персональных данных, гарантирует, что действует свободно, по своей воле и в своем интересе, и является полностью дееспособным.",
+      "Podmiot, wyrażając zgodę na przetwarzanie danych osobowych, gwarantuje, że działa dobrowolnie, z własnej woli i w swoim interesie oraz posiada pełną zdolność do czynności prawnych.",
   },
   {
-    title: "Обработка персональных данных",
+    title: "Przetwarzanie danych osobowych",
     content:
-      "На основании настоящего согласия Субъект дает согласие Оператору на обработку своих персональных данных, а именно:",
+      "Na podstawie niniejszej zgody Podmiot wyraża zgodę Operatorowi na przetwarzanie swoich danych osobowych, a mianowicie:",
     sublist: [
       {
-        content: "фамилия, имя, отчество (при наличии);",
+        content: "nazwisko, imię, drugie imię (jeśli dotyczy);",
       },
       {
-        content: "дата рождения;",
+        content: "data urodzenia;",
       },
       {
-        content: "ИИН;",
+        content: "PESEL;",
       },
       {
-        content: "адрес электронной почты;",
+        content: "adres e-mail;",
       },
       {
-        content: "номер телефона;",
+        content: "numer telefonu;",
       },
       {
-        content: "cookie-файлы.",
+        content: "pliki cookie.",
       },
     ],
   },
   {
-    title: "Чувствительные данные",
+    title: "Dane wrażliwe",
     content:
-      "Оператор не обрабатывает чувствительные данные Субъекта (биометрические персональные данные, специальные категории персональных данных).",
+      "Operator nie przetwarza wrażliwych danych Podmiotu (biometrycznych danych osobowych, specjalnych kategorii danych osobowych).",
   },
   {
-    title: "Цели обработки данных",
+    title: "Cele przetwarzania danych",
     content:
-      "Цель обработки персональных данных Субъекта – заключение и исполнение пользовательского соглашения, согласно которому TOO MONEYDEAL предоставляет Субъекту доступ к личному кабинету Сервиса, информирует Субъекта о предложениях TOO MONEYDEAL и кредиторов.",
+      "Celem przetwarzania danych osobowych Podmiotu jest zawarcie i wykonanie umowy użytkownika, zgodnie z którą Sp. z o.o. GotówkaMax.pl zapewnia Podmiotowi dostęp do osobistego konta w Serwisie oraz informuje Podmiot o ofertach Sp. z o.o. GotówkaMax.pl i kredytodawców.",
   },
   {
-    title: "Действия с персональными данными",
+    title: "Działania związane z danymi osobowymi",
     content:
-      "Оператор в процессе обработки персональных данных Субъекта совершает следующие действия: накопление, хранение, изменение, дополнение, использование, обезличивание, блокирование и уничтожение персональных данных и иные действия в соответствии с законодательством Республики Казахстан.",
+      "Operator podczas przetwarzania danych osobowych Podmiotu wykonuje następujące czynności: gromadzenie, przechowywanie, zmiana, uzupełnianie, wykorzystywanie, anonimizowanie, blokowanie i usuwanie danych osobowych oraz inne czynności zgodnie z przepisami prawa Rzeczypospolitej Polskiej.",
   },
   {
-    title: "Проверка достоверности",
+    title: "Weryfikacja wiarygodności",
     content:
-      "Субъект согласен с тем, что Оператор вправе проверять достоверность информации, указанной Субъектом при регистрации, через открытые источники данных, включая государственные информационные системы.",
+      "Podmiot zgadza się, że Operator ma prawo weryfikować prawdziwość informacji podanych przez Podmiot podczas rejestracji, za pośrednictwem otwartych źródeł danych, w tym publicznych systemów informacyjnych.",
   },
   {
-    title: "Передача данных третьим лицам",
+    title: "Przekazywanie danych osobom trzecim",
     content:
-      "Субъект согласен с тем, что Оператор вправе передавать персональные данные Субъекта третьим лицам (кредиторам, партнерам и иным лицам, передача персональных данных которым необходимо для исполнения Оператором своих обязательств перед Субъектом или для соблюдения требований законодательства Республики Казахстан), в соответствии с условиями главы 10 Политики.",
+      "Podmiot zgadza się, że Operator ma prawo przekazywać dane osobowe Podmiotu osobom trzecim (kredytodawcom, partnerom i innym podmiotom, którym przekazanie danych osobowych jest niezbędne do realizacji zobowiązań Operatora wobec Podmiotu lub do spełnienia wymogów prawa Rzeczypospolitej Polskiej), zgodnie z warunkami rozdziału 10 Polityki.",
   },
   {
-    title: "Автоматизация обработки",
+    title: "Automatyzacja przetwarzania danych",
     content:
-      "Оператор обрабатывает персональные данные Субъекта с использованием средств автоматизации и без их использования. Оператор не принимает никаких решений, порождающих юридические последствия в отношении Субъекта персональных данных или иным образом затрагивающих его права и законные интересы при обработке персональных данных с использованием средств автоматизации.",
+      "Operator przetwarza dane osobowe Podmiotu z użyciem narzędzi automatyzacji oraz bez ich użycia. Operator nie podejmuje żadnych decyzji mających skutki prawne wobec Podmiotu danych osobowych ani w żaden inny sposób nie narusza praw i interesów Podmiotu w trakcie przetwarzania danych z użyciem narzędzi automatyzacji.",
   },
   {
-    title: "Трансграничная передача данных",
+    title: "Transgraniczne przekazywanie danych",
     content:
-      "Оператор может осуществлять трансграничную передачу данных – на территорию Российской Федерации, Республики Кипр. Субъект дает безоговорочное согласие на такую трансграничную передачу.",
+      "Operator może przekazywać dane za granicę – na terytorium Federacji Rosyjskiej oraz Republiki Cypryjskiej. Podmiot wyraża bezwarunkową zgodę na takie transgraniczne przekazywanie.",
   },
   {
-    title: "Распространение данных",
+    title: "Rozpowszechnianie danych",
     content:
-      "Оператор не осуществляет распространение персональных данных Субъекта в общедоступных источниках.",
+      "Operator nie rozpowszechnia danych osobowych Podmiotu w publicznie dostępnych źródłach.",
   },
   {
-    title: "Срок действия согласия",
+    title: "Okres obowiązywania zgody",
     content:
-      "Согласие Субъекта на обработку его персональных данных действует в течение 10 (десяти) лет со дня его предоставления. Оператор до истечения указанного срока прекращает обработку персональных данных в случае достижения цели, указанной в согласии или досрочного отзыва согласия, если иное не предусмотрено Политикой или законодательством Республики Казахстан.",
+      "Zgoda Podmiotu na przetwarzanie jego danych osobowych obowiązuje przez okres 10 (dziesięciu) lat od dnia jej wyrażenia. Operator przed upływem tego okresu zakończy przetwarzanie danych osobowych w przypadku osiągnięcia celu określonego w zgodzie lub wcześniejszego wycofania zgody, chyba że Polityka lub prawo Rzeczypospolitej Polskiej stanowi inaczej.",
   },
   {
-    title: "Отзыв согласия",
+    title: "Wycofanie zgody",
     content:
-      "Согласие может быть досрочно отозвано путем направления Оператору с адреса электронной почты, указанного Субъектом при регистрации в Сервисе, на адрес электронной почты experts@moneydeal.pro электронное письмо, в котором содержится требование об удалении персональных данных Субъекта. Заявление, указанное в настоящем абзаце, должно соответствовать требованиям, указанным в Политике. Если Субъект отозвал свое Согласие, Оператор немедленно прекращает обработку персональных данных Субъекта, за исключением случаев, предусмотренных законодательством Республики Казахстан.",
+      "Zgoda może zostać wycofana wcześniej poprzez wysłanie przez Podmiot z adresu e-mail podanego podczas rejestracji w Serwisie, na adres e-mail experts@gotowkamax.pro, wiadomości elektronicznej zawierającej żądanie usunięcia danych osobowych Podmiotu. Oświadczenie, o którym mowa w niniejszym punkcie, powinno spełniać wymagania określone w Polityce. Jeżeli Podmiot wycofa swoją zgodę, Operator natychmiast zaprzestaje przetwarzania danych osobowych Podmiotu, z wyjątkiem przypadków przewidzianych przepisami prawa Rzeczypospolitej Polskiej.",
   },
 ];
 
 const contacts = {
-  company: "ТОО MONEYDEAL КЗ",
-  BIN: "БИН 221140056789",
+  company: "Sp. z o.o. GotówkaMax.pl",
+  NIP: "5261040827",
   address: {
-    country: "Казахстан",
-    city: "Нур-Султан",
+    country: "Polska",
+    city: "Warszawa",
     district: "район Байконур",
-    street: "улица Абая",
-    house: "дом 12",
-    apartment: "кв. 34",
+    street: "ulica Marszałkowska 12",
+    index: "00-626",
   },
-  phone: "+77273145678",
-  email: "experts@moneydeal.pro",
+  phone: "+48 (221) 234 567",
+  email: "experts@gotówkamax.pro",
 };
 </script>
 
@@ -126,34 +125,32 @@ const contacts = {
         </div>
       </div>
 
-      <h2 class="font-bold text-center py-2">Контакты Лицензиара</h2>
+      <h2 class="font-bold text-center py-2">Kontakty licencjodawcy</h2>
       <h2 class="font-bold text-left py-2">
-        Партнерство {{ contacts.company }}
+       {{ contacts.company }}
       </h2>
-      <h2 class="font-light text-xs text-left py-2">{{ contacts.BIN }}</h2>
+      <h2 class="font-light text-xs text-left py-2">NIP: {{ contacts.NIP }}</h2>
       <h2 class="font-semibold text-left py-2">
-        Aдрес:
+        Adres:
         <span class="font-light"
           >{{ contacts.address.country }}, {{ contacts.address.city }},
           {{ contacts.address.district }}, {{ contacts.address.street }},
           {{ contacts.address.house }}
         </span>
       </h2>
-      <div>
-        <h2 class="font-semibold text-left py-2">
-          Телефон:
-          <span class="font-light">{{ contacts.phone }} </span>
-        </h2>
-        <h2 class="font-semibold text-left py-2">
-          Email:
-          <span class="font-light">{{ contacts.email }} </span>
-        </h2>
-        <NuxtLink
-          to="/"
-          class="w-full text-center flex justify-center font-bold text-amber-300 py-4"
-          >Вернуться на главную</NuxtLink
-        >
-      </div>
+      <h2 class="font-semibold text-left py-2">
+        Tel.:
+        <span class="font-light">{{ contacts.phone }} </span>
+      </h2>
+      <h2 class="font-semibold text-left py-2">
+        Email:
+        <span class="font-light">{{ contacts.email }} </span>
+      </h2>
+      <NuxtLink
+        to="/"
+        class="w-full text-center flex justify-center font-bold text-button-primary py-4"
+        >Powrót do strony głównej</NuxtLink
+      >
     </div>
   </NuxtLayout>
 </template>

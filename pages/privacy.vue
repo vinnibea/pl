@@ -1,388 +1,206 @@
 <script setup>
 const privacy_offer = [
   {
-    title: "Политика обработки персональных данных",
+    title: "Polityka przetwarzania danych osobowych",
     list: [
       {
-        title: "1. Назначение Политики",
+        title: "1. Cel Polityki",
         sublist: [
           {
             content:
-              "Настоящий документ определяет политику Оператора в отношении Обработки Персональных данных Субъекта Персональных данных — пользователя сайта https://moneydeal.kz (далее – Сервис).",
+              "Niniejszy dokument określa politykę Operatora w zakresie przetwarzania danych osobowych osób fizycznych korzystających z serwisu https://gotowkamax.pl (dalej – Serwis).",
           },
           {
             content:
-              "Оператор осуществляет Обработку Персональных данных, обеспечивает защиту прав и свобод Субъектов при Обработке их Персональных данных и принимает меры для обеспечения выполнения обязанностей, предусмотренных Законом о ПД и принятыми в соответствии с ним нормативными правовыми актами.",
+              "Operator prowadzi przetwarzanie danych osobowych, zapewnia ochronę praw i wolności podmiotów danych podczas ich przetwarzania oraz podejmuje środki zapewniające realizację obowiązków wynikających z Ustawy o Ochronie Danych Osobowych i odpowiednich przepisów prawa.",
           },
         ],
       },
       {
-        title: "2. Основные понятия, используемые в Политике",
+        title: "2. Definicje podstawowe stosowane w Polityce",
         sublist: [
           {
             content:
-              "Персональные данные – ведения, относящиеся к определенному или определяемому на их основании Субъекту Персональных данных, зафиксированные на электронном, бумажном и (или) ином материальном носителе.",
+              "Dane osobowe – informacje dotyczące zidentyfikowanej lub możliwej do zidentyfikowania osoby fizycznej (Podmiotu danych), zarejestrowane na nośniku elektronicznym, papierowym lub innym nośniku materialnym.",
           },
           {
             content:
-              "Субъект Персональных данных (Субъект) – физическое лицо, которое прямо или косвенно определено или определяемо с помощью Персональных данных, являющееся Пользователем.",
+              "Podmiot danych (Podmiot) – osoba fizyczna, którą można zidentyfikować bezpośrednio lub pośrednio na podstawie danych osobowych, będąca Użytkownikiem.",
           },
           {
             content:
-              "Сервис — сайт в сети Интернет (URL): https://moneydeal.kz правообладателем которого является TOO MONEYDEAL. Сервис представляет собой составной объект интеллектуальной собственности в составе специальным образом подобранных и расположенных программ для ЭВМ и других программных средств, баз данных, графического контента и других произведений, объединенных для обеспечения нормального функционирования Сервиса и использования его возможностей.",
+              "Serwis – strona internetowa (URL): https://gotowkamax.pl, której właścicielem jest Sp. z o.o. GotówkaMax.pl. Serwis stanowi złożony obiekt własności intelektualnej, składający się z programów komputerowych, baz danych, treści graficznych i innych utworów, zintegrowanych w celu zapewnienia prawidłowego funkcjonowania Serwisu.",
           },
           {
             content:
-              "Пользователь – дееспособное физическое лицо, принявшее условия Пользовательского соглашения. Пользовательское соглашение расположено в информационно-телекоммуникационной сети «Интернет» по адресу: https://moneydeal.kz/documents/public-offer/",
+              "Użytkownik – osoba fizyczna, która zaakceptowała warunki Umowy Użytkownika. Umowa Użytkownika dostępna jest pod adresem: https://gotowkamax.pl/documents/public-offer/",
           },
           {
             content:
-              "Оператор – товарищество с ограниченной ответственностью «MONEYDEAL» (БИН: 221140056789, Казахстан, город Алматы, Алмалинский район, Проспект Нұрсұлтан Назарбаев, дом 113/55, н.п. 40), которое самостоятельно или совместно с другими лицами организует и (или) осуществляет Обработку Персональных данных, а также определяет цели Обработки Персональных данных, состав Персональных данных, подлежащих Обработке, действия (операции), совершаемые с Персональными данными.",
+              "Operator – Sp. z o.o. GotówkaMax.pl, zarejestrowana pod adresem ulica Marszałkowska 12, 00-626 Warszawa, Polska, NIP: 5261040827, która samodzielnie lub wspólnie z innymi osobami organizuje i (lub) realizuje przetwarzanie danych osobowych oraz określa cele ich przetwarzania, skład danych oraz operacje dokonywane na danych osobowych.",
           },
           {
             content:
-              "Обработка Персональных данных – действия, направленные на накопление, хранение, изменение, дополнение, использование, распространение, обезличивание, блокирование и уничтожение Персональных данных.",
+              "Przetwarzanie danych osobowych – działania polegające na gromadzeniu, przechowywaniu, modyfikowaniu, uzupełnianiu, wykorzystywaniu, rozpowszechnianiu, anonimizowaniu, blokowaniu i niszczeniu danych osobowych.",
           },
           {
             content:
-              "Автоматизированная Обработка Персональных данных – Обработка Персональных данных с помощью средств вычислительной техники.",
+              "Automatyczne przetwarzanie danych osobowych – przetwarzanie danych osobowych za pomocą technologii komputerowych.",
           },
           {
             content:
-              "Накопление Персональных данных — действия по систематизации Персональных данных путем их внесения в базу, содержащую Персональные данные.",
+              "Gromadzenie danych osobowych – działania mające na celu systematyzację danych osobowych poprzez ich wprowadzenie do bazy danych.",
           },
           {
             content:
-              "Блокирование Персональных данных — действия по временному прекращению сбора, накопления, изменения, дополнения, использования, распространения, обезличивания и уничтожения Персональных данных.",
+              "Blokowanie danych osobowych – działania mające na celu czasowe wstrzymanie operacji związanych z przetwarzaniem danych osobowych.",
           },
           {
             content:
-              "Сбор Персональных данных — действия, направленные на получение Персональных данных.",
+              "Zbieranie danych osobowych – działania mające na celu uzyskanie danych osobowych.",
           },
           {
             content:
-              "Уничтожение Персональных данных — действия, в результате совершения которых невозможно восстановить Персональные данные.",
+              "Niszczenie danych osobowych – działania, w wyniku których dane osobowe nie mogą być odzyskane.",
           },
           {
             content:
-              "Обезличивание Персональных данных — действия, в результате совершения которых определение принадлежности Персональных данных Субъекту.",
+              "Anonimizacja danych osobowych – działania, w wyniku których niemożliwe jest ustalenie przynależności danych osobowych do konkretnego podmiotu.",
           },
           {
             content:
-              "Использование Персональных данных — действия с Персональными данными, направленные на реализацию целей деятельности собственника, оператора и третьего лица.",
+              "Wykorzystanie danych osobowych – działania związane z realizacją celów działalności właściciela, operatora i osób trzecich.",
           },
           {
             content:
-              "Распространение Персональных данных – действия, в результате совершения которых происходит передача Персональных данных, в том числе через средства массовой информации или предоставление доступа к Персональным данным каким-либо иным способом.",
+              "Rozpowszechnianie danych osobowych – działania mające na celu przekazanie danych osobowych, w tym za pomocą środków masowego przekazu lub udostępnienie danych osobowych w jakikolwiek inny sposób.",
           },
           {
             content:
-              "Предоставление Персональных данных – действия, направленные на раскрытие Персональных данных определенному лицу или определенному кругу лиц.",
+              "Udostępnianie danych osobowych – działania mające na celu ujawnienie danych osobowych konkretnej osobie lub grupie osób.",
           },
           {
             content:
-              "Информационная система Персональных данных – совокупность содержащихся в базах данных Персональных данных и обеспечивающих их Обработку информационных технологий и технических средств.",
+              "System informacyjny danych osobowych – zestaw danych osobowych zawartych w bazach danych oraz technologii i środków technicznych umożliwiających ich przetwarzanie.",
           },
           {
             content:
-              "Законодательство – действующее законодательство Республики Казахстан.",
+              "Prawo – obowiązujące przepisy prawa w Polsce i Unii Europejskiej.",
           },
           {
             content:
-              "Cookie-файлы («куки-файлы», в переводе с англ. «печенье») — файлы и иные идентификаторы персональных данных, позволяющих вычислить Пользователя и выделить его среди других лиц, хранящиеся на компьютере пользователя, для его дальнейшей идентификации на сайте.",
+              "Pliki cookie („ciasteczka”) – pliki i inne identyfikatory danych osobowych, które pozwalają na identyfikację Użytkownika i odróżnienie go od innych osób, przechowywane na komputerze użytkownika w celu jego dalszej identyfikacji na stronie internetowej.",
           },
         ],
       },
       {
-        title: "3. Общие принципы Обработки Персональных данных Оператором",
+        title: "3. Ogólne zasady przetwarzania danych osobowych przez Operatora",
         sublist: [
           {
             content:
-              "Обработка Персональных данных осуществляется на законной и справедливой основе.",
+              "Przetwarzanie danych osobowych odbywa się zgodnie z prawem i zasadami uczciwości.",
           },
           {
             content:
-              "Обработка Персональных данных осуществляется с согласия Пользователя или при наличии иного основания, предусмотренного Законодательством о Персональных данных, до достижения цели Обработки Персональных данных, если иное не предусмотрено Законодательством.",
+              "Przetwarzanie danych osobowych odbywa się za zgodą Użytkownika lub na podstawie innej przesłanki przewidzianej prawem do osiągnięcia celu przetwarzania danych osobowych, chyba że prawo stanowi inaczej.",
           },
           {
             content:
-              "Обработка Персональных данных ограничивается достижением конкретных, заранее определенных и законных целей, указанных в Политике.",
+              "Przetwarzanie danych osobowych jest ograniczone do konkretnych, uprzednio określonych i prawnie uzasadnionych celów wskazanych w Polityce.",
           },
           {
             content:
-              "Не допускается объединение баз данных, информации на материальных носителях, содержащих Персональные данные, Обработка которых осуществляется в целях, несовместимых между собой.",
+              "Nie jest dozwolone łączenie baz danych zawierających informacje przetwarzane w różnych celach.",
           },
           {
             content:
-              "Обработке подлежат только Персональные данные, которые отвечают целям их Обработки.",
+              "Przetwarzane są wyłącznie dane osobowe, które są odpowiednie do celów, w jakich zostały zebrane.",
           },
           {
             content:
-              "Содержание и объем обрабатываемых Персональных данных соответствуют заявленным целям Обработки.",
+              "Zawartość i zakres przetwarzanych danych osobowych odpowiada deklarowanym celom przetwarzania.",
           },
           {
             content:
-              "Обрабатываемые Персональные данные не должны быть избыточными по отношению к заявленным целям Обработки.",
+              "Przetwarzane dane osobowe nie mogą być nadmiarowe w stosunku do celów przetwarzania.",
           },
           {
             content:
-              "При Обработке Персональных данных обеспечивается точность Персональных данных, их достаточность, а в необходимых случаях и актуальность по отношению к целям Обработки Персональных данных. Оператор принимает необходимые меры либо обеспечивает их принятие (в случае если Обработка Персональных данных осуществляется третьим лицом) по удалению или уточнению неполных или неточных данных.",
+              "Podczas przetwarzania danych osobowych zapewnia się dokładność, adekwatność i, w razie potrzeby, aktualność danych osobowych w stosunku do celów przetwarzania. Operator podejmuje niezbędne środki w celu usunięcia lub korekty niepełnych lub nieprawidłowych danych.",
           },
           {
             content:
-              "Хранение Персональных данных осуществляется в форме, позволяющей определить Субъекта, в течение срока установленным Законодательством, либо договором, заключенным с Пользователем, либо согласием на Обработку Персональных данных.",
+              "Dane osobowe są przechowywane w formie, która umożliwia identyfikację podmiotu danych przez okres ustalony prawem lub umową, o ile nie przewidziano inaczej.",
           },
         ],
       },
       {
-        title: "4. Правовые основания Обработки Персональных данных",
+        title: "4. Podstawy prawne przetwarzania danych osobowych",
         sublist: [
           {
             content:
-              "Правовыми основаниями Обработки Персональных данных является совокупность нормативных правовых актов, во исполнение и в соответствии с которыми Оператор осуществляет Обработку Персональных данных, в том числе:",
+              "Podstawami prawnymi przetwarzania danych osobowych są przepisy prawa, na podstawie których Operator realizuje przetwarzanie danych osobowych, w tym:",
           },
           {
-            content: "Конституция Республики Казахстан;",
+            content: "Konstytucja Rzeczypospolitej Polskiej;",
           },
           {
-            content: "Гражданский кодекс Республики Казахстан;",
-          },
-          {
-            content:
-              "Закон Республики Казахстан от 21 мая 2013 года № 94-V «О Персональных данных и их защите» (далее. – Закон о ПД);",
+            content: "Kodeks cywilny Rzeczypospolitej Polskiej;",
           },
           {
             content:
-              "договор, стороной которого либо выгодоприобретателем является Субъект;",
+              "Ustawa z dnia 10 maja 2018 r. o ochronie danych osobowych oraz Ogólne Rozporządzenie o Ochronie Danych Osobowych (RODO);",
           },
           {
-            content: "согласие Субъекта;",
+            content:
+              "Umowa, której stroną lub beneficjentem jest podmiot danych;",
           },
           {
-            content: "другие документы, в том числе Законодательство.",
+            content: "Zgoda podmiotu danych;",
+          },
+          {
+            content: "Inne dokumenty, w tym odpowiednie przepisy prawa.",
           },
         ],
       },
       {
-        title: "5. Прочие положения",
+        title: "5. Inne postanowienia",
         sublist: [
           {
             content:
-              "Оператор не осуществляет Обработку Персональных данных без оснований, предусмотренных Законодательством и (или) за пределами условий Обработки Персональных данных, указанных в Законодательстве.",
-          },
-        ],
-      },
-
-      {
-        title:
-          "6. Права и обязанности Оператора и Субъектов Персональных данных",
-        sublist: [
-          {
-            content:
-              "Оператор обеспечивает права Субъектов в порядке, установленном ст. ст. 20, 22 Закона о ПД.",
-          },
-          {
-            content: "Оператор имеет право:",
-            sublist: [
-              {
-                content:
-                  "Защищать свои интересы в суде и других государственных и муниципальных органах.",
-              },
-              {
-                content:
-                  "Проверять достоверность информации, указанной Субъектом при регистрации, через открытые источники данных, включая государственные информационные системы.",
-              },
-              {
-                content:
-                  "Предоставлять Персональные данные Субъектов третьим лицам на основаниях, предусмотренных Законодательством. Перечень третьих лиц, которым Оператор передает Персональные данные Субъекта, указан в Политике.",
-              },
-              {
-                content:
-                  "Обрабатывать Персональные данные Субъекта с помощью метрик программ Яндекс.Метрика, Google Analytics, Пиксель Вконтакте, Пиксель Facebook, Пиксель top@mail.ru, Пиксель Google Tag Manager.",
-              },
-              {
-                content:
-                  "Требовать от Субъекта своевременного уточнения предоставленных Персональных данных.",
-              },
-              {
-                content:
-                  "Передавать Персональные данные Субъектов другим (третьим) лицам в случаях, когда это необходимо для выполнения договора между Субъектом и Сервисом.",
-              },
-              {
-                content:
-                  "Предоставлять информацию о Субъекте третьим лицам для выявления и прекращения мошеннических действий, устранения технических неполадок или проблем с безопасностью.",
-              },
-            ],
-          },
-          {
-            content: "Оператор обязан:",
-            sublist: [
-              {
-                content:
-                  "Соблюдать конфиденциальность Персональных данных, а именно не разглашать третьим лицам и не распространять Персональные данные без согласия Субъекта, если иное не предусмотрено Законодательством и не вытекает из сути договора между Субъектом и Сервисом.",
-              },
-              {
-                content:
-                  "При сборе Персональных данных, включая сеть Интернет, обеспечить Обработку Персональных данных граждан Республики Казахстан с использованием баз данных, находящихся на территории Республики Казахстан.",
-              },
-              {
-                content:
-                  "Приостановить Обработку и уничтожить или анонимизировать Персональные данные в случаях, предусмотренных Законодательством.",
-              },
-              {
-                content:
-                  "Принять меры по уточнению, уничтожению, анонимизации Персональных данных Субъекта в связи с его обращением с законными и обоснованными требованиями.",
-              },
-              {
-                content:
-                  "Хранить Персональные данные в форме, которая позволяет определить Субъекта, в течение срока хранения Персональных данных, определенного в Соглашении пользователя, или в согласии на Обработку Персональных данных, но не более срока, указанного в п. 9.6 Политики.",
-              },
-              {
-                content:
-                  "Предоставить информацию о производимой Обработке Персональных данных относительно Субъекта по запросу (обращению) последнего и уполномоченных органов по защите прав Субъектов Персональных данных.",
-              },
-            ],
-          },
-          {
-            content:
-              "Оператор признает Персональные данные конфиденциальной информацией и осуществляет Обработку такой информации в соответствии с Законодательством (гл. 2 Закона о ПД) и локальными нормативными актами, содержащими положения о работе с конфиденциальной информацией.",
-          },
-          {
-            content:
-              "Не является нарушением конфиденциальности Персональных данных предоставление Оператором информации третьим лицам, действующим на основании договора с Оператором для выполнения обязательств перед Субъектом.",
-          },
-          {
-            content:
-              "Оператор осуществляет хранение Персональных данных таким образом, что исключает их утрату или неправомерное использование в базах данных, находящихся на территории Республики Казахстан.",
-          },
-          {
-            content: "Субъект имеет право:",
-            sublist: [
-              {
-                content:
-                  "на бесплатное ознакомление со своими Персональными данными, которые обрабатываются Оператором, за исключением случаев, предусмотренных Законодательством;",
-              },
-              {
-                content:
-                  "на получение информации, касающейся Обработки его Персональных данных;",
-              },
-              {
-                content:
-                  "требовать от Оператора уточнения его Персональных данных, их блокировки или уничтожения в случаях, если Персональные данные являются неполными, устаревшими, неточными, незаконно полученными или не являются необходимыми для заявленной цели Обработки, а также принимать предусмотренные законом меры для защиты своих прав;",
-              },
-              {
-                content:
-                  "оспаривать действия или бездействие Оператора в уполномоченный орган по защите прав Субъектов Персональных данных или в судебном порядке;",
-              },
-              {
-                content:
-                  "на защиту своих прав и законных интересов, в том числе на возмещение убытков и (или) компенсацию морального вреда в судебном порядке.",
-              },
-            ],
-          },
-          {
-            content: "Субъект обязан:",
-            sublist: [
-              {
-                content:
-                  "предоставлять Оператору достоверную информацию о себе и предоставлять документы, содержащие Персональные данные, состав которых установлен Законодательством и локальными нормативными документами в объеме, необходимом для цели Обработки;",
-              },
-              {
-                content:
-                  "уведомлять Оператора о уточнении (обновлении, изменении) своих Персональных данных;",
-              },
-              {
-                content:
-                  "соблюдать Политику и Законодательство о Персональных данных.",
-              },
-            ],
+              "Operator nie przetwarza danych osobowych bez podstaw prawnych ani poza warunkami przetwarzania danych określonymi w odpowiednich przepisach prawa.",
           },
         ],
       },
       {
-        title:
-          "7. Цели Обработки, объем и категории обрабатываемых Персональных данных",
+        title: "6. Prawa i obowiązki Operatora oraz Podmiotów danych osobowych",
         sublist: [
           {
             content:
-              "Оператор использует Персональные данные с следующими целями:",
+              "Operator zapewnia prawa podmiotów danych w sposób określony w art. 20 i 22 Ustawy o ochronie danych osobowych.",
           },
           {
             content:
-              "Заключение и выполнение договора пользователя, в соответствии с которым ТОО «MONEYDEAL» предоставляет Субъекту доступ к функционалу Личного кабинета в Сервисе:",
-            sublist: [
-              {
-                content: "фамилия, имя, отчество (при наличии);",
-              },
-              {
-                content: "ИНН;",
-              },
-              {
-                content: "город получения микрокредита;",
-              },
-              {
-                content: "дата рождения;",
-              },
-              {
-                content: "адрес электронной почты;",
-              },
-              {
-                content: "номер телефона;",
-              },
-              {
-                content: "cookie-файлы.",
-              },
-            ],
-          },
-          {
-            content: "Рассмотрение обращений и претензий Субъекта:",
-            sublist: [
-              {
-                content: "фамилия, имя, отчество (при наличии);",
-              },
-              {
-                content: "адрес электронной почты;",
-              },
-              {
-                content: "номер телефона;",
-              },
-              {
-                content: "cookie-файлы.",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        title: "8. Субьекты Персональных данных",
-        sublist: [
-          {
-            content:
-              "Субъектами в соответствии с условиями Политики являются Пользователи Сервиса.",
-          },
-          {
-            content:
-              "Пользователь, используя функционал Сервиса, передает свои Персональные данные Оператору. Субъект добровольно, своей волей и в своем интересе предоставляет Оператору добровольное, информированное, сознательное и юридически значимое согласие на Обработку его Персональных данных путем проставления «галочки» в чек-боксе и выражает свое безоговорочное согласие с данной Политикой и указанными в ней условиями Обработки его Персональных данных.",
+              "Wszelkie zapytania dotyczące przetwarzania danych osobowych należy kierować do Sp. z o.o. GotówkaMax.pl pod adresem email: experts@gotówkamax.pro, telefon: +48 (221) 234 567.",
           },
         ],
       },
     ],
   },
 ];
-
+     
 const contacts = {
-  company: "ТОО MONEYDEAL КЗ",
-  BIN: "БИН 221140056789",
+  company: "Sp. z o.o. GotówkaMax.pl",
+  NIP: "5261040827",
   address: {
-    country: "Казахстан",
-    city: "Нур-Султан",
+    country: "Polska",
+    city: "Warszawa",
     district: "район Байконур",
-    street: "улица Абая",
-    house: "дом 12",
-    apartment: "кв. 34",
+    street: "ulica Marszałkowska 12",
+    index: "00-626",
   },
-  phone: "+77273145678",
-  email: "experts@moneydeal.pro",
+  phone: "+48 (221) 234 567",
+  email: "experts@gotówkamax.pro",
 };
 </script>
 
@@ -404,13 +222,13 @@ const contacts = {
         </div>
       </div>
 
-      <h2 class="font-bold text-center py-2">Контакты Лицензиара</h2>
+      <h2 class="font-bold text-center py-2">Kontakty licencjodawcy</h2>
       <h2 class="font-bold text-left py-2">
-        Партнерство {{ contacts.company }}
+       {{ contacts.company }}
       </h2>
-      <h2 class="font-light text-xs text-left py-2">{{ contacts.BIN }}</h2>
+      <h2 class="font-light text-xs text-left py-2">NIP: {{ contacts.NIP }}</h2>
       <h2 class="font-semibold text-left py-2">
-        Aдрес:
+        Adres:
         <span class="font-light"
           >{{ contacts.address.country }}, {{ contacts.address.city }},
           {{ contacts.address.district }}, {{ contacts.address.street }},
@@ -418,7 +236,7 @@ const contacts = {
         </span>
       </h2>
       <h2 class="font-semibold text-left py-2">
-        Телефон:
+        Tel.:
         <span class="font-light">{{ contacts.phone }} </span>
       </h2>
       <h2 class="font-semibold text-left py-2">
@@ -427,8 +245,8 @@ const contacts = {
       </h2>
       <NuxtLink
         to="/"
-        class="w-full text-center flex justify-center font-bold text-amber-300 py-4"
-        >Вернуться на главную</NuxtLink
+        class="w-full text-center flex justify-center font-bold text-button-primary py-4"
+        >Powrót do strony głównej</NuxtLink
       >
     </div>
   </NuxtLayout>

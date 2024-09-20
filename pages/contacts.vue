@@ -10,7 +10,7 @@ const contacts = {
     index: "00-626",
   },
   phone: "+48 (221) 234 567",
-  email: "experts@moneydeal.pro",
+  email: "experts@gotówkamax.pro",
 };
 </script>
 

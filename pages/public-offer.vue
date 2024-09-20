@@ -1,718 +1,591 @@
 <script setup>
 const public_offer = [
   {
-    title: "Пользовательское соглашение",
+    title: "Umowa użytkownika",
     content:
-      "Это соглашение регулирует отношения между Лицензиаром и Пользователем при использовании функционала Сервиса. Соглашение является договором присоединения. Внимательно прочитайте текст соглашения. Если вы не согласны с условиями, ТОО MONEYDEAL рекомендует отказаться от использования сервиса.",
+      "Niniejsza umowa reguluje stosunki między Licencjodawcą a Użytkownikiem w zakresie korzystania z funkcji Serwisu. Umowa stanowi umowę adhezyjną. Prosimy uważnie przeczytać treść umowy. Jeśli nie zgadzacie się z warunkami, Sp. z o.o. GotówkaMax.pl zaleca powstrzymanie się od korzystania z serwisu.",
   },
 
   {
-    title: "Термины",
+    title: "Definicje",
     list: [
       {
         title:
-          "1.1. Лицензиар – Партнерство ТОО MONEYDEAL, БИН: 221140056789, которому принадлежат исключительные права на Сервис и которое предоставляет Пользователю право на использование функционала Сервиса на основании простой (неисключительной) лицензии.",
+          "1.1. Licencjodawca – Spółka z o.o. GotówkaMax.pl, NIP: 5261040827, której przysługują wyłączne prawa do Serwisu i która udziela Użytkownikowi prawa do korzystania z funkcji Serwisu na podstawie licencji niewyłącznej.",
       },
       {
         title:
-          "1.2. Пользователь – дееспособное физическое лицо, присоединившееся к условиям Соглашения и использующее функционал Сервиса.",
+          "1.2. Użytkownik – osoba fizyczna posiadająca pełną zdolność do czynności prawnych, która przystąpiła do warunków Umowy i korzysta z funkcji Serwisu.",
       },
       {
         title:
-          "1.3. Сервис – совокупность информации, текстов, графических элементов, дизайна, программного обеспечения, баз данных и иных результатов интеллектуальной деятельности, доступных по адресу в интернете.",
+          "1.3. Serwis – zbiór informacji, tekstów, elementów graficznych, projektu, oprogramowania, baz danych i innych rezultatów działalności intelektualnej, dostępnych w Internecie.",
       },
       {
         title:
-          "1.4. Личный кабинет – функционал Сервиса, доступный Пользователю после регистрации, с возможностью доступа к платному функционалу после оплаты.",
+          "1.4. Konto użytkownika – funkcja Serwisu dostępna dla Użytkownika po rejestracji, umożliwiająca dostęp do płatnych funkcji po dokonaniu opłaty.",
       },
       {
         title:
-          "1.5. Кредитор – лицо, указанное в Приложении №1 к Соглашению, с которым Лицензиар заключил договор и которое вправе направлять уведомления и предложения Пользователю о заключении Договора займа.",
+          "1.5. Kredytodawca – podmiot wymieniony w Załączniku nr 1 do Umowy, z którym Licencjodawca zawarł umowę i który ma prawo wysyłać Użytkownikowi powiadomienia i oferty dotyczące zawarcia Umowy pożyczki.",
       },
       {
         title:
-          "1.5.1. Партнер – лицо, указанное в Приложении №1 к Соглашению, с которым Лицензиар заключил договор и которое вправе направлять уведомления и предложения Пользователю.",
+          "1.5.1. Partner – podmiot wymieniony w Załączniku nr 1 do Umowy, z którym Licencjodawca zawarł umowę i który ma prawo wysyłać powiadomienia i oferty Użytkownikowi.",
       },
       {
         title:
-          "1.6. Кредитный рейтинг – оценка кредитоспособности Пользователя, осуществляемая функционалом Сервиса на основе предоставленной информации.",
+          "1.6. Ocena kredytowa – ocena zdolności kredytowej Użytkownika przeprowadzana przez funkcje Serwisu na podstawie dostarczonych informacji.",
       },
       {
         title:
-          "1.7. Договор о предоставлении микрокредита – договор, заключаемый между Пользователем и Кредитором о предоставлении денег на условиях платности, срочности и возвратности.",
+          "1.7. Umowa o udzielenie mikrokredytu – umowa zawarta między Użytkownikiem a Kredytodawcą, dotycząca udzielenia pożyczki na zasadach odpłatności, terminowości i zwrotności.",
       },
       {
         title:
-          "1.8. Термины, не определенные в Соглашении, толкуются в соответствии с действующим законодательством Республики Казахстан.",
+          "1.8. Terminy niezdefiniowane w Umowie są interpretowane zgodnie z obowiązującymi przepisami prawa Rzeczypospolitej Polskiej.",
       },
     ],
   },
 
   {
-    title: "Предмет соглашения",
+    title: "Przedmiot umowy",
     list: [
       {
         title:
-          "2.1. Лицензиар предоставляет Пользователю право на использование функционала Сервиса, а при оплате лицензионного вознаграждения – на использование платного функционала Сервиса.",
+          "2.1. Licencjodawca udziela Użytkownikowi prawa do korzystania z funkcji Serwisu, a po uiszczeniu opłaty licencyjnej – do korzystania z płatnych funkcji Serwisu.",
       },
       {
         title:
-          "2.2. Права использования функционала Сервиса предоставляются Пользователю с сохранением за Лицензиаром права выдачи лицензий другим лицам.",
+          "2.2. Prawa do korzystania z funkcji Serwisu są udzielane Użytkownikowi z zachowaniem przez Licencjodawcę prawa do udzielania licencji innym osobom.",
       },
       {
-        title: "2.3. Разрешенные способы использования Сервиса",
+        title: "2.3. Dozwolone sposoby korzystania z Serwisu",
         sublist: [
           {
             content:
-              "2.3.1. Доступ к информации, размещенной в Сервисе. Часть информации может быть доступна только после получения доступа к Личному кабинету и платному функционалу.",
+              "2.3.1. Dostęp do informacji zamieszczonych w Serwisie. Część informacji może być dostępna dopiero po uzyskaniu dostępu do Konta użytkownika i płatnych funkcji.",
           },
           {
             content:
-              "2.3.2. Предоставление Пользователем полных и достоверных сведений о себе.",
+              "2.3.2. Przekazanie przez Użytkownika pełnych i prawdziwych danych o sobie.",
           },
           {
-            content: "2.3.3. Прохождение регистрации и авторизации в Сервисе.",
+            content: "2.3.3. Rejestracja i logowanie w Serwisie.",
           },
           {
-            content: "2.3.4. Взаимодействие с Лицензиаром.",
-          },
-          {
-            content:
-              "2.3.5. Передача информации Лицензиару через формы в Сервисе.",
-          },
-          {
-            content: "2.3.6. Доступ к платному функционалу Сервиса.",
+            content: "2.3.4. Współpraca z Licencjodawcą.",
           },
           {
             content:
-              "2.3.7. Использование иного функционала Сервиса в соответствии с его назначением.",
+              "2.3.5. Przekazywanie informacji Licencjodawcy za pomocą formularzy w Serwisie.",
+          },
+          {
+            content: "2.3.6. Dostęp do płatnych funkcji Serwisu.",
+          },
+          {
+            content:
+              "2.3.7. Korzystanie z innych funkcji Serwisu zgodnie z ich przeznaczeniem.",
           },
         ],
       },
       {
         title:
-          "2.4. Никакие иные права на Сервис, кроме указанных в пункте 2.3, Пользователю не предоставляются.",
+          "2.4. Użytkownikowi nie przysługują żadne inne prawa do Serwisu, poza tymi wymienionymi w punkcie 2.3.",
       },
       {
         title:
-          "2.5. Пользователь не вправе предпринимать действия, включая изменение кода, модификацию, декомпиляцию и использование методов социальной инженерии для получения доступа к личным данным других Пользователей.",
+          "2.5. Użytkownik nie ma prawa podejmować działań, w tym zmiany kodu, modyfikacji, dekompilacji oraz stosowania metod inżynierii społecznej w celu uzyskania dostępu do danych osobowych innych Użytkowników.",
       },
       {
         title:
-          "2.6. Срок использования функционала Сервиса: до прекращения Соглашения или исключительных прав на Сервис. Для платного функционала срок составляет 5 дней с момента оплаты.",
+          "2.6. Okres korzystania z funkcji Serwisu: do rozwiązania Umowy lub wygaśnięcia wyłącznych praw do Serwisu. W przypadku płatnych funkcji okres wynosi 5 dni od momentu dokonania opłaty.",
       },
       {
         title:
-          "2.7. Срок использования платного функционала: в течение 5 дней с даты оплаты лицензионного вознаграждения.",
+          "2.7. Okres korzystania z płatnych funkcji: 5 dni od dnia dokonania opłaty licencyjnej.",
       },
       {
-        title: "2.8. Территория использования Сервиса – Республика Казахстан.",
-      },
-      {
-        title:
-          "2.9. Условия Соглашения распространяются на обновления и новые версии Сервиса.",
+        title: "2.8. Obszar korzystania z Serwisu – Rzeczpospolita Polska.",
       },
       {
         title:
-          "2.10. Ни одно положение Соглашения не может толковаться как передача исключительных прав или лицензии на весь Сервис или его части.",
+          "2.9. Warunki Umowy obejmują aktualizacje i nowe wersje Serwisu.",
       },
       {
         title:
-          "2.11. Информация в Сервисе является результатом интеллектуальной деятельности Лицензиара. Все права на такую информацию принадлежат Лицензиару до тех пор, пока не установлено иное.",
+          "2.10. Żadne postanowienie Umowy nie może być interpretowane jako przeniesienie wyłącznych praw lub licencji na cały Serwis lub jego części.",
+      },
+      {
+        title:
+          "2.11. Informacje w Serwisie są wynikiem działalności intelektualnej Licencjodawcy. Wszelkie prawa do tych informacji przysługują Licencjodawcy, chyba że ustalono inaczej.",
       },
     ],
   },
 
   {
-    title: "Условия оплаты",
+    title: "Warunki płatności",
     list: [
       {
         title:
-          "3.1. Плата за использование Сервиса составляет 3999. Триальный период, в течение которого плата не спрашивается с клиента - 5 дней от начала действия подписки. Эта сумма списывается за 5 дней использования с момента оформления заявки. Если подписка не отменена, плата будет списываться автоматически.",
+          "3.1. Opłata za korzystanie z Serwisu wynosi 19,99 euro. Okres próbny, w którym opłata nie jest pobierana od klienta, wynosi 5 dni od rozpoczęcia subskrypcji. Kwota ta zostanie pobrana za 5 dni korzystania od momentu złożenia wniosku. Jeśli subskrypcja nie zostanie anulowana, opłata będzie pobierana automatycznie.",
       },
       {
         title:
-          "3.2. Если услуга больше не актуальна (вы получили микрокредит или не нуждаетесь в нем), вы можете самостоятельно отписаться от услуги в любой момент. Подписка отменяется через соответствующую функцию.",
+          "3.2. Jeżeli usługa nie jest już potrzebna (np. po otrzymaniu mikrokredytu), Użytkownik może samodzielnie anulować subskrypcję w dowolnym momencie. Subskrypcję można anulować za pomocą odpowiedniej funkcji.",
       },
       {
         title:
-          "3.3. Сайт использует куки для предоставления сервиса. Условия хранения куки можно настроить в браузере. Для удаления персональных данных отправьте письмо на адрес experts@moneydeal.pro с просьбой удалить данные. Письмо должно содержать фразу: “Прошу удалить мои персональные данные”. Данное действие необратимо.",
+          "3.3. Strona internetowa używa plików cookie w celu świadczenia usług. Warunki przechowywania plików cookie można skonfigurować w przeglądarce. W celu usunięcia danych osobowych należy wysłać wiadomość e-mail na adres experts@gotowkamax.pl z prośbą o usunięcie danych. Wiadomość powinna zawierać sformułowanie: „Proszę o usunięcie moich danych osobowych”. Ta operacja jest nieodwracalna.",
       },
     ],
   },
 
   {
-    title: "Функционал Сервиса",
+    title: "Funkcjonalność serwisu",
     list: [
       {
-        title: "4.1. Функционал Сервиса предназначен для:",
+        title: "4.1. Funkcjonalność Serwisu przeznaczona jest do:",
         sublist: [
           {
-            content: "4.1.1. регистрации, авторизации Пользователя в Сервисе;",
+            content: "4.1.1. rejestracji, autoryzacji Użytkownika w Serwisie;",
           },
           {
             content:
-              "4.1.2. сбора информации о Пользователе, получение информации от третьих лиц, в информационных системах и базах данных, которые принадлежат третьим лицам;",
+              "4.1.2. gromadzenia informacji o Użytkowniku, pozyskiwania informacji od osób trzecich, z systemów informacyjnych i baz danych, które należą do osób trzecich;",
           },
           {
-            content: "4.1.3. оценки информации, представленной Пользователем;",
-          },
-          {
-            content:
-              "4.1.4. направления информации о Пользователе Кредиторам по результатам оценки;",
+            content: "4.1.3. oceny informacji przekazanych przez Użytkownika;",
           },
           {
             content:
-              "4.1.5. передачи информации Пользователю о Кредиторах, которые приняли предварительное решение о заключении с Пользователем Договора займа;",
+              "4.1.4. przekazywania informacji o Użytkowniku Kredytodawcom na podstawie oceny;",
           },
           {
             content:
-              "4.1.6. направления Пользователю информации об акциях, предложениях, услугах Лицензиара, Кредиторов по каналам электросвязи;",
+              "4.1.5. przekazywania Użytkownikowi informacji o Kredytodawcach, którzy podjęli wstępną decyzję o zawarciu Umowy o pożyczkę;",
           },
           {
             content:
-              "4.1.7. предоставление Пользователю информации, полученной о нем от третьих лиц, в информационных системах и базах данных, которые принадлежат третьим лицам;",
+              "4.1.6. przesyłania Użytkownikowi informacji o promocjach, ofertach, usługach Licencjodawcy, Kredytodawców za pośrednictwem kanałów telekomunikacyjnych;",
           },
           {
             content:
-              "4.1.8. предоставление Пользователю информации, размещенной Лицензиаром в Сервисе.",
+              "4.1.7. przekazywania Użytkownikowi informacji pozyskanych o nim od osób trzecich, z systemów informacyjnych i baz danych, które należą do osób trzecich;",
+          },
+          {
+            content:
+              "4.1.8. udostępniania Użytkownikowi informacji zamieszczonych przez Licencjodawcę w Serwisie.",
           },
         ],
       },
       {
         title:
-          "4.2. В рамках исполнения п. 4.1.2 и 4.1.7 Пользовательского соглашения, Пользователь выражает согласие на передачу персональных данных “ТОО “Первое кредитное бюро“” и соглашается на получение персонального кредитного рейтинга, сформированного “ТОО “Первое кредитное бюро“”, с использованием Сервиса.",
+          "4.2. W ramach realizacji pkt 4.1.2 i 4.1.7 Umowy licencyjnej, Użytkownik wyraża zgodę na przekazanie swoich danych osobowych do “Pierwszego Biura Kredytowego” oraz zgadza się na uzyskanie swojego osobistego ratingu kredytowego, sporządzonego przez “Pierwsze Biuro Kredytowe”, z wykorzystaniem Serwisu.",
       },
       {
         title:
-          "4.3. Пользователь не вправе использовать Сервис способами, не предусмотренными Пользовательским соглашением.",
+          "4.3. Użytkownik nie ma prawa korzystać z Serwisu w sposób nieprzewidziany Umową licencyjną.",
       },
       {
         title:
-          "4.4. Лицензиар предоставляет доступ к функционалу Сервиса безвозмездно, за исключением доступа к платному функционалу Сервиса. Услуга считается оказанной в момент получения доступа к Сервису. К платному функционалу Сервиса относятся следующие разделы Личного кабинета:",
+          "4.4. Licencjodawca udostępnia funkcjonalność Serwisu nieodpłatnie, z wyjątkiem dostępu do płatnych funkcji Serwisu. Usługa uważana jest za zrealizowaną w momencie uzyskania dostępu do Serwisu. Płatne funkcje Serwisu obejmują następujące sekcje Panelu użytkownika:",
         list: [
           {
             title:
-              "4.4.1. Предоставление и обновление информации в разделах Личного кабинета:",
+              "4.4.1. Udostępnianie i aktualizowanie informacji w sekcjach Panelu użytkownika:",
             sublist: [
               {
                 content:
-                  "4.4.1.1. Кредитный рейтинг. В данном разделе Личного кабинета отражается информация о Кредитном рейтинге, который был присвоен Пользователю. Кредитный рейтинг присваивается Пользователю после регистрации в Сервисе на основании информации, которую Пользователь представил, и алгоритмов, заложенных в функционал Сервиса. Кредитный рейтинг предназначен для информирования Пользователя и не является обязательным для Кредитора;",
+                  "4.4.1.1. Rating kredytowy. W tej sekcji Panelu użytkownika widoczne są informacje o ratingu kredytowym przypisanym Użytkownikowi. Rating kredytowy jest przypisywany po rejestracji na podstawie informacji przekazanych przez Użytkownika oraz algorytmów zawartych w funkcjach Serwisu. Rating kredytowy ma charakter informacyjny i nie jest wiążący dla Kredytodawcy.",
               },
               {
                 content:
-                  "4.4.1.2. Задолженность. В данном разделе Личного кабинета отражается информация по исполнительным производствам, по которым Пользователь выступает (или был) должником. Информация, указанная в п. 4.2 Пользовательского соглашению, предоставляется и обновляется в день оплаты лицензионного вознаграждения.",
+                  "4.4.1.2. Zadłużenie. W tej sekcji Panelu użytkownika widoczne są informacje na temat postępowań egzekucyjnych, w których Użytkownik występuje (lub występował) jako dłużnik. Informacje określone w pkt 4.2 Umowy licencyjnej są udostępniane i aktualizowane w dniu opłacenia opłaty licencyjnej.",
               },
             ],
           },
           {
             content:
-              "4.4.2. Доступ к информации, которая размещена в разделах Личного кабинета, доступ к которым Лицензиар предоставляет Пользователю после оплаты лицензионного вознаграждения. Доступ к информации, указанной в п. 4.2 Пользовательского соглашения, предоставляется на срок, указанный в п. 2.7. Пользовательского соглашения.",
+              "4.4.2. Dostęp do informacji zamieszczonych w sekcjach Panelu użytkownika, które Licencjodawca udostępnia Użytkownikowi po opłaceniu opłaty licencyjnej. Dostęp do informacji określonych w pkt 4.2 Umowy licencyjnej jest udzielany na okres określony w pkt 2.7 Umowy licencyjnej.",
           },
         ],
       },
       {
         title:
-          "4.5. После регистрации в Сервисе информация о Пользователе в автоматическом режиме направляется Кредиторам, требованиям которых соответствует Пользователь, для принятия предварительного решения о заключении Договора о предоставлении микрокредита, а также направляется Партнерам, которые, в свою очередь, передают информацию Кредиторам.",
+          "4.5. Po rejestracji w Serwisie informacje o Użytkowniku są automatycznie przekazywane Kredytodawcom, których wymagania spełnia Użytkownik, w celu podjęcia wstępnej decyzji o zawarciu Umowy o udzielenie mikropożyczki, a także Partnerom, którzy z kolei przekazują informacje Kredytodawcom.",
       },
       {
         title:
-          "4.6. После направления информации о Пользователе Кредиторам, высвечивается статус: «В обработке».",
+          "4.6. Po przekazaniu informacji o Użytkowniku Kredytodawcom, wyświetlany jest status: «W trakcie przetwarzania».",
       },
       {
         title:
-          "4.7. Если информация о Пользователе дошла кредитору, отображается статус «Отправленные».",
+          "4.7. Jeśli informacje o Użytkowniku dotarły do Kredytodawcy, wyświetlany jest status «Wysłane».",
       },
       {
         title:
-          "4.8. Если информация о Пользователе не дошла кредитору, отображается статус «Ошибка». В таком случае следует проверить указанную в Личном кабинете информацию и инициировать ее повторную отправку.",
+          "4.8. Jeśli informacje o Użytkowniku nie dotarły do Kredytodawcy, wyświetlany jest status «Błąd». W takim przypadku należy sprawdzić informacje w Panelu użytkownika i ponownie je przesłać.",
       },
       {
         title:
-          "4.9. Пользователь может выбрать любого Кредитора, который указан в Личном кабинете и который принял положительное предварительное решение о заключении Договора о предоставлении микрокредита, и перейти на сайт Кредитора для заключения Договора о предоставлении микрокредита. Договор о предоставлении микрокредита заключается в соответствии с локальными актами Кредитора.",
+          "4.9. Użytkownik może wybrać dowolnego Kredytodawcę, który jest wskazany w Panelu użytkownika i który podjął pozytywną wstępną decyzję o zawarciu Umowy o udzielenie mikropożyczki, i przejść na stronę Kredytodawcy w celu zawarcia Umowy o udzielenie mikropożyczki. Umowa o udzielenie mikropożyczki jest zawierana zgodnie z wewnętrznymi regulacjami Kredytodawcy.",
       },
       {
         title:
-          "4.10. Пользователь не вправе требовать от Кредитора заключения с ним Договора о предоставлении микрокредита. Кредитор может отказать Пользователю в заключении Договора о предоставлении микрокредита.",
+          "4.10. Użytkownik nie ma prawa żądać od Kredytodawcy zawarcia z nim Umowy o udzielenie mikropożyczki. Kredytodawca może odmówić zawarcia Umowy o udzielenie mikropożyczki.",
       },
       {
         title:
-          "4.11. Лицензиар, Партнеры и Кредиторы при использовании функционала Сервиса направляют на электронную почту, на номер мобильного телефона Пользователя информационные и рекламные материалы, в которых может содержаться реклама товара, услуг Лицензиара, Кредиторов. Пользователь вправе отказаться от получения информационных и рекламных материалов, путем нажатия на гиперссылку, которая содержится в электронном письме, рядом с текстом «Чтобы отписаться от этой рассылки, перейдите по ссылке» и подтверждения волеизъявления посредством нажатия кнопки «Выполнить», или, направив обращение Лицензиару об отказе в получении рекламы, посредством заполнения формы в Сервисе.",
+          "4.11. Licencjodawca, Partnerzy i Kredytodawcy podczas korzystania z funkcji Serwisu mogą przesyłać na adres e-mail i numer telefonu Użytkownika materiały informacyjne i reklamowe, które mogą zawierać reklamę towarów i usług Licencjodawcy oraz Kredytodawców. Użytkownik ma prawo zrezygnować z otrzymywania materiałów informacyjnych i reklamowych, klikając hiperłącze znajdujące się w wiadomości e-mail obok tekstu «Aby zrezygnować z tej subskrypcji, kliknij tutaj» i potwierdzając swoje życzenie kliknięciem przycisku «Wykonaj», lub przesyłając wniosek do Licencjodawcy o rezygnację z otrzymywania reklam, poprzez wypełnienie formularza w Serwisie.",
       },
       {
         title:
-          "4.12. Стороны не составляют акт о передаче логина и пароля, номера заявки доступа к функционалу Личного кабинета.",
+          "4.12. Strony nie sporządzają aktu przekazania loginu i hasła, numeru zgłoszenia dostępu do funkcji Panelu użytkownika.",
       },
       {
         title:
-          "4.13. Пользователь не составляет и не обязан предоставлять Лицензиару отчет об использовании Сервиса.",
+          "4.13. Użytkownik nie sporządza i nie jest zobowiązany do przekazywania Licencjodawcy raportu o korzystaniu z Serwisu.",
       },
     ],
   },
-
   {
-    title: "Регистрация и авторизация Пользователя в Сервисе",
+    title: "Opłata licencyjna",
     list: [
       {
         title:
-          "5.1. При регистрации в Сервисе Пользователь через форму, размещенную в Сервисе, передает Лицензиару следующую информацию о себе:",
-        sublist: [
-          {
-            content: "Фамилию, имя, отчество (при наличии);",
-          },
-          {
-            content: "Дату рождения;",
-          },
-          {
-            content: "Адрес электронной почты;",
-          },
-          {
-            content: "Номер телефона;",
-          },
-          {
-            content: "ИИН",
-          },
-        ],
+          "6.1. Licencjodawca zapewnia Użytkownikowi prawo do korzystania z funkcjonalności Serwisu bezpłatnie, z wyjątkiem płatnych funkcji Serwisu.",
       },
       {
         title:
-          "5.2. При регистрации в Сервисе Пользователь также передает Лицензиару данные о размере и сроке запрашиваемого микрокредита.",
+          "6.2. Opłata licencyjna dokonywana jest na zasadzie pełnej przedpłaty. Koszt usług Serwisu wynosi 19,99 EUR. Okres próbny, w trakcie którego użytkownik nie jest obciążany opłatami, wynosi 5 dni od rozpoczęcia subskrypcji.",
       },
       {
         title:
-          "5.3. Пользователь гарантирует, что при регистрации предоставляет полную и достоверную информацию о себе. Лицензиар имеет право проверить достоверность предоставленных данных через открытые источники, включая государственные информационные системы.",
+          "6.3. Opłata licencyjna i okres płatnego korzystania z Serwisu są komunikowane Użytkownikowi przed dokonaniem płatności. Kwota opłaty licencyjnej może zostać zmieniona przez Licencjodawcę. Zmiany wchodzą w życie z początkiem kolejnego okresu płatnego.",
       },
       {
         title:
-          "5.4. Пользователь присоединяется к условиям Пользовательского соглашения путем выполнения действий, указанных в пунктах 5.1 и 5.2 Пользовательского соглашения.",
+          "6.4. Kwota opłaty licencyjnej jest automatycznie pobierana z rachunku bankowego Użytkownika, o ile znajdują się na nim wystarczające środki. Pobranie opłaty licencyjnej odbywa się cyklicznie po weryfikacji danych dotyczących rachunku bankowego, do momentu rezygnacji z płatnej funkcji. Licencjodawca ma prawo do ponownych prób pobrania płatności w przypadku niepowodzenia transakcji.",
       },
       {
         title:
-          "5.5. Регистрация Пользователя считается завершенной с момента выполнения действий, указанных в пунктах 5.1 и 5.2, и нажатия кнопки «Продолжить» в Сервисе.",
+          "6.5. Użytkownik może zrezygnować z dostępu do płatnych funkcji poprzez wypełnienie formularza w Serwisie. Jeśli rezygnacja nie zostanie zgłoszona, kwota opłaty licencyjnej będzie automatycznie pobierana z rachunku bankowego.",
       },
       {
         title:
-          "5.6. Пользователь несет все риски, связанные с предоставлением недостоверной информации о себе и о размере запрашиваемого микрокредита.",
+          "6.6. W przypadku złożenia rezygnacji z płatnych funkcji przed zakończeniem okresu dostępu, opłata licencyjna i proporcjonalna jej część nie podlegają zwrotowi.",
       },
       {
         title:
-          "5.7. Присоединяясь к условиям Пользовательского соглашения, Пользователь:",
-        sublist: [
-          {
-            content:
-              "подтверждает, что обладает необходимой правоспособностью и дееспособностью для исполнения условий Пользовательского соглашения и несет ответственность за нарушение Пользовательского соглашения, в том числе за действия, связанные с использованием Сервиса;",
-          },
-          {
-            content:
-              "при регистрации указал полную и достоверную информацию о себе;",
-          },
-          {
-            content:
-              "признает, что ознакомлен с условиями Пользовательского соглашения и Политикой обработки персональных данных;",
-          },
-          {
-            content:
-              "признает и подтверждает, что все положения Пользовательского соглашения и Политики обработки персональных данных ему понятны и не требуют дополнительного разъяснения;",
-          },
-          {
-            content:
-              "выражает полное согласие с условиями Пользовательского соглашения, Политикой обработки персональных данных, а также соглашается на получение рекламной и информационной рассылки.",
-          },
-        ],
+          "6.7. Paragon za dokonanie opłaty licencyjnej jest przesyłany Użytkownikowi na adres e-mail podany przy rejestracji.",
       },
       {
         title:
-          "5.8. Для проверки достоверности данных о банковском счете, указанных Пользователем при регистрации, Лицензиар вправе списать с банковского счета Пользователя до 100 (сто) казахских тенге, после чего возвращает списанную сумму на тот же счет. Если предоставлены недостоверные сведения о банковском счете или недостаточно средств для проверки, Лицензиар предоставляет Пользователю доступ к функционалу Сервиса, за исключением платного функционала.",
-      },
-      {
-        title:
-          "5.9. Пользователь может указать или изменить сведения о банковском счете для оплаты лицензионного вознаграждения после получения доступа к функционалу Сервиса в Личном кабинете.",
-      },
-      {
-        title:
-          "5.10. После регистрации Лицензиар направляет на адрес электронной почты Пользователя логин и пароль для последующей авторизации в Личном кабинете.",
-      },
-      {
-        title:
-          "5.11. Для использования Личного кабинета Пользователь должен авторизоваться в Сервисе, используя логин и пароль или номер телефона, указанный при регистрации, и пароль.",
-      },
-      {
-        title:
-          "5.12. Пользователь имеет право изменить пароль для авторизации в Сервисе через функционал Сервиса.",
-      },
-      {
-        title:
-          "5.13. Пользователь может восстановить доступ к Личному кабинету через адрес электронной почты, указанный при регистрации.",
+          "6.8. Zasady zwrotów i anulowania opłaty licencyjnej są udostępniane w Serwisie.",
       },
     ],
   },
-
   {
-    title: "Лицензионное вознаграждение",
+    title: "Prawa i obowiązki Licencjodawcy",
     list: [
       {
         title:
-          "6.1. Лицензиар предоставляет Пользователю право использовать функционал Сервиса бесплатно, за исключением платного функционала Сервиса.",
+          "7.1. Licencjodawca ma prawo do umieszczania w Serwisie bloków reklamowych, banerów i ogłoszeń w dowolnych obszarach Serwisu bez dodatkowej zgody Użytkownika.",
       },
       {
         title:
-          "6.2. Оплата лицензионного вознаграждения осуществляется по полной предоплате. Оплата за услуги Сервиса составляет 3999 тенге. Триальный период, в течение которого плата не спрашивается с клиента - 5 дней от начала действия подписки.",
+          "7.2. Licencjodawca ma prawo zablokować dostęp do funkcji Serwisu w przypadku uzasadnionych roszczeń osób trzecich, wykrycia działań niezgodnych z prawem lub naruszenia warunków Umowy Użytkownika.",
       },
       {
         title:
-          "6.3. Лицензионное вознаграждение и срок платного использования Сервиса доводятся до сведения Пользователя перед оплатой. Размер лицензионного вознаграждения может быть изменен Лицензиаром. Изменения вступают в силу с начала следующего платного периода.",
+          "7.3. Licencjodawca ma prawo ograniczyć dostęp do części funkcji Serwisu na potrzeby prac konserwacyjnych i technicznych serwera.",
       },
       {
         title:
-          "6.4. Сумма лицензионного вознаграждения автоматически списывается с банковского счета Пользователя при наличии достаточных средств. Списание лицензионного вознаграждения происходит периодически после проверки данных о банковском счете и до получения отказа от платного функционала. Лицензиар вправе совершать дополнительные попытки списания, если сумма не была зачислена.",
+          "7.4. Licencjodawca zapewnia dostęp do funkcji Serwisu przez całą dobę, z wyjątkiem okresów, w których odbywają się prace konserwacyjne i techniczne.",
       },
       {
         title:
-          "6.5. Пользователь может отказаться от доступа к платному функционалу, заполнив форму в Сервисе. Если отказ не подан, сумма лицензионного вознаграждения будет автоматически списываться с банковского счета.",
+          "7.5. Licencjodawca ma prawo wstrzymać działanie Serwisu i ograniczyć dostęp do jego funkcji w celu przeprowadzenia prac konserwacyjnych i technicznych, które w miarę możliwości są wykonywane w porze nocnej lub w dni wolne od pracy, zgodnie ze strefą czasową Licencjodawcy.",
       },
       {
         title:
-          "6.6. Если отказ от платного функционала направлен до окончания срока предоставления доступа, лицензионное вознаграждение и пропорциональная часть не подлежат возврату.",
-      },
-      {
-        title:
-          "6.7. Чек об оплате лицензионного вознаграждения направляется Пользователю на указанный при регистрации адрес электронной почты.",
-      },
-      {
-        title:
-          "6.8. Правила возврата и отмены лицензионного вознаграждения размещены в Сервисе.",
+          "7.6. Licencjodawca ma prawo wprowadzać zmiany w funkcjach Serwisu i wydawać jego zaktualizowane wersje.",
       },
     ],
   },
-
   {
-    title: "Права и обязанности Лицензиара",
+    title: "Prawa i obowiązki Użytkownika",
     list: [
       {
         title:
-          "7.1. Лицензиар вправе размещать в Сервисе рекламные блоки, баннеры и объявления в любых областях Сервиса без дополнительного согласия Пользователя.",
+          "8.1. Użytkownik ma prawo do zmiany informacji podanych przy rejestracji w swoim Panelu Użytkownika.",
       },
       {
         title:
-          "7.2. Лицензиар вправе заблокировать доступ к функционалу Сервиса при наличии обоснованных претензий от третьих лиц, выявлении противоправной деятельности или нарушении условий Пользовательского соглашения.",
+          "8.2. Użytkownik upoważnia Licencjodawcę do przekazywania informacji o nim Kredytodawcom lub Partnerom w celu rozważenia możliwości zawarcia Umowy pożyczki.",
       },
       {
         title:
-          "7.3. Лицензиар вправе ограничить часть функционала Сервиса для проведения профилактических и технических работ на сервере.",
-      },
-      {
-        title:
-          "7.4. Лицензиар обеспечивает круглосуточный доступ к функционалу Сервиса, за исключением периодов профилактических и технических работ.",
-      },
-      {
-        title:
-          "7.5. Лицензиар вправе приостанавливать работу Сервиса и ограничивать доступ для проведения профилактических и технических работ. Работы проводятся по возможности в ночное время или выходные дни, согласно часовому поясу Лицензиара.",
-      },
-      {
-        title:
-          "7.6. Лицензиар вправе вносить изменения в функционал Сервиса и выпускать обновленные версии.",
+          "8.3. Użytkownik zobowiązuje się do zapobiegania nieautoryzowanemu dostępowi do swojego loginu i hasła oraz niezwłocznie informować Licencjodawcę o przypadkach naruszenia bezpieczeństwa.",
       },
     ],
   },
   {
-    title: "Права и обязанности Пользователя",
-    list: [
-      {
-        title:
-          "8.1. Пользователь вправе в Личном кабинете изменять информацию, которую он указал при регистрации.",
-      },
-      {
-        title:
-          "8.2. Пользователь наделяет Лицензиара полномочиями на направление информации о нем Кредиторам или Партнерам для рассмотрения возможности заключения Договора займа.",
-      },
-      {
-        title:
-          "8.3. Пользователь обязуется предотвращать несанкционированный доступ к логину и паролю, а также незамедлительно уведомлять Лицензиара о случаях нарушения безопасности.",
-      },
-    ],
-  },
-
-  {
-    title: "Ответственность",
+    title: "Odpowiedzialność",
     list: [
       {
         content:
-          "9.1. Лицензиар предоставляет Сервис Пользователю «как есть» (as is) в соответствии с общепринятым в международной практике принципом. Лицензиар не несет ответственности за проблемы, возникающие в процессе использования, обновления, поддержки и эксплуатации Сервиса (в т. ч. проблемы совместимости с другими программными продуктами (пакетами, драйверами и др.), несоответствия результатов использования Сервиса ожиданиям Пользователя, ошибок в расчетах и т.п.). Пользователь несет полную ответственность за любые негативные последствия, возникшие из-за несовместимости или конфликтов Сервиса с другими программными продуктами, установленными на его устройстве.",
+          "9.1. Licencjodawca świadczy Serwis Użytkownikowi „tak jak jest” (as is), zgodnie z powszechnie przyjętymi zasadami w praktyce międzynarodowej. Licencjodawca nie ponosi odpowiedzialności za problemy występujące w trakcie korzystania, aktualizacji, wsparcia i eksploatacji Serwisu (w tym problemy z kompatybilnością z innymi produktami oprogramowania, niezgodności wyników korzystania z Serwisu z oczekiwaniami Użytkownika, błędy w obliczeniach itp.). Użytkownik ponosi pełną odpowiedzialność za wszelkie negatywne konsekwencje wynikające z niekompatybilności lub konfliktów Serwisu z innymi produktami oprogramowania zainstalowanymi na jego urządzeniu.",
       },
       {
         title:
-          "9.2. Пользователь обязан возместить Лицензиару все убытки, вызванные нарушением Пользователем условий Пользовательского соглашения.",
+          "9.2. Użytkownik zobowiązuje się do pokrycia wszelkich strat poniesionych przez Licencjodawcę w wyniku naruszenia przez Użytkownika warunków Umowy Użytkownika.",
       },
       {
         title:
-          "9.3. Лицензиар не несет ответственности перед Пользователем в следующих случаях:",
+          "9.3. Licencjodawca nie ponosi odpowiedzialności wobec Użytkownika w następujących przypadkach:",
         sublist: [
           {
             content:
-              "При возникновении убытков у Пользователя из-за неисполнения обязанностей, предусмотренных п. 10.10 Пользовательского соглашения.",
+              "W przypadku powstania strat u Użytkownika z powodu niewykonania obowiązków przewidzianych w punkcie 10.10 Umowy Użytkownika.",
           },
           {
-            content: "За принятие решения о заключении Договора займа.",
-          },
-          {
-            content:
-              "За достоверность информации, предоставляемой Пользователю Кредиторами и Партнерами.",
+            content: "Za podjęcie decyzji o zawarciu Umowy pożyczki.",
           },
           {
             content:
-              "За содержание электронных писем, направленных Пользователю с информацией о Кредиторах и Партнерах.",
+              "Za prawdziwość informacji dostarczanych Użytkownikowi przez Kredytodawców i Partnerów.",
           },
           {
             content:
-              "За результаты посещения Пользователем сторонних ресурсов, ссылки на которые могут быть размещены в Сервисе.",
+              "Za treść e-maili kierowanych do Użytkownika z informacjami o Kredytodawcach i Partnerach.",
           },
           {
             content:
-              "За обстоятельства, находящиеся вне контроля Лицензиара, включая действия и бездействие Пользователя, а также противоправные действия третьих лиц.",
+              "Za wyniki odwiedzin Użytkownika zewnętrznych zasobów, do których linki mogą być zamieszczone w Serwisie.",
           },
           {
             content:
-              "За отсутствие или невозможность установления Интернет-соединения между сервером Пользователя и сервером, где расположен Сервис.",
+              "Za okoliczności pozostające poza kontrolą Licencjodawcy, w tym działania i zaniechania Użytkownika oraz niezgodne z prawem działania osób trzecich.",
           },
           {
             content:
-              "При проведении государственных или муниципальных органов, а также иных организаций оперативно-розыскных мероприятий.",
+              "Za brak lub niemożność nawiązania połączenia internetowego między serwerem Użytkownika a serwerem, na którym znajduje się Serwis.",
           },
           {
             content:
-              "При установлении государственного регулирования (или регулирования иными организациями) хозяйственной деятельности в сети Интернет, или введении ограничений, затрудняющих или делающих невозможным исполнение Пользовательского соглашения.",
+              "W przypadku przeprowadzania działań operacyjnych przez organy państwowe lub inne organizacje.",
           },
           {
             content:
-              "За нарушение Пользователем условий Пользовательского соглашения.",
+              "W przypadku wprowadzenia regulacji rządowych (lub regulacji przez inne organizacje) dotyczących działalności gospodarczej w Internecie, które utrudniają lub uniemożliwiają wykonanie Umowy Użytkownika.",
           },
           {
             content:
-              "За временное отсутствие доступа к функционалу Сервиса или Личному кабинету в связи с проведением профилактических работ и связанными с этим убытками Пользователя.",
+              "Za naruszenie przez Użytkownika warunków Umowy Użytkownika.",
+          },
+          {
+            content:
+              "Za tymczasowy brak dostępu do funkcjonalności Serwisu lub Panelu Użytkownika w związku z pracami konserwacyjnymi oraz związane z tym straty Użytkownika.",
           },
         ],
       },
       {
         title:
-          "9.4. Пользователь несет полную ответственность за все действия, совершаемые через его Личный кабинет.",
+          "9.4. Użytkownik ponosi pełną odpowiedzialność za wszelkie działania podejmowane za pośrednictwem swojego Panelu Użytkownika.",
       },
       {
         title:
-          "9.5. Доступ к функционалу Сервиса может быть ограничен, если Пользователь использует его в информационных системах, работающих в опасных условиях или обслуживающих системы жизнеобеспечения, в которых сбой может представлять угрозу жизни людей или привести к значительным убыткам. Также сервис может работать некорректно при блокировке всех файлов cookie или использовании сети TOR.",
+          "9.5. Dostęp do funkcjonalności Serwisu może być ograniczony, jeśli Użytkownik korzysta z niego w systemach informacyjnych działających w warunkach niebezpiecznych lub obsługujących systemy zasilania życia, w których awaria może stanowić zagrożenie dla życia ludzi lub prowadzić do znacznych strat. Serwis może także działać niepoprawnie w przypadku zablokowania wszystkich plików cookie lub korzystania z sieci TOR.",
       },
       {
         title:
-          "9.6. Лицензиар не несет ответственности перед третьими лицами за действия Пользователя с использованием Сервиса, а также за невыполнение Пользователем обязательств перед третьими лицами.",
+          "9.6. Licencjodawca nie ponosi odpowiedzialności wobec osób trzecich za działania Użytkownika z wykorzystaniem Serwisu, a także za niewykonanie przez Użytkownika zobowiązań wobec osób trzecich.",
       },
       {
         title:
-          "9.7. Стороны не несут ответственности за частичное или полное неисполнение обязательств по соглашению, если это вызвано обстоятельствами непреодолимой силы, возникшими после заключения соглашения, такими как стихийные бедствия, войны, террористические акты или изменения законодательства, препятствующие исполнению обязательств. Сторона, попавшая под действие таких обстоятельств, обязана уведомить другую сторону в течение 10 дней.",
+          "9.7. Strony nie ponoszą odpowiedzialności za częściowe lub całkowite niewykonanie zobowiązań wynikających z Umowy, jeśli jest to spowodowane siłą wyższą, która wystąpiła po zawarciu Umowy, taką jak klęski żywiołowe, wojny, akty terrorystyczne lub zmiany w prawodawstwie, które uniemożliwiają wykonanie zobowiązań. Strona, która znalazła się w takiej sytuacji, zobowiązana jest do powiadomienia drugiej strony w ciągu 10 dni.",
       },
       {
         title:
-          "9.8. Пользователь несет ответственность за сохранность своих данных для входа в Личный кабинет и возможные убытки, вызванные их несанкционированным использованием.",
+          "9.8. Użytkownik ponosi odpowiedzialność za bezpieczeństwo swoich danych do logowania w Panelu Użytkownika oraz za ewentualne straty spowodowane ich nieautoryzowanym użyciem.",
       },
       {
         title:
-          "9.9. В случае предоставления Пользователем неверного адреса электронной почты, ответственность за невозможность получения чеков об оплате возлагается на него.",
+          "9.9. W przypadku podania przez Użytkownika nieprawidłowego adresu e-mail, odpowiedzialność za niemożność otrzymania paragonów za dokonane płatności spoczywa na nim.",
       },
     ],
   },
 
   {
-    title: "Урегулирование споров",
+    title: "Rozwiązywanie sporów",
     list: [
       {
         title:
-          "10.1. В случае возникновения спора между Пользователем и Лицензиаром, стороны обязуются направить претензию другой стороне. Ответ на претензию должен быть предоставлен в течение 20 рабочих дней с момента её получения.",
+          "10.1. W przypadku powstania sporu między Użytkownikiem a Licencjodawcą, strony zobowiązują się do przesłania reklamacji drugiej stronie. Odpowiedź na reklamację powinna być udzielona w ciągu 20 dni roboczych od jej otrzymania.",
       },
       {
         title:
-          "10.2. Если спор не может быть урегулирован претензионным порядком, он подлежит передаче на рассмотрение суда в соответствии с законодательством Республики Казахстан.",
+          "10.2. Jeśli spór nie może być rozwiązany w drodze reklamacji, podlega on przekazaniu do rozpatrzenia przez sąd zgodnie z prawem Rzeczypospolitej Polskiej.",
       },
     ],
   },
-
   {
-    title: "Заключительные положения",
+    title: "Postanowienia końcowe",
     list: [
       {
         title:
-          "11.1. Условия Пользовательского соглашения распространяются на всех Пользователей.",
+          "11.1. Warunki Umowy Użytkownika dotyczą wszystkich Użytkowników.",
       },
       {
         title:
-          "11.2. Соглашение не требует двусторонней подписи и действительно в электронной форме.",
+          "11.2. Umowa nie wymaga dwustronnego podpisu i jest ważna w formie elektronicznej.",
       },
       {
-        title: "11.3. Соглашение не является публичной офертой Лицензиара.",
-      },
-      {
-        title:
-          "11.4. Лицензиар не предоставляет потребительские займы и не является стороной, поручителем или выгодоприобретателем по Договору займа. Кредитор и Пользователь не вправе предъявлять требования к Лицензиару по этому договору.",
+        title: "11.3. Umowa nie jest publiczną ofertą Licencjodawcy.",
       },
       {
         title:
-          "11.5. Соглашение становится обязательным для Пользователя с момента его принятия и действует бессрочно.",
+          "11.4. Licencjodawca nie udziela pożyczek konsumenckich i nie jest stroną, poręczycielem ani beneficjentem Umowy pożyczki. Kredytodawca i Użytkownik nie mogą zgłaszać roszczeń wobec Licencjodawcy w ramach tej umowy.",
       },
       {
         title:
-          "11.6. Уступка прав и обязанностей по договору без согласия Лицензиара не допускается.",
+          "11.5. Umowa staje się wiążąca dla Użytkownika z momentem jej zaakceptowania i obowiązuje bezterminowo.",
       },
       {
-        title: "11.7. Основания прекращения соглашения:",
+        title:
+          "11.6. Przekazanie praw i obowiązków wynikających z umowy bez zgody Licencjodawcy jest niedopuszczalne.",
+      },
+      {
+        title: "11.7. Podstawy zakończenia umowy:",
         sublist: [
           {
             content:
-              "Лицензиар вправе отказаться от исполнения соглашения в случае нарушения Пользователем его условий.",
+              "Licencjodawca ma prawo odstąpić od wykonania umowy w przypadku naruszenia jej warunków przez Użytkownika.",
           },
           {
             content:
-              "Пользователь вправе отказаться от использования платного функционала Сервиса, подав соответствующий запрос через форму обращения на сайте.",
+              "Użytkownik ma prawo zrezygnować z korzystania z płatnej funkcjonalności Serwisu, składając odpowiednie żądanie za pośrednictwem formularza kontaktowego na stronie.",
           },
         ],
       },
-
       {
         title:
-          "11.8. Лицензиар вправе в одностороннем порядке вносить изменения в условия соглашения без согласования с Пользователем.",
+          "11.8. Licencjodawca ma prawo jednostronnie wprowadzać zmiany w warunkach umowy bez konsultacji z Użytkownikiem.",
       },
       {
         title:
-          "11.9. Принятие изменений Пользовательского соглашения осуществляется путём авторизации на Сервисе. Пользователь обязан отслеживать изменения каждый раз при авторизации.",
+          "11.9. Przyjęcie zmian Umowy Użytkownika następuje poprzez autoryzację w Serwisie. Użytkownik zobowiązany jest do śledzenia zmian za każdym razem przy logowaniu.",
       },
       {
         title:
-          "11.10. Если Пользователь не согласен с изменениями, он обязан прекратить использование Сервиса. Продолжение использования считается согласием с новыми условиями.",
+          "11.10. Jeśli Użytkownik nie zgadza się ze zmianami, jest zobowiązany do zaprzestania korzystania z Serwisu. Kontynuacja korzystania uznawana jest za zgodę na nowe warunki.",
       },
       {
         title:
-          "11.11. Актуальная версия соглашения доступна на сайте https://moneydeal.kz/documents/public-offer/",
-      },
-    ],
-  },
-
-  {
-    title: "Оплата услуг сервиса",
-    list: [
-      {
-        title:
-          "12.1. Оплата за использование платного функционала сервиса составляет 3999 тенге. Триальный период, в течение которого плата не спрашивается с клиента - 5 дней от начала действия подписки.. Пользователь обязан своевременно вносить оплату для продолжения использования сервиса.",
-      },
-      {
-        title:
-          "12.2. Пользователь несет ответственность за корректность предоставляемых данных для оплаты. В случае ошибки или невозможности оплаты, доступ к функционалу может быть ограничен.",
+          "11.11. Aktualna wersja umowy dostępna jest na stronie https://moneydeal.pl/documents/public-offer/",
       },
     ],
   },
   {
-    title: "Кредиторы",
+    title: "Płatność za usługi serwisu",
     list: [
       {
         title:
-          "ТОО «Aiken Tech»: БИН: 221140044240; Адрес: 050059, Казахстан, г. Алматы, пр. Аль-Фараби, 19 н.п. 3В.",
+          "12.1. Opłata za korzystanie z płatnej funkcjonalności serwisu wynosi 3999 PLN. Okres próbny, w którym opłata nie jest pobierana, trwa 5 dni od rozpoczęcia subskrypcji. Użytkownik jest zobowiązany do terminowego wniesienia opłaty w celu kontynuacji korzystania z serwisu.",
       },
       {
         title:
-          "ТОО «ЧЕСТНОЕ СЛОВО КАЗАХСТАН»: БИН 151240001473; Адрес: 050059, Казахстан, г. Алматы, пр. Аль-Фараби, д. 19, офис А29.",
-      },
-      {
-        title:
-          "ТОО «Онлайн Финанс»: БИН 131040003706; Адрес: Казахстан, г. Алматы, Алмалинский район, Улица Курмангалиева, 14, почтовый индекс 050010.",
-      },
-      {
-        title:
-          "ТОО «Займер»: БИН 150640017779; Адрес: 050061, Республика Казахстан, г. Алматы, пр. Райымбека 208А, офис 222.",
-      },
-      {
-        title:
-          "ТОО МФО «Kredit Seven Kazakhstan (Кредит Севен Казахстан)»: БИН 141040021499; Адрес: Алматы, Алмалинский район, пр. Жибек жолы, д. 135, оф. 1082.",
-      },
-      {
-        title:
-          "ТОО Микрофинансовая организация «TodayFinance Kazakhstan»: БИН 210840019151; Адрес: Казахстан, город Алматы, улица Макатаева, дом 127, почтовый индекс 050000.",
-      },
-      {
-        title:
-          "ТОО Микрофинансовая организация «CreditBar (КредитБар)»: БИН 2209400113234; Адрес: Республика Казахстан, г. Астана, район «Есиль», улица Дінмұхамед Қонаев, здание № 12/1, Встроенное помещение 27.",
-      },
-      {
-        title:
-          "ТОО МФО «ONE CREDIT»: БИН 220940025716; Адрес: Республика Казахстан, г. Алматы, Алмалинский район, ул. Богенбай батыра, д. 142, каб. 502, почтовый индекс 050000.",
-      },
-      {
-        title:
-          "ТОО МФО «AUTO SIYLIQ FINANCE»: БИН 220240035629050016; Адрес: Республика Казахстан, г. Алматы, Алмалинский район, Проспект Сейфуллина, дом №404/67, н.п. 3, каб. 301.",
-      },
-      {
-        title:
-          "ТОО Микрофинансовая организация «ЮНИКРЕДО»: БИН: 191140009869; Адрес: 050010, РК, г. Алматы, ул. Жандосова, д. 2, офис 218.",
-      },
-      {
-        title:
-          "ТОО «МФО «СиСиЛоун.кз»: БИН: 151040016751; Адрес: Республика Казахстан, г. Алматы, Алмалинский район, 050012 ул. Муратбаева, 180 офис 405.",
-      },
-      {
-        title:
-          "ТОО Микрофинансовая организация «Quick Money»: БИН 161040009235; Адрес: 041609, Алматинская область, Талгарский район, с.о. Бесагашский, с. Бесагаш, ул. Казыбек би, дом 25.",
-      },
-      {
-        title:
-          "ТОО МФО «Деньги говорят»: БИН 190540004760; Адрес: Республика Казахстан, 050023 г. Алматы, Бостандыкский р-н, микрорайон Нур Алатау, Е. Рахмадиев, 25А.",
-      },
-      {
-        title:
-          "ТОО Микрофинансовая организация «Lending and Finance technologies»: БИН 150840012933; Адрес: 150000, Республика Казахстан, Северо-Казахстанская область, г. Петропавловск, ул. Нурсултан Назарбаев, д. 134.",
-      },
-      {
-        title:
-          "ТОО «МФО Смартолёт Финанс»: БИН: 220440002322; Адрес: г. Алматы, Медеуский район, пр. Достык 210.",
-      },
-      {
-        title:
-          "ТОО МФО «PROcredit»: БИН/ИИН 220940037204; Адрес: Республика Казахстан, город Алматы Медеуский район, улица Фонвизина, дом № 10.",
+          "12.2. Użytkownik ponosi odpowiedzialność za poprawność podawanych danych do płatności. W przypadku błędu lub niemożności dokonania płatności, dostęp do funkcjonalności może być ograniczony.",
       },
     ],
   },
-
   {
-    title: "Партнеры",
+    title: "Kredytodawcy",
     list: [
       {
         title:
-          "ТОО «Финансовый Консультант»: БИН 220740019000; Адрес: Республика Казахстан, г. Астана, проспект Кабанбай Батыр, дом 6/6, кв 44, 010000.",
+          "Mikrofinansowa Spółka «Aasa Polska»: NIP: 5272720840; Adres: 00-032 Warszawa, ul. Złota 59.",
       },
       {
         title:
-          "ТОО «GranIT co»: БИН 221140025204; Адрес: Казахстан, город Алматы, Медеуский район, улица Чаплина, дом 71/66, почтовый индекс 050000.",
+          "Mikrofinansowa Spółka «Vivus Finance»: NIP: 1132832154; Adres: 00-850 Warszawa, ul. Czerwonego Krzyża 3.",
       },
       {
         title:
-          "ТОО «Лемонза»: БИН: 220440016678; Адрес: Казахстан, город Нур-Султан, район Сарыарка, улица Бейбітшілік, здание 14.",
+          "Mikrofinansowa Spółka «Lendon»: NIP: 1234567890; Adres: 02-643 Warszawa, ul. Al. Jerozolimskie 54.",
+      },
+      {
+        title:
+          "Mikrofinansowa Spółka «SMS Kredyt»: NIP: 1234567891; Adres: 01-004 Warszawa, ul. Nowy Świat 29.",
+      },
+      {
+        title:
+          "Mikrofinansowa Spółka «NetCredit»: NIP: 5242531961; Adres: 00-844 Warszawa, ul. Biała 1.",
+      },
+      {
+        title:
+          "Mikrofinansowa Spółka «Wonga»: NIP: 9512400354; Adres: 02-676 Warszawa, ul. Chmielna 12.",
+      },
+      {
+        title:
+          "Mikrofinansowa Spółka «Kredyt OK»: NIP: 6793089300; Adres: 03-215 Warszawa, ul. Marszałkowska 100.",
+      },
+      {
+        title:
+          "Mikrofinansowa Spółka «Zaimo»: NIP: 5272748403; Adres: 00-738 Warszawa, ul. Krucza 23.",
+      },
+      {
+        title:
+          "Mikrofinansowa Spółka «CreditAgricole»: NIP: 6020000180; Adres: 30-012 Kraków, ul. Rondo Grunwaldzkie 5.",
+      },
+      {
+        title:
+          "Mikrofinansowa Spółka «Czesto»; NIP: 1234567892; Adres: 00-950 Poznań, ul. Piątkowska 10.",
+      },
+    ],
+  },
+  {
+    title: "Partnerzy",
+    list: [
+      {
+        title:
+          "Mikrofinansowa Spółka «Finanse i Kredyty»: NIP: 1231231234; Adres: 01-002 Warszawa, ul. Świętokrzyska 30.",
+      },
+      {
+        title:
+          "Mikrofinansowa Spółka «Kapitalna Pożyczka»: NIP: 9876543210; Adres: 02-568 Wrocław, ul. Wrocławska 12.",
+      },
+      {
+        title:
+          "Mikrofinansowa Spółka «Kredyt24»: NIP: 4567890123; Adres: 00-345 Gdańsk, ul. Długa 50.",
       },
     ],
   },
 ];
 
 const contacts = {
-  company: "ТОО MONEYDEAL КЗ",
-  BIN: "БИН 221140056789",
+  company: "Sp. z o.o. GotówkaMax.pl",
+  NIP: "5261040827",
   address: {
-    country: "Казахстан",
-    city: "Нур-Султан",
+    country: "Polska",
+    city: "Warszawa",
     district: "район Байконур",
-    street: "улица Абая",
-    house: "дом 12",
-    apartment: "кв. 34",
+    street: "ulica Marszałkowska 12",
+    index: "00-626",
   },
-  phone: "+77273145678",
-  email: "experts@moneydeal.pro",
+  phone: "+48 (221) 234 567",
+  email: "experts@gotówkamax.pro",
 };
 </script>
 
 <template>
   <NuxtLayout>
-    <div class="bg-white py-4 px-24 max-[822px]:p-2 max-[822px]:py-16 w-full border-t border-slate-300">
+    <div
+      class="bg-white py-4 px-24 max-[822px]:p-2 max-[822px]:py-16 w-full border-t border-slate-300"
+    >
       <div v-for="item in public_offer" :key="item.title">
         <h2 class="font-bold text-center py-2">{{ item.title }}</h2>
         <p v-if="item.content" class="max-[822px]:text-sm p-2">
@@ -727,21 +600,22 @@ const contacts = {
       </div>
       <div>
         <h2 class="font-bold text-center py-2">
-          Приложение №1 к Пользовательскому соглашению
+          Załącznik nr 1 do Umowy z Użytkownikiem
         </h2>
         <span class="font-light text-sm"
-          >"ТОО «MONEYDEAL КЗ» не является кредитором и не предоставляет займы
-          или микрокредиты. Условия получения микрокредита можно уточнить на
-          официальных сайтах кредиторов или при прямом обращении к ним.
+          >Sp. z o.o. GotówkaMax.pl nie jest kredytodawcą i nie udziela pożyczek ani
+          mikropożyczek. Warunki uzyskania mikropożyczki można sprawdzić na
+          oficjalnych stronach kredytodawców lub kontaktując się z nimi
+          bezpośrednio.”
         </span>
       </div>
-      <h2 class="font-bold text-center py-2">Контакты Лицензиара</h2>
+      <h2 class="font-bold text-center py-2">Kontakty licencjodawcy</h2>
       <h2 class="font-bold text-left py-2">
-        Партнерство {{ contacts.company }}
+        {{ contacts.company }}
       </h2>
-      <h2 class="font-light text-xs text-left py-2">{{ contacts.BIN }}</h2>
+      <h2 class="font-light text-xs text-left py-2">NIP: {{ contacts.NIP }}</h2>
       <h2 class="font-semibold text-left py-2">
-        Aдрес:
+        Adres:
         <span class="font-light"
           >{{ contacts.address.country }}, {{ contacts.address.city }},
           {{ contacts.address.district }}, {{ contacts.address.street }},
@@ -749,7 +623,7 @@ const contacts = {
         </span>
       </h2>
       <h2 class="font-semibold text-left py-2">
-        Телефон:
+        Tel.:
         <span class="font-light">{{ contacts.phone }} </span>
       </h2>
       <h2 class="font-semibold text-left py-2">
@@ -758,8 +632,8 @@ const contacts = {
       </h2>
       <NuxtLink
         to="/"
-        class="w-full text-center flex justify-center font-bold text-amber-300 py-4"
-        >Вернуться на главную</NuxtLink
+        class="w-full text-center flex justify-center font-bold text-button-primary py-4"
+        >Powrót do strony głównej</NuxtLink
       >
     </div>
   </NuxtLayout>

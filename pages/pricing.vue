@@ -1,131 +1,152 @@
 <script setup>
 let public_offer = [
   {
-    title: "Пользовательское соглашение",
+    title: "Umowa Użytkownika",
     content:
-      "Данный документ устанавливает отношения между Лицензиаром и Пользователем при использовании функциональных возможностей Сервиса. Соглашение выступает договором присоединения. Внимательно ознакомьтесь с текстом документа. Если вы не согласны с его условиями, TOO MONEYDEAL рекомендует отказаться от использования Сервиса.",
+      "Niniejszy dokument reguluje relacje między Licencjodawcą a Użytkownikiem podczas korzystania z funkcjonalności Serwisu. Umowa stanowi umowę adhezyjną. Prosimy o dokładne zapoznanie się z treścią dokumentu. Jeśli nie zgadzasz się z jego warunkami, Sp. z o.o. GotówkaMax.pl zaleca zaprzestanie korzystania z Serwisu.",
   },
   {
-    title: "Термины",
+    title: "Definicje",
     list: [
       {
         title:
-          "1.1. Лицензиар – Партнерство TOO MONEYDEAL, БИН: 221140056789, владеющее исключительными правами на Сервис и предоставляющее Пользователю право использования функционала Сервиса на основе простой (неисключительной) лицензии.",
+          "1.1. Licencjodawca – Sp. z o.o. GotówkaMax.pl, NIP: 5261040827, posiadająca wyłączne prawa do Serwisu i udzielająca Użytkownikowi prawa do korzystania z funkcji Serwisu na podstawie licencji niewyłącznej.",
       },
       {
         title:
-          "1.2. Пользователь – физическое лицо с полными гражданскими правами, которое принимает условия данного Соглашения и использует функциональные возможности Сервиса.",
+          "1.2. Użytkownik – osoba fizyczna posiadająca pełne prawa obywatelskie, która akceptuje warunki niniejszej Umowy i korzysta z funkcjonalności Serwisu.",
       },
       {
         title:
-          "1.3. Сервис – совокупность информационных ресурсов, текстов, графики, программного обеспечения и иных элементов интеллектуальной собственности, доступных через интернет по адресу.",
+          "1.3. Serwis – zbiór zasobów informacyjnych, tekstów, grafiki, oprogramowania oraz innych elementów własności intelektualnej, dostępnych przez internet pod adresem https://gotowkamax.pl.",
       },
       {
         title:
-          "1.4. Личный кабинет – специальная функциональная область Сервиса, доступная Пользователю после регистрации, которая предоставляет возможность доступа к платным услугам после их оплаты.",
+          "1.4. Konto osobiste – specjalna funkcjonalna część Serwisu, dostępna dla Użytkownika po rejestracji, która umożliwia dostęp do płatnych usług po ich opłaceniu.",
       },
       {
         title:
-          "1.5. Кредитор – организация, указанная в Приложении №1 к Соглашению, с которой Лицензиар заключил договор, позволяющий Кредитору направлять Пользователю уведомления и предложения по заключению Договора займа.",
+          "1.5. Kredytodawca – organizacja wymieniona w Załączniku nr 1 do Umowy, z którą Licencjodawca podpisał umowę, umożliwiającą Kredytodawcy wysyłanie Użytkownikowi powiadomień i ofert dotyczących zawarcia Umowy pożyczki.",
       },
       {
         title:
-          "1.5.1. Партнер – организация, указанная в Приложении №1 к Соглашению, с которой Лицензиар заключил договор на право направлять Пользователю уведомления и предложения.",
+          "1.5.1. Partner – organizacja wymieniona w Załączniku nr 1 do Umowy, z którą Licencjodawca podpisał umowę umożliwiającą wysyłanie Użytkownikowi powiadomień i ofert.",
       },
       {
         title:
-          "1.6. Кредитный рейтинг – показатель кредитоспособности Пользователя, который рассчитывается на основе информации, предоставляемой функционалом Сервиса.",
+          "1.6. Ocena kredytowa – wskaźnik zdolności kredytowej Użytkownika, obliczany na podstawie informacji dostarczonych przez funkcjonalność Serwisu.",
       },
       {
         title:
-          "1.7. Договор о предоставлении микрокредита – договор, подписываемый между Пользователем и Кредитором, который предусматривает предоставление средств на условиях платности, возвратности и срочности.",
+          "1.7. Umowa o udzielenie mikropożyczki – umowa zawierana między Użytkownikiem a Kredytodawcą, przewidująca udzielenie środków na warunkach odpłatności, zwrotności i terminowości.",
       },
       {
         title:
-          "1.8. Термины, которые не указаны в данном Соглашении, толкуются в соответствии с законодательством Республики Казахстан.",
+          "1.8. Terminy, które nie zostały określone w niniejszej Umowie, będą interpretowane zgodnie z prawem Rzeczypospolitej Polskiej.",
       },
     ],
   },
   {
-    title: "Общие положения",
+    title: "Postanowienia ogólne",
     list: [
       {
-        title: "2.1. Данные Правила касаются всех транзакций, связанных с перечислением денежных средств с банковского счета Плательщика на банковский счет Лицензиара для оплаты услуг.",
+        title:
+          "2.1. Niniejsze Zasady dotyczą wszystkich transakcji związanych z przekazywaniem środków pieniężnych z rachunku bankowego Płatnika na rachunek bankowy Licencjodawcy w celu opłacenia usług.",
       },
       {
-        title: "2.2. Если Пользователь совершает регулярные Платежи, Правила о возврате могут быть применимы только к тем Платежам, которые были выполнены в течение последних 14 календарных дней до подачи запроса на возврат.",
+        title:
+          "2.2. Jeśli Użytkownik dokonuje regularnych płatności, zasady dotyczące zwrotu mogą być stosowane jedynie do płatności wykonanych w ciągu ostatnich 14 dni kalendarzowych przed złożeniem wniosku o zwrot.",
       },
     ],
   },
   {
-    title: "Порядок отмены Платежа",
+    title: "Procedura anulowania płatności",
     list: [
       {
-        title: "3.1. Отмена Платежа возможна в следующих случаях:",
+        title: "3.1. Anulowanie płatności możliwe jest w następujących przypadkach:",
         sublist: [
-          { content: "Если карта, реквизиты которой были использованы для оплаты услуг Лицензиара, была утеряна Плательщиком до совершения Платежа." },
-          { content: "Платеж был выполнен без ведома Плательщика или вследствие действий третьих лиц." },
+          {
+            content:
+              "Jeśli karta, której dane zostały użyte do opłacenia usług Licencjodawcy, została zgubiona przez Płatnika przed dokonaniem płatności.",
+          },
+          {
+            content:
+              "Płatność została dokonana bez wiedzy Płatnika lub wskutek działań osób trzecich.",
+          },
         ],
       },
       {
-        title: "3.2. Для того чтобы отменить Платеж, Плательщик должен обратиться в Банк-эмитент или оператора Платежной системы.",
+        title:
+          "3.2. Aby anulować płatność, Płatnik powinien skontaktować się z Bankiem wydawcą karty lub operatorem systemu płatności.",
       },
       {
-        title: "3.3. Лицензиар обязуется предоставлять Банку-эмитенту или оператору Платежной системы необходимую информацию для содействия в отмене Платежа.",
+        title:
+          "3.3. Licencjodawca zobowiązuje się dostarczać Bankowi wydawcy karty lub operatorowi systemu płatności niezbędne informacje, aby ułatwić anulowanie płatności.",
       },
     ],
   },
   {
-    title: "Порядок возврата Платежа",
+    title: "Procedura zwrotu płatności",
     list: [
       {
-        title: "4.1. Возврат Платежа может быть осуществлен в следующих случаях:",
+        title: "4.1. Zwrot płatności może nastąpić w następujących przypadkach:",
         sublist: [
-          { content: "Была снята сумма, превышающая указанную в Пользовательском соглашении." },
-          { content: "Пользователю не был предоставлен доступ к платным услугам Сервиса." },
+          {
+            content:
+              "Pobrano kwotę wyższą niż określona w Umowie Użytkownika.",
+          },
+          {
+            content:
+              "Użytkownik nie uzyskał dostępu do płatnych usług Serwisu.",
+          },
         ],
       },
       {
-        title: "4.2. Возврат средств является правом, а не обязанностью Лицензиара.",
+        title:
+          "4.2. Zwrot środków jest prawem, a nie obowiązkiem Licencjodawcy.",
       },
       {
-        title: "4.3. Пользователь обязан направить запрос на возврат не позднее 14 календарных дней с момента совершения спорного Платежа.",
+        title:
+          "4.3. Użytkownik jest zobowiązany do złożenia wniosku o zwrot nie później niż 14 dni kalendarzowych od daty dokonania spornego płatności.",
       },
       {
-        title: "4.4. Запрос на возврат средств должен быть отправлен по электронной почте experts@moneydeal.pro или через форму на Сервисе.",
+        title:
+          "4.4. Wniosek o zwrot środków należy przesłać pocztą elektroniczną na adres experts@gotowkamax.pro lub za pośrednictwem formularza w Serwisie.",
       },
     ],
   },
   {
-    title: "Заключительные положения",
+    title: "Postanowienia końcowe",
     list: [
       {
-        title: "5.1. Лицензиар оставляет за собой право изменять данные Правила отмены и возврата платежей. Изменения вступают в силу с момента их публикации на Сервисе.",
+        title:
+          "5.1. Licencjodawca zastrzega sobie prawo do zmiany niniejszych Zasad dotyczących anulowania i zwrotu płatności. Zmiany wchodzą w życie z chwilą ich opublikowania w Serwisie.",
       },
       {
-        title: "5.2. Вопросы, которые не регулируются этими Правилами, будут решаться в соответствии с действующим законодательством Республики Казахстан.",
+        title:
+          "5.2. Sprawy, które nie są uregulowane w niniejszych Zasadach, będą rozstrzygane zgodnie z obowiązującym prawem Rzeczypospolitej Polskiej.",
       },
       {
-        title: "5.3. Если какое-либо из положений данных Правил будет признано недействительным, остальные положения останутся в силе.",
+        title:
+          "5.3. Jeżeli którekolwiek z postanowień niniejszych Zasad zostanie uznane za nieważne, pozostałe postanowienia pozostają w mocy.",
       },
     ],
   },
-]; 
+];
 
 
 const contacts = {
-  company: "ТОО MONEYDEAL КЗ",
-  BIN: "БИН 221140056789",
+  company: "Sp. z o.o. GotówkaMax.pl",
+  NIP: "5261040827",
   address: {
-    country: "Казахстан",
-    city: "Нур-Султан",
+    country: "Polska",
+    city: "Warszawa",
     district: "район Байконур",
-    street: "улица Абая",
-    house: "дом 12",
-    apartment: "кв. 34",
+    street: "ulica Marszałkowska 12",
+    index: "00-626",
   },
-  phone: "+77273145678",
-  email: "experts@moneydeal.pro",
+  phone: "+48 (221) 234 567",
+  email: "experts@gotówkamax.pro",
 };
 
 </script>
@@ -146,22 +167,21 @@ const contacts = {
         </div>
       </div>
 
-      <h2 class="font-bold text-center py-2">Контакты Лицензиара</h2>
+      <h2 class="font-bold text-center py-2">Kontakty licencjodawcy</h2>
       <h2 class="font-bold text-left py-2">
-        Партнерство {{ contacts.company }}
+       {{ contacts.company }}
       </h2>
-      <h2 class="font-light text-xs text-left py-2">{{ contacts.BIN }}</h2>
+      <h2 class="font-light text-xs text-left py-2">NIP: {{ contacts.NIP }}</h2>
       <h2 class="font-semibold text-left py-2">
-        Aдрес:
+        Adres:
         <span class="font-light"
           >{{ contacts.address.country }}, {{ contacts.address.city }},
           {{ contacts.address.district }}, {{ contacts.address.street }},
           {{ contacts.address.house }}
         </span>
       </h2>
-      <div>
       <h2 class="font-semibold text-left py-2">
-        Телефон:
+        Tel.:
         <span class="font-light">{{ contacts.phone }} </span>
       </h2>
       <h2 class="font-semibold text-left py-2">
@@ -170,10 +190,10 @@ const contacts = {
       </h2>
       <NuxtLink
         to="/"
-        class="w-full text-center flex justify-center font-bold text-amber-300 py-4"
-        >Вернуться на главную</NuxtLink
+        class="w-full text-center flex justify-center font-bold text-button-primary py-4"
+        >Powrót do strony głównej</NuxtLink
       >
-    </div>
+    
   </div>
  </NuxtLayout>
     
