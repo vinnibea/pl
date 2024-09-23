@@ -18,8 +18,8 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     'unplugin-icons/nuxt',
     "@prisma/nuxt",
-    "nuxt-swiper"
-    ],
+    "nuxt-swiper",
+  ],
 
   tailwindcss: {
     exposeConfig: true,

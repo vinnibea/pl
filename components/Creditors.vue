@@ -35,10 +35,7 @@ const sortedData = computed(() =>
       class="w-[45%] max-[1024px]:w-full flex flex-col justify-between gap-4 shadow-md p-2 rounded-base"
       v-motion-fade-visible-once
     >
-      <!-- <span
-        class="text-[10px] uppercase flex items-center text-white min-h-8 bg-gradient-to-r rounded-t-md from-amber-300 to-amber-100 px-2 font-semibold max-[520px]:text-[8px] max-[520px]:min-h-4"
-        >{{ item.advantages[2] }}</span
-      > -->
+  
       <div class="flex items-start w-full py-2 px-2">
         <img
           :src="item.src"

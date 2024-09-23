@@ -3,7 +3,7 @@ const public_offer = [
   {
     title: "Zgoda na przetwarzanie danych osobowych",
     content:
-      "Ja, osoba fizyczna, której dane zostały podane podczas rejestracji na stronie https://gotowkamax.pl/, jako podmiot danych osobowych (dalej — Podmiot), wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z warunkami Polityki przetwarzania danych osobowych Sp. z o.o. GotówkaMax.pl (NIP: 5261040827) (dalej — Operator) poprzez stronę https://gotowkamax.pl (dalej – Serwis).",
+      "Ja, osoba fizyczna, której dane zostały podane podczas rejestracji na stronie https://gotowkamax.eu/, jako podmiot danych osobowych (dalej — Podmiot), wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z warunkami Polityki przetwarzania danych osobowych Sp. z o.o. GotówkaMax.pl (NIP: 5261040827) (dalej — Operator) poprzez stronę https://gotowkamax.eu (dalej – Serwis).",
   },
   {
     title: "Zgoda na przetwarzanie danych",
@@ -48,7 +48,7 @@ const public_offer = [
   {
     title: "Cele przetwarzania danych",
     content:
-      "Celem przetwarzania danych osobowych Podmiotu jest zawarcie i wykonanie umowy użytkownika, zgodnie z którą Sp. z o.o. GotówkaMax.pl zapewnia Podmiotowi dostęp do osobistego konta w Serwisie oraz informuje Podmiot o ofertach Sp. z o.o. GotówkaMax.pl i kredytodawców.",
+      "Celem przetwarzania danych osobowych Podmiotu jest zawarcie i wykonanie umowy użytkownika, zgodnie z którą Sp. z o.o. GotówkaMax zapewnia Podmiotowi dostęp do osobistego konta w Serwisie oraz informuje Podmiot o ofertach Sp. z o.o. GotówkaMax i kredytodawców.",
   },
   {
     title: "Działania związane z danymi osobowymi",
@@ -93,7 +93,7 @@ const public_offer = [
 ];
 
 const contacts = {
-  company: "Sp. z o.o. GotówkaMax.pl",
+  company: "Sp. z o.o. GotówkaMax",
   NIP: "5261040827",
   address: {
     country: "Polska",

@@ -7,12 +7,12 @@ import prisma from '~/lib/prisma';
 export default defineEventHandler(async (event) => {
     //parser
 
-//    if(!event.context._bot) {
-//     throw createError({
-//         statusCode: 400,
-//         statusMessage: 'Forbidden',
-//     });
-//    }
+   if(!event.context._bot) {
+    throw createError({
+        statusCode: 400,
+        statusMessage: 'Forbidden',
+    });
+   }
 
     const browser = await puppeteer.launch({
         headless: true,

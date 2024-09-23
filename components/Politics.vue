@@ -14,7 +14,7 @@ const public_offer =  [
   {
     title: "Umowa użytkownika",
     content:
-      "Niniejsza umowa reguluje stosunki między Licencjodawcą a Użytkownikiem w zakresie korzystania z funkcji Serwisu. Umowa stanowi umowę adhezyjną. Prosimy uważnie przeczytać treść umowy. Jeśli nie zgadzacie się z warunkami, Sp. z o.o. GotówkaMax.pl zaleca powstrzymanie się od korzystania z serwisu.",
+      "Niniejsza umowa reguluje stosunki między Licencjodawcą a Użytkownikiem w zakresie korzystania z funkcji Serwisu. Umowa stanowi umowę adhezyjną. Prosimy uważnie przeczytać treść umowy. Jeśli nie zgadzacie się z warunkami, Sp. z o.o. GotówkaMax zaleca powstrzymanie się od korzystania z serwisu.",
   },
 
   {
@@ -22,7 +22,7 @@ const public_offer =  [
     list: [
       {
         title:
-          "1.1. Licencjodawca – Spółka z o.o. GotówkaMax.pl, NIP: 5261040827, której przysługują wyłączne prawa do Serwisu i która udziela Użytkownikowi prawa do korzystania z funkcji Serwisu na podstawie licencji niewyłącznej.",
+          "1.1. Licencjodawca – Spółka z o.o. GotówkaMax, NIP: 5261040827, której przysługują wyłączne prawa do Serwisu i która udziela Użytkownikowi prawa do korzystania z funkcji Serwisu na podstawie licencji niewyłącznej.",
       },
       {
         title:
@@ -139,7 +139,7 @@ const public_offer =  [
     list: [
       {
         title:
-          "3.1. Opłata za korzystanie z Serwisu wynosi 19,99 euro. Okres próbny, w którym opłata nie jest pobierana od klienta, wynosi 5 dni od rozpoczęcia subskrypcji. Kwota ta zostanie pobrana za 5 dni korzystania od momentu złożenia wniosku. Jeśli subskrypcja nie zostanie anulowana, opłata będzie pobierana automatycznie.",
+          "3.1. Opłata za korzystanie z Serwisu wynosi 9,99 euro. Okres próbny, w którym opłata nie jest pobierana od klienta, wynosi 5 dni od rozpoczęcia subskrypcji. Kwota ta zostanie pobrana za 5 dni korzystania od momentu złożenia wniosku. Jeśli subskrypcja nie zostanie anulowana, opłata będzie pobierana automatycznie.",
       },
       {
         title:
@@ -147,7 +147,7 @@ const public_offer =  [
       },
       {
         title:
-          "3.3. Strona internetowa używa plików cookie w celu świadczenia usług. Warunki przechowywania plików cookie można skonfigurować w przeglądarce. W celu usunięcia danych osobowych należy wysłać wiadomość e-mail na adres experts@gotowkamax.pl z prośbą o usunięcie danych. Wiadomość powinna zawierać sformułowanie: „Proszę o usunięcie moich danych osobowych”. Ta operacja jest nieodwracalna.",
+          "3.3. Strona internetowa używa plików cookie w celu świadczenia usług. Warunki przechowywania plików cookie można skonfigurować w przeglądarce. W celu usunięcia danych osobowych należy wysłać wiadomość e-mail na adres experts@gotowkamax.pro z prośbą o usunięcie danych. Wiadomość powinna zawierać sformułowanie: „Proszę o usunięcie moich danych osobowych”. Ta operacja jest nieodwracalna.",
       },
     ],
   },
@@ -269,7 +269,7 @@ const public_offer =  [
       },
       {
         title:
-          "6.2. Opłata licencyjna dokonywana jest na zasadzie pełnej przedpłaty. Koszt usług Serwisu wynosi 19,99 EUR. Okres próbny, w trakcie którego użytkownik nie jest obciążany opłatami, wynosi 5 dni od rozpoczęcia subskrypcji.",
+          "6.2. Opłata licencyjna dokonywana jest na zasadzie pełnej przedpłaty. Koszt usług Serwisu wynosi 9,99 EUR. Okres próbny, w trakcie którego użytkownik nie jest obciążany opłatami, wynosi 5 dni od rozpoczęcia subskrypcji.",
       },
       {
         title:
@@ -496,7 +496,7 @@ const public_offer =  [
       },
       {
         title:
-          "11.11. Aktualna wersja umowy dostępna jest na stronie https://moneydeal.pl/documents/public-offer/",
+          "11.11. Aktualna wersja umowy dostępna jest na stronie https://gotowkamax.eu/public-offer/",
       },
     ],
   },
@@ -505,7 +505,7 @@ const public_offer =  [
     list: [
       {
         title:
-          "12.1. Opłata za korzystanie z płatnej funkcjonalności serwisu wynosi 3999 PLN. Okres próbny, w którym opłata nie jest pobierana, trwa 5 dni od rozpoczęcia subskrypcji. Użytkownik jest zobowiązany do terminowego wniesienia opłaty w celu kontynuacji korzystania z serwisu.",
+          "12.1. Opłata za korzystanie z płatnej funkcjonalności serwisu wynosi 9,99 euro. Okres próbny, w którym opłata nie jest pobierana, trwa 5 dni od rozpoczęcia subskrypcji. Użytkownik jest zobowiązany do terminowego wniesienia opłaty w celu kontynuacji korzystania z serwisu.",
       },
       {
         title:
@@ -581,14 +581,14 @@ let pricing_offer = [
   {
     title: "Umowa Użytkownika",
     content:
-      "Niniejszy dokument reguluje relacje między Licencjodawcą a Użytkownikiem podczas korzystania z funkcjonalności Serwisu. Umowa stanowi umowę adhezyjną. Prosimy o dokładne zapoznanie się z treścią dokumentu. Jeśli nie zgadzasz się z jego warunkami, Sp. z o.o. GotówkaMax.pl zaleca zaprzestanie korzystania z Serwisu.",
+      "Niniejszy dokument reguluje relacje między Licencjodawcą a Użytkownikiem podczas korzystania z funkcjonalności Serwisu. Umowa stanowi umowę adhezyjną. Prosimy o dokładne zapoznanie się z treścią dokumentu. Jeśli nie zgadzasz się z jego warunkami, Sp. z o.o. GotówkaMax.eu zaleca zaprzestanie korzystania z Serwisu.",
   },
   {
     title: "Definicje",
     list: [
       {
         title:
-          "1.1. Licencjodawca – Sp. z o.o. GotówkaMax.pl, NIP: 5261040827, posiadająca wyłączne prawa do Serwisu i udzielająca Użytkownikowi prawa do korzystania z funkcji Serwisu na podstawie licencji niewyłącznej.",
+          "1.1. Licencjodawca – Sp. z o.o. GotówkaMax.eu, NIP: 5261040827, posiadająca wyłączne prawa do Serwisu i udzielająca Użytkownikowi prawa do korzystania z funkcji Serwisu na podstawie licencji niewyłącznej.",
       },
       {
         title:
@@ -596,7 +596,7 @@ let pricing_offer = [
       },
       {
         title:
-          "1.3. Serwis – zbiór zasobów informacyjnych, tekstów, grafiki, oprogramowania oraz innych elementów własności intelektualnej, dostępnych przez internet pod adresem https://gotowkamax.pl.",
+          "1.3. Serwis – zbiór zasobów informacyjnych, tekstów, grafiki, oprogramowania oraz innych elementów własności intelektualnej, dostępnych przez internet pod adresem https://gotowkamax.eu.",
       },
       {
         title:
@@ -716,7 +716,7 @@ const data_offer = [
   {
     title: "Zgoda na przetwarzanie danych osobowych",
     content:
-      "Ja, osoba fizyczna, której dane zostały podane podczas rejestracji na stronie https://gotowkamax.pl/, jako podmiot danych osobowych (dalej — Podmiot), wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z warunkami Polityki przetwarzania danych osobowych Sp. z o.o. GotówkaMax.pl (NIP: 5261040827) (dalej — Operator) poprzez stronę https://gotowkamax.pl (dalej – Serwis).",
+      "Ja, osoba fizyczna, której dane zostały podane podczas rejestracji na stronie https://gotowkamax.eu/, jako podmiot danych osobowych (dalej — Podmiot), wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z warunkami Polityki przetwarzania danych osobowych Sp. z o.o. GotówkaMax.eu (NIP: 5261040827) (dalej — Operator) poprzez stronę https://gotowkamax.eu (dalej – Serwis).",
   },
   {
     title: "Zgoda na przetwarzanie danych",
@@ -761,7 +761,7 @@ const data_offer = [
   {
     title: "Cele przetwarzania danych",
     content:
-      "Celem przetwarzania danych osobowych Podmiotu jest zawarcie i wykonanie umowy użytkownika, zgodnie z którą Sp. z o.o. GotówkaMax.pl zapewnia Podmiotowi dostęp do osobistego konta w Serwisie oraz informuje Podmiot o ofertach Sp. z o.o. GotówkaMax.pl i kredytodawców.",
+      "Celem przetwarzania danych osobowych Podmiotu jest zawarcie i wykonanie umowy użytkownika, zgodnie z którą Sp. z o.o. GotówkaMax.eu zapewnia Podmiotowi dostęp do osobistego konta w Serwisie oraz informuje Podmiot o ofertach Sp. z o.o. GotówkaMax.eu i kredytodawców.",
   },
   {
     title: "Działania związane z danymi osobowymi",

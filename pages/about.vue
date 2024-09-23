@@ -3,7 +3,7 @@
 const serviceInfo = [
   {
     title: null,
-    content: "Serwis «GotówkaMax.pl» to platforma online, która pomaga użytkownikom wybrać optymalną ofertę mikropożyczki. Możesz złożyć wniosek jednocześnie do kilku instytucji finansowych, które zostały wybrane na podstawie Twoich danych."
+    content: "Serwis «GotówkaMax.eu» to platforma online, która pomaga użytkownikom wybrać optymalną ofertę mikropożyczki. Możesz złożyć wniosek jednocześnie do kilku instytucji finansowych, które zostały wybrane na podstawie Twoich danych."
   },
   {
     title: "Co robimy?",
@@ -135,12 +135,3 @@ const onCardSelected = (index) => {
     
   </NuxtLayout>
 </template>
-
-<style scoped>
-.with-bg{
-  background: url('../assets/about.webp') center/ cover;
-}
-
-
-
-</style>

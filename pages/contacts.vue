@@ -1,11 +1,10 @@
 <script setup>
 const contacts = {
-  company: "Sp. z o.o. GotówkaMax.pl",
+  company: "Sp. z o.o. GotówkaMax",
   NIP: "5261040827",
   address: {
     country: "Polska",
     city: "Warszawa",
-    district: "район Байконур",
     street: "ulica Marszałkowska 12",
     index: "00-626",
   },
@@ -46,7 +45,7 @@ const contacts = {
               <h3
                 class="font-bold uppercase pl-4 py-2 text-2xl max-[476px]:text-[18px] drop-shadow-md text-button-primary text-center"
               >
-              <span class="text-base font-bold text-dark-grey">Gotówka</span>Max.<span class="uppercase text-base font-bold text-dark-grey">pl</span>
+              <span class="text-base font-bold text-dark-grey">Gotówka</span>Max.<span class="uppercase text-base font-bold text-dark-grey">eu</span>
               </h3>
             </div>
 

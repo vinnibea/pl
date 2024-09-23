@@ -38,7 +38,6 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
         fixed: fixedHeader,
         'max-[822px]:shadow-md': !fixedHeader && !store.openModal,
         'border-slate-100': fixedHeader,
-        'border-b': fixedHeader,
       },
     ]"
   >
@@ -54,7 +53,7 @@ const fixedHeader = computed(() => route.fullPath.includes("account"));
       >
         <span class="text-xs text-dark-grey">Gotówka</span>Max.<span
           class="text-xs text-dark-grey"
-          >pl</span
+          >eu</span
         ></NuxtLink
       >
     </h2>

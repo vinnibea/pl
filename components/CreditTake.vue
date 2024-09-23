@@ -25,7 +25,7 @@ const onCardSelected = (index) => {
     <div
       v-for="(item, index) in content"
       :key="item.title"
-      class="flex group min-[822px]:hover:scale-110 flex-col bg-white hover:bg-white  w-full py-4 px-4 items-start text-4xl shadow-lg  font-semibold rounded-base text-dark-grey transition-all duration-700 cursor-pointer max-[1024px]:px-2 max-[820px]:w-full max-[820px]:py-0 max-[820px]:px-0 max-[822px]:bg-bg-white max-[822px]:hover:bg-bg-main"
+      class="flex group min-[822px]:hover:scale-110 flex-col bg-white hover:bg-white  w-full py-4 px-4 items-start text-4xl shadow-lg  font-semibold rounded-base text-dark-grey transition-all duration-700 cursor-pointer max-[1024px]:px-2 max-[820px]:w-full max-[820px]:py-0 max-[820px]:px-0 max-[822px]:bg-bg-white max-[822px]:hover:bg-bg-main min-[822px]:border-r-4 min-[822px]:border-r-button-primary"
       @click="onCardSelected(index + 1)"
     >
       <div class="flex items-center w-full gap-4  max-[822px]:justify-between max-[822px]:gap-0  max-[822px]:bg-dark-grey  max-[822px]:py-1 max-[822px]:px-1" :class="[{

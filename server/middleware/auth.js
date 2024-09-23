@@ -7,6 +7,7 @@ export default defineEventHandler(async (event) => {
     const valid_password = bcrypt.compareSync(useRuntimeConfig().api, headers.authorization);
     if (valid_password) {
       event.context.bot = true;
+      console.log(event.context.bot)
     }
   }
 

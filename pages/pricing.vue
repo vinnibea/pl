@@ -3,14 +3,14 @@ let public_offer = [
   {
     title: "Umowa Użytkownika",
     content:
-      "Niniejszy dokument reguluje relacje między Licencjodawcą a Użytkownikiem podczas korzystania z funkcjonalności Serwisu. Umowa stanowi umowę adhezyjną. Prosimy o dokładne zapoznanie się z treścią dokumentu. Jeśli nie zgadzasz się z jego warunkami, Sp. z o.o. GotówkaMax.pl zaleca zaprzestanie korzystania z Serwisu.",
+      "Niniejszy dokument reguluje relacje między Licencjodawcą a Użytkownikiem podczas korzystania z funkcjonalności Serwisu. Umowa stanowi umowę adhezyjną. Prosimy o dokładne zapoznanie się z treścią dokumentu. Jeśli nie zgadzasz się z jego warunkami, Sp. z o.o. GotówkaMax zaleca zaprzestanie korzystania z Serwisu.",
   },
   {
     title: "Definicje",
     list: [
       {
         title:
-          "1.1. Licencjodawca – Sp. z o.o. GotówkaMax.pl, NIP: 5261040827, posiadająca wyłączne prawa do Serwisu i udzielająca Użytkownikowi prawa do korzystania z funkcji Serwisu na podstawie licencji niewyłącznej.",
+          "1.1. Licencjodawca – Sp. z o.o. GotówkaMax, NIP: 5261040827, posiadająca wyłączne prawa do Serwisu i udzielająca Użytkownikowi prawa do korzystania z funkcji Serwisu na podstawie licencji niewyłącznej.",
       },
       {
         title:
@@ -18,7 +18,7 @@ let public_offer = [
       },
       {
         title:
-          "1.3. Serwis – zbiór zasobów informacyjnych, tekstów, grafiki, oprogramowania oraz innych elementów własności intelektualnej, dostępnych przez internet pod adresem https://gotowkamax.pl.",
+          "1.3. Serwis – zbiór zasobów informacyjnych, tekstów, grafiki, oprogramowania oraz innych elementów własności intelektualnej, dostępnych przez internet pod adresem https://gotowkamax.eu.",
       },
       {
         title:
@@ -136,7 +136,7 @@ let public_offer = [
 
 
 const contacts = {
-  company: "Sp. z o.o. GotówkaMax.pl",
+  company: "Sp. z o.o. GotówkaMax",
   NIP: "5261040827",
   address: {
     country: "Polska",

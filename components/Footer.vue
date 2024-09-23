@@ -4,24 +4,11 @@ import { useVuelidate } from "@vuelidate/core";
 const formData = reactive({
   email: "",
 });
-const contacts = {
-  company: "ТОО MONEYDEAL КЗ",
-  BIN: "221140056789",
-  address: {
-    country: "Казахстан",
-    city: "Нур-Султан",
-    district: "район Байконур",
-    street: "улица Абая",
-    house: "дом 12",
-    apartment: "кв. 34",
-  },
-  phone: "+77273145678",
-  email: "experts@moneydeal.pro",
-};
+
 const paragraphs = [
   {
     content:
-      "Sp. z o.o. GotówkaMax.pl NIP: 5261040827 nie uczestniczy w relacjach umownych między użytkownikami a organizacjami kredytowymi. Użytkownicy samodzielnie analizują ryzyka związane z ofertami kredytowymi, podejmują decyzje o zawarciu umów z partnerami za pośrednictwem serwisu i ponoszą ewentualne konsekwencje. Opłata za usługi serwisu nie gwarantuje zatwierdzenia mikrokredytu.",
+      "Sp. z o.o. GotówkaMax NIP: 5261040827 nie uczestniczy w relacjach umownych między użytkownikami a organizacjami kredytowymi. Użytkownicy samodzielnie analizują ryzyka związane z ofertami kredytowymi, podejmują decyzje o zawarciu umów z partnerami za pośrednictwem serwisu i ponoszą ewentualne konsekwencje. Opłata za usługi serwisu nie gwarantuje zatwierdzenia mikrokredytu.",
   },
   {
     content:
@@ -35,7 +22,7 @@ const paragraphs = [
     content:
       "Jeśli masz pytania dotyczące działania serwisu, zapoznaj się z sekcją Odpowiedzi na pytania lub skorzystaj z formularza kontaktowego na stronie ",
     linkContent: "NAPISZ DO NAS.",
-    link: "mailto:experts@gotowkamax.pl",
+    link: "mailto:experts@gotowkamax.pro",
   },
   {
     content:
@@ -54,15 +41,15 @@ const paragraphs = [
   {
     content:
       "Ta strona używa plików cookie do świadczenia usług. Możesz zmienić ustawienia dostępu do plików cookie w swojej przeglądarce. Aby usunąć dane osobowe, wyślij e-mail z zarejestrowanego adresu na adres ",
-    linkContent: "experts@gotowkamax.pl.",
-    link: "mailto:experts@gotowkamax.pl",
+    linkContent: "experts@gotowkamax.pro",
+    link: "mailto:experts@gotowkamax.pro",
   },
 ];
 const rules = computed(() => {
   return {
     email: {
       required: helpers.withMessage("", required),
-      email: helpers.withMessage("Неверный формат электронной почты", email),
+      email: helpers.withMessage("Nieprawidłowy format wiadomości e-mail", email),
     },
   };
 });
@@ -107,7 +94,7 @@ const onSubscribe = async (email) => {
     })
     .catch((e) => {
       if (e.statusCode === 409) {
-        serverError.value = "Вы уже подписаны";
+        serverError.value = "Jesteś już subskrybentem";
       }
     })
     .finally(() => {
@@ -162,7 +149,7 @@ const onSubscribe = async (email) => {
               v-model="formData.email"
               :disabled="loading || localUser.isSubscriber"
               @blur="() => formTouched('email')"
-              class="px-2 py-2 w-full bg-slate-95 bg-button-primary disabled:opacity-50 placeholder:text-white transition-all duration-300 placeholder:text-sm focus:outline-none focus:bg-button-primary text-white focus:placeholder:text-slate-600 max-[822px]:placeholder:text-xs"
+              class="px-2 py-2 w-full  bg-button-primary border-b border-b-white focus:border-b-button-primary disabled:opacity-50 placeholder:text-white transition-all duration-300 placeholder:text-sm focus:outline-none focus:bg-red-500 text-white focus:placeholder:text-slate-600 max-[822px]:placeholder:text-xs"
               :placeholder="localUser.subscriber_email || 'Podaj swój adres e-mail'"
             />
 
@@ -226,7 +213,7 @@ const onSubscribe = async (email) => {
           >
             <span class="text-xs text-dark-grey">Gotówka</span>Max.<span
               class="text-xs text-dark-grey"
-              >pl</span
+              >eu</span
             >
           </h2>
 
@@ -276,7 +263,7 @@ const onSubscribe = async (email) => {
           <span class="flex items-center gap-2">
              <UIcon name="mdi:envelope"></UIcon> 
              <span class="text-xs text-button-primary font-bold">
-              experts@gotówkamax.pl.pro</span>
+              experts@gotówkamax.pro</span>
             </span>
         </div>
       </div>
@@ -312,7 +299,7 @@ const onSubscribe = async (email) => {
         <p
           class="font-semibold text-white text-[12px] w-1/3 max-[822px]:w-full max-[822px]:text-[10px]"
         >
-        Sp. z o.o. GotówkaMax.pl, zarejestrowana pod adresem ulica Marszałkowska 12, 00-626 Warszawa, Polska
+        Sp. z o.o. GotówkaMax, zarejestrowana pod adresem ulica Marszałkowska 12, 00-626 Warszawa, Polska
         </p>
       </div>
     </div>
