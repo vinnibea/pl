@@ -14,7 +14,7 @@ const profile = useLocalUserStore();
 await store.fetchCreditors();
 const sortedData = computed(() =>
   props.shortData.length
-    ? props.shortData.slice(0, 6).sort((a, b) => b.link.length - a.link.length)
+    ? props.shortData.slice(0, 10).sort((a, b) => b.link.length - a.link.length)
     : store.creditors.sort((a, b) => b.link.length - a.link.length)
 );
 </script>

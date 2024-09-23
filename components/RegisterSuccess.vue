@@ -32,8 +32,7 @@ const localModalOpener = () => {
     >
       <p>
         Instrukcje dotyczące uzyskania pożyczki, listę dostępnych
-        pożyczkodawców, a także status wysłanych wniosków można wyświetlić w
-        osobistej szafce. Możesz sprawdzić status wysłanych wniosków na stronie
+        pożyczkodawców, a także status wysłanych możesz sprawdzić na stronie
         swojego konta.
       </p>
       <NuxtLink
