@@ -30,7 +30,7 @@ const paragraphs = [
   },
   {
     content:
-      "Okres próbny, w którym nie jest pobierana opłata od klienta, wynosi 5 dni od momentu rozpoczęcia subskrypcji. Następnie z twojej karty zostanie pobrana kwota 19,99 euro za 5 dni korzystania z serwisu (płatna subskrypcja). Subskrypcja jest automatycznie odnawiana, jeśli nie zostanie anulowana.",
+      "Okres próbny, w którym nie jest pobierana opłata od klienta, wynosi 5 dni od momentu rozpoczęcia subskrypcji. Następnie z twojej karty zostanie pobrana kwota 9,99 euro za 5 dni korzystania z serwisu (płatna subskrypcja). Subskrypcja jest automatycznie odnawiana, jeśli nie zostanie anulowana.",
   },
   {
     content:
