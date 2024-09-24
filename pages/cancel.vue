@@ -16,8 +16,8 @@ const rules = computed(() => {
       ),
       required: helpers.withMessage("Это поле не может быть пустым", required),
       minLength: helpers.withMessage(
-        `Это поле не может быть короче 10 символов`,
-        minLength(10)
+        `To pole nie może być krótsze niż 9 znaków`,
+        minLength(9)
       ),
     },
   };
