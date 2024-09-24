@@ -95,7 +95,7 @@ const onSubmit = async () => {
     body: {
       customerID: _clientID,
 
-      price: "price_1Pw4lX03KdpVNiYIIVuJm7Zw",
+      price: "price_1Q2ZghEanzUqIyswrQZoP1RT",
     },
   });
   _sid = subscription_id;
@@ -106,7 +106,7 @@ const onSubmit = async () => {
       elements,
       secret,
       confirmParams: {
-        return_url: "https://moneydeal.kz/register/",
+        return_url: "https://gotowkamax.eu/register/",
       },
       redirect: "if_required",
     });
