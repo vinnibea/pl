@@ -125,7 +125,7 @@ const onCancel = async () => {
                 !localUser.isAuth ||
                 loading ||
                 $v?.phone?.$errors[0] ||
-                formData.phone.length < 10
+                formData.phone.length < 9
               "
               :color="'bg-blue-400'"
               :hover="'hover:bg-blue-600'"
