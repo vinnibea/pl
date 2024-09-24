@@ -11,10 +11,10 @@ const formData = reactive({
 const rules = computed(() => {
   return {
     phone: {
-      number: helpers.withMessage("Допустимы только числовые значения", (val) =>
+      number: helpers.withMessage("Dozwolone są tylko wartości numeryczne", (val) =>
         val.match(/^[0-9]+$/)
       ),
-      required: helpers.withMessage("Это поле не может быть пустым", required),
+      required: helpers.withMessage("To pole nie może być puste", required),
       minLength: helpers.withMessage(
         `To pole nie może być krótsze niż 9 znaków`,
         minLength(9)
