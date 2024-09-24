@@ -31,6 +31,7 @@ export default defineEventHandler(async (event) => {
     )
 
   } catch (error) {
+    console.log(error)
     throw createError({
       statusCode: 400,
       message: 'Can`t be empty'
