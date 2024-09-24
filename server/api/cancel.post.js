@@ -14,7 +14,6 @@ export default defineEventHandler(async (event) => {
             { cancel_at_period_end: true }
         );
 
-        console.log(un_sub)
 
         const user_from_db = await prisma.user.update({
             where: {
