@@ -14,8 +14,10 @@ const profile = useLocalUserStore();
 await store.fetchCreditors();
 const sortedData = computed(() =>
   props.shortData.length
-    ? props.shortData.slice(0, 4).sort((a, b) => b.isRecommended - a.isRecommended)
-    : store.creditors.sort((a, b) => b.isRecommended- a.isRecommended)
+    ? props.shortData
+        .sort((a, b) => b.isRecommended - a.isRecommended)
+        .slice(0, 4)
+    : store.creditors.sort((a, b) => b.isRecommended - a.isRecommended)
 );
 </script>
 
@@ -27,7 +29,7 @@ const sortedData = computed(() =>
       class="text-md font-semibold w-full text-center uppercase"
       v-if="!shortData"
     >
-      Мои кредиторы
+      Moi kredytodawcy
     </h2>
     <div
       v-for="item in sortedData"
@@ -35,7 +37,6 @@ const sortedData = computed(() =>
       class="w-[45%] max-[1024px]:w-full flex flex-col justify-between gap-4 shadow-md p-2 rounded-base"
       v-motion-fade-visible-once
     >
-  
       <div class="flex items-start w-full py-2 px-2">
         <img
           :src="item.src"
@@ -85,7 +86,6 @@ const sortedData = computed(() =>
           >Wniosek przyjęty</Button
         >
 
-        
         <Button
           v-if="
             !item.isRecommended &&
