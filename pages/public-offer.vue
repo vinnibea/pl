@@ -128,7 +128,7 @@ const public_offer = [
     list: [
       {
         title:
-          "3.1. Opłata za korzystanie z Serwisu wynosi 9,99 euro. Okres próbny, w którym opłata nie jest pobierana od klienta, wynosi 5 dni od rozpoczęcia subskrypcji. Kwota ta zostanie pobrana za 5 dni korzystania od momentu złożenia wniosku. Jeśli subskrypcja nie zostanie anulowana, opłata będzie pobierana automatycznie.",
+          "3.1. Opłata za korzystanie z Serwisu wynosi 19,99 euro. Okres próbny, w którym opłata nie jest pobierana od klienta, wynosi 5 dni od rozpoczęcia subskrypcji. Kwota ta zostanie pobrana za 5 dni korzystania od momentu złożenia wniosku. Jeśli subskrypcja nie zostanie anulowana, opłata będzie pobierana automatycznie.",
       },
       {
         title:
@@ -258,7 +258,7 @@ const public_offer = [
       },
       {
         title:
-          "6.2. Opłata licencyjna dokonywana jest na zasadzie pełnej przedpłaty. Koszt usług Serwisu wynosi 9,99 EUR. Okres próbny, w trakcie którego użytkownik nie jest obciążany opłatami, wynosi 5 dni od rozpoczęcia subskrypcji.",
+          "6.2. Opłata licencyjna dokonywana jest na zasadzie pełnej przedpłaty. Koszt usług Serwisu wynosi 19,99 EUR. Okres próbny, w trakcie którego użytkownik nie jest obciążany opłatami, wynosi 5 dni od rozpoczęcia subskrypcji.",
       },
       {
         title:
@@ -494,7 +494,7 @@ const public_offer = [
     list: [
       {
         title:
-          "12.1. Opłata za korzystanie z płatnej funkcjonalności serwisu wynosi 9,99 euro. Okres próbny, w którym opłata nie jest pobierana, trwa 5 dni od rozpoczęcia subskrypcji. Użytkownik jest zobowiązany do terminowego wniesienia opłaty w celu kontynuacji korzystania z serwisu.",
+          "12.1. Opłata za korzystanie z płatnej funkcjonalności serwisu wynosi 19,99 euro. Okres próbny, w którym opłata nie jest pobierana, trwa 5 dni od rozpoczęcia subskrypcji. Użytkownik jest zobowiązany do terminowego wniesienia opłaty w celu kontynuacji korzystania z serwisu.",
       },
       {
         title:

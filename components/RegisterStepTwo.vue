@@ -343,7 +343,7 @@ const onSubmit = async () => {
     >
       <p>
         Wprowadź dane ważnej karty kredytowej, aby subskrybować usługę.
-        Pierwsze 5 dni usługa jest darmowa. Klikając przycisk „Dalej”, zgadzasz się, że zostanie wystawiony rachunek na kwotę 9,99 euro co 5 dni kalendarzowych (standardowy okres). Możesz anulować subskrypcję w dowolnym momencie, klikając przycisk „Zamknięcie konta” w dolnej części strony, wcześniej logując się do swojego konta przy użyciu loginu i hasła utworzonych podczas rejestracji.
+        Pierwsze 5 dni usługa jest darmowa. Klikając przycisk „Dalej”, zgadzasz się, że zostanie wystawiony rachunek na kwotę 19,99 euro co 5 dni kalendarzowych (standardowy okres). Możesz anulować subskrypcję w dowolnym momencie, klikając przycisk „Zamknięcie konta” w dolnej części strony, wcześniej logując się do swojego konta przy użyciu loginu i hasła utworzonych podczas rejestracji.
       </p>
       <p>
         Sp. z o.o. GotówkaMax, zarejestrowana pod adresem ulica Marszałkowska 12, 00-626 Warszawa, Polska</p>

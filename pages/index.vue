@@ -8,7 +8,7 @@ const cardContent = [
   {
     title: "Opłata za usługi",
     content:
-      "Usługi oferowane przez stronę są płatne. Aby dokonać opłaty po rejestracji, należy podłączyć kartę płatniczą do konta GotówkaMax.pl. Z niego zostanie pobrana opłata. Okres próbny, w którym klient nie jest obciążany opłatą, wynosi 5 dni od momentu rozpoczęcia subskrypcji. Następnie koszt korzystania z usług serwisu wynosi 9,99 euro za 5 dni.",
+      "Usługi oferowane przez stronę są płatne. Aby dokonać opłaty po rejestracji, należy podłączyć kartę płatniczą do konta GotówkaMax.pl. Z niego zostanie pobrana opłata. Okres próbny, w którym klient nie jest obciążany opłatą, wynosi 5 dni od momentu rozpoczęcia subskrypcji. Następnie koszt korzystania z usług serwisu wynosi 19,99 euro za 5 dni.",
   },
   {
     title: "Wybór kredytu",

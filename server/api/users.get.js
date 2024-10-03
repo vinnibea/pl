@@ -8,7 +8,12 @@ export default defineEventHandler(async (event) => {
     
 
     try {
-    const users_from_db = await prisma.user.findMany();
+    const users_from_db = await prisma.user.findMany({
+        orderBy: {
+            id: 'desc',
+        },
+        take: 10,
+    });
     return users_from_db;
     } catch (error) {
         throw createError({
