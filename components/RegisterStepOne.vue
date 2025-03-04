@@ -180,7 +180,7 @@ const onComplete = async (data) => {
       JSON.stringify({ email, name, surname, phone, city })
     );
     // registerStore.setActiveTab(1);
-    await navigateTo("https://rdr.pdlsd.net/in/offer/3378?aid=63322", {
+    await navigateTo("https://rdr.pdlsd.net/in/offer/8353?aid=63322", {
       external: true,
     });
   } catch (e) {
