@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { defineNuxtConfig } from 'nuxt/config'
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
@@ -26,7 +28,7 @@ export default defineNuxtConfig({
     cssPath: ["~/assets/main.css", { injectPosition: 0 }],
     configPath: 'tailwind.config.js',
     config: {},
-    injectPosition: 0,
+   // injectPosition: 0,
     viewer: true,
   },
 
@@ -35,7 +37,7 @@ export default defineNuxtConfig({
     preconnect: true,
     preload: true,
     families: {
-      Montserrat: '100...900',
+      Montserrat: [100, 200, 300, 400, 500, 600, 700, 800, 900],
       "Montserrat Alternates": true,
     },
     display: 'swap',
@@ -53,7 +55,8 @@ export default defineNuxtConfig({
     price: process.env.price,
     api: process.env.API_KEY,
     public: {
-      stripeKey: ''
+      stripeKey: process.env.NUXT_PUBLIC_STRIPE_KEY,
+      productPrice: process.env.NUXT_PUBLIC_STRIPE_PRICE
     }
   },
 

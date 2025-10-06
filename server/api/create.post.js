@@ -4,7 +4,7 @@ import { stripe } from '../utils/stripe';
 export default defineEventHandler(async (event) => {
   try {
     const { customerID, price } = await readBody(event);
-  
+
     // Create the subscription. Note we're expanding the Subscription's
     // latest invoice and that invoice's payment_intent
     // so we can pass it to the front end to confirm the payment
@@ -31,7 +31,7 @@ export default defineEventHandler(async (event) => {
     )
 
   } catch (error) {
-    console.log(error)
+    console.log(error, 'STRIPE ERROR')
     throw createError({
       statusCode: 400,
       message: 'Can`t be empty'

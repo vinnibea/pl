@@ -3,6 +3,9 @@ import { useMobileStore } from "~/stores/MobileMenu.js";
 import { useRegisterStore } from "~/stores/RegisterStore.js";
 import { useLocalUserStore } from "~/stores/localStore.js";
 import { loadStripe } from "@stripe/stripe-js";
+
+const STRIPE_PUBLIC = useRuntimeConfig().public.stripeKey;
+const STRIPE_PRICE = useRuntimeConfig().public.productPrice;
 const showReverse = ref(false);
 
 const store = useMobileStore();
@@ -46,7 +49,7 @@ const completed = ref(false);
 
 onMounted(async () => {
   client = await JSON.parse(localStorage.getItem("temp"));
-  stripe = await loadStripe(useRuntimeConfig().public.stripeKey, {
+  stripe = await loadStripe(STRIPE_PUBLIC, {
     locale: "pl",
   });
 
@@ -95,7 +98,7 @@ const onSubmit = async () => {
     body: {
       customerID: _clientID,
 
-      price: "price_1QCLdTJvGILXkUkY461rsa5J",
+      price: STRIPE_PRICE,
     },
   });
   _sid = subscription_id;
@@ -342,11 +345,18 @@ const onSubmit = async () => {
       class="text-xs text-dark-grey pt-16 flex flex-col gap-2 max-[822px]:text-[10px] max-[822px]:pt-24"
     >
       <p>
-        Wprowadź dane ważnej karty kredytowej, aby subskrybować usługę.
-        Pierwsze 5 dni usługa jest darmowa. Klikając przycisk „Dalej”, zgadzasz się, że zostanie wystawiony rachunek na kwotę 19,99 euro co 5 dni kalendarzowych (standardowy okres). Możesz anulować subskrypcję w dowolnym momencie, klikając przycisk „Zamknięcie konta” w dolnej części strony, wcześniej logując się do swojego konta przy użyciu loginu i hasła utworzonych podczas rejestracji.
+        Wprowadź dane ważnej karty kredytowej, aby subskrybować usługę. Pierwsze
+        5 dni usługa jest darmowa. Klikając przycisk „Dalej”, zgadzasz się, że
+        zostanie wystawiony rachunek na kwotę 19,99 euro co 5 dni kalendarzowych
+        (standardowy okres). Możesz anulować subskrypcję w dowolnym momencie,
+        klikając przycisk „Zamknięcie konta” w dolnej części strony, wcześniej
+        logując się do swojego konta przy użyciu loginu i hasła utworzonych
+        podczas rejestracji.
       </p>
       <p>
-        Sp. z o.o. GotówkaMax, zarejestrowana pod adresem ulica Marszałkowska 12, 00-626 Warszawa, Polska</p>
+        Sp. z o.o. GotówkaMax, zarejestrowana pod adresem ulica Marszałkowska
+        12, 00-626 Warszawa, Polska
+      </p>
       <p>Opłata pojawi się na wyciągu z Twojej karty jako GotówkaMax.</p>
     </div>
   </form>

@@ -1,4 +1,3 @@
-import { default as creditors } from '../schemas/creditor';
 import prisma from '~/lib/prisma';
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);

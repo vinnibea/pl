@@ -31,17 +31,18 @@ const sortedData = computed(() =>
     >
       Moi kredytodawcy
     </h2>
+
     <div
       v-for="item in sortedData"
       :key="item.title"
-      class="w-[45%] max-[1024px]:w-full flex flex-col justify-between gap-4 shadow-md p-2 rounded-base"
+      class="w-[45%] max-[1024px]:w-full flex flex-col justify-between gap-4 shadow-sm border p-2 rounded-base"
       v-motion-fade-visible-once
     >
       <div class="flex items-start w-full py-2 px-2">
         <img
           :src="item.src"
           :alt="item.title"
-          class="max-w-24 max-h-24 p-2 shadow-md rounded-base bg-white"
+          class="max-w-24 max-h-24 p-2 shadow-sm border rounded-md bg-white"
         />
         <div class="flex flex-col justify-center w-full items-end">
           <h3
@@ -56,19 +57,13 @@ const sortedData = computed(() =>
           </p>
         </div>
       </div>
+
       <div
-        class="flex flex-col text-sm max-[822px]:text-[12px]"
-        v-for="(block, i) in item.blocks"
+        class="flex flex-col text-sm max-[822px]:text-[12px] text-slate-800 border-b last:border-b-none"
+        v-for="block in item.blocks.slice(0, 4)"
         :key="block._id"
       >
-        <div
-          class="flex justify-between px-2 py-2 max-[822px]:py-0"
-          :class="[
-            {
-              'border-b': i !== 3,
-            },
-          ]"
-        >
+        <div class="flex justify-between px-2 py-2 max-[822px]:py-0">
           <span class="font-medium">{{ block.title }}</span>
           <span class="">{{ block.value }}</span>
         </div>

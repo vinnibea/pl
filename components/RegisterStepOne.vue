@@ -179,10 +179,10 @@ const onComplete = async (data) => {
       "temp",
       JSON.stringify({ email, name, surname, phone, city })
     );
-    // registerStore.setActiveTab(1);
-    await navigateTo("https://rdr.pdlsd.net/in/offer/8353?aid=63322", {
-      external: true,
-    });
+    registerStore.setActiveTab(1);
+    // await navigateTo("https://rdr.pdlsd.net/in/offer/8353?aid=63322", {
+    //   external: true,
+    // });
   } catch (e) {
     server_error.value = "Coś poszło nie tak, spróbuj ponownie";
     setTimeout(() => {
