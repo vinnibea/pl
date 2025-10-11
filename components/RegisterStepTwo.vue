@@ -138,7 +138,7 @@ const onSubmit = async () => {
     errors.value = "Spróbuj ponownie lub połącz inną kartę";
     setTimeout(() => {
       errors.value = "";
-    }, 7000);
+    }, 3000);
   } finally {
     proceeding.value = false;
   }
@@ -341,7 +341,7 @@ const onSubmit = async () => {
         </span>
       </span>
     </Button>
-    <div
+    <!-- <div
       class="text-xs text-dark-grey pt-16 flex flex-col gap-2 max-[822px]:text-[10px] max-[822px]:pt-24"
     >
       <p>
@@ -358,7 +358,7 @@ const onSubmit = async () => {
         12, 00-626 Warszawa, Polska
       </p>
       <p>Opłata pojawi się na wyciągu z Twojej karty jako GotówkaMax.</p>
-    </div>
+    </div> -->
   </form>
 </template>
 
