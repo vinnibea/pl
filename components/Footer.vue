@@ -293,12 +293,12 @@ const onSubscribe = async (email) => {
         <p
           class="font-semibold text-white text-[12px] w-1/6 max-[822px]:w-full max-[822px]:text-[10px]"
         >
-        Tel.: +48 (221) 234 567
+        Tel.: +44 7412 581496
         </p>
         <p
           class="font-semibold text-white text-[12px] w-1/3 max-[822px]:w-full max-[822px]:text-[10px]"
         >
-        Sp. z o.o. GotówkaMax, zarejestrowana pod adresem ulica Marszałkowska 12, 00-626 Warszawa, Polska
+        Sp. z o.o. GEPPETTO CONSULTING LTD, zarejestrowana pod adresem Cooper Buildings, Arundel Street, Sheffield, England, S1 2NS
         </p>
       </div>
     </div>
