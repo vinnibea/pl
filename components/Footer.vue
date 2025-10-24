@@ -8,7 +8,7 @@ const formData = reactive({
 const paragraphs = [
   {
     content:
-      "Sp. z o.o. GotówkaMax NIP: 5261040827 nie uczestniczy w relacjach umownych między użytkownikami a organizacjami kredytowymi. Użytkownicy samodzielnie analizują ryzyka związane z ofertami kredytowymi, podejmują decyzje o zawarciu umów z partnerami za pośrednictwem serwisu i ponoszą ewentualne konsekwencje. Opłata za usługi serwisu nie gwarantuje zatwierdzenia mikrokredytu.",
+      "Sp. z o.o. GEPPETTO CONSULTING LTD NIP: 5261040827 nie uczestniczy w relacjach umownych między użytkownikami a organizacjami kredytowymi. Użytkownicy samodzielnie analizują ryzyka związane z ofertami kredytowymi, podejmują decyzje o zawarciu umów z partnerami za pośrednictwem serwisu i ponoszą ewentualne konsekwencje. Opłata za usługi serwisu nie gwarantuje zatwierdzenia mikrokredytu.",
   },
   {
     content:
@@ -20,7 +20,7 @@ const paragraphs = [
   },
   {
     content:
-      "Jeśli masz pytania dotyczące działania serwisu, zapoznaj się z sekcją Odpowiedzi na pytania lub skorzystaj z formularza kontaktowego na stronie ",
+      "Jeśli masz pytania dotyczące działania serwisu, zapoznaj się z sekcją Odpowiedzi na pytania lub skorzystaj z formularza kontaktowego na stronie",
     linkContent: "NAPISZ DO NAS.",
     link: "mailto:experts@gotowkamax.pro",
   },
@@ -30,7 +30,7 @@ const paragraphs = [
   },
   {
     content:
-      "Okres próbny, w którym nie jest pobierana opłata od klienta, wynosi 5 dni od momentu rozpoczęcia subskrypcji. Następnie z twojej karty zostanie pobrana kwota 19,99 euro za 5 dni korzystania z serwisu (płatna subskrypcja). Subskrypcja jest automatycznie odnawiana, jeśli nie zostanie anulowana.",
+      "Okres próbny, w którym nie jest pobierana opłata od klienta, wynosi 7 dni od momentu rozpoczęcia subskrypcji. Następnie z twojej karty zostanie pobrana kwota 9,99 euro za 7 dni korzystania z serwisu (płatna subskrypcja). Subskrypcja jest automatycznie odnawiana, jeśli nie zostanie anulowana.",
   },
   {
     content:
