@@ -1,14 +1,14 @@
 <script setup>
 const contacts = {
-  company: "Sp. z o.o. GotówkaMax",
+  company: "Sp. z o.o. GEPPETTO CONSULTING LTD",
   NIP: "5261040827",
   address: {
-    country: "Polska",
-    city: "Warszawa",
-    street: "ulica Marszałkowska 12",
-    index: "00-626",
+    country: "England",
+    city: "Sheffield",
+    street: "Cooper Buildings, Arundel Street",
+    index: "S1 2NS",
   },
-  phone: "+48 (221) 234 567",
+  phone: "+44 7412 581496",
   email: "experts@gotówkamax.pro",
 };
 </script>
