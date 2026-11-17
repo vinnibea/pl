@@ -1,14 +1,22 @@
 <script setup>
 import { required, email, helpers } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
+
 const formData = reactive({
   email: "",
 });
 
+const footerData = {
+  nip: 669601311,
+  ltd: 'Alsigns Commercials Ltd',
+  phone: '+447473986634',
+  adress: 'zarejestrowana pod adresem Collin House Collin Lane, Broadway, Worcestershire, WR12 7PB'
+}
+
 const paragraphs = [
   {
     content:
-      "Sp. z o.o. GEPPETTO CONSULTING LTD NIP: 5261040827 nie uczestniczy w relacjach umownych między użytkownikami a organizacjami kredytowymi. Użytkownicy samodzielnie analizują ryzyka związane z ofertami kredytowymi, podejmują decyzje o zawarciu umów z partnerami za pośrednictwem serwisu i ponoszą ewentualne konsekwencje. Opłata za usługi serwisu nie gwarantuje zatwierdzenia mikrokredytu.",
+      `Sp. z o.o. ${footerData.ltd} NIP: ${footerData.nip} nie uczestniczy w relacjach umownych między użytkownikami a organizacjami kredytowymi. Użytkownicy samodzielnie analizują ryzyka związane z ofertami kredytowymi, podejmują decyzje o zawarciu umów z partnerami za pośrednictwem serwisu i ponoszą ewentualne konsekwencje. Opłata za usługi serwisu nie gwarantuje zatwierdzenia mikrokredytu.`,
   },
   {
     content:
@@ -293,12 +301,12 @@ const onSubscribe = async (email) => {
         <p
           class="font-semibold text-white text-[12px] w-1/6 max-[822px]:w-full max-[822px]:text-[10px]"
         >
-        Tel.: +44 7412 581496
+        Tel.: {{footerData.phone}}
         </p>
         <p
           class="font-semibold text-white text-[12px] w-1/3 max-[822px]:w-full max-[822px]:text-[10px]"
         >
-        Sp. z o.o. GEPPETTO CONSULTING LTD, zarejestrowana pod adresem Cooper Buildings, Arundel Street, Sheffield, England, S1 2NS
+        Sp. z o.o. {{footerData.ltd}}, {{footerData.adress}}
         </p>
       </div>
     </div>

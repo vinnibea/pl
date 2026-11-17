@@ -34,18 +34,35 @@ const formTouched = (field) => {
 const loading = ref(false);
 
 const input_info = ref("");
+// const onCancel = async () => {
+//   loading.value = true;
+
+//   try {
+//     console.log(localUser.localUser.sid, formData.phone);
+//     const response = await $fetch("/api/cancel/", {
+//       method: "POST",
+//       body: {
+//         phone: formData.phone,
+//         sid: localUser.localUser.sid,
+//       },
+//     });
+
+//     localUser.setLocalUser(response);
+//   } catch (e) {
+//     input_info.value = `Sprawdź wprowadzone dane. Jeśli wprowadzony numer jest prawidłowy, ale nie możesz zrezygnować z subskrypcji, użyj przycisku`;
+//     setTimeout(() => {
+//       input_info.value = "";
+//     }, 5000);
+//   } finally {
+//     loading.value = false;
+//   }
+// };
+
 const onCancel = async () => {
   loading.value = true;
 
   try {
-    console.log(localUser.localUser.sid, formData.phone);
-    const response = await $fetch("/api/cancel/", {
-      method: "POST",
-      body: {
-        phone: formData.phone,
-        sid: localUser.localUser.sid,
-      },
-    });
+    const response = await doCancelSubscription(formData.phone);
 
     localUser.setLocalUser(response);
   } catch (e) {

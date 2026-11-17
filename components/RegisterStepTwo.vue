@@ -3,6 +3,7 @@ import { useMobileStore } from "~/stores/MobileMenu.js";
 import { useRegisterStore } from "~/stores/RegisterStore.js";
 import { useLocalUserStore } from "~/stores/localStore.js";
 import { loadStripe } from "@stripe/stripe-js";
+import { doCreateAirwallaxClient } from "~/utils/airwallax.api";
 
 const STRIPE_PUBLIC = useRuntimeConfig().public.stripeKey;
 const STRIPE_PRICE = useRuntimeConfig().public.productPrice;
@@ -46,103 +47,7 @@ let terms_accepted = ref(false);
 const proceeding = ref(false);
 const loading = ref(true);
 const completed = ref(false);
-
-onMounted(async () => {
-  client = await JSON.parse(localStorage.getItem("temp"));
-  stripe = await loadStripe(STRIPE_PUBLIC, {
-    locale: "pl",
-  });
-
-  try {
-    const { secret: customerSecret, customerID } = await $fetch(
-      "/api/customer",
-      {
-        method: "POST",
-        body: {
-          email: client.email,
-        },
-      }
-    );
-
-    if (customerSecret) {
-      clientSecret = customerSecret;
-      _clientID = customerID;
-      _cus = customerID;
-      elements = await stripe.elements({
-        clientSecret,
-      });
-      paymentElement = await elements.create("payment", {
-        paymentMethodOrder: ["card"],
-        terms: { card: "never" },
-      });
-      await paymentElement.mount("#payment-element");
-      paymentElement.on("change", (event) => {
-        completed.value = event.complete;
-      });
-      loading.value = false;
-    } else {
-      errors.value = "Niedopuszczalne działanie";
-      registerStore.setActiveTab(0);
-    }
-  } catch (e) {
-    console.log(e);
-  }
-});
-
-const onSubmit = async () => {
-  proceeding.value = true;
-  await elements.submit();
-
-  const { subscription_id, secret } = await $fetch("/api/create", {
-    method: "POST",
-    body: {
-      customerID: _clientID,
-
-      price: STRIPE_PRICE,
-    },
-  });
-  _sid = subscription_id;
-
-  try {
-    const { setupIntent } = await stripe.confirmSetup({
-      //`Elements` instance that was used to create the Payment Element
-      elements,
-      secret,
-      confirmParams: {
-        return_url: "https://gotowkamax.eu/register/",
-      },
-      redirect: "if_required",
-    });
-
-    const update = await $fetch("/api/update", {
-      method: "PUT",
-      body: {
-        pm: setupIntent?.payment_method,
-        sid: _sid,
-        cus: _cus,
-      },
-    });
-
-    const data = await $fetch("/api/register", {
-      method: "POST",
-      body: {
-        ...client,
-        _sid,
-      },
-    });
-    if (setupIntent && setupIntent.status === "succeeded") {
-      localStorage.removeItem("temp");
-      registerStore.setActiveTab(2);
-    }
-  } catch (error) {
-    errors.value = "Spróbuj ponownie lub połącz inną kartę";
-    setTimeout(() => {
-      errors.value = "";
-    }, 3000);
-  } finally {
-    proceeding.value = false;
-  }
-};
+const { isLoading } = useAirwallax('payment-element')
 </script>
 
 <template>
@@ -279,17 +184,13 @@ const onSubmit = async () => {
       </div>
     </div>
     <div class="flex flex-col gap-2">
-      <div id="payment-element"></div>
-      <div v-if="loading" class="flex items-center justify-center">
-        <span class="flex items-center justify-center w-full gap-2 mx-auto">
-          <span
-            name="loader"
-            v-if="loading"
-            class="loader bg-opacity-0 border-4 w-32 h-32 bt-2 border-t-white border-slate-300 rounded-full"
-          >
-          </span>
-        </span>
+
+      <div v-if="isLoading" class="flex items-center justify-center">
+        <span class="loader border-4 w-32 h-32 border-t-white border-slate-300 rounded-full" />
       </div>
+
+      <div id="payment-element" v-show="!isLoading" />
+
       <div class="min-h-6 flex items-center">
         <span
           v-if="errors?.length"
@@ -324,7 +225,7 @@ const onSubmit = async () => {
       </div>
     </div>
 
-    <Button
+    <!-- <Button
       class="mx-auto min-w-[240px] relative"
       :disabled="
         proceeding || errors?.length != false || !terms_accepted || !completed
@@ -340,7 +241,7 @@ const onSubmit = async () => {
         >
         </span>
       </span>
-    </Button>
+    </Button> -->
     <!-- <div
       class="text-xs text-dark-grey pt-16 flex flex-col gap-2 max-[822px]:text-[10px] max-[822px]:pt-24"
     >

@@ -1,5 +1,6 @@
 datasource db {
     provider  = "postgresql"
+    //@ts-ignore
     url       = env("DATABASE_URL")
     directUrl = env("DIRECT_URL")
 }
@@ -19,7 +20,7 @@ model User {
     hasNotification Boolean  @default(true)
     hasEmail        Boolean  @default(true)
     sID             String
-    customerID      String
+    customerID      String   @unique
     password        String
     subscription    Boolean  @default(false)
     createdAt       DateTime @default(now())

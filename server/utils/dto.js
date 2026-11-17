@@ -12,6 +12,7 @@ export default {
             hasNotification: payload.hasNotification,
             deactivated: payload.deactivated,
             subscription: payload.subscription,
+            role: payload.role
         }
     }
 }
