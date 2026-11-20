@@ -1,16 +1,6 @@
 <script setup>
-const contacts = {
-  company: "Sp. z o.o. GEPPETTO CONSULTING LTD",
-  NIP: "5261040827",
-  address: {
-    country: "England",
-    city: "Sheffield",
-    street: "Cooper Buildings, Arundel Street",
-    index: "S1 2NS",
-  },
-  phone: "+44 7412 581496",
-  email: "experts@gotówkamax.pro",
-};
+import { contacts } from "~/constants/constants";
+
 </script>
 
 <template>
@@ -45,15 +35,21 @@ const contacts = {
               <h3
                 class="font-bold uppercase pl-4 py-2 text-2xl max-[476px]:text-[18px] drop-shadow-md text-button-primary text-center"
               >
-              <span class="text-base font-bold text-dark-grey">Gotówka</span>Max.<span class="uppercase text-base font-bold text-dark-grey">eu</span>
+              <span class="text-base font-bold text-dark-grey">Gotówka</span>Max.<span class="uppercase text-base font-bold text-dark-grey">pl</span>
               </h3>
             </div>
 
             <p
+              class="text-sm w-full px-4 py-4 text-justify bg-bg-main transition-all bg-opacity-60 backdrop-blur-lg duration-300 max-[822px]:group-hover:text-button-primary max-[822px]:text-[10px] max-[822px]:px-2"
+            >
+              <span class="uppercase text-button-primary pr-2">Firma:</span>
+              {{ contacts.company }}
+            </p>
+            <p
               class="text-sm w-full px-4 py-4 xt-justify bg-bg-main transition-all bg-opacity-60 backdrop-blur-lg duration-300 max-[822px]:group-hover:text-button-primary max-[822px]:text-[10px] max-[822px]:px-2"
             >
-              <span class="uppercase text-button-primary pr-2">NIP:</span>
-              {{ contacts.NIP }}
+              <span class="uppercase text-button-primary pr-2">VAT:</span>
+              {{ contacts.VAT }}
             </p>
             <p
               class="text-sm w-full px-4 py-4 text-justify bg-bg-main transition-all bg-opacity-60 backdrop-blur-lg duration-300 max-[822px]:group-hover:text-button-primary max-[822px]:text-[10px] max-[822px]:px-2"

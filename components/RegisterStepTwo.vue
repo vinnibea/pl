@@ -1,4 +1,5 @@
 <script setup>
+import { contacts } from "~/constants/constants";
 import { useMobileStore } from "~/stores/MobileMenu.js";
 import { useRegisterStore } from "~/stores/RegisterStore.js";
 import { useLocalUserStore } from "~/stores/localStore.js";
@@ -255,10 +256,11 @@ const { isLoading } = useAirwallax('payment-element')
         podczas rejestracji.
       </p>
       <p>
-        Sp. z o.o. GotówkaMax, zarejestrowana pod adresem ulica Marszałkowska
-        12, 00-626 Warszawa, Polska
+        {{ contacts.company }}, zarejestrowana pod adresem
+        {{ contacts.address.street }}, {{ contacts.address.city }},
+        {{ contacts.address.country }}, {{ contacts.address.index }}
       </p>
-      <p>Opłata pojawi się na wyciągu z Twojej karty jako GotówkaMax.</p>
+      <p>Opłata pojawi się na wyciągu z Twojej karty jako {{ contacts.brand }}.</p>
     </div> -->
   </form>
 </template>

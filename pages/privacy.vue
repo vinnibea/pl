@@ -1,4 +1,6 @@
 <script setup>
+import { contacts } from "~/constants/constants";
+
 const privacy_offer = [
   {
     title: "Polityka przetwarzania danych osobowych",
@@ -8,7 +10,7 @@ const privacy_offer = [
         sublist: [
           {
             content:
-              "Niniejszy dokument określa politykę Operatora w zakresie przetwarzania danych osobowych osób fizycznych korzystających z serwisu https://gotowkamax.eu (dalej – Serwis).",
+              `Niniejszy dokument określa politykę Operatora w zakresie przetwarzania danych osobowych osób fizycznych korzystających z serwisu ${contacts.website} (dalej – Serwis).`,
           },
           {
             content:
@@ -29,15 +31,15 @@ const privacy_offer = [
           },
           {
             content:
-              "Serwis – strona internetowa (URL): https://gotowkamax.eu, której właścicielem jest Sp. z o.o. GotówkaMax.eu. Serwis stanowi złożony obiekt własności intelektualnej, składający się z programów komputerowych, baz danych, treści graficznych i innych utworów, zintegrowanych w celu zapewnienia prawidłowego funkcjonowania Serwisu.",
+              `Serwis – strona internetowa (URL): ${contacts.website}, której właścicielem jest ${contacts.company}. Serwis stanowi złożony obiekt własności intelektualnej, składający się z programów komputerowych, baz danych, treści graficznych i innych utworów, zintegrowanych w celu zapewnienia prawidłowego funkcjonowania Serwisu.`,
           },
           {
             content:
-              "Użytkownik – osoba fizyczna, która zaakceptowała warunki Umowy Użytkownika. Umowa Użytkownika dostępna jest pod adresem: https://gotowkamax.eu/documents/public-offer/",
+              `Użytkownik – osoba fizyczna, która zaakceptowała warunki Umowy Użytkownika. Umowa Użytkownika dostępna jest pod adresem: ${contacts.website}/public-offer/`,
           },
           {
             content:
-              "Operator – Sp. z o.o. GotówkaMax.eu, zarejestrowana pod adresem ulica Marszałkowska 12, 00-626 Warszawa, Polska, NIP: 5261040827, która samodzielnie lub wspólnie z innymi osobami organizuje i (lub) realizuje przetwarzanie danych osobowych oraz określa cele ich przetwarzania, skład danych oraz operacje dokonywane na danych osobowych.",
+              `Operator – ${contacts.company}, zarejestrowana pod adresem ${contacts.address.street}, ${contacts.address.index} ${contacts.address.city}, ${contacts.address.country}, VAT: ${contacts.VAT}, która samodzielnie lub wspólnie z innymi osobami organizuje i (lub) realizuje przetwarzanie danych osobowych oraz określa cele ich przetwarzania, skład danych oraz operacje dokonywane na danych osobowych.`,
           },
           {
             content:
@@ -181,7 +183,7 @@ const privacy_offer = [
           },
           {
             content:
-              "Wszelkie zapytania dotyczące przetwarzania danych osobowych należy kierować do Sp. z o.o. GotówkaMax.eu pod adresem email: experts@gotówkamax.pro, telefon: +48 (221) 234 567.",
+              `Wszelkie zapytania dotyczące przetwarzania danych osobowych należy kierować do ${contacts.company} pod adresem email: ${contacts.email}, telefon: ${contacts.phone}.`,
           },
         ],
       },
@@ -189,18 +191,6 @@ const privacy_offer = [
   },
 ];
      
-const contacts = {
-  company: "Sp. z o.o. GotówkaMax",
-  NIP: "5261040827",
-  address: {
-    country: "Polska",
-    city: "Warszawa",
-    street: "ulica Marszałkowska 12",
-    index: "00-626",
-  },
-  phone: "+48 (221) 234 567",
-  email: "experts@gotówkamax.pro",
-};
 </script>
 
 <template>
@@ -225,7 +215,7 @@ const contacts = {
       <h2 class="font-bold text-left py-2">
        {{ contacts.company }}
       </h2>
-      <h2 class="font-light text-xs text-left py-2">NIP: {{ contacts.NIP }}</h2>
+      <h2 class="font-light text-xs text-left py-2">VAT: {{ contacts.VAT }}</h2>
       <h2 class="font-semibold text-left py-2">
         Adres:
         <span class="font-light"

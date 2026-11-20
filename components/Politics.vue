@@ -1,4 +1,5 @@
 <script setup>
+import { contacts } from "~/constants/constants";
 import { useMobileStore } from "~/stores/MobileMenu.js";
 const store = useMobileStore();
 import { useAccountStore } from "~/stores/accountStore";
@@ -14,7 +15,7 @@ const public_offer =  [
   {
     title: "Umowa użytkownika",
     content:
-      "Niniejsza umowa reguluje stosunki między Licencjodawcą a Użytkownikiem w zakresie korzystania z funkcji Serwisu. Umowa stanowi umowę adhezyjną. Prosimy uważnie przeczytać treść umowy. Jeśli nie zgadzacie się z warunkami, Sp. z o.o. GotówkaMax zaleca powstrzymanie się od korzystania z serwisu.",
+      `Niniejsza umowa reguluje stosunki między Licencjodawcą a Użytkownikiem w zakresie korzystania z funkcji Serwisu. Umowa stanowi umowę adhezyjną. Prosimy uważnie przeczytać treść umowy. Jeśli nie zgadzacie się z warunkami, ${contacts.company} zaleca powstrzymanie się od korzystania z serwisu.`,
   },
 
   {
@@ -22,7 +23,7 @@ const public_offer =  [
     list: [
       {
         title:
-          "1.1. Licencjodawca – Spółka z o.o. GotówkaMax, NIP: 5261040827, której przysługują wyłączne prawa do Serwisu i która udziela Użytkownikowi prawa do korzystania z funkcji Serwisu na podstawie licencji niewyłącznej.",
+          `1.1. Licencjodawca – ${contacts.company}, VAT: ${contacts.VAT}, której przysługują wyłączne prawa do Serwisu i która udziela Użytkownikowi prawa do korzystania z funkcji Serwisu na podstawie licencji niewyłącznej.`,
       },
       {
         title:
@@ -147,7 +148,7 @@ const public_offer =  [
       },
       {
         title:
-          "3.3. Strona internetowa używa plików cookie w celu świadczenia usług. Warunki przechowywania plików cookie można skonfigurować w przeglądarce. W celu usunięcia danych osobowych należy wysłać wiadomość e-mail na adres experts@gotowkamax.pro z prośbą o usunięcie danych. Wiadomość powinna zawierać sformułowanie: „Proszę o usunięcie moich danych osobowych”. Ta operacja jest nieodwracalna.",
+          `3.3. Strona internetowa używa plików cookie w celu świadczenia usług. Warunki przechowywania plików cookie można skonfigurować w przeglądarce. W celu usunięcia danych osobowych należy wysłać wiadomość e-mail na adres ${contacts.email} z prośbą o usunięcie danych. Wiadomość powinna zawierać sformułowanie: „Proszę o usunięcie moich danych osobowych”. Ta operacja jest nieodwracalna.`,
       },
     ],
   },
@@ -496,7 +497,7 @@ const public_offer =  [
       },
       {
         title:
-          "11.11. Aktualna wersja umowy dostępna jest na stronie https://gotowkamax.eu/public-offer/",
+          `11.11. Aktualna wersja umowy dostępna jest na stronie ${contacts.website}/public-offer/`,
       },
     ],
   },
@@ -581,14 +582,14 @@ let pricing_offer = [
   {
     title: "Umowa Użytkownika",
     content:
-      "Niniejszy dokument reguluje relacje między Licencjodawcą a Użytkownikiem podczas korzystania z funkcjonalności Serwisu. Umowa stanowi umowę adhezyjną. Prosimy o dokładne zapoznanie się z treścią dokumentu. Jeśli nie zgadzasz się z jego warunkami, Sp. z o.o. GotówkaMax.eu zaleca zaprzestanie korzystania z Serwisu.",
+      `Niniejszy dokument reguluje relacje między Licencjodawcą a Użytkownikiem podczas korzystania z funkcjonalności Serwisu. Umowa stanowi umowę adhezyjną. Prosimy o dokładne zapoznanie się z treścią dokumentu. Jeśli nie zgadzasz się z jego warunkami, ${contacts.company} zaleca zaprzestanie korzystania z Serwisu.`,
   },
   {
     title: "Definicje",
     list: [
       {
         title:
-          "1.1. Licencjodawca – Sp. z o.o. GotówkaMax.eu, NIP: 5261040827, posiadająca wyłączne prawa do Serwisu i udzielająca Użytkownikowi prawa do korzystania z funkcji Serwisu na podstawie licencji niewyłącznej.",
+          `1.1. Licencjodawca – ${contacts.company}, VAT: ${contacts.VAT}, posiadająca wyłączne prawa do Serwisu i udzielająca Użytkownikowi prawa do korzystania z funkcji Serwisu na podstawie licencji niewyłącznej.`,
       },
       {
         title:
@@ -596,7 +597,7 @@ let pricing_offer = [
       },
       {
         title:
-          "1.3. Serwis – zbiór zasobów informacyjnych, tekstów, grafiki, oprogramowania oraz innych elementów własności intelektualnej, dostępnych przez internet pod adresem https://gotowkamax.eu.",
+          `1.3. Serwis – zbiór zasobów informacyjnych, tekstów, grafiki, oprogramowania oraz innych elementów własności intelektualnej, dostępnych przez internet pod adresem ${contacts.website}.`,
       },
       {
         title:
@@ -689,7 +690,7 @@ let pricing_offer = [
       },
       {
         title:
-          "4.4. Wniosek o zwrot środków należy przesłać pocztą elektroniczną na adres experts@gotowkamax.pro lub za pośrednictwem formularza w Serwisie.",
+          `4.4. Wniosek o zwrot środków należy przesłać pocztą elektroniczną na adres ${contacts.email} lub za pośrednictwem formularza w Serwisie.`,
       },
     ],
   },
@@ -716,7 +717,7 @@ const data_offer = [
   {
     title: "Zgoda na przetwarzanie danych osobowych",
     content:
-      "Ja, osoba fizyczna, której dane zostały podane podczas rejestracji na stronie https://gotowkamax.eu/, jako podmiot danych osobowych (dalej — Podmiot), wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z warunkami Polityki przetwarzania danych osobowych Sp. z o.o. GotówkaMax.eu (NIP: 5261040827) (dalej — Operator) poprzez stronę https://gotowkamax.eu (dalej – Serwis).",
+      `Ja, osoba fizyczna, której dane zostały podane podczas rejestracji na stronie ${contacts.website}/, jako podmiot danych osobowych (dalej — Podmiot), wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z warunkami Polityki przetwarzania danych osobowych ${contacts.company} (VAT: ${contacts.VAT}) (dalej — Operator) poprzez stronę ${contacts.website} (dalej – Serwis).`,
   },
   {
     title: "Zgoda na przetwarzanie danych",
@@ -761,7 +762,7 @@ const data_offer = [
   {
     title: "Cele przetwarzania danych",
     content:
-      "Celem przetwarzania danych osobowych Podmiotu jest zawarcie i wykonanie umowy użytkownika, zgodnie z którą Sp. z o.o. GotówkaMax.eu zapewnia Podmiotowi dostęp do osobistego konta w Serwisie oraz informuje Podmiot o ofertach Sp. z o.o. GotówkaMax.eu i kredytodawców.",
+      `Celem przetwarzania danych osobowych Podmiotu jest zawarcie i wykonanie umowy użytkownika, zgodnie z którą ${contacts.company} zapewnia Podmiotowi dostęp do osobistego konta w Serwisie oraz informuje Podmiot o ofertach ${contacts.company} i kredytodawców.`,
   },
   {
     title: "Działania związane z danymi osobowymi",
@@ -801,7 +802,7 @@ const data_offer = [
   {
     title: "Wycofanie zgody",
     content:
-      "Zgoda może zostać wycofana wcześniej poprzez wysłanie przez Podmiot z adresu e-mail podanego podczas rejestracji w Serwisie, na adres e-mail experts@gotowkamax.pro, wiadomości elektronicznej zawierającej żądanie usunięcia danych osobowych Podmiotu. Oświadczenie, o którym mowa w niniejszym punkcie, powinno spełniać wymagania określone w Polityce. Jeżeli Podmiot wycofa swoją zgodę, Operator natychmiast zaprzestaje przetwarzania danych osobowych Podmiotu, z wyjątkiem przypadków przewidzianych przepisami prawa Rzeczypospolitej Polskiej.",
+      `Zgoda może zostać wycofana wcześniej poprzez wysłanie przez Podmiot z adresu e-mail podanego podczas rejestracji w Serwisie, na adres e-mail ${contacts.email}, wiadomości elektronicznej zawierającej żądanie usunięcia danych osobowych Podmiotu. Oświadczenie, o którym mowa w niniejszym punkcie, powinno spełniać wymagania określone w Polityce. Jeżeli Podmiot wycofa swoją zgodę, Operator natychmiast zaprzestaje przetwarzania danych osobowych Podmiotu, z wyjątkiem przypadków przewidzianych przepisami prawa Rzeczypospolitej Polskiej.`,
   },
 ];
 const data = [

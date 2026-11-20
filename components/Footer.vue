@@ -1,22 +1,16 @@
 <script setup>
 import { required, email, helpers } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
+import { contacts } from "~/constants/constants";
 
 const formData = reactive({
   email: "",
 });
 
-const footerData = {
-  nip: 669601311,
-  ltd: 'Alsigns Commercials Ltd',
-  phone: '+447473986634',
-  adress: 'zarejestrowana pod adresem Collin House Collin Lane, Broadway, Worcestershire, WR12 7PB'
-}
-
 const paragraphs = [
   {
     content:
-      `Sp. z o.o. ${footerData.ltd} NIP: ${footerData.nip} nie uczestniczy w relacjach umownych między użytkownikami a organizacjami kredytowymi. Użytkownicy samodzielnie analizują ryzyka związane z ofertami kredytowymi, podejmują decyzje o zawarciu umów z partnerami za pośrednictwem serwisu i ponoszą ewentualne konsekwencje. Opłata za usługi serwisu nie gwarantuje zatwierdzenia mikrokredytu.`,
+      `${contacts.company} VAT: ${contacts.VAT} nie uczestniczy w relacjach umownych między użytkownikami a organizacjami kredytowymi. Użytkownicy samodzielnie analizują ryzyka związane z ofertami kredytowymi, podejmują decyzje o zawarciu umów z partnerami za pośrednictwem serwisu i ponoszą ewentualne konsekwencje. Opłata za usługi serwisu nie gwarantuje zatwierdzenia mikrokredytu.`,
   },
   {
     content:
@@ -30,7 +24,7 @@ const paragraphs = [
     content:
       "Jeśli masz pytania dotyczące działania serwisu, zapoznaj się z sekcją Odpowiedzi na pytania lub skorzystaj z formularza kontaktowego na stronie",
     linkContent: "NAPISZ DO NAS.",
-    link: "mailto:experts@gotowkamax.pro",
+    link: `mailto:${contacts.email}`,
   },
   {
     content:
@@ -38,7 +32,7 @@ const paragraphs = [
   },
   {
     content:
-      "Okres próbny, w którym nie jest pobierana opłata od klienta, wynosi 7 dni od momentu rozpoczęcia subskrypcji. Następnie z twojej karty zostanie pobrana kwota 19, 99 euro za 7 dni korzystania z serwisu (płatna subskrypcja). Subskrypcja jest automatycznie odnawiana, jeśli nie zostanie anulowana.",
+      `Okres próbny, w którym nie jest pobierana opłata od klienta, wynosi 5 dni od momentu rozpoczęcia subskrypcji. Następnie z twojej karty zostanie pobrana kwota 19,99 euro za 5 dni korzystania z serwisu (płatna subskrypcja). Subskrypcja jest automatycznie odnawiana, jeśli nie zostanie anulowana.`,
   },
   {
     content:
@@ -49,8 +43,8 @@ const paragraphs = [
   {
     content:
       "Ta strona używa plików cookie do świadczenia usług. Możesz zmienić ustawienia dostępu do plików cookie w swojej przeglądarce. Aby usunąć dane osobowe, wyślij e-mail z zarejestrowanego adresu na adres ",
-    linkContent: "experts@gotowkamax.pro",
-    link: "mailto:experts@gotowkamax.pro",
+    linkContent: contacts.email,
+    link: `mailto:${contacts.email}`,
   },
 ];
 const rules = computed(() => {
@@ -221,7 +215,7 @@ const onSubscribe = async (email) => {
           >
             <span class="text-xs text-dark-grey">Gotówka</span>Max.<span
               class="text-xs text-dark-grey"
-              >eu</span
+              >pl</span
             >
           </h2>
 
@@ -267,11 +261,11 @@ const onSubscribe = async (email) => {
 
         <div class="flex flex-col items-start gap-4 max-[822px]:flex-row max-[822px]:justify-between max-[822px]:w-full">
           <span class="flex items-center gap-2">
-             <UIcon name="mdi:phone-classic"></UIcon><span class="text-xs text-button-primary font-bold">+48 (221) 234 567</span></span>
+             <UIcon name="mdi:phone-classic"></UIcon><span class="text-xs text-button-primary font-bold">{{ contacts.phone }}</span></span>
           <span class="flex items-center gap-2">
              <UIcon name="mdi:envelope"></UIcon> 
              <span class="text-xs text-button-primary font-bold">
-              experts@gotówkamax.pro</span>
+              {{ contacts.email }}</span>
             </span>
         </div>
       </div>
@@ -301,12 +295,12 @@ const onSubscribe = async (email) => {
         <p
           class="font-semibold text-white text-[12px] w-1/6 max-[822px]:w-full max-[822px]:text-[10px]"
         >
-        Tel.: {{footerData.phone}}
+        Tel.: {{ contacts.phone }}
         </p>
         <p
           class="font-semibold text-white text-[12px] w-1/3 max-[822px]:w-full max-[822px]:text-[10px]"
         >
-        Sp. z o.o. {{footerData.ltd}}, {{footerData.adress}}
+        {{ contacts.company }}, {{ contacts.address.street }}, {{ contacts.address.city }}, {{ contacts.address.country }}, {{ contacts.address.index }}
         </p>
       </div>
     </div>

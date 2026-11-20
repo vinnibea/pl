@@ -1,16 +1,18 @@
 <script setup>
+import { contacts } from "~/constants/constants";
+
 let public_offer = [
   {
     title: "Umowa Użytkownika",
     content:
-      "Niniejszy dokument reguluje relacje między Licencjodawcą a Użytkownikiem podczas korzystania z funkcjonalności Serwisu. Umowa stanowi umowę adhezyjną. Prosimy o dokładne zapoznanie się z treścią dokumentu. Jeśli nie zgadzasz się z jego warunkami, Sp. z o.o. GotówkaMax zaleca zaprzestanie korzystania z Serwisu.",
+      `Niniejszy dokument reguluje relacje między Licencjodawcą a Użytkownikiem podczas korzystania z funkcjonalności Serwisu. Umowa stanowi umowę adhezyjną. Prosimy o dokładne zapoznanie się z treścią dokumentu. Jeśli nie zgadzasz się z jego warunkami, ${contacts.company} zaleca zaprzestanie korzystania z Serwisu.`,
   },
   {
     title: "Definicje",
     list: [
       {
         title:
-          "1.1. Licencjodawca – Sp. z o.o. GotówkaMax, NIP: 5261040827, posiadająca wyłączne prawa do Serwisu i udzielająca Użytkownikowi prawa do korzystania z funkcji Serwisu na podstawie licencji niewyłącznej.",
+          `1.1. Licencjodawca – ${contacts.company}, VAT: ${contacts.VAT}, posiadająca wyłączne prawa do Serwisu i udzielająca Użytkownikowi prawa do korzystania z funkcji Serwisu na podstawie licencji niewyłącznej.`,
       },
       {
         title:
@@ -18,7 +20,7 @@ let public_offer = [
       },
       {
         title:
-          "1.3. Serwis – zbiór zasobów informacyjnych, tekstów, grafiki, oprogramowania oraz innych elementów własności intelektualnej, dostępnych przez internet pod adresem https://gotowkamax.eu.",
+          `1.3. Serwis – zbiór zasobów informacyjnych, tekstów, grafiki, oprogramowania oraz innych elementów własności intelektualnej, dostępnych przez internet pod adresem ${contacts.website}.`,
       },
       {
         title:
@@ -111,7 +113,7 @@ let public_offer = [
       },
       {
         title:
-          "4.4. Wniosek o zwrot środków należy przesłać pocztą elektroniczną na adres experts@gotowkamax.pro lub za pośrednictwem formularza w Serwisie.",
+          `4.4. Wniosek o zwrot środków należy przesłać pocztą elektroniczną na adres ${contacts.email} lub za pośrednictwem formularza w Serwisie.`,
       },
     ],
   },
@@ -135,19 +137,6 @@ let public_offer = [
 ];
 
 
-const contacts = {
-  company: "Sp. z o.o. GotówkaMax",
-  NIP: "5261040827",
-  address: {
-    country: "Polska",
-    city: "Warszawa",
-    street: "ulica Marszałkowska 12",
-    index: "00-626",
-  },
-  phone: "+48 (221) 234 567",
-  email: "experts@gotówkamax.pro",
-};
-
 </script>
 
 <template>
@@ -170,7 +159,7 @@ const contacts = {
       <h2 class="font-bold text-left py-2">
        {{ contacts.company }}
       </h2>
-      <h2 class="font-light text-xs text-left py-2">NIP: {{ contacts.NIP }}</h2>
+      <h2 class="font-light text-xs text-left py-2">VAT: {{ contacts.VAT }}</h2>
       <h2 class="font-semibold text-left py-2">
         Adres:
         <span class="font-light"

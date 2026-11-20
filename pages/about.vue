@@ -1,9 +1,10 @@
 <script setup>
+import { contacts } from "~/constants/constants";
 
 const serviceInfo = [
   {
     title: null,
-    content: "Serwis «GotówkaMax.eu» to platforma online, która pomaga użytkownikom wybrać optymalną ofertę mikropożyczki. Możesz złożyć wniosek jednocześnie do kilku instytucji finansowych, które zostały wybrane na podstawie Twoich danych."
+    content: `Serwis «${contacts.brand}» to platforma online, która pomaga użytkownikom wybrać optymalną ofertę mikropożyczki. Możesz złożyć wniosek jednocześnie do kilku instytucji finansowych, które zostały wybrane na podstawie Twoich danych.`
   },
   {
     title: "Co robimy?",

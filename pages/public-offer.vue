@@ -1,9 +1,11 @@
 <script setup>
+import { contacts } from "~/constants/constants";
+
 const public_offer = [
   {
     title: "Umowa użytkownika",
     content:
-      "Niniejsza umowa reguluje stosunki między Licencjodawcą a Użytkownikiem w zakresie korzystania z funkcji Serwisu. Umowa stanowi umowę adhezyjną. Prosimy uważnie przeczytać treść umowy. Jeśli nie zgadzacie się z warunkami, Sp. z o.o. GotówkaMax zaleca powstrzymanie się od korzystania z serwisu.",
+      `Niniejsza umowa reguluje stosunki między Licencjodawcą a Użytkownikiem w zakresie korzystania z funkcji Serwisu. Umowa stanowi umowę adhezyjną. Prosimy uważnie przeczytać treść umowy. Jeśli nie zgadzacie się z warunkami, ${contacts.company} zaleca powstrzymanie się od korzystania z serwisu.`,
   },
 
   {
@@ -11,7 +13,7 @@ const public_offer = [
     list: [
       {
         title:
-          "1.1. Licencjodawca – Spółka z o.o. GotówkaMax, NIP: 5261040827, której przysługują wyłączne prawa do Serwisu i która udziela Użytkownikowi prawa do korzystania z funkcji Serwisu na podstawie licencji niewyłącznej.",
+          `1.1. Licencjodawca – ${contacts.company}, VAT: ${contacts.VAT}, której przysługują wyłączne prawa do Serwisu i która udziela Użytkownikowi prawa do korzystania z funkcji Serwisu na podstawie licencji niewyłącznej.`,
       },
       {
         title:
@@ -136,7 +138,7 @@ const public_offer = [
       },
       {
         title:
-          "3.3. Strona internetowa używa plików cookie w celu świadczenia usług. Warunki przechowywania plików cookie można skonfigurować w przeglądarce. W celu usunięcia danych osobowych należy wysłać wiadomość e-mail na adres experts@gotowkamax.pro z prośbą o usunięcie danych. Wiadomość powinna zawierać sformułowanie: „Proszę o usunięcie moich danych osobowych”. Ta operacja jest nieodwracalna.",
+          `3.3. Strona internetowa używa plików cookie w celu świadczenia usług. Warunki przechowywania plików cookie można skonfigurować w przeglądarce. W celu usunięcia danych osobowych należy wysłać wiadomość e-mail na adres ${contacts.email} z prośbą o usunięcie danych. Wiadomość powinna zawierać sformułowanie: „Proszę o usunięcie moich danych osobowych”. Ta operacja jest nieodwracalna.`,
       },
     ],
   },
@@ -485,7 +487,7 @@ const public_offer = [
       },
       {
         title:
-          "11.11. Aktualna wersja umowy dostępna jest na stronie https://gotowkamax.eu/public-offer/",
+          `11.11. Aktualna wersja umowy dostępna jest na stronie ${contacts.website}/public-offer/`,
       },
     ],
   },
@@ -566,18 +568,6 @@ const public_offer = [
   },
 ];
 
-const contacts = {
-  company: "Sp. z o.o. GotówkaMax",
-  NIP: "5261040827",
-  address: {
-    country: "Polska",
-    city: "Warszawa",
-    street: "ulica Marszałkowska 12",
-    index: "00-626",
-  },
-  phone: "+48 (221) 234 567",
-  email: "experts@gotówkamax.pro",
-};
 </script>
 
 <template>
@@ -602,7 +592,7 @@ const contacts = {
           Załącznik nr 1 do Umowy z Użytkownikiem
         </h2>
         <span class="font-light text-sm"
-          >Sp. z o.o. GotówkaMax nie jest kredytodawcą i nie udziela pożyczek ani
+          >{{ contacts.company }} nie jest kredytodawcą i nie udziela pożyczek ani
           mikropożyczek. Warunki uzyskania mikropożyczki można sprawdzić na
           oficjalnych stronach kredytodawców lub kontaktując się z nimi
           bezpośrednio.”
@@ -612,13 +602,12 @@ const contacts = {
       <h2 class="font-bold text-left py-2">
         {{ contacts.company }}
       </h2>
-      <h2 class="font-light text-xs text-left py-2">NIP: {{ contacts.NIP }}</h2>
+      <h2 class="font-light text-xs text-left py-2">VAT: {{ contacts.VAT }}</h2>
       <h2 class="font-semibold text-left py-2">
         Adres:
         <span class="font-light"
           >{{ contacts.address.country }}, {{ contacts.address.city }},
           {{ contacts.address.index }}, {{ contacts.address.street }},
-          {{ contacts.address.house }}
         </span>
       </h2>
       <h2 class="font-semibold text-left py-2">

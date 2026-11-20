@@ -1,9 +1,11 @@
 <script setup>
+import { contacts } from "~/constants/constants";
+
 const public_offer = [
   {
     title: "Zgoda na przetwarzanie danych osobowych",
     content:
-      "Ja, osoba fizyczna, której dane zostały podane podczas rejestracji na stronie https://gotowkamax.eu/, jako podmiot danych osobowych (dalej — Podmiot), wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z warunkami Polityki przetwarzania danych osobowych Sp. z o.o. GotówkaMax.pl (NIP: 5261040827) (dalej — Operator) poprzez stronę https://gotowkamax.eu (dalej – Serwis).",
+      `Ja, osoba fizyczna, której dane zostały podane podczas rejestracji na stronie ${contacts.website}/, jako podmiot danych osobowych (dalej — Podmiot), wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z warunkami Polityki przetwarzania danych osobowych ${contacts.company} (VAT: ${contacts.VAT}) (dalej — Operator) poprzez stronę ${contacts.website} (dalej – Serwis).`,
   },
   {
     title: "Zgoda na przetwarzanie danych",
@@ -48,7 +50,7 @@ const public_offer = [
   {
     title: "Cele przetwarzania danych",
     content:
-      "Celem przetwarzania danych osobowych Podmiotu jest zawarcie i wykonanie umowy użytkownika, zgodnie z którą Sp. z o.o. GotówkaMax zapewnia Podmiotowi dostęp do osobistego konta w Serwisie oraz informuje Podmiot o ofertach Sp. z o.o. GotówkaMax i kredytodawców.",
+      `Celem przetwarzania danych osobowych Podmiotu jest zawarcie i wykonanie umowy użytkownika, zgodnie z którą ${contacts.company} zapewnia Podmiotowi dostęp do osobistego konta w Serwisie oraz informuje Podmiot o ofertach ${contacts.company} i kredytodawców.`,
   },
   {
     title: "Działania związane z danymi osobowymi",
@@ -88,22 +90,10 @@ const public_offer = [
   {
     title: "Wycofanie zgody",
     content:
-      "Zgoda może zostać wycofana wcześniej poprzez wysłanie przez Podmiot z adresu e-mail podanego podczas rejestracji w Serwisie, na adres e-mail experts@gotowkamax.pro, wiadomości elektronicznej zawierającej żądanie usunięcia danych osobowych Podmiotu. Oświadczenie, o którym mowa w niniejszym punkcie, powinno spełniać wymagania określone w Polityce. Jeżeli Podmiot wycofa swoją zgodę, Operator natychmiast zaprzestaje przetwarzania danych osobowych Podmiotu, z wyjątkiem przypadków przewidzianych przepisami prawa Rzeczypospolitej Polskiej.",
+      `Zgoda może zostać wycofana wcześniej poprzez wysłanie przez Podmiot z adresu e-mail podanego podczas rejestracji w Serwisie, na adres e-mail ${contacts.email}, wiadomości elektronicznej zawierającej żądanie usunięcia danych osobowych Podmiotu. Oświadczenie, o którym mowa w niniejszym punkcie, powinno spełniać wymagania określone w Polityce. Jeżeli Podmiot wycofa swoją zgodę, Operator natychmiast zaprzestaje przetwarzania danych osobowych Podmiotu, z wyjątkiem przypadków przewidzianych przepisami prawa Rzeczypospolitej Polskiej.`,
   },
 ];
 
-const contacts = {
-  company: "Sp. z o.o. GotówkaMax",
-  NIP: "5261040827",
-  address: {
-    country: "Polska",
-    city: "Warszawa",
-    street: "ulica Marszałkowska 12",
-    index: "00-626",
-  },
-  phone: "+48 (221) 234 567",
-  email: "experts@gotówkamax.pro",
-};
 </script>
 
 <template>
@@ -128,7 +118,7 @@ const contacts = {
       <h2 class="font-bold text-left py-2">
        {{ contacts.company }}
       </h2>
-      <h2 class="font-light text-xs text-left py-2">NIP: {{ contacts.NIP }}</h2>
+      <h2 class="font-light text-xs text-left py-2">VAT: {{ contacts.VAT }}</h2>
       <h2 class="font-semibold text-left py-2">
         Adres:
         <span class="font-light"
