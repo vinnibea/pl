@@ -18,7 +18,7 @@ export const useAirwallax = (id: string) => {
       const { clientSecret, clientId, checkoutId } =
         await doCreateAirwallaxClient(client);
       const { billing } = await init({
-        env: (config.airwallaxMode as "demo" | "prod") || "demo",
+        env: "prod",
         enabledElements: ["billing"],
       });
       const checkout = await billing?.createCheckout({
